@@ -278,8 +278,8 @@ body {
 
 .lead-gen-box p {
     font-size: 0.95rem;
-    margin-bottom: 20px;
     color: var(--text-muted);
+    margin-bottom: 15px;
 }
 
 .btn-secondary {
@@ -301,4 +301,19 @@ body {
 .btn-secondary:hover {
     background: var(--primary);
     color: white;
+}
+
+/* Legal Footer */
+.legal-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.legal-footer p {
+    margin-bottom: 5px;
+    line-height: 1.4;
 }
