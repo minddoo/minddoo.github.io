@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>나의 디저트 결과는? - 성격 테스트</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6117526240662405" crossorigin="anonymous"></script>
+
+    <!-- Kakao SDK -->
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js" integrity="sha384-l+xbElFSnXYZ2w59e04jGQbF4521/a1/3k75zMcy/h0661uG/cBS62/qYtFzH40E" crossorigin="anonymous"></script>
+    <script>
+        // Kakao SDK Init
+        // 여기에 실제 카카오 자바스크립트 앱 키를 넣어야 합니다.
+        // 임시로 동작만 방지
+        try { Kakao.init('YOUR_KAKAO_APP_KEY'); } catch(e) {}
+    </script>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Top Ad -->
+        <div class="ad-container" style="margin-top: 10px;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6117526240662405"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <section class="screen active result-screen" id="screen-result">
+            <h2 class="result-subtitle">당신과 찰떡궁합인 디저트는...</h2>
+            
+            <div class="result-card">
+                <div class="result-emoji" id="result-emoji">🍰</div>
+                <h1 class="result-title" id="result-title">부드러운 생크림 케이크</h1>
+                
+                <div class="result-desc-box">
+                    <p id="result-desc">
+                        당신은 주변 사람들을 편안하게 해주는 부드러운 성격의 소유자입니다. 갈등을 싫어하고 평화를 사랑하네요!
+                    </p>
+                </div>
+                
+                <div class="match-box">
+                    <div class="match-item">
+                        <h4>찰떡 궁합 👍</h4>
+                        <div id="match-good">마카롱</div>
+                    </div>
+                    <div class="match-item">
+                        <h4>환장 궁합 👎</h4>
+                        <div id="match-bad">아메리카노</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-action btn-share" onclick="shareKakao()">💬 카카오톡으로 공유하기</button>
+                <button class="btn-action btn-restart" onclick="location.href='index.html'">🔄 다시 테스트하기</button>
+            </div>
+            
+            <div style="margin-top:20px; text-align:center;">
+                <a href="../index.html" style="color:#aaa; text-decoration:none;">📚 영어 단어장 챌린지 구경가기</a>
+            </div>
+        </section>
+
+        <!-- Bottom Ad -->
+        <div class="ad-container" style="margin-top: 30px;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6117526240662405"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>나와 찰떡궁합인 디저트는? - 성격 테스트</title>
+    <meta name="description" content="나의 진짜 성격은 어떤 디저트와 닮았을까? 지금 바로 테스트해 보세요!">
+    <meta property="og:title" content="나와 찰떡궁합인 디저트는?">
+    <meta property="og:description" content="나의 진짜 성격은 어떤 디저트와 닮았을까? 지금 바로 테스트해 보세요!">
+    <meta property="og:image" content="https://minddoo.github.io/og-image-mbti.png">
+    <meta property="og:url" content="https://minddoo.github.io/mbti/">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6117526240662405" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- 시작 화면 -->
+        <section id="screen-start" class="screen active">
+            <h1 class="main-title">나와 찰떡궁합인<br><span class="highlight">디저트</span>는? 🍰</h1>
+            <div class="main-image">
+                <span style="font-size: 80px;">🍩</span>
+            </div>
+            <p class="subtitle">12개의 질문으로 알아보는<br>나의 달콤한 성격 유형!</p>
+            
+            <button class="btn-start" onclick="startTest()">테스트 시작하기</button>
+
+            <!-- AdSense Banner -->
+            <div class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6117526240662405"
+                     data-ad-slot="auto"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </section>
+
+        <!-- 퀴즈 화면 -->
+        <section id="screen-question" class="screen">
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="question-count" id="question-count">1 / 12</div>
+            
+            <div class="question-box">
+                <h2 id="question-text">질문 텍스트가 들어갑니다.</h2>
+            </div>
+
+            <div class="answer-container">
+                <button class="btn-answer" id="btn-answer-a" onclick="selectAnswer('A')">답변 A</button>
+                <button class="btn-answer" id="btn-answer-b" onclick="selectAnswer('B')">답변 B</button>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
