@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>매일 영단어 자가 테스트 - VocaMaster</title>
+    <meta name="description" content="매일 꾸준히 영단어를 테스트하고 실력을 키워보세요. 직관적이고 빠른 영어 단어 퀴즈 사이트입니다.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Pretendard:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google AdSense Script (Placeholder) -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <header>
+        <div class="logo">Voca<span>Master</span></div>
+        <div class="stats">
+            <span id="score-display">점수: 0</span>
+        </div>
+    </header>
+
+    <!-- 상단 광고 영역 (Top Leaderboard) -->
+    <div class="ad-container ad-top">
+        <div class="ad-placeholder">Google AdSense<br>(Top Banner)</div>
+    </div>
+
+    <main class="quiz-container glass-panel">
+        <!-- Start Screen -->
+        <section id="start-screen" class="screen active">
+            <h1>영단어 마스터에 도전하세요</h1>
+            <p>10개의 필수 영단어가 준비되어 있습니다.<br>객관식으로 빠르고 정확하게 풀어보세요.</p>
+            <button id="start-btn" class="btn-primary">테스트 시작하기</button>
+        </section>
+
+        <!-- Quiz Screen -->
+        <section id="quiz-screen" class="screen">
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="question-header">
+                <span id="question-count">문제 1/10</span>
+                <span id="timer">15s</span>
+            </div>
+            
+            <div class="question-box">
+                <h2 id="question-word" class="word-display">Loading...</h2>
+            </div>
+
+            <!-- 중간 광고 영역 (Mobile에 매우 효과적) -->
+            <div class="ad-container ad-mid">
+                <div class="ad-placeholder-small">Ad</div>
+            </div>
+
+            <div class="options-grid" id="options-container">
+                <!-- 옵션 버튼들이 여기에 동적으로 생성됩니다 -->
+            </div>
+        </section>
+
+        <!-- Result Screen -->
+        <section id="result-screen" class="screen">
+            <h2>테스트 완료!</h2>
+            <div class="final-score" id="final-score">0 / 10</div>
+            <p id="result-message">수고하셨습니다!</p>
+            
+            <div class="action-buttons">
+                <button id="restart-btn" class="btn-primary">다시 도전하기</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- 하단 광고 영역 (Bottom Rect) -->
+    <div class="ad-container ad-bottom">
+        <div class="ad-placeholder">Google AdSense<br>(Bottom Banner)</div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 VocaMaster. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
