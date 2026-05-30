@@ -57,6 +57,29 @@ body {
     text-align: center;
 }
 
+/* Language Selector */
+.lang-selector-container {
+    text-align: right;
+    padding: 15px 20px 0;
+}
+
+.lang-select {
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.lang-select:focus {
+    border-color: var(--primary);
+}
+
 /* Start Screen */
 .badge {
     display: inline-block;
