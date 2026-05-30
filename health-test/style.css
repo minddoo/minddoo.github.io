@@ -200,6 +200,27 @@ body {
     transform: translateY(-2px);
 }
 
+.option-btn:active {
+    transform: scale(0.98);
+}
+
+.btn-back {
+    background: transparent;
+    color: var(--text-muted);
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.btn-back:hover {
+    color: var(--text-main);
+    background: rgba(0,0,0,0.05);
+}
+
 /* Result Screen */
 .result-header {
     margin-bottom: 30px;

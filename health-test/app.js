@@ -7,6 +7,7 @@ const i18n = {
         qLabel: "Question",
         resultLabel: "YOUR STYLE IS",
         btnRetake: "Retake the Quiz",
+        btnBack: "← Back",
         shareTitle: "Share Your K-Medical Style! 🏥",
         shareDesc: "Understanding your personal medical style is the first step toward a healthier and more balanced lifestyle. Discuss these results with your family or friends when planning your next wellness journey.<br><br>Stay healthy, and don't forget to take care of yourself!",
         q1: "When planning a medical trip to Korea, what is your top priority?",
@@ -61,6 +62,7 @@ const i18n = {
         qLabel: "질문",
         resultLabel: "당신의 스타일은",
         btnRetake: "테스트 다시 하기",
+        btnBack: "← 이전",
         shareTitle: "결과 공유하기! 🏥",
         shareDesc: "본인의 의료 성향을 이해하는 것은 더 건강한 라이프스타일을 위한 첫걸음입니다. 다음 웰니스 여행을 계획할 때 친구나 가족과 결과를 공유해보세요.<br><br>항상 건강 챙기시길 바랍니다!",
         q1: "한국으로 의료 관광을 계획할 때, 가장 중요하게 생각하는 것은?",
@@ -115,6 +117,7 @@ const i18n = {
         qLabel: "質問",
         resultLabel: "あなたのスタイルは",
         btnRetake: "もう一度テストする",
+        btnBack: "← 戻る",
         shareTitle: "結果をシェアしよう！ 🏥",
         shareDesc: "自分の医療スタイルを理解することは、健康的なライフスタイルへの第一歩です。次のウェルネス旅行を計画する際に、この結果を家族や友人とシェアしてみてください。<br><br>健康第一で！",
         q1: "韓国への医療旅行を計画する際、最も重視することは？",
@@ -170,6 +173,7 @@ const i18n = {
         qLabel: "问题",
         resultLabel: "您的风格是",
         btnRetake: "重新测试",
+        btnBack: "← 上一题",
         shareTitle: "分享您的结果！ 🏥",
         shareDesc: "了解您的个人医疗风格是迈向更健康生活方式的第一步。在计划下一次健康之旅时，与家人或朋友讨论这些结果。<br><br>祝您健康！",
         q1: "在计划韩国医疗之旅时，您最看重什么？",
@@ -224,6 +228,7 @@ const i18n = {
         qLabel: "Câu hỏi",
         resultLabel: "PHONG CÁCH CỦA BẠN LÀ",
         btnRetake: "Làm lại bài kiểm tra",
+        btnBack: "← Quay lại",
         shareTitle: "Chia sẻ kết quả! 🏥",
         shareDesc: "Hiểu phong cách y tế của cá nhân là bước đầu tiên hướng tới một lối sống khỏe mạnh và cân bằng hơn. Hãy thảo luận những kết quả này với gia đình hoặc bạn bè khi lên kế hoạch cho chuyến đi sức khỏe tiếp theo của bạn.<br><br>Hãy giữ gìn sức khỏe!",
         q1: "Khi lên kế hoạch cho một chuyến đi y tế đến Hàn Quốc, ưu tiên hàng đầu của bạn là gì?",
@@ -278,6 +283,7 @@ const i18n = {
         qLabel: "คำถาม",
         resultLabel: "สไตล์ของคุณคือ",
         btnRetake: "ทำแบบทดสอบอีกครั้ง",
+        btnBack: "← ย้อนกลับ",
         shareTitle: "แชร์ผลลัพธ์ของคุณ! 🏥",
         shareDesc: "การเข้าใจสไตล์ทางการแพทย์ของตนเองเป็นก้าวแรกสู่ไลฟ์สไตล์ที่มีสุขภาพดี แบ่งปันผลลัพธ์นี้กับครอบครัวหรือเพื่อนๆ เมื่อวางแผนการเดินทางเพื่อสุขภาพครั้งต่อไป<br><br>รักษาสุขภาพด้วยนะ!",
         q1: "เมื่อวางแผนการเดินทางเพื่อสุขภาพมาเกาหลี อะไรคือสิ่งสำคัญที่สุดของคุณ?",
@@ -332,6 +338,7 @@ const i18n = {
         qLabel: "Вопрос",
         resultLabel: "ВАШ СТИЛЬ:",
         btnRetake: "Пройти тест еще раз",
+        btnBack: "← Назад",
         shareTitle: "Поделитесь результатом! 🏥",
         shareDesc: "Понимание своего медицинского стиля — это первый шаг к более здоровому образу жизни. Обсудите эти результаты с семьей или друзьями при планировании вашей следующей поездки.<br><br>Будьте здоровы!",
         q1: "Что для вас главное при планировании медицинской поездки в Корею?",
@@ -448,6 +455,7 @@ const questions = [
 
 let currentQ = 0;
 let scores = { VIP: 0, QUICK: 0, BEAUTY: 0, INTENSIVE: 0 };
+let answerHistory = [];
 let currentLang = localStorage.getItem('kmedLang') || 'en';
 
 function changeLanguage(lang) {
@@ -475,6 +483,7 @@ function startTest() {
     document.getElementById('screen-question').classList.add('active');
     currentQ = 0;
     scores = { VIP: 0, QUICK: 0, BEAUTY: 0, INTENSIVE: 0 };
+    answerHistory = [];
     showQuestion();
 }
 
@@ -504,12 +513,35 @@ function showQuestion() {
         btn.onclick = () => selectOption(ans.type);
         container.appendChild(btn);
     });
+
+    // Handle back button visibility
+    const backBtn = document.getElementById('btn-back');
+    if (backBtn) {
+        if (currentQ > 0) {
+            backBtn.style.display = 'inline-block';
+            backBtn.innerText = t['btnBack'];
+        } else {
+            backBtn.style.display = 'none';
+        }
+    }
 }
 
 function selectOption(type) {
     scores[type]++;
+    answerHistory.push(type);
     currentQ++;
     showQuestion();
+}
+
+function goBack() {
+    if (currentQ > 0) {
+        currentQ--;
+        const lastType = answerHistory.pop();
+        if (lastType) {
+            scores[lastType]--;
+        }
+        showQuestion();
+    }
 }
 
 function showResult() {
