@@ -56,7 +56,7 @@ const i18n = {
         q8: "How do you prefer to handle the logistics of your health checkup in Korea?",
         q8_a1: "A high-end VIP service that handles everything from A to Z, including flights and private transfers, regardless of cost.",
         q8_a2: "100% DIY. I prefer to book everything myself and use translation apps to save as much money as possible.",
-        q8_a3: "I want to choose my own hospital freely, but hire an independent service just for on-site medical interpretation and administrative support.",
+        q8_a3: "I prefer to choose the hospital myself, and only hire a professional interpreter to accompany me on the day of the checkup.",
         q8_a4: "A traditional medical agency. They recommend proven partner hospitals and take a commission, but it feels safe and easy.",
 
         resCOMPTitle: "The Comprehensive Scanner",
@@ -125,7 +125,7 @@ const i18n = {
         q8: "한국에서 건강검진을 진행할 때, 어떤 방식의 서포트를 가장 선호하시나요?",
         q8_a1: "비용이 들더라도 항공권부터 VIP 의전, 병원 수속까지 모든 것을 알아서 다 해주는 하이엔드 풀케어 서비스.",
         q8_a2: "100% 완전 셀프(DIY). 발품을 팔아 직접 예약하고 번역 앱을 쓰더라도 돈을 가장 아끼는 방식.",
-        q8_a3: "병원 선택은 내가 자유롭게 하되, 당일 병원 동행과 의료 전문 통역, 수속 같은 핵심 비의료 행정만 깔끔하게 도와주는 서비스.",
+        q8_a3: "병원과 검진 항목은 내가 직접 알아보고, 원활한 진료를 위해 검진 당일 병원 동행 통역사만 고용하는 방식.",
         q8_a4: "전통적인 의료 관광 에이전시. 병원 선택에 제한이 있어도 검증된 제휴 병원을 추천받고 수수료를 내는 편하고 안전한 방식.",
 
         resCOMPTitle: "전신 정밀 분석형",
@@ -194,7 +194,7 @@ const i18n = {
         q8: "韓国で健康診断を進める際、どのようなサポート方式を最も好みますか？",
         q8_a1: "費用がかかっても、航空券からVIP送迎、病院の手続きまで全てをお任せできるハイエンドなフルケアサービス。",
         q8_a2: "100%完全セルフ(DIY)。自分で予約し翻訳アプリを使ってでも、お金を最大限節約する方式。",
-        q8_a3: "病院選びは自分が自由に決め、当日の病院同行と医療専門通訳、手続きなどの核心的な非医療行政のみをサポートしてくれるサービス。",
+        q8_a3: "病院と検査項目は自分で決め、スムーズな診療のために検査当日の同行通訳のみを依頼する方式。",
         q8_a4: "伝統的な医療ツーリズムエージェンシー。病院の選択肢に制限があっても、提携病院を推薦してもらい手数料を払う安全で楽な方式。",
 
         resCOMPTitle: "全身精密分析型",
@@ -263,7 +263,7 @@ const i18n = {
         q8: "在韩国进行健康体检时，您最喜欢哪种支持方式？",
         q8_a1: "即使花钱，也希望能提供从机票到VIP接送、医院手续等包揽一切的高端全套服务。",
         q8_a2: "100%完全自助（DIY）。即使自己费时费力预约并使用翻译软件，也要最大限度地省钱。",
-        q8_a3: "医院由我自己自由选择，只聘请在体检当天提供医院陪同、专业医疗翻译和手续等核心非医疗行政支持的服务。",
+        q8_a3: "医院和体检项目由我自己决定，为了沟通顺畅，只在体检当天雇佣专业的陪同翻译。",
         q8_a4: "传统的医疗旅游中介。虽然医院选择受限，但由他们推荐验证过的合作医院并支付手续费，让人觉得既方便又安全。",
 
         resCOMPTitle: "全身精密分析型",
@@ -332,7 +332,7 @@ const i18n = {
         q8: "Bạn thích cách thức hỗ trợ nào nhất khi tiến hành khám sức khỏe tại Hàn Quốc?",
         q8_a1: "Dịch vụ VIP trọn gói cao cấp lo mọi thứ từ A đến Z, bao gồm cả vé máy bay và đưa đón, bất kể chi phí.",
         q8_a2: "100% Tự túc (DIY). Tôi muốn tự đặt lịch và dùng ứng dụng dịch thuật để tiết kiệm tối đa chi phí.",
-        q8_a3: "Tôi muốn tự do chọn bệnh viện, nhưng thuê một dịch vụ chỉ để đi cùng, phiên dịch y tế và hỗ trợ hành chính trong ngày khám.",
+        q8_a3: "Tôi muốn tự quyết định bệnh viện và các hạng mục khám, và chỉ thuê phiên dịch viên chuyên nghiệp đi cùng vào ngày khám.",
         q8_a4: "Một cơ sở môi giới y tế truyền thống. Dù bị giới hạn lựa chọn bệnh viện, nhưng được giới thiệu bệnh viện đối tác uy tín và trả phí hoa hồng thì thấy an tâm và dễ dàng hơn.",
 
         resCOMPTitle: "Phong cách Phân tích Toàn diện",
@@ -401,7 +401,7 @@ const i18n = {
         q8: "คุณชอบการจัดการเรื่องการตรวจสุขภาพในเกาหลีแบบใดมากที่สุด?",
         q8_a1: "บริการ VIP ระดับไฮเอนด์ที่จัดการทุกอย่างตั้งแต่ A ถึง Z รวมถึงตั๋วเครื่องบินและการรับส่ง โดยไม่เกี่ยงเรื่องค่าใช้จ่าย",
         q8_a2: "ทำเอง 100% (DIY) ฉันชอบจองทุกอย่างด้วยตัวเองและใช้แอปแปลภาษาเพื่อประหยัดเงินให้ได้มากที่สุด",
-        q8_a3: "ฉันต้องการเลือกโรงพยาบาลอย่างอิสระ แต่จ้างบริการอิสระเพียงเพื่อไปเป็นเพื่อน เป็นล่ามทางการแพทย์ และช่วยจัดการเอกสารในวันตรวจ",
+        q8_a3: "ฉันต้องการตัดสินใจเลือกโรงพยาบาลและรายการตรวจด้วยตัวเอง และจ้างเพียงล่ามมืออาชีพไปเป็นเพื่อนในวันตรวจเท่านั้น",
         q8_a4: "เอเจนซี่ทางการแพทย์แบบดั้งเดิม แม้ตัวเลือกโรงพยาบาลจะจำกัด แต่การได้รับคำแนะนำโรงพยาบาลพันธมิตรที่เชื่อถือได้และจ่ายค่านายหน้าทำให้รู้สึกปลอดภัยและง่ายดี",
 
         resCOMPTitle: "สไตล์วิเคราะห์ละเอียดทั่วร่างกาย",
@@ -470,7 +470,7 @@ const i18n = {
         q8: "Как вы предпочитаете организовывать свой медицинский осмотр в Корее?",
         q8_a1: "Высококлассный VIP-сервис, который берет на себя всё от А до Я, включая авиабилеты и трансфер, независимо от стоимости.",
         q8_a2: "100% Самостоятельно (DIY). Я предпочитаю всё бронировать сам(а) и использовать приложения для перевода, чтобы максимально сэкономить.",
-        q8_a3: "Я хочу свободно выбирать больницу, но нанять независимую службу только для медицинского перевода и административной поддержки в день осмотра.",
+        q8_a3: "Я предпочитаю выбрать больницу самостоятельно, а на день осмотра просто нанять профессионального переводчика для сопровождения.",
         q8_a4: "Традиционное медицинское агентство. Несмотря на ограничения в выборе больниц, мне спокойнее и проще, когда мне рекомендуют проверенные партнерские клиники и берут комиссию.",
 
         resCOMPTitle: "Всесторонний Аналитик",
