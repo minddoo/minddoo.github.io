@@ -16,7 +16,11 @@
     <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js" integrity="sha384-l+xbElFSnXYZ2w59e04jGQbF4521/a1/3k75zMcy/h0661uG/cBS62/qYtFzH40E" crossorigin="anonymous"></script>
     <script>
         // Kakao SDK Init
-        try { Kakao.init('e68722cab5088f03fb977e25f69ab824'); } catch(e) {}
+        try { 
+            Kakao.init('e68722cab5088f03fb977e25f69ab824'); 
+        } catch(e) {
+            alert("Kakao 초기화 에러: " + e.message);
+        }
     </script>
 </head>
 <body>
