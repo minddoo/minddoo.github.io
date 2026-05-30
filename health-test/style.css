@@ -97,12 +97,26 @@ body {
     font-size: 2.2rem;
     font-weight: 800;
     line-height: 1.2;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     color: var(--text-main);
 }
 
 .highlight {
     color: var(--primary);
+}
+
+.main-image {
+    perspective: 1000px;
+}
+
+.main-image img {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
 }
 
 .subtitle {
