@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your K-Medical Style Result | K-Medical Checkup Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <section class="screen active text-center" style="padding-top: 50px;">
+            <div class="result-header">
+                <div class="type-label" id="res-label">YOUR STYLE IS</div>
+                <h1 class="result-title" id="res-title">The VIP Wellness Seeker</h1>
+            </div>
+
+            <div class="result-image-box" id="res-emoji">
+                👑
+            </div>
+
+            <div class="result-desc" id="res-desc">
+                Loading your personalized result...
+            </div>
+
+            <!-- Lead Generation Box (MOCKUP for actual business) -->
+            <div class="lead-gen-box">
+                <h3>Get a Free Consultation!</h3>
+                <p>Want to book this exact type of medical package in Seoul? Get a free quote and hospital recommendations from our expert K-Medical concierges.</p>
+                <a href="#" class="btn-primary" style="display:inline-block; text-decoration:none; margin-bottom:10px;">Get Free Quote</a>
+                <a href="index.html" class="btn-secondary">Retake Test</a>
+            </div>
+
+        </section>
+    </div>
+
+    <script>
+        const resultData = {
+            "VIP": {
+                title: "The VIP Wellness Seeker",
+                emoji: "👑",
+                desc: "<strong>Top Quality & Absolute Comfort.</strong><br><br>You deserve the best of the best. Your ideal Korean medical journey involves a 5-star premium ward in a top-tier hospital, a dedicated 1:1 professional medical interpreter, and seamless concierge service. You are willing to invest in comprehensive anti-aging and wellness programs that make you feel rejuvenated, combined with luxury shopping and fine dining in Seoul."
+            },
+            "QUICK": {
+                title: "The Quick & Efficient Expat",
+                emoji: "⚡",
+                desc: "<strong>Fast, Affordable, & Practical.</strong><br><br>Time is money! You want a highly efficient and accurate health screening that doesn't take up your entire vacation. A modern, tech-savvy clinic located near major tourist spots like Myeongdong or Gangnam is perfect for you. You prefer to get a reliable checkup in half a day, leaving you plenty of time to explore Korean cafes, culture, and street food."
+            },
+            "BEAUTY": {
+                title: "The Holistic Beauty Explorer",
+                emoji: "🌿",
+                desc: "<strong>Health & Aesthetics Combined.</strong><br><br>Why stop at just a health checkup? You are highly interested in K-Beauty! Your perfect itinerary involves a morning health screening followed by a visit to a top dermatologist, plastic surgery consultation, or a traditional Korean medicine spa. You seek a holistic approach to wellness, improving both your internal health and external glow during your stay."
+            },
+            "INTENSIVE": {
+                title: "The Intensive Care Focus",
+                emoji: "🔍",
+                desc: "<strong>Deep Dive & High-Tech Precision.</strong><br><br>You take your health very seriously. Whether it's due to family history or specific symptoms, you want to utilize Korea's world-class medical technology. You prefer massive university hospitals equipped with the latest MRI, CT, and genetic testing tools. A highly professional environment with detailed briefings from top specialists is exactly what you need for peace of mind."
+            }
+        };
+
+        window.onload = function() {
+            const type = localStorage.getItem('healthTestResult') || 'QUICK';
+            const data = resultData[type];
+            
+            document.getElementById('res-title').innerHTML = data.title;
+            document.getElementById('res-emoji').innerHTML = data.emoji;
+            document.getElementById('res-desc').innerHTML = data.desc;
+        };
+    </script>
+</body>
+</html>
