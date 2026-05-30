@@ -1,79 +1,94 @@
+/* Premium UI - Apple/Glassmorphism Style */
 :root {
-    --primary: #5c6bc0;
-    --primary-hover: #3f51b5;
-    --bg-color: #f4f7f6;
-    --surface: #ffffff;
-    --text-main: #333333;
-    --text-muted: #777777;
-    --border: #e0e0e0;
-    --accent: #ff5252;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --primary: #5e5ce6;
+    --primary-hover: #4b49b6;
+    --bg-color: #f2f2f7;
+    --surface: rgba(255, 255, 255, 0.85);
+    --surface-solid: #ffffff;
+    --text-main: #1c1c1e;
+    --text-muted: #8e8e93;
+    --border: rgba(60, 60, 67, 0.1);
+    --accent: #ff3b30;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    --radius: 24px;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Pretendard', -apple-system, sans-serif;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
     background-color: var(--bg-color);
+    background-image: 
+        radial-gradient(at 0% 0%, hsla(253,16%,7%,0) 0, transparent 50%), 
+        radial-gradient(at 50% 0%, hsla(225,39%,30%,0.05) 0, transparent 50%), 
+        radial-gradient(at 100% 0%, hsla(339,49%,30%,0.05) 0, transparent 50%);
     color: var(--text-main);
     line-height: 1.6;
+    min-height: 100vh;
 }
 
+/* Header */
 .app-header {
-    background: var(--surface);
-    padding: 20px;
+    padding: 20px 20px 30px;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     position: relative;
-    margin-bottom: 30px;
 }
 
 .home-btn {
     position: absolute;
     left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 20px;
     text-decoration: none;
     color: var(--primary);
-    font-weight: 600;
-    font-size: 0.9rem;
-    background: #eef0fa;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: 0.2s;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: rgba(94, 92, 230, 0.1);
+    padding: 10px 16px;
+    border-radius: 12px;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .home-btn:hover {
     background: var(--primary);
     color: white;
+    transform: scale(1.05);
 }
 
 .app-header h1 {
-    font-size: 1.5rem;
-    color: var(--primary);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #5e5ce6, #ff2d55);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 50px;
 }
 
 .app-container {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
-    padding: 0 20px 40px;
+    padding: 0 20px 60px;
 }
 
-/* Tabs */
+/* Scrollable Tabs */
 .tabs {
     display: flex;
     overflow-x: auto;
-    background: var(--surface);
-    border-radius: 12px;
-    padding: 5px;
-    margin-bottom: 20px;
-    box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 6px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
+    gap: 5px;
 }
 
 .tabs::-webkit-scrollbar {
@@ -81,91 +96,111 @@ body {
 }
 
 .tab-btn {
-    flex: 1;
+    flex: 0 0 auto;
     background: transparent;
     border: none;
-    padding: 12px 15px;
+    padding: 12px 20px;
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-muted);
     cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.3s;
+    border-radius: 12px;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.tab-btn:hover {
+    color: var(--text-main);
 }
 
 .tab-btn.active {
-    background: var(--primary);
-    color: white;
-    box-shadow: 0 4px 10px rgba(92, 107, 192, 0.3);
+    background: var(--surface-solid);
+    color: var(--text-main);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
-/* Sections */
+/* Glassmorphism Sections */
 .calc-section {
     display: none;
     background: var(--surface);
-    padding: 30px;
-    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 35px 30px;
+    border-radius: var(--radius);
     box-shadow: var(--shadow);
-    animation: fadeIn 0.4s ease-out;
+    border: 1px solid rgba(255,255,255,0.4);
+    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .calc-section.active {
     display: block;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+@keyframes slideUp {
     to { opacity: 1; transform: translateY(0); }
 }
 
 .calc-section h2 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    font-weight: 800;
     margin-bottom: 5px;
     color: var(--text-main);
 }
 
 .subtitle {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    font-weight: 500;
 }
 
 /* Inputs */
 .input-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .input-group label {
     display: block;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-main);
 }
 
 .input-group input[type="number"],
 .input-group input[type="text"],
 .input-group input[type="date"] {
     width: 100%;
-    padding: 14px;
+    padding: 16px 20px;
     border: 1px solid var(--border);
-    border-radius: 12px;
-    font-size: 1rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    background: #fafafa;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-main);
+    transition: 0.3s;
+    background: rgba(255,255,255,0.5);
+}
+
+.input-group input::placeholder {
+    color: #c7c7cc;
+    font-weight: 500;
 }
 
 .input-group input:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(92, 107, 192, 0.1);
-    background: #fff;
+    background: var(--surface-solid);
+    box-shadow: 0 0 0 4px rgba(94, 92, 230, 0.15);
 }
 
-/* Radio Group */
+/* Radio Group (iOS Style Segmented Control) */
 .radio-group {
     display: flex;
-    gap: 10px;
+    background: rgba(118, 118, 128, 0.12);
+    border-radius: 12px;
+    padding: 3px;
+    gap: 2px;
 }
 
 .radio-group input[type="radio"] {
@@ -175,137 +210,155 @@ body {
 .radio-group label {
     flex: 1;
     text-align: center;
-    padding: 12px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    padding: 10px;
+    border-radius: 10px;
     cursor: pointer;
-    font-weight: 600;
-    transition: 0.2s;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    transition: 0.3s;
     margin-bottom: 0;
-    color: var(--text-main);
-    background: #fafafa;
 }
 
 .radio-group input[type="radio"]:checked + label {
-    background: var(--primary);
-    color: white;
-    border-color: var(--primary);
+    background: var(--surface-solid);
+    color: var(--text-main);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12), 0 3px 1px rgba(0,0,0,0.04);
 }
 
-/* Checkbox Group */
+/* Checkbox */
 .checkbox-group {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 25px;
+    gap: 12px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 16px;
+    border: 1px solid var(--border);
 }
 
 .checkbox-group input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
     accent-color: var(--primary);
+    cursor: pointer;
 }
 
 .checkbox-group label {
     font-weight: 600;
+    font-size: 0.95rem;
     color: var(--text-main);
     cursor: pointer;
 }
 
-/* Buttons */
+/* Primary Button */
 .calc-btn {
     width: 100%;
-    padding: 16px;
+    padding: 18px;
     background: var(--primary);
     color: white;
     border: none;
-    border-radius: 12px;
-    font-size: 1.1rem;
+    border-radius: 16px;
+    font-size: 1.15rem;
     font-weight: 800;
     cursor: pointer;
-    transition: all 0.3s;
-    margin-bottom: 20px;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    margin-bottom: 25px;
+    box-shadow: 0 10px 20px rgba(94, 92, 230, 0.3);
 }
 
 .calc-btn:hover {
     background: var(--primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(92, 107, 192, 0.3);
+    transform: scale(1.02) translateY(-2px);
+    box-shadow: 0 14px 25px rgba(94, 92, 230, 0.4);
 }
 
 .calc-btn:active {
-    transform: translateY(0);
+    transform: scale(0.98);
 }
 
 /* Result Box */
 .result-box {
-    background: #eef0fa;
-    padding: 20px;
-    border-radius: 12px;
-    border-left: 5px solid var(--primary);
-    animation: fadeIn 0.3s;
+    background: var(--surface-solid);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid var(--border);
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .result-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-    font-size: 0.95rem;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 500;
 }
 
 .result-row.total {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px dashed #ccc;
-    font-size: 1.2rem;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed #d1d1d6;
+    font-size: 1.3rem;
     font-weight: 800;
-    color: var(--primary);
+    color: var(--text-main);
 }
 
 .result-row .value {
-    font-weight: 600;
+    font-weight: 700;
+    color: var(--text-main);
 }
 
-.deduction {
+.deduction .value {
     color: var(--accent);
 }
 
-/* Ads */
-.ad-container {
-    background: #eee;
-    border: 1px dashed #ccc;
-    border-radius: 12px;
+/* Blog Link Banner */
+.blog-link-banner {
+    display: block;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    padding: 20px;
+    border-radius: var(--radius);
     text-align: center;
-    margin: 20px 0;
-    overflow: hidden;
-    min-height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #999;
+    text-decoration: none;
+    color: #d63031;
+    font-weight: 800;
+    font-size: 1.1rem;
+    box-shadow: 0 8px 20px rgba(255, 154, 158, 0.3);
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.blog-link-banner:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(255, 154, 158, 0.4);
 }
 
 /* Footer */
 .app-footer {
     text-align: center;
-    padding: 20px;
+    padding: 30px;
     color: var(--text-muted);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 500;
 }
 
-/* Responsive */
-@media (max-width: 480px) {
-    .tabs {
-        padding: 0;
-        border-radius: 0;
-        background: transparent;
-        box-shadow: none;
-        margin: 0 -20px 20px;
-        padding: 0 20px;
-    }
-    .tab-btn {
-        background: var(--surface);
-        margin-right: 10px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
+/* Ad Container */
+.ad-container {
+    background: rgba(255,255,255,0.5);
+    border: 1px dashed rgba(60,60,67,0.2);
+    border-radius: 16px;
+    margin: 25px 0;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
