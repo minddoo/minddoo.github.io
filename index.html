@@ -28,7 +28,7 @@
     <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px;">
         <div class="logo">🌟 7일 완성 단어 챌린지 🌟</div>
         <div style="display: flex; gap: 10px;">
-            <a href="dictionary.html" class="btn-cute btn-purple" style="text-decoration: none; padding: 8px 15px; font-size: 14px;">📚 해설 블로그</a>
+            <a id="blog-link" href="dictionary-en.html" class="btn-cute btn-purple" style="text-decoration: none; padding: 8px 15px; font-size: 14px;">📚 해설 블로그</a>
             <button id="btn-go-home" class="btn-home" style="display: none; margin: 0;">🏠 홈으로</button>
         </div>
     </header>
@@ -36,6 +36,13 @@
     <!-- 상단 광고 영역 -->
     <div class="ad-container ad-top">
         <div class="ad-placeholder">AdSense Banner<br>(Top)</div>
+    </div>
+
+    <!-- 언어 선택 탭 -->
+    <div class="lang-tabs">
+        <button class="lang-btn active" onclick="changeLanguage('en')">🇺🇸 영어</button>
+        <button class="lang-btn" onclick="changeLanguage('ja')">🇯🇵 일본어</button>
+        <button class="lang-btn" onclick="changeLanguage('zh')">🇨🇳 중국어</button>
     </div>
 
     <main class="app-container">
@@ -130,6 +137,7 @@
         <p>&copy; 2026 7-Day Vocab Challenge. Keep studying!</p>
     </footer>
 
+    <script src="data.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

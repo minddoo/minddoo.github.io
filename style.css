@@ -278,3 +278,31 @@ footer { padding: 20px; color: #b0a5a8; font-size: 14px; margin-top: auto; }
     border-color: var(--pastel-purple-shadow) !important;
     box-shadow: 0 4px 0 var(--pastel-purple-shadow);
 }
+
+/* Language Tabs */
+.lang-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.lang-btn {
+    font-family: 'Jua', sans-serif;
+    font-size: 16px;
+    padding: 8px 20px;
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    color: #888;
+    transition: 0.2s;
+}
+.lang-btn:hover {
+    background: #f9f9f9;
+}
+.lang-btn.active {
+    background: var(--pastel-blue);
+    color: #fff;
+    border-color: var(--pastel-blue-shadow);
+    box-shadow: 0 3px 0 var(--pastel-blue-shadow);
+}
