@@ -36,4 +36,22 @@
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
    </url>
+   <url>
+      <loc>https://minddoo.github.io/mbti/index.html</loc>
+      <lastmod>2026-05-30</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/mbti/result.html</loc>
+      <lastmod>2026-05-30</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/mbti/dictionary.html</loc>
+      <lastmod>2026-05-30</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.9</priority>
+   </url>
 </urlset>
