@@ -245,3 +245,36 @@ h2 { color: #ff8b94; margin-bottom: 10px; }
 .ad-placeholder { color: #aaa; font-size: 14px; text-align: center; }
 
 footer { padding: 20px; color: #b0a5a8; font-size: 14px; margin-top: auto; }
+
+/* Season 2 Styles */
+.season2-unlock-badge {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+    color: #fff;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Jua', sans-serif;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.season-2-card {
+    border: 3px solid var(--pastel-purple) !important;
+}
+.season-2-card h3 {
+    color: var(--pastel-purple-shadow) !important;
+}
+.season-2-card:hover {
+    background: var(--pastel-purple);
+}
+.season-2-card:hover h3, .season-2-card:hover p {
+    color: #fff !important;
+}
+.season-2-card.completed {
+    background: var(--pastel-purple);
+    border-color: var(--pastel-purple-shadow) !important;
+    box-shadow: 0 4px 0 var(--pastel-purple-shadow);
+}
