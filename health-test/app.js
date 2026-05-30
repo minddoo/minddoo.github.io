@@ -52,6 +52,12 @@ const i18n = {
         q7_a2: "A highly cost-effective, essential package without unnecessary add-ons.",
         q7_a3: "High-quality digestive care, including painless endoscopy and polyp removal.",
         q7_a4: "Premium female/male specialized packages targeting my exact age group.",
+        
+        q8: "What type of medical assistance/concierge service do you prefer?",
+        q8_a1: "An independent administrative service that gives me 100% freedom to choose any hospital without hidden broker commissions.",
+        q8_a2: "A traditional medical agency. They limit hospital choices due to contracts and take commissions, but they are popular and easy.",
+        q8_a3: "A service focused purely on non-medical administrative support, ensuring I get objective help at the hospital I choose.",
+        q8_a4: "A specialized concierge that objectively connects me to niche clinics tailored to my specific age and gender without bias.",
 
         resCOMPTitle: "The Comprehensive Scanner",
         resCOMPDesc: "<strong>'I want to know everything about my body!'</strong><br><br>You leave nothing to chance when it comes to your health. You prefer a premium, top-to-bottom inspection utilizing the most advanced medical technology Korea has to offer. Whether it's brain MRIs, cardiac CTs, or full-body cancer markers, you want the absolute best. You value thoroughness, precise data, and VIP care over saving time or money.",
@@ -115,6 +121,12 @@ const i18n = {
         q7_a2: "불필요한 추가 항목 없이 가장 가성비 좋고 합리적인 코어 패키지.",
         q7_a3: "통증 없는 편안한 내시경과 발견 즉시 용종 제거가 가능한 소화기 패키지.",
         q7_a4: "나의 연령대와 성별에 완벽하게 맞춰진 프리미엄 특화 검사 패키지.",
+        
+        q8: "한국에서 어떤 형태의 의료 어시스트(컨시어지) 서비스를 선호하시나요?",
+        q8_a1: "숨겨진 브로커 수수료 없이, 내가 원하는 병원을 100% 자유롭게 선택할 수 있는 독립적인 비의료행정 서비스.",
+        q8_a2: "전통적인 의료 유치 에이전시. 병원 선택에 제한이 있고 수수료가 있지만, 외국인들에게 인기가 많고 간편한 서비스.",
+        q8_a3: "오직 객관적인 비의료 행정 및 통역에만 집중하여, 내가 선택한 병원에서 순수하게 서포트만 해주는 서비스.",
+        q8_a4: "특정 제휴 병원을 강요하지 않고, 내 연령과 성별에 맞는 전문 클리닉을 객관적으로 연결해 주는 컨시어지.",
 
         resCOMPTitle: "전신 정밀 분석형",
         resCOMPDesc: "<strong>'내 몸의 모든 것을 오차 없이 알고 싶다!'</strong><br><br>당신은 건강에 있어서 어떤 타협도 하지 않습니다. 한국의 가장 발전된 첨단 의료 기술을 활용해 머리부터 발끝까지 샅샅이 확인하는 프리미엄 정밀 검사를 선호합니다. 뇌 MRI, 심장 CT, 전신 암 표지자 검사 등 최고 사양의 옵션을 원하며, 비용이나 시간보다는 '정확한 데이터'와 '완벽한 안심'을 최우선으로 생각하는 VIP 스타일입니다.",
@@ -178,6 +190,12 @@ const i18n = {
         q7_a2: "不要な追加項目のない、最もコストパフォーマンスの良い基本パッケージ。",
         q7_a3: "痛みのない快適な内視鏡と、発見時に即時ポリープ切除が可能な消化器パッケージ。",
         q7_a4: "私の年齢層と性別に完璧に合わせたプレミアム特化検査パッケージ。",
+        
+        q8: "韓国でどのような形態の医療アシスト（コンシェルジュ）サービスを好みますか？",
+        q8_a1: "隠された仲介手数料なしで、希望する病院を100%自由に選択できる独立した非医療行政サービス。",
+        q8_a2: "伝統的な医療エージェンシー。契約により病院の選択肢が限られ手数料が発生するが、外国人に人気で手軽なサービス。",
+        q8_a3: "客観的な非医療行政と通訳のみに集中し、私が選んだ病院で純粋にサポートだけを提供するサービス。",
+        q8_a4: "特定の提携病院を強要せず、私の年齢と性別に合った専門クリニックを客観的に繋いでくれるコンシェルジュ。",
 
         resCOMPTitle: "全身精密分析型",
         resCOMPDesc: "<strong>「自分の体のすべてを誤差なく知りたい！」</strong><br><br>あなたは健康に関して一切の妥協をしません。韓国の最も進んだ先端医療技術を活用し、頭からつま先まで隅々まで確認するプレミアム精密検査を好みます。脳MRI、心臓CT、全身がんマーカー検査など最高スペックのオプションを求め、費用や時間よりも「正確なデータ」と「完璧な安心」を最優先に考えるVIPスタイルです。",
@@ -241,6 +259,12 @@ const i18n = {
         q7_a2: "没有不必要附加项目的、最具性价比和最合理的基础套餐。",
         q7_a3: "舒适无痛的内窥镜检查，以及发现息肉可立即切除的消化系统套餐。",
         q7_a4: "完全针对我的年龄段和性别定制的优质专科检查套餐。",
+        
+        q8: "在韩国，您更倾向于哪种类型的医疗协助（礼宾）服务？",
+        q8_a1: "没有隐藏的黑中介费，让我有100%自由选择任何医院的独立非医疗行政服务。",
+        q8_a2: "传统的医疗中介机构。虽然受合同限制医院选择较少且有手续费，但在外国人中很受欢迎且方便。",
+        q8_a3: "纯粹专注于非医疗行政和翻译支持，在我选择的医院提供客观协助的服务。",
+        q8_a4: "不强推特定合作医院，而是客观地为我连接适合我年龄和性别的专业诊所的礼宾服务。",
 
         resCOMPTitle: "全身精密分析型",
         resCOMPDesc: "<strong>“我想准确无误地了解我身体的一切！”</strong><br><br>在健康方面您绝不妥协。您倾向于利用韩国最先进的医疗技术，进行从头到脚细致入微的优质精密检查。您追求脑部MRI、心脏CT、全身癌症标志物等最高规格的选项。您是一个VIP类型的患者，将“准确的数据”和“绝对的安心”置于金钱或时间之上。",
@@ -304,6 +328,12 @@ const i18n = {
         q7_a2: "Gói cơ bản thiết yếu, tiết kiệm chi phí nhất, không có các mục bổ sung không cần thiết.",
         q7_a3: "Nội soi thoải mái không đau và gói tiêu hóa có thể cắt polyp ngay khi phát hiện.",
         q7_a4: "Gói khám chuyên khoa cao cấp được tùy chỉnh hoàn hảo cho độ tuổi và giới tính của tôi.",
+        
+        q8: "Bạn thích loại hình dịch vụ hỗ trợ y tế (concierge) nào tại Hàn Quốc?",
+        q8_a1: "Một dịch vụ hành chính độc lập mang lại cho tôi 100% quyền tự do lựa chọn bất kỳ bệnh viện nào mà không có phí hoa hồng môi giới ẩn.",
+        q8_a2: "Một cơ sở môi giới y tế truyền thống. Họ giới hạn sự lựa chọn bệnh viện do hợp đồng và tính phí hoa hồng, nhưng họ phổ biến và dễ sử dụng.",
+        q8_a3: "Một dịch vụ chỉ tập trung vào hỗ trợ hành chính phi y tế, đảm bảo tôi nhận được sự trợ giúp khách quan tại bệnh viện tôi chọn.",
+        q8_a4: "Một nhân viên hỗ trợ chuyên biệt kết nối tôi một cách khách quan với các phòng khám phù hợp với độ tuổi và giới tính của tôi mà không có sự thiên vị.",
 
         resCOMPTitle: "Phong cách Phân tích Toàn diện",
         resCOMPDesc: "<strong>'Tôi muốn biết mọi thứ về cơ thể mình không sai sót!'</strong><br><br>Bạn không thỏa hiệp khi nói đến sức khỏe. Bạn thích sử dụng công nghệ y tế tiên tiến nhất của Hàn Quốc để kiểm tra chính xác từ đầu đến chân. Bạn muốn các tùy chọn thông số kỹ thuật cao nhất như MRI não, CT tim và dấu ấn ung thư toàn thân. Bạn là phong cách VIP, đặt 'dữ liệu chính xác' và 'sự an tâm tuyệt đối' lên trên chi phí hay thời gian.",
@@ -367,6 +397,12 @@ const i18n = {
         q7_a2: "แพ็คเกจหลักที่คุ้มค่าที่สุดและสมเหตุสมผล ปราศจากรายการเสริมที่ไม่จำเป็น",
         q7_a3: "แพ็คเกจระบบย่อยอาหารที่ส่องกล้องได้สบายไร้ปวด และตัดติ่งเนื้อได้ทันทีที่พบ",
         q7_a4: "แพ็คเกจตรวจเฉพาะทางระดับพรีเมียมที่ปรับให้เข้ากับช่วงวัยและเพศของฉันอย่างสมบูรณ์",
+        
+        q8: "คุณชอบบริการผู้ช่วยทางการแพทย์แบบไหนในเกาหลี?",
+        q8_a1: "บริการธุรการอิสระที่ให้อิสระ 100% ในการเลือกโรงพยาบาลใดก็ได้โดยไม่มีค่านายหน้าแอบแฝง",
+        q8_a2: "เอเจนซี่ทางการแพทย์แบบดั้งเดิม พวกเขาจำกัดตัวเลือกโรงพยาบาลเนื่องจากสัญญาและหักค่านายหน้า แต่ก็เป็นที่นิยมและสะดวก",
+        q8_a3: "บริการที่มุ่งเน้นไปที่การสนับสนุนด้านธุรการที่ไม่ใช่ทางการแพทย์โดยเฉพาะ เพื่อให้มั่นใจว่าฉันได้รับความช่วยเหลืออย่างเป็นกลางในโรงพยาบาลที่ฉันเลือก",
+        q8_a4: "ผู้ช่วยผู้เชี่ยวชาญที่เชื่อมโยงฉันอย่างเป็นกลางกับคลินิกเฉพาะทางที่เหมาะกับอายุและเพศของฉันโดยไม่มีอคติ",
 
         resCOMPTitle: "สไตล์วิเคราะห์ละเอียดทั่วร่างกาย",
         resCOMPDesc: "<strong>'ฉันต้องการรู้ทุกอย่างเกี่ยวกับร่างกายโดยไม่มีข้อผิดพลาด!'</strong><br><br>คุณไม่ประนีประนอมในเรื่องสุขภาพ คุณชอบใช้เทคโนโลยีทางการแพทย์ขั้นสูงสุดของเกาหลีเพื่อการตรวจสอบที่แม่นยำตั้งแต่หัวจรดเท้า คุณต้องการตัวเลือกที่มีสเปคสูงสุด เช่น MRI สมอง, CT หัวใจ และตัวชี้วัดมะเร็งทั่วร่างกาย คุณเป็นสไตล์ VIP ที่ให้ความสำคัญกับ 'ข้อมูลที่แม่นยำ' และ 'ความสบายใจอย่างสมบูรณ์' เหนือกว่าเรื่องเงินหรือเวลา",
@@ -430,6 +466,12 @@ const i18n = {
         q7_a2: "Самый экономичный и разумный базовый пакет без лишних дополнений.",
         q7_a3: "Пакет для пищеварительной системы с безболезненной эндоскопией и немедленным удалением полипов.",
         q7_a4: "Премиальный специализированный пакет, идеально адаптированный к моей возрастной группе и полу.",
+        
+        q8: "Какой тип услуг медицинского ассистанса (консьержа) вы предпочитаете в Корее?",
+        q8_a1: "Независимая административная служба, дающая мне 100% свободу выбора любой больницы без скрытых брокерских комиссий.",
+        q8_a2: "Традиционное медицинское агентство. Они ограничивают выбор больниц из-за контрактов и берут комиссионные, но они популярны и удобны.",
+        q8_a3: "Служба, ориентированная исключительно на немедицинскую административную поддержку, гарантирующая мне объективную помощь в выбранной мной больнице.",
+        q8_a4: "Специализированный консьерж, который объективно связывает меня с профильными клиниками, подходящими для моего возраста и пола, без навязывания.",
 
         resCOMPTitle: "Всесторонний Аналитик",
         resCOMPDesc: "<strong>'Я хочу знать всё о своем теле без права на ошибку!'</strong><br><br>Вы не идете на компромиссы, когда дело касается здоровья. Вы предпочитаете использовать передовые медицинские технологии Кореи для высокоточной проверки с ног до головы. Вы хотите получить максимальные опции: МРТ головного мозга, КТ сердца и онкомаркеры всего тела. Вы — VIP, для которого 'точные данные' и 'абсолютное спокойствие' важнее затрат времени и денег.",
@@ -504,6 +546,15 @@ const questions = [
             { textKey: "q7_a2", type: "CORE" },
             { textKey: "q7_a3", type: "GUT" },
             { textKey: "q7_a4", type: "GENDER" }
+        ]
+    },
+    {
+        qKey: "q8",
+        a: [
+            { textKey: "q8_a1", type: "COMP" },
+            { textKey: "q8_a2", type: "CORE" },
+            { textKey: "q8_a3", type: "GUT" },
+            { textKey: "q8_a4", type: "GENDER" }
         ]
     }
 ];
