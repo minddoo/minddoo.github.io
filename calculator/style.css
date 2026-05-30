@@ -95,6 +95,29 @@ body {
     display: none;
 }
 
+/* Responsive */
+@media (max-width: 480px) {
+    .tabs {
+        padding: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        margin: 0 -20px 20px;
+        padding: 0 20px;
+        flex-wrap: wrap; /* Wrap tabs to next line */
+        justify-content: center;
+        gap: 8px; /* Spacing between wrapped items */
+    }
+    .tab-btn {
+        background: var(--surface);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        flex: 1 1 calc(33.333% - 8px); /* 3 items per row approx */
+        text-align: center;
+        padding: 10px 5px;
+        font-size: 0.85rem; /* Slightly smaller font to fit */
+    }
+}
+
 .tab-btn {
     flex: 0 0 auto;
     background: transparent;
