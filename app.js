@@ -1,53 +1,59 @@
-// 70개의 필수 영단어 데이터 (Day 1 ~ Day 7)
+// 70개의 필수 영단어 데이터 (중상위~고급 수준)
 const vocabData = [
     // Day 1
-    { day: 1, word: "apple", meaning: "사과" }, { day: 1, word: "banana", meaning: "바나나" },
-    { day: 1, word: "water", meaning: "물" }, { day: 1, word: "bread", meaning: "빵" },
-    { day: 1, word: "milk", meaning: "우유" }, { day: 1, word: "house", meaning: "집" },
-    { day: 1, word: "school", meaning: "학교" }, { day: 1, word: "book", meaning: "책" },
-    { day: 1, word: "desk", meaning: "책상" }, { day: 1, word: "chair", meaning: "의자" },
+    { day: 1, word: "ubiquitous", meaning: "어디에나 있는" }, { day: 1, word: "ephemeral", meaning: "수명이 짧은, 단명하는" },
+    { day: 1, word: "pragmatic", meaning: "실용적인" }, { day: 1, word: "meticulous", meaning: "꼼꼼한, 세심한" },
+    { day: 1, word: "obscure", meaning: "모호한, 무명의" }, { day: 1, word: "resilient", meaning: "회복력 있는, 탄력 있는" },
+    { day: 1, word: "ambiguous", meaning: "애매모호한" }, { day: 1, word: "diligent", meaning: "부지런한" },
+    { day: 1, word: "lucid", meaning: "명쾌한, 맑은" }, { day: 1, word: "eloquent", meaning: "유창한, 설득력 있는" },
+    
     // Day 2
-    { day: 2, word: "car", meaning: "자동차" }, { day: 2, word: "bus", meaning: "버스" },
-    { day: 2, word: "train", meaning: "기차" }, { day: 2, word: "plane", meaning: "비행기" },
-    { day: 2, word: "ship", meaning: "배" }, { day: 2, word: "tree", meaning: "나무" },
-    { day: 2, word: "flower", meaning: "꽃" }, { day: 2, word: "river", meaning: "강" },
-    { day: 2, word: "mountain", meaning: "산" }, { day: 2, word: "sky", meaning: "하늘" },
+    { day: 2, word: "plausible", meaning: "그럴듯한, 타당한" }, { day: 2, word: "lucrative", meaning: "수익성이 좋은" },
+    { day: 2, word: "obsolete", meaning: "구식의, 쓸모없게 된" }, { day: 2, word: "profound", meaning: "심오한, 깊은" },
+    { day: 2, word: "tentative", meaning: "잠정적인, 머뭇거리는" }, { day: 2, word: "vulnerable", meaning: "취약한, 연약한" },
+    { day: 2, word: "serene", meaning: "고요한, 평온한" }, { day: 2, word: "rigorous", meaning: "엄격한, 철저한" },
+    { day: 2, word: "redundant", meaning: "불필요한, 중복되는" }, { day: 2, word: "prevalent", meaning: "널리 퍼진, 만연한" },
+    
     // Day 3
-    { day: 3, word: "dog", meaning: "개" }, { day: 3, word: "cat", meaning: "고양이" },
-    { day: 3, word: "bird", meaning: "새" }, { day: 3, word: "fish", meaning: "물고기" },
-    { day: 3, word: "horse", meaning: "말" }, { day: 3, word: "sun", meaning: "태양" },
-    { day: 3, word: "moon", meaning: "달" }, { day: 3, word: "star", meaning: "별" },
-    { day: 3, word: "cloud", meaning: "구름" }, { day: 3, word: "rain", meaning: "비" },
+    { day: 3, word: "mitigate", meaning: "완화하다, 경감시키다" }, { day: 3, word: "alleviate", meaning: "고통 등을 덜다" },
+    { day: 3, word: "exacerbate", meaning: "악화시키다" }, { day: 3, word: "delineate", meaning: "상세히 묘사하다" },
+    { day: 3, word: "fluctuate", meaning: "변동하다, 오르내리다" }, { day: 3, word: "deviate", meaning: "벗어나다, 빗나가다" },
+    { day: 3, word: "scrutinize", meaning: "면밀히 조사하다" }, { day: 3, word: "consolidate", meaning: "통합하다, 굳건히 하다" },
+    { day: 3, word: "eradicate", meaning: "근절하다, 뿌리뽑다" }, { day: 3, word: "initiate", meaning: "시작하다, 개시하다" },
+    
     // Day 4
-    { day: 4, word: "friend", meaning: "친구" }, { day: 4, word: "family", meaning: "가족" },
-    { day: 4, word: "father", meaning: "아버지" }, { day: 4, word: "mother", meaning: "어머니" },
-    { day: 4, word: "brother", meaning: "형제" }, { day: 4, word: "sister", meaning: "자매" },
-    { day: 4, word: "baby", meaning: "아기" }, { day: 4, word: "doctor", meaning: "의사" },
-    { day: 4, word: "teacher", meaning: "선생님" }, { day: 4, word: "student", meaning: "학생" },
+    { day: 4, word: "anomaly", meaning: "변칙, 이례적인 것" }, { day: 4, word: "paradigm", meaning: "패러다임, 전형적인 예" },
+    { day: 4, word: "paradox", meaning: "역설, 모순" }, { day: 4, word: "arbitrary", meaning: "임의적인, 제멋대로인" },
+    { day: 4, word: "empirical", meaning: "경험적인, 실증적인" }, { day: 4, word: "aesthetic", meaning: "미학적인, 심미적인" },
+    { day: 4, word: "indigenous", meaning: "토착의, 고유한" }, { day: 4, word: "formidable", meaning: "가공할, 어마어마한" },
+    { day: 4, word: "feasible", meaning: "실행 가능한" }, { day: 4, word: "tangible", meaning: "만질 수 있는, 실체가 있는" },
+    
     // Day 5
-    { day: 5, word: "time", meaning: "시간" }, { day: 5, word: "day", meaning: "하루" },
-    { day: 5, word: "week", meaning: "주" }, { day: 5, word: "month", meaning: "월" },
-    { day: 5, word: "year", meaning: "년" }, { day: 5, word: "morning", meaning: "아침" },
-    { day: 5, word: "afternoon", meaning: "오후" }, { day: 5, word: "evening", meaning: "저녁" },
-    { day: 5, word: "night", meaning: "밤" }, { day: 5, word: "today", meaning: "오늘" },
+    { day: 5, word: "versatile", meaning: "다재다능한, 다용도의" }, { day: 5, word: "volatile", meaning: "변동성이 큰, 휘발성의" },
+    { day: 5, word: "viable", meaning: "실행 가능한, 생존 가능한" }, { day: 5, word: "superficial", meaning: "표면적인, 피상적인" },
+    { day: 5, word: "subtle", meaning: "미묘한, 감지하기 힘든" }, { day: 5, word: "spontaneous", meaning: "자발적인, 즉흥적인" },
+    { day: 5, word: "simultaneous", meaning: "동시의" }, { day: 5, word: "relevant", meaning: "관련 있는, 적절한" },
+    { day: 5, word: "reluctant", meaning: "꺼리는, 마지못한" }, { day: 5, word: "prominent", meaning: "저명한, 두드러진" },
+    
     // Day 6
-    { day: 6, word: "head", meaning: "머리" }, { day: 6, word: "eye", meaning: "눈" },
-    { day: 6, word: "ear", meaning: "귀" }, { day: 6, word: "nose", meaning: "코" },
-    { day: 6, word: "mouth", meaning: "입" }, { day: 6, word: "hand", meaning: "손" },
-    { day: 6, word: "foot", meaning: "발" }, { day: 6, word: "leg", meaning: "다리" },
-    { day: 6, word: "arm", meaning: "팔" }, { day: 6, word: "body", meaning: "몸" },
+    { day: 6, word: "imperative", meaning: "필수적인, 반드시 해야 하는" }, { day: 6, word: "implicit", meaning: "암시된, 내포된" },
+    { day: 6, word: "explicit", meaning: "명백한, 뚜렷한" }, { day: 6, word: "inevitable", meaning: "불가피한, 필연적인" },
+    { day: 6, word: "inherent", meaning: "내재하는, 본질적인" }, { day: 6, word: "intrinsic", meaning: "고유한, 본질적인" },
+    { day: 6, word: "extrinsic", meaning: "외적인, 비본질적인" }, { day: 6, word: "indispensable", meaning: "없어서는 안 될, 필수적인" },
+    { day: 6, word: "innate", meaning: "타고난, 선천적인" }, { day: 6, word: "trivial", meaning: "사소한, 하찮은" },
+    
     // Day 7
-    { day: 7, word: "happy", meaning: "행복한" }, { day: 7, word: "sad", meaning: "슬픈" },
-    { day: 7, word: "angry", meaning: "화난" }, { day: 7, word: "tired", meaning: "피곤한" },
-    { day: 7, word: "hungry", meaning: "배고픈" }, { day: 7, word: "full", meaning: "배부른" },
-    { day: 7, word: "hot", meaning: "더운" }, { day: 7, word: "cold", meaning: "추운" },
-    { day: 7, word: "good", meaning: "좋은" }, { day: 7, word: "bad", meaning: "나쁜" }
+    { day: 7, word: "decipher", meaning: "해독하다" }, { day: 7, word: "deduce", meaning: "추론하다" },
+    { day: 7, word: "depict", meaning: "묘사하다" }, { day: 7, word: "deter", meaning: "단념시키다, 방해하다" },
+    { day: 7, word: "distract", meaning: "주의를 딴 데로 돌리다" }, { day: 7, word: "distort", meaning: "왜곡하다" },
+    { day: 7, word: "disguise", meaning: "변장하다, 위장하다" }, { day: 7, word: "discern", meaning: "알아차리다, 식별하다" },
+    { day: 7, word: "disperse", meaning: "흩어지다, 해산하다" }, { day: 7, word: "dissipate", meaning: "소멸되다, 낭비하다" }
 ];
 
 // 상태
-let completedDays = []; // 예: [1, 2]
-let currentDay = null; // 현재 선택된 Day
-let quizMode = ''; // 'daily' or 'final'
+let completedDays = [];
+let currentDay = null;
+let quizMode = '';
 let quizQuestions = [];
 let currentQuizIndex = 0;
 let score = 0;
@@ -109,13 +115,13 @@ function showScreen(screenId) {
     if(screenId === 'home') {
         ui.screenHome.classList.add('active');
         ui.btnGoHome.style.display = 'none';
-        renderDayGrid(); // 진척도 갱신
+        renderDayGrid();
     } else if(screenId === 'study') {
         ui.screenStudy.classList.add('active');
         ui.btnGoHome.style.display = 'block';
     } else if(screenId === 'quiz') {
         ui.screenQuiz.classList.add('active');
-        ui.btnGoHome.style.display = 'none'; // 퀴즈 중 이탈 금지
+        ui.btnGoHome.style.display = 'none';
     } else if(screenId === 'result') {
         ui.screenResult.classList.add('active');
         ui.btnGoHome.style.display = 'none';
@@ -187,19 +193,13 @@ function startQuiz(mode) {
     quizQuestions = [];
     
     let targetWords = [];
-    let numQuestions = 10;
     
     if (mode === 'daily') {
-        // 일일 퀴즈: 현재 선택된 Day의 10개 단어 전부
         targetWords = shuffleArray(vocabData.filter(item => item.day === currentDay));
-        numQuestions = 10;
     } else if (mode === 'final') {
-        // 최종 테스트: 전체 70개 중 20개 랜덤 추출
         targetWords = shuffleArray(vocabData).slice(0, 20);
-        numQuestions = 20;
     }
     
-    // 문제 만들기 (정답 1 + 오답 3)
     targetWords.forEach(wordItem => {
         const otherWords = vocabData.filter(item => item.word !== wordItem.word);
         const randomWrongs = shuffleArray(otherWords).slice(0, 3);
@@ -255,7 +255,7 @@ function handleAnswer(selectedText, btnElement) {
     
     if (isCorrect) {
         btnElement.classList.add('correct');
-        score += 10; // 점수: 10점씩
+        score += 10;
     } else {
         btnElement.classList.add('wrong');
         buttons.forEach(b => {
@@ -317,7 +317,6 @@ function showResult() {
         showScreen('result');
         const maxScore = quizQuestions.length * 10;
         
-        // 일일 퀴즈 완료 시 (점수 상관없이 끝까지 풀면 완료 처리)
         if (quizMode === 'daily') {
             ui.resultTitle.textContent = `Day ${currentDay} 완료! 🎉`;
             if (!completedDays.includes(currentDay)) {
