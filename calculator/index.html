@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>만능 계산기 모음 | 연봉, 시급, 할인율, BMI, 디데이</title>
+    <meta name="description" content="실생활에 꼭 필요한 5가지 만능 계산기! 2024년 기준 연봉 실수령액 계산기, 주휴수당 포함 시급 계산기, 쇼핑 퍼센트 할인율 계산기, BMI 비만도 계산기, D-Day 계산기를 무료로 사용하세요.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google AdSense (본진과 동일) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6117526240662405" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="app-header">
+        <a href="../index.html" class="home-btn">🏠 홈으로</a>
+        <h1>🧮 만능 계산기</h1>
+    </header>
+
+    <main class="app-container">
+        
+        <!-- 상단 탭 (네비게이션) -->
+        <nav class="tabs">
+            <button class="tab-btn active" data-target="salary">연봉/월급</button>
+            <button class="tab-btn" data-target="wage">시급/알바</button>
+            <button class="tab-btn" data-target="discount">할인율(%)</button>
+            <button class="tab-btn" data-target="bmi">비만도(BMI)</button>
+            <button class="tab-btn" data-target="dday">디데이</button>
+        </nav>
+
+        <!-- 상단 광고 배너 영역 -->
+        <div class="ad-container ad-top">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6117526240662405"
+                 data-ad-slot="1234567890" 
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <!-- 1. 연봉 계산기 -->
+        <section id="salary" class="calc-section active">
+            <h2>💰 연봉 실수령액 계산기</h2>
+            <p class="subtitle">2024년 4대보험 요율 적용</p>
+            <div class="input-group">
+                <label>계산 기준</label>
+                <div class="radio-group">
+                    <input type="radio" id="sal-year" name="salary-type" value="year" checked>
+                    <label for="sal-year">연봉</label>
+                    <input type="radio" id="sal-month" name="salary-type" value="month">
+                    <label for="sal-month">월급</label>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>세전 금액 (원)</label>
+                <input type="number" id="salary-input" placeholder="예: 40000000">
+            </div>
+            <div class="input-group">
+                <label>비과세 액 (식대 등, 원)</label>
+                <input type="number" id="tax-free-input" value="200000">
+            </div>
+            <button class="calc-btn" onclick="calculateSalary()">계산하기</button>
+            <div class="result-box" id="salary-result" style="display: none;">
+                <!-- 결과 출력 -->
+            </div>
+        </section>
+
+        <!-- 2. 시급/알바 계산기 -->
+        <section id="wage" class="calc-section">
+            <h2>⏱️ 시급/주휴수당 계산기</h2>
+            <div class="input-group">
+                <label>시급 (원)</label>
+                <input type="number" id="wage-input" value="9860" placeholder="2024년 최저시급 9,860원">
+            </div>
+            <div class="input-group">
+                <label>하루 근무 시간 (시간)</label>
+                <input type="number" id="hours-input" placeholder="예: 8">
+            </div>
+            <div class="input-group">
+                <label>일주일 근무 일수 (일)</label>
+                <input type="number" id="days-input" placeholder="예: 5">
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="juhyu-check" checked>
+                <label for="juhyu-check">주휴수당 포함 (주 15시간 이상)</label>
+            </div>
+            <button class="calc-btn" onclick="calculateWage()">계산하기</button>
+            <div class="result-box" id="wage-result" style="display: none;">
+                <!-- 결과 출력 -->
+            </div>
+        </section>
+
+        <!-- 3. 퍼센트/할인율 계산기 -->
+        <section id="discount" class="calc-section">
+            <h2>🛍️ 쇼핑 할인율 계산기</h2>
+            <div class="input-group">
+                <label>원래 가격 (원)</label>
+                <input type="number" id="price-input" placeholder="예: 50000">
+            </div>
+            <div class="input-group">
+                <label>할인율 (%)</label>
+                <input type="number" id="percent-input" placeholder="예: 20">
+            </div>
+            <button class="calc-btn" onclick="calculateDiscount()">계산하기</button>
+            <div class="result-box" id="discount-result" style="display: none;">
+                <!-- 결과 출력 -->
+            </div>
+        </section>
+
+        <!-- 4. 비만도(BMI) 계산기 -->
+        <section id="bmi" class="calc-section">
+            <h2>🏃 비만도(BMI) 계산기</h2>
+            <div class="input-group">
+                <label>신장 (cm)</label>
+                <input type="number" id="height-input" placeholder="예: 175">
+            </div>
+            <div class="input-group">
+                <label>체중 (kg)</label>
+                <input type="number" id="weight-input" placeholder="예: 70">
+            </div>
+            <button class="calc-btn" onclick="calculateBMI()">계산하기</button>
+            <div class="result-box" id="bmi-result" style="display: none;">
+                <!-- 결과 출력 -->
+            </div>
+        </section>
+
+        <!-- 5. 디데이 계산기 -->
+        <section id="dday" class="calc-section">
+            <h2>📅 D-Day 계산기</h2>
+            <div class="input-group">
+                <label>목표 날짜</label>
+                <input type="date" id="dday-input">
+            </div>
+            <div class="input-group">
+                <label>무슨 날인가요? (선택)</label>
+                <input type="text" id="dday-title" placeholder="예: 수능, 결혼식">
+            </div>
+            <button class="calc-btn" onclick="calculateDday()">계산하기</button>
+            <div class="result-box" id="dday-result" style="display: none;">
+                <!-- 결과 출력 -->
+            </div>
+        </section>
+
+        <!-- 하단 광고 배너 영역 -->
+        <div class="ad-container ad-bottom">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6117526240662405"
+                 data-ad-slot="0987654321" 
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+    </main>
+
+    <footer class="app-footer">
+        <p>© 2026 Minddoo's All-in-One Calculator. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
