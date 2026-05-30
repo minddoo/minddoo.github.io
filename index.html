@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나만의 귀여운 단어장 퀴즈!</title>
+    <title>7일 완성 필수 영단어 챌린지!</title>
     
     <!-- Google Fonts: 귀여운 'Jua' 폰트와 영문 'Baloo 2' -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,11 +14,8 @@
 </head>
 <body>
     <header>
-        <div class="logo">🍎 My Vocab Quiz 🌟</div>
-        <div class="nav-tabs">
-            <button id="tab-manager" class="tab-btn active">📝 내 단어장</button>
-            <button id="tab-quiz" class="tab-btn">🎮 퀴즈 시작</button>
-        </div>
+        <div class="logo">🌟 7일 완성 단어 챌린지 🌟</div>
+        <button id="btn-go-home" class="btn-home" style="display: none;">🏠 홈으로</button>
     </header>
 
     <!-- 상단 광고 영역 -->
@@ -27,26 +24,33 @@
     </div>
 
     <main class="app-container">
-        <!-- 단어장 관리 화면 -->
-        <section id="screen-manager" class="screen active">
-            <div class="input-card">
-                <h2>새로운 단어 추가하기 ✨</h2>
-                <div class="input-group">
-                    <input type="text" id="input-word" placeholder="영어 단어 (예: apple)" autocomplete="off">
-                    <input type="text" id="input-meaning" placeholder="뜻 (예: 사과)" autocomplete="off">
-                    <button id="btn-add" class="btn-cute btn-green">추가!</button>
-                </div>
+        <!-- 메인 화면: Day 선택 -->
+        <section id="screen-home" class="screen active">
+            <div class="intro-box">
+                <h2>매일 10단어씩 딱 7일!</h2>
+                <p>기초부터 탄탄하게! 하루 10단어 외우기에 도전해보세요.</p>
+            </div>
+            
+            <div class="day-grid" id="day-grid">
+                <!-- Day 1 ~ Day 7 카드가 자바스크립트로 생성됩니다 -->
             </div>
 
-            <div class="word-list-card">
-                <div class="list-header">
-                    <h3>📚 이번 주 내 단어 목록</h3>
-                    <span id="word-count" class="badge">총 0개</span>
-                </div>
-                <p class="helper-text">※ 퀴즈를 보려면 최소 4개의 단어가 필요해요!</p>
-                <ul id="word-list" class="word-list">
-                    <!-- 단어 목록이 여기에 표시됩니다 -->
+            <div class="final-test-box">
+                <button id="btn-final-test" class="btn-cute btn-purple btn-large">🏆 최종 주간 테스트 보기</button>
+                <p class="helper-text">70개 단어 중 20개가 무작위로 출제됩니다!</p>
+            </div>
+        </section>
+
+        <!-- 단어 학습 화면 -->
+        <section id="screen-study" class="screen">
+            <div class="study-card">
+                <h2 id="study-title">Day 1 학습하기 📖</h2>
+                <ul id="study-list" class="study-list">
+                    <!-- 단어 10개가 여기에 표시됩니다 -->
                 </ul>
+                <div class="action-buttons">
+                    <button id="btn-start-daily" class="btn-cute btn-green btn-large">이 단어로 퀴즈 보기 🎮</button>
+                </div>
             </div>
         </section>
 
@@ -78,13 +82,13 @@
         <!-- 결과 화면 -->
         <section id="screen-result" class="screen">
             <div class="result-card">
-                <h2>🎉 테스트 완료! 🎉</h2>
+                <h2 id="result-title">🎉 퀴즈 완료! 🎉</h2>
                 <div class="final-score" id="final-score">0점</div>
                 <p id="result-message">수고하셨어요!</p>
                 
                 <div class="action-buttons">
-                    <button id="btn-restart" class="btn-cute btn-blue">다시 풀기 🔄</button>
-                    <button id="btn-go-manager" class="btn-cute btn-pink">단어장 가기 📝</button>
+                    <button id="btn-restart-quiz" class="btn-cute btn-blue">다시 풀기 🔄</button>
+                    <button id="btn-result-home" class="btn-cute btn-pink">메인으로 가기 🏠</button>
                 </div>
             </div>
         </section>
@@ -96,7 +100,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 My Vocab Quiz. Have fun studying!</p>
+        <p>&copy; 2026 7-Day Vocab Challenge. Keep studying!</p>
     </footer>
 
     <script src="app.js"></script>

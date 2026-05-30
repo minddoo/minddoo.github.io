@@ -1,5 +1,53 @@
-// 전역 상태
-let myWords = [];
+// 70개의 필수 영단어 데이터 (Day 1 ~ Day 7)
+const vocabData = [
+    // Day 1
+    { day: 1, word: "apple", meaning: "사과" }, { day: 1, word: "banana", meaning: "바나나" },
+    { day: 1, word: "water", meaning: "물" }, { day: 1, word: "bread", meaning: "빵" },
+    { day: 1, word: "milk", meaning: "우유" }, { day: 1, word: "house", meaning: "집" },
+    { day: 1, word: "school", meaning: "학교" }, { day: 1, word: "book", meaning: "책" },
+    { day: 1, word: "desk", meaning: "책상" }, { day: 1, word: "chair", meaning: "의자" },
+    // Day 2
+    { day: 2, word: "car", meaning: "자동차" }, { day: 2, word: "bus", meaning: "버스" },
+    { day: 2, word: "train", meaning: "기차" }, { day: 2, word: "plane", meaning: "비행기" },
+    { day: 2, word: "ship", meaning: "배" }, { day: 2, word: "tree", meaning: "나무" },
+    { day: 2, word: "flower", meaning: "꽃" }, { day: 2, word: "river", meaning: "강" },
+    { day: 2, word: "mountain", meaning: "산" }, { day: 2, word: "sky", meaning: "하늘" },
+    // Day 3
+    { day: 3, word: "dog", meaning: "개" }, { day: 3, word: "cat", meaning: "고양이" },
+    { day: 3, word: "bird", meaning: "새" }, { day: 3, word: "fish", meaning: "물고기" },
+    { day: 3, word: "horse", meaning: "말" }, { day: 3, word: "sun", meaning: "태양" },
+    { day: 3, word: "moon", meaning: "달" }, { day: 3, word: "star", meaning: "별" },
+    { day: 3, word: "cloud", meaning: "구름" }, { day: 3, word: "rain", meaning: "비" },
+    // Day 4
+    { day: 4, word: "friend", meaning: "친구" }, { day: 4, word: "family", meaning: "가족" },
+    { day: 4, word: "father", meaning: "아버지" }, { day: 4, word: "mother", meaning: "어머니" },
+    { day: 4, word: "brother", meaning: "형제" }, { day: 4, word: "sister", meaning: "자매" },
+    { day: 4, word: "baby", meaning: "아기" }, { day: 4, word: "doctor", meaning: "의사" },
+    { day: 4, word: "teacher", meaning: "선생님" }, { day: 4, word: "student", meaning: "학생" },
+    // Day 5
+    { day: 5, word: "time", meaning: "시간" }, { day: 5, word: "day", meaning: "하루" },
+    { day: 5, word: "week", meaning: "주" }, { day: 5, word: "month", meaning: "월" },
+    { day: 5, word: "year", meaning: "년" }, { day: 5, word: "morning", meaning: "아침" },
+    { day: 5, word: "afternoon", meaning: "오후" }, { day: 5, word: "evening", meaning: "저녁" },
+    { day: 5, word: "night", meaning: "밤" }, { day: 5, word: "today", meaning: "오늘" },
+    // Day 6
+    { day: 6, word: "head", meaning: "머리" }, { day: 6, word: "eye", meaning: "눈" },
+    { day: 6, word: "ear", meaning: "귀" }, { day: 6, word: "nose", meaning: "코" },
+    { day: 6, word: "mouth", meaning: "입" }, { day: 6, word: "hand", meaning: "손" },
+    { day: 6, word: "foot", meaning: "발" }, { day: 6, word: "leg", meaning: "다리" },
+    { day: 6, word: "arm", meaning: "팔" }, { day: 6, word: "body", meaning: "몸" },
+    // Day 7
+    { day: 7, word: "happy", meaning: "행복한" }, { day: 7, word: "sad", meaning: "슬픈" },
+    { day: 7, word: "angry", meaning: "화난" }, { day: 7, word: "tired", meaning: "피곤한" },
+    { day: 7, word: "hungry", meaning: "배고픈" }, { day: 7, word: "full", meaning: "배부른" },
+    { day: 7, word: "hot", meaning: "더운" }, { day: 7, word: "cold", meaning: "추운" },
+    { day: 7, word: "good", meaning: "좋은" }, { day: 7, word: "bad", meaning: "나쁜" }
+];
+
+// 상태
+let completedDays = []; // 예: [1, 2]
+let currentDay = null; // 현재 선택된 Day
+let quizMode = ''; // 'daily' or 'final'
 let quizQuestions = [];
 let currentQuizIndex = 0;
 let score = 0;
@@ -8,158 +56,122 @@ let timeLeft = 15;
 
 // DOM 요소
 const ui = {
-    tabManager: document.getElementById('tab-manager'),
-    tabQuiz: document.getElementById('tab-quiz'),
-    screenManager: document.getElementById('screen-manager'),
+    screenHome: document.getElementById('screen-home'),
+    screenStudy: document.getElementById('screen-study'),
     screenQuiz: document.getElementById('screen-quiz'),
     screenResult: document.getElementById('screen-result'),
+    btnGoHome: document.getElementById('btn-go-home'),
     
-    // Manager UI
-    inputWord: document.getElementById('input-word'),
-    inputMeaning: document.getElementById('input-meaning'),
-    btnAdd: document.getElementById('btn-add'),
-    wordList: document.getElementById('word-list'),
-    wordCount: document.getElementById('word-count'),
+    // Home
+    dayGrid: document.getElementById('day-grid'),
+    btnFinalTest: document.getElementById('btn-final-test'),
     
-    // Quiz UI
+    // Study
+    studyTitle: document.getElementById('study-title'),
+    studyList: document.getElementById('study-list'),
+    btnStartDaily: document.getElementById('btn-start-daily'),
+    
+    // Quiz
     questionWord: document.getElementById('question-word'),
     optionsContainer: document.getElementById('options-container'),
     questionCount: document.getElementById('question-count'),
     timer: document.getElementById('timer'),
     progressBar: document.getElementById('progress-bar'),
     
-    // Result UI
+    // Result
+    resultTitle: document.getElementById('result-title'),
     finalScore: document.getElementById('final-score'),
     resultMessage: document.getElementById('result-message'),
-    btnRestart: document.getElementById('btn-restart'),
-    btnGoManager: document.getElementById('btn-go-manager')
+    btnRestartQuiz: document.getElementById('btn-restart-quiz'),
+    btnResultHome: document.getElementById('btn-result-home')
 };
 
 // 초기화
 function init() {
-    loadWords();
-    renderWords();
+    loadProgress();
+    renderDayGrid();
     setupEventListeners();
 }
 
 function setupEventListeners() {
-    // 탭 이동
-    ui.tabManager.addEventListener('click', () => switchTab('manager'));
-    ui.tabQuiz.addEventListener('click', () => startQuiz());
-    ui.btnGoManager.addEventListener('click', () => switchTab('manager'));
+    ui.btnGoHome.addEventListener('click', () => showScreen('home'));
+    ui.btnResultHome.addEventListener('click', () => showScreen('home'));
     
-    // 단어 추가
-    ui.btnAdd.addEventListener('click', addWord);
-    ui.inputMeaning.addEventListener('keypress', (e) => {
-        if(e.key === 'Enter') addWord();
-    });
+    ui.btnStartDaily.addEventListener('click', () => startQuiz('daily'));
+    ui.btnFinalTest.addEventListener('click', () => startQuiz('final'));
     
-    // 퀴즈 액션
-    ui.btnRestart.addEventListener('click', () => startQuiz());
+    ui.btnRestartQuiz.addEventListener('click', () => startQuiz(quizMode));
 }
 
-// 탭 스위칭 로직
-function switchTab(tab) {
-    ui.tabManager.classList.remove('active');
-    ui.tabQuiz.classList.remove('active');
+function showScreen(screenId) {
+    [ui.screenHome, ui.screenStudy, ui.screenQuiz, ui.screenResult].forEach(s => s.classList.remove('active'));
     
-    ui.screenManager.classList.remove('active');
-    ui.screenQuiz.classList.remove('active');
-    ui.screenResult.classList.remove('active');
-    
-    if (tab === 'manager') {
-        ui.tabManager.classList.add('active');
-        ui.screenManager.classList.add('active');
-        renderWords();
-    } else if (tab === 'quiz') {
-        ui.tabQuiz.classList.add('active');
+    if(screenId === 'home') {
+        ui.screenHome.classList.add('active');
+        ui.btnGoHome.style.display = 'none';
+        renderDayGrid(); // 진척도 갱신
+    } else if(screenId === 'study') {
+        ui.screenStudy.classList.add('active');
+        ui.btnGoHome.style.display = 'block';
+    } else if(screenId === 'quiz') {
         ui.screenQuiz.classList.add('active');
-    } else if (tab === 'result') {
-        ui.tabQuiz.classList.add('active');
+        ui.btnGoHome.style.display = 'none'; // 퀴즈 중 이탈 금지
+    } else if(screenId === 'result') {
         ui.screenResult.classList.add('active');
+        ui.btnGoHome.style.display = 'none';
     }
 }
 
-// --- 단어장 관리 (Local Storage) ---
-
-function loadWords() {
-    const saved = localStorage.getItem('myVocabData');
+// 진행도 로드
+function loadProgress() {
+    const saved = localStorage.getItem('vocabChallengeProgress');
     if (saved) {
-        myWords = JSON.parse(saved);
-    } else {
-        // 처음 오는 사용자를 위한 샘플 데이터
-        myWords = [
-            { id: 1, word: 'apple', meaning: '사과' },
-            { id: 2, word: 'banana', meaning: '바나나' },
-            { id: 3, word: 'grape', meaning: '포도' },
-            { id: 4, word: 'orange', meaning: '오렌지' }
-        ];
-        saveWords();
+        completedDays = JSON.parse(saved);
     }
 }
 
-function saveWords() {
-    localStorage.setItem('myVocabData', JSON.stringify(myWords));
+function saveProgress() {
+    localStorage.setItem('vocabChallengeProgress', JSON.stringify(completedDays));
 }
 
-function addWord() {
-    const word = ui.inputWord.value.trim();
-    const meaning = ui.inputMeaning.value.trim();
+// Day 카드 렌더링
+function renderDayGrid() {
+    ui.dayGrid.innerHTML = '';
     
-    if (!word || !meaning) {
-        alert("단어와 뜻을 모두 입력해주세요!");
-        return;
-    }
-    
-    myWords.push({
-        id: Date.now(),
-        word: word,
-        meaning: meaning
-    });
-    
-    saveWords();
-    renderWords();
-    
-    // 입력창 초기화
-    ui.inputWord.value = '';
-    ui.inputMeaning.value = '';
-    ui.inputWord.focus();
-}
-
-function deleteWord(id) {
-    myWords = myWords.filter(w => w.id !== id);
-    saveWords();
-    renderWords();
-}
-
-function renderWords() {
-    ui.wordList.innerHTML = '';
-    
-    // 역순 정렬 (최신이 위로)
-    const sortedWords = [...myWords].reverse();
-    
-    sortedWords.forEach(w => {
-        const li = document.createElement('li');
-        li.className = 'word-item';
-        li.innerHTML = `
-            <div>
-                <strong style="color:var(--pastel-blue-shadow); font-family:'Baloo 2', sans-serif;">${w.word}</strong> 
-                <span style="color:#aaa; margin:0 5px;">:</span> 
-                ${w.meaning}
-            </div>
-            <button class="btn-delete" title="삭제">✕</button>
+    for (let i = 1; i <= 7; i++) {
+        const isCompleted = completedDays.includes(i);
+        const card = document.createElement('div');
+        card.className = `day-card ${isCompleted ? 'completed' : ''}`;
+        card.innerHTML = `
+            <h3>Day ${i}</h3>
+            <p>${isCompleted ? '학습 완료!' : '단어 10개'}</p>
         `;
-        
-        li.querySelector('.btn-delete').addEventListener('click', () => deleteWord(w.id));
-        ui.wordList.appendChild(li);
-    });
-    
-    ui.wordCount.textContent = `총 ${myWords.length}개`;
+        card.addEventListener('click', () => openStudy(i));
+        ui.dayGrid.appendChild(card);
+    }
 }
 
+// 단어 학습창 열기
+function openStudy(day) {
+    currentDay = day;
+    ui.studyTitle.textContent = `Day ${day} 학습하기 📖`;
+    
+    const wordsForDay = vocabData.filter(item => item.day === day);
+    ui.studyList.innerHTML = '';
+    
+    wordsForDay.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <span class="study-word">${item.word}</span>
+            <span class="study-meaning">${item.meaning}</span>
+        `;
+        ui.studyList.appendChild(li);
+    });
+    
+    showScreen('study');
+}
 
-// --- 퀴즈 로직 ---
-
+// 유틸리티
 function shuffleArray(array) {
     const arr = [...array];
     for (let i = arr.length - 1; i > 0; i--) {
@@ -169,41 +181,42 @@ function shuffleArray(array) {
     return arr;
 }
 
-function startQuiz() {
-    if (myWords.length < 4) {
-        alert("퀴즈를 보려면 최소 4개의 단어를 등록해주세요!");
-        return;
-    }
-    
-    switchTab('quiz');
-    
-    // 퀴즈 생성 로직
-    // 최대 10문제 (단어가 적으면 있는 만큼만)
-    const maxQuestions = Math.min(10, myWords.length);
-    const shuffledWords = shuffleArray(myWords);
-    
+// 퀴즈 시작
+function startQuiz(mode) {
+    quizMode = mode;
     quizQuestions = [];
     
-    for (let i = 0; i < maxQuestions; i++) {
-        const currentWord = shuffledWords[i];
-        
-        // 정답을 제외한 나머지 단어들 중에서 오답 3개 추출
-        const otherWords = myWords.filter(w => w.id !== currentWord.id);
+    let targetWords = [];
+    let numQuestions = 10;
+    
+    if (mode === 'daily') {
+        // 일일 퀴즈: 현재 선택된 Day의 10개 단어 전부
+        targetWords = shuffleArray(vocabData.filter(item => item.day === currentDay));
+        numQuestions = 10;
+    } else if (mode === 'final') {
+        // 최종 테스트: 전체 70개 중 20개 랜덤 추출
+        targetWords = shuffleArray(vocabData).slice(0, 20);
+        numQuestions = 20;
+    }
+    
+    // 문제 만들기 (정답 1 + 오답 3)
+    targetWords.forEach(wordItem => {
+        const otherWords = vocabData.filter(item => item.word !== wordItem.word);
         const randomWrongs = shuffleArray(otherWords).slice(0, 3);
         
-        // 정답과 오답 섞어서 옵션 배열 생성
-        const options = [currentWord, ...randomWrongs];
+        const options = [wordItem, ...randomWrongs];
         const shuffledOptions = shuffleArray(options);
         
         quizQuestions.push({
-            word: currentWord.word,
-            correctMeaning: currentWord.meaning,
+            word: wordItem.word,
+            correctMeaning: wordItem.meaning,
             options: shuffledOptions.map(opt => opt.meaning)
         });
-    }
+    });
     
     currentQuizIndex = 0;
     score = 0;
+    showScreen('quiz');
     loadQuestion();
 }
 
@@ -236,21 +249,17 @@ function handleAnswer(selectedText, btnElement) {
     const question = quizQuestions[currentQuizIndex];
     const buttons = ui.optionsContainer.querySelectorAll('.option-btn');
     
-    // 중복 클릭 방지
     buttons.forEach(b => b.style.pointerEvents = 'none');
     
     const isCorrect = selectedText === question.correctMeaning;
     
     if (isCorrect) {
         btnElement.classList.add('correct');
-        score += 10;
+        score += 10; // 점수: 10점씩
     } else {
         btnElement.classList.add('wrong');
-        // 정답 버튼 찾아 표시
         buttons.forEach(b => {
-            if(b.textContent === question.correctMeaning) {
-                b.classList.add('correct');
-            }
+            if(b.textContent === question.correctMeaning) b.classList.add('correct');
         });
     }
     
@@ -271,15 +280,12 @@ function startTimer() {
         
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            // 시간 초과 처리
             const buttons = ui.optionsContainer.querySelectorAll('.option-btn');
             buttons.forEach(b => b.style.pointerEvents = 'none');
             
             const question = quizQuestions[currentQuizIndex];
             buttons.forEach(b => {
-                if(b.textContent === question.correctMeaning) {
-                    b.classList.add('correct');
-                }
+                if(b.textContent === question.correctMeaning) b.classList.add('correct');
             });
             
             setTimeout(() => {
@@ -308,16 +314,29 @@ function updateTimerUI() {
 function showResult() {
     ui.progressBar.style.width = '100%';
     setTimeout(() => {
-        switchTab('result');
+        showScreen('result');
         const maxScore = quizQuestions.length * 10;
+        
+        // 일일 퀴즈 완료 시 (점수 상관없이 끝까지 풀면 완료 처리)
+        if (quizMode === 'daily') {
+            ui.resultTitle.textContent = `Day ${currentDay} 완료! 🎉`;
+            if (!completedDays.includes(currentDay)) {
+                completedDays.push(currentDay);
+                saveProgress();
+            }
+        } else {
+            ui.resultTitle.textContent = `최종 주간 테스트 결과 🏆`;
+        }
+        
         ui.finalScore.textContent = `${score}점`;
         
-        if (score === maxScore) {
-            ui.resultMessage.textContent = "최고예요! 백점 만점에 백점! 🌟";
-        } else if (score >= maxScore * 0.7) {
+        const percent = score / maxScore;
+        if (percent === 1) {
+            ui.resultMessage.textContent = "최고예요! 완벽하게 외우셨네요! 🌟";
+        } else if (percent >= 0.7) {
             ui.resultMessage.textContent = "참 잘했어요! 거의 다 맞췄네요 😊";
         } else {
-            ui.resultMessage.textContent = "괜찮아요! 다시 한 번 연습해볼까요? 💪";
+            ui.resultMessage.textContent = "괜찮아요! 반복 학습이 중요합니다. 💪";
         }
     }, 500);
 }
