@@ -1,8 +1,8 @@
 const i18n = {
     en: {
         badge: "K-Medical Tourism",
-        title: "What is your<br><span class=\"highlight\">K-Medical</span><br>Checkup Style? 🏥",
-        subtitle: "Take this 2-minute quiz to discover the perfect Korean health screening package tailored to your priorities and lifestyle.",
+        title: "What is your<br><span class=\"highlight\">K-Medical MBTI?</span> 🏥",
+        subtitle: "Take this 2-minute test to discover your preferred health checkup MBTI style tailored to your lifestyle.",
         btnStart: "Start Quiz",
         qLabel: "Question",
         resultLabel: "YOUR STYLE IS",
@@ -56,8 +56,8 @@ const i18n = {
     },
     ko: {
         badge: "K-의료 관광",
-        title: "나의<br><span class=\"highlight\">K-건강검진</span><br>스타일은? 🏥",
-        subtitle: "2분 만에 당신의 라이프스타일과 우선순위에 딱 맞는 한국의 건강검진 패키지 스타일을 알아보세요.",
+        title: "당신의<br><span class=\"highlight\">K-건강검진 MBTI</span>는? 🏥",
+        subtitle: "나의 건강검진 선호 MBTI는 무엇일까요? 2분 만에 당신의 라이프스타일에 딱 맞는 검진 스타일을 알아보세요.",
         btnStart: "테스트 시작하기",
         qLabel: "질문",
         resultLabel: "당신의 스타일은",
@@ -111,8 +111,8 @@ const i18n = {
     },
     ja: {
         badge: "K-メディカルツーリズム",
-        title: "私の<br><span class=\"highlight\">K-健康診断</span><br>スタイルは？ 🏥",
-        subtitle: "たった2分で、あなたのライフスタイルに最適な韓国の健康診断パッケージスタイルを見つけましょう。",
+        title: "あなたの<br><span class=\"highlight\">K-健康診断 MBTI</span>は？ 🏥",
+        subtitle: "私の健康診断の好みMBTIは何でしょうか？たった2分で、あなたのライフスタイルに最適なスタイルを見つけましょう。",
         btnStart: "テストを開始",
         qLabel: "質問",
         resultLabel: "あなたのスタイルは",
@@ -166,9 +166,8 @@ const i18n = {
     },
     zh: {
         badge: "K-医疗旅游",
-        title: "我的<br><span class=\"highlight\">K-健康体检</span><br>风格是？ 🏥",
-        title_br: "",
-        subtitle: "只需2分钟，即可了解最适合您生活方式的韩国健康体检套餐风格。",
+        title: "您的<br><span class=\"highlight\">K-健康体检 MBTI</span>是？ 🏥",
+        subtitle: "您偏好的健康体检MBTI是什么？只需2分钟，即可了解最适合您生活方式的体检风格。",
         btnStart: "开始测试",
         qLabel: "问题",
         resultLabel: "您的风格是",
@@ -222,8 +221,8 @@ const i18n = {
     },
     vi: {
         badge: "Du lịch Y tế Hàn Quốc",
-        title: "Phong cách<br><span class=\"highlight\">Khám sức khỏe K-Medical</span><br>của bạn là gì? 🏥",
-        subtitle: "Làm bài trắc nghiệm 2 phút này để tìm gói khám sức khỏe hoàn hảo tại Hàn Quốc phù hợp với lối sống của bạn.",
+        title: "<span class=\"highlight\">MBTI Khám sức khỏe K-Medical</span><br>của bạn là gì? 🏥",
+        subtitle: "Phong cách MBTI khám sức khỏe ưa thích của bạn là gì? Làm bài trắc nghiệm 2 phút này để tìm ra phong cách hoàn hảo cho bạn.",
         btnStart: "Bắt đầu làm bài",
         qLabel: "Câu hỏi",
         resultLabel: "PHONG CÁCH CỦA BẠN LÀ",
@@ -277,8 +276,8 @@ const i18n = {
     },
     th: {
         badge: "K-Medical Tourism",
-        title: "สไตล์<br><span class=\"highlight\">การตรวจสุขภาพ K-Medical</span><br>ของคุณคือแบบไหน? 🏥",
-        subtitle: "ทำแบบทดสอบ 2 นาทีนี้เพื่อค้นหาแพ็คเกจตรวจสุขภาพในเกาหลีที่เหมาะกับไลฟ์สไตล์ของคุณที่สุด",
+        title: "<span class=\"highlight\">MBTI การตรวจสุขภาพ K-Medical</span><br>ของคุณคืออะไร? 🏥",
+        subtitle: "สไตล์ MBTI การตรวจสุขภาพที่คุณชื่นชอบคือแบบไหน? ทำแบบทดสอบ 2 นาทีนี้เพื่อค้นหาสไตล์ที่เหมาะกับคุณที่สุด",
         btnStart: "เริ่มทำแบบทดสอบ",
         qLabel: "คำถาม",
         resultLabel: "สไตล์ของคุณคือ",
@@ -332,8 +331,8 @@ const i18n = {
     },
     ru: {
         badge: "K-Медицинский туризм",
-        title: "Какой у вас стиль<br><span class=\"highlight\">корейского медосмотра?</span> 🏥",
-        subtitle: "Пройдите этот 2-минутный тест, чтобы подобрать идеальный корейский пакет медицинского обследования под ваш образ жизни.",
+        title: "Какой у вас <br><span class=\"highlight\">MBTI корейского медосмотра?</span> 🏥",
+        subtitle: "Какой у вас предпочитаемый стиль MBTI для медосмотра? Пройдите этот 2-минутный тест, чтобы узнать это.",
         btnStart: "Начать тест",
         qLabel: "Вопрос",
         resultLabel: "ВАШ СТИЛЬ:",
