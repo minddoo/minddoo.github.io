@@ -113,22 +113,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function shareKakao() {
     if(typeof Kakao !== 'undefined' && Kakao.isInitialized()) {
-        const mbti = localStorage.getItem('mbtiResult') || 'ENFP';
-        const result = results[mbti];
-        
-        Kakao.Share.sendDefault({
-            objectType: 'feed',
-            content: {
-                title: `나와 찰떡궁합인 디저트는? [${result.name}]`,
-                description: result.desc,
-                imageUrl: 'https://minddoo.github.io/og-image-mbti.png',
-                link: { mobileWebUrl: 'https://minddoo.github.io/mbti/', webUrl: 'https://minddoo.github.io/mbti/' }
-            },
-            buttons: [
-                { title: '결과 보기 & 나도 테스트하기', link: { mobileWebUrl: 'https://minddoo.github.io/mbti/', webUrl: 'https://minddoo.github.io/mbti/' } }
-            ]
-        });
+        try {
+            const mbti = localStorage.getItem('mbtiResult') || 'ENFP';
+            const result = results[mbti];
+            
+            Kakao.Share.sendDefault({
+                objectType: 'feed',
+                content: {
+                    title: `나와 찰떡궁합인 디저트는? [${result.name}]`,
+                    description: result.desc,
+                    imageUrl: 'https://minddoo.github.io/og-image-mbti.png',
+                    link: { mobileWebUrl: 'https://minddoo.github.io/mbti/', webUrl: 'https://minddoo.github.io/mbti/' }
+                },
+                buttons: [
+                    { title: '결과 보기 & 나도 테스트하기', link: { mobileWebUrl: 'https://minddoo.github.io/mbti/', webUrl: 'https://minddoo.github.io/mbti/' } }
+                ]
+            });
+        } catch (e) {
+            alert("공유 실행 중 오류 발생: " + e.message);
+        }
     } else {
-        alert("카카오톡 공유 기능을 설정해주세요.");
+        alert("카카오톡 기능이 아직 로드되지 않았거나 사이트 주소(플랫폼) 등록 오류입니다.");
     }
 }
