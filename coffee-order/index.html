@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>커피 심부름 마스터</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-content">
+            <h1>☕ 커피 심부름 마스터</h1>
+            <p>막내 탈출! 빠르고 정확한 대량 주문</p>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-container">
+        <!-- Category Tabs -->
+        <div class="category-tabs" id="category-tabs">
+            <!-- Tabs injected by JS -->
+        </div>
+
+        <!-- Menu List -->
+        <div class="menu-list" id="menu-list">
+            <!-- Menu items injected by JS -->
+        </div>
+
+        <!-- Custom Menu Adder -->
+        <div class="custom-menu-adder">
+            <h3>📝 리스트에 없는 메뉴 추가</h3>
+            <div class="input-group">
+                <input type="text" id="custom-menu-input" placeholder="예: 따뜻한 디카페인 라떼 덜달게">
+                <button id="btn-add-custom" class="btn-add">+</button>
+            </div>
+        </div>
+        
+        <!-- Spacer for floating bar -->
+        <div style="height: 100px;"></div>
+    </main>
+
+    <!-- Floating Summary Bar -->
+    <div class="floating-bar" id="floating-bar" onclick="openSummaryModal()">
+        <div class="floating-content">
+            <span class="total-text">총 <strong id="floating-total-count">0</strong>잔 담음</span>
+            <span class="btn-view-summary">주문 확인하기 〉</span>
+        </div>
+    </div>
+
+    <!-- Summary Modal -->
+    <div class="modal-overlay" id="summary-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📋 전체 주문 내역</h2>
+                <button class="btn-close" onclick="closeSummaryModal()">✕</button>
+            </div>
+            
+            <div class="summary-list" id="summary-list">
+                <!-- Summary items injected by JS -->
+            </div>
+            
+            <div class="modal-footer">
+                <div class="total-summary">
+                    <span>총 수량</span>
+                    <strong id="modal-total-count">0잔</strong>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn-reset" onclick="resetOrders()">초기화</button>
+                    <button class="btn-copy" onclick="copyToClipboard()">카톡으로 복사하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">복사되었습니다!</div>
+
+    <script src="app.js"></script>
+</body>
+</html>
