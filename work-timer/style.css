@@ -84,18 +84,22 @@ body {
 
 .btn-settings {
     position: absolute;
-    right: 10px;
-    top: 5px;
-    background: transparent;
-    border: 1px solid var(--border-light);
-    padding: 2px 10px;
-    border-radius: 2px;
-    font-size: 0.75rem;
+    right: 15px;
+    top: 3px;
+    background: var(--excel-green);
+    color: white;
+    border: 1px solid var(--excel-green);
+    padding: 4px 15px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
     cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background 0.2s;
 }
 
 .btn-settings:hover {
-    background: var(--bg-gray);
+    background: #1b5e3a; /* Darker green */
 }
 
 .excel-toolbar {
