@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>업무 효율성 관리 시스템</title> <!-- Stealth title -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Pretendard:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Main Dashboard -->
+    <div class="container" id="dashboard" style="display: none;">
+        <header class="header">
+            <div>
+                <span class="status-dot"></span>
+                <span class="stealth-title">Task.Run()</span>
+            </div>
+            <button class="btn-settings" onclick="openSetup()">⚙️ Config</button>
+        </header>
+
+        <main>
+            <div class="panel time-panel">
+                <div class="label">TIME UNTIL DISCONNECT</div>
+                <div class="time-display" id="time-left">00:00:00</div>
+                
+                <div class="progress-wrapper">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="progress-text" id="progress-text">0.00%</div>
+            </div>
+
+            <div class="panel money-panel">
+                <div class="label">CURRENT SESSION VALUE (KRW)</div>
+                <div class="money-display" id="money-earned">0</div>
+                <div class="money-rate" id="money-rate">0원/초</div>
+            </div>
+
+            <!-- Lupin Mode -->
+            <div class="panel lupin-panel">
+                <div class="label">BACKGROUND PROCESS (LUPIN MODE)</div>
+                <div class="lupin-actions" id="lupin-idle">
+                    <button class="btn-lupin" onclick="startLupin('🧻 화장실')">🧻 화장실 가기</button>
+                    <button class="btn-lupin" onclick="startLupin('☕ 커피/담배')">☕ 커피 브레이크</button>
+                </div>
+                
+                <div class="lupin-active" id="lupin-active" style="display: none;">
+                    <div class="lupin-status">
+                        <span class="spinner"></span>
+                        <span id="lupin-task-name">딴짓 중...</span>
+                    </div>
+                    <div class="lupin-timer" id="lupin-timer">00:00</div>
+                    <button class="btn-lupin-stop" onclick="stopLupin()">업무 복귀</button>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Legal Footer for Ad Approval -->
+        <footer class="legal-footer">
+            <p>Disclaimer: This tool is for entertainment purposes only.</p>
+            <p>&copy; 2026 CheckIt. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Setup Modal -->
+    <div class="modal-overlay" id="setup-modal">
+        <div class="setup-box">
+            <h2>💻 초기화 설정</h2>
+            <p>월급과 근무시간을 입력하세요. (서버 전송 없음)</p>
+            
+            <div class="form-group">
+                <label>세후 월급 (만원)</label>
+                <input type="number" id="input-salary" placeholder="예: 300">
+            </div>
+            
+            <div class="form-group">
+                <label>출근 시간</label>
+                <input type="time" id="input-start" value="09:00">
+            </div>
+            
+            <div class="form-group">
+                <label>퇴근 시간</label>
+                <input type="time" id="input-end" value="18:00">
+            </div>
+            
+            <button class="btn-start" onclick="saveSetup()">시스템 가동</button>
+        </div>
+    </div>
+
+    <!-- Lupin Result Modal -->
+    <div class="modal-overlay" id="result-modal" style="display: none;">
+        <div class="result-box">
+            <h3>🎉 루팡 성공!</h3>
+            <p id="result-msg" class="result-msg">화장실 다녀오는 동안 <strong>1,200원</strong>을 벌었습니다!</p>
+            <button class="btn-start" onclick="closeResult()">확인</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

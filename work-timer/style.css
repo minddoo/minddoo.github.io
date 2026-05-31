@@ -1,0 +1,287 @@
+:root {
+    --bg-color: #0F172A; /* Deep Slate */
+    --panel-bg: #1E293B;
+    --text-main: #E2E8F0;
+    --text-muted: #94A3B8;
+    --accent: #10B981; /* Hacker Green */
+    --accent-glow: rgba(16, 185, 129, 0.3);
+    --border: #334155;
+    --danger: #EF4444;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Stealth/Terminal Font for numbers */
+.time-display, .money-display, .lupin-timer, .stealth-title {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+}
+
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.stealth-title {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.btn-settings {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+/* Panels */
+.panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+/* Time Display */
+.time-display {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+.progress-wrapper {
+    background: var(--bg-color);
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    transition: width 1s linear;
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.progress-text {
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Money Display */
+.money-display {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #FBBF24; /* Gold */
+    text-align: center;
+    text-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+}
+
+.money-display::after {
+    content: ' ₩';
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+
+.money-rate {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 5px;
+}
+
+/* Lupin Mode */
+.lupin-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-lupin {
+    flex: 1;
+    background: var(--bg-color);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-lupin:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.lupin-active {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+}
+
+.lupin-status {
+    color: var(--danger);
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.lupin-timer {
+    font-size: 2rem;
+    color: var(--text-main);
+    margin-bottom: 15px;
+}
+
+.btn-lupin-stop {
+    background: var(--danger);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Setup Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.setup-box, .result-box {
+    background: var(--panel-bg);
+    border: 1px solid var(--border);
+    padding: 30px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.setup-box h2 { margin-bottom: 10px; color: var(--accent); }
+.setup-box p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px; }
+
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    background: var(--bg-color);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+}
+.form-group input:focus {
+    border-color: var(--accent);
+}
+
+.btn-start {
+    width: 100%;
+    padding: 14px;
+    background: var(--accent);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Result Box */
+.result-box h3 {
+    color: #FBBF24;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+.result-msg {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+.result-msg strong {
+    color: var(--accent);
+    font-size: 1.3rem;
+}
+
+/* Footer */
+.legal-footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.7rem;
+    color: var(--border);
+}
