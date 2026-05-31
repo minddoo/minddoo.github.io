@@ -63,14 +63,10 @@ body {
 /* Category Tabs */
 .category-tabs {
     display: flex;
-    overflow-x: auto;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 10px;
     padding-bottom: 15px;
     margin-bottom: 10px;
-    scrollbar-width: none; /* Firefox */
-}
-.category-tabs::-webkit-scrollbar {
-    display: none; /* Chrome */
 }
 
 .tab-btn {
