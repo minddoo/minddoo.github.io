@@ -82,9 +82,10 @@
 
     <!-- SEO & AdSense Heavy Content Section (Strictly Factual & Administrative) -->
     <!-- SEO & AdSense Heavy Content Section (Strictly Factual & Administrative) -->
-    <div id="k-medical-guide" style="display:none; max-width: 800px; width: 90%; margin: 40px auto; padding: 20px; background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); box-sizing: border-box;">
-        
-        <div style="margin-top: 10px;">
+    <div id="k-medical-guide" class="guide-modal">
+        <div class="guide-modal-content">
+            <button class="close-btn-top" onclick="closeGuide()">&times;</button>
+            <div style="margin-top: 10px;">
             <h2 style="color: #2c3e50; font-size: 24px; margin-bottom: 20px; border-bottom: 2px solid #3498db; padding-bottom: 10px;" data-i18n="guideTitle">The Ultimate Guide to Health Checkups in South Korea for Foreigners</h2>
         
             <p style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px;" data-i18n="guideIntro">South Korea has emerged as one of the top destinations globally for medical tourism, particularly renowned for its highly efficient, technologically advanced, and comprehensive health screening programs. Whether you are an expatriate residing in Korea or a medical tourist visiting specifically for healthcare purposes, navigating the Korean medical system requires understanding certain administrative protocols. This guide provides strictly factual, administrative, and procedural information to help you prepare for a health checkup in South Korea.</p>
@@ -107,19 +108,18 @@
             
             <button onclick="closeGuide()" style="display:block; width:100%; margin-top:30px; padding:15px; background:#34495e; color:#fff; border:none; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer;" data-i18n="btnCloseGuide">Close Guide</button>
         </div>
+        </div>
     </div>
 
     <script>
         function openGuide() {
             const guide = document.getElementById('k-medical-guide');
-            guide.style.display = 'block';
-            guide.scrollIntoView({ behavior: 'smooth' });
+            guide.style.display = 'flex';
         }
         
         function closeGuide() {
             const guide = document.getElementById('k-medical-guide');
             guide.style.display = 'none';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
     <script src="app.js"></script>

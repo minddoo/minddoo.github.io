@@ -317,3 +317,63 @@ body {
     margin-bottom: 5px;
     line-height: 1.4;
 }
+
+/* Guide Modal */
+.guide-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.guide-modal-content {
+    background: #fff;
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 16px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.close-btn-top {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 30px;
+    color: #666;
+    cursor: pointer;
+    line-height: 1;
+}
+
+@media (max-width: 600px) {
+    .guide-modal {
+        padding: 0;
+    }
+    .guide-modal-content {
+        max-height: 100vh;
+        height: 100vh;
+        border-radius: 0;
+        padding: 20px;
+        padding-top: 50px;
+    }
+    .close-btn-top {
+        top: 10px;
+        right: 15px;
+    }
+    .guide-modal-content h2 { font-size: 20px !important; }
+    .guide-modal-content h3 { font-size: 18px !important; }
+    .guide-modal-content p { font-size: 15px !important; }
+}
