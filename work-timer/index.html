@@ -3,96 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>업무 효율성 관리 시스템</title> <!-- Stealth title -->
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Pretendard:wght@400;700&display=swap" rel="stylesheet">
+    <title>Q3_Financial_Report.xlsx - Excel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Main Dashboard -->
-    <div class="container" id="dashboard" style="display: none;">
-        <header class="header">
-            <div>
-                <span class="status-dot"></span>
-                <span class="stealth-title">Task.Run()</span>
+    <!-- Main Dashboard (Excel UI) -->
+    <div class="excel-window" id="dashboard" style="display: none;">
+        
+        <!-- Fake Excel Header -->
+        <header class="excel-header">
+            <div class="excel-title-bar">
+                <div class="title-left">
+                    <span class="icon">💾</span>
+                    <span class="icon">↩️</span>
+                    <span class="icon">↪️</span>
+                </div>
+                <div class="title-center">
+                    Q3_Financial_Report.xlsx - Excel
+                </div>
+                <div class="title-right">
+                    <span>—</span>
+                    <span>🗗</span>
+                    <span>✕</span>
+                </div>
             </div>
-            <button class="btn-settings" onclick="openSetup()">⚙️ Config</button>
+            <div class="excel-ribbon-tabs">
+                <span class="tab">File</span>
+                <span class="tab active">Home</span>
+                <span class="tab">Insert</span>
+                <span class="tab">Page Layout</span>
+                <span class="tab">Formulas</span>
+                <span class="tab">Data</span>
+                <span class="tab">Review</span>
+                <span class="tab">View</span>
+                <button class="btn-settings" onclick="openSetup()">⚙️ Config</button>
+            </div>
+            <div class="excel-toolbar">
+                <div class="toolbar-group">
+                    <span class="fake-btn">Calibri</span>
+                    <span class="fake-btn">11</span>
+                </div>
+                <div class="toolbar-group">
+                    <span class="fake-btn bold">B</span>
+                    <span class="fake-btn italic">I</span>
+                    <span class="fake-btn underline">U</span>
+                </div>
+                <div class="toolbar-group">
+                    <span class="fake-btn">Merge & Center</span>
+                </div>
+            </div>
+            <div class="excel-formula-bar">
+                <div class="name-box">B2</div>
+                <div class="fx">fx</div>
+                <input type="text" class="formula-input" value="=SUM(Revenue_Accrued)" readonly>
+            </div>
         </header>
 
-        <main>
-            <div class="panel time-panel">
-                <div class="label">TIME UNTIL DISCONNECT</div>
-                <div class="time-display" id="time-left">00:00:00</div>
-                
-                <div class="progress-wrapper">
-                    <div class="progress-bar" id="progress-bar"></div>
-                </div>
-                <div class="progress-text" id="progress-text">0.00%</div>
-            </div>
-
-            <div class="panel money-panel">
-                <div class="label">CURRENT SESSION VALUE (KRW)</div>
-                <div class="money-display" id="money-earned">0</div>
-                <div class="money-rate" id="money-rate">0원/초</div>
-            </div>
-
-            <!-- Lupin Mode -->
-            <div class="panel lupin-panel">
-                <div class="label">BACKGROUND PROCESS (LUPIN MODE)</div>
-                <div class="lupin-actions" id="lupin-idle">
-                    <button class="btn-lupin" onclick="startLupin('🧻 화장실')">🧻 화장실 가기</button>
-                    <button class="btn-lupin" onclick="startLupin('☕ 커피/담배')">☕ 커피 브레이크</button>
-                </div>
-                
-                <div class="lupin-active" id="lupin-active" style="display: none;">
-                    <div class="lupin-status">
-                        <span class="spinner"></span>
-                        <span id="lupin-task-name">딴짓 중...</span>
-                    </div>
-                    <div class="lupin-timer" id="lupin-timer">00:00</div>
-                    <button class="btn-lupin-stop" onclick="stopLupin()">업무 복귀</button>
-                </div>
-            </div>
+        <!-- Fake Excel Grid -->
+        <main class="excel-grid">
+            <table class="spreadsheet">
+                <thead>
+                    <tr>
+                        <th class="row-header corner">◢</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                        <th>D</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-header">1</td>
+                        <td class="label-cell"><strong>Projected Revenue (KRW)</strong></td>
+                        <td class="value-cell highlight"><span id="money-earned">0</span></td>
+                        <td class="info-cell" id="money-rate">0/s</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-header">2</td>
+                        <td class="label-cell">Estimated Time to Completion</td>
+                        <td class="value-cell"><span id="time-left">00:00:00</span></td>
+                        <td class="progress-cell">
+                            <div class="progress-wrapper">
+                                <div class="progress-bar-excel" id="progress-bar"></div>
+                            </div>
+                            <span id="progress-text" style="font-size: 0.75rem; color: #666;">0.00%</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-header">3</td>
+                        <td></td><td></td><td></td><td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-header">4</td>
+                        <td class="label-cell">Background Processing (Lupin)</td>
+                        <td colspan="2">
+                            <div id="lupin-idle" class="lupin-actions">
+                                <button class="excel-btn" onclick="startLupin('Data Sync (Toilet)')">Run Data Sync</button>
+                                <button class="excel-btn" onclick="startLupin('Compiling (Coffee)')">Run Compiling</button>
+                            </div>
+                            <div id="lupin-active" class="lupin-active" style="display: none;">
+                                <span id="lupin-task-name">Syncing...</span> 
+                                <span id="lupin-timer" style="font-weight: bold; margin: 0 10px;">00:00</span>
+                                <button class="excel-btn stop" onclick="stopLupin()">Abort Process</button>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <!-- Fake empty rows -->
+                    <tr><td class="row-header">5</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td class="row-header">6</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td class="row-header">7</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td class="row-header">8</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td class="row-header">9</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td class="row-header">10</td><td></td><td></td><td></td><td></td></tr>
+                </tbody>
+            </table>
         </main>
         
-        <!-- Legal Footer for Ad Approval -->
-        <footer class="legal-footer">
-            <p>Disclaimer: This tool is for entertainment purposes only.</p>
-            <p>&copy; 2026 CheckIt. All rights reserved.</p>
+        <!-- Excel Footer Tabs -->
+        <footer class="excel-footer-tabs">
+            <div class="sheet-tabs">
+                <span class="sheet-tab active">Sheet1</span>
+                <span class="sheet-tab">Sheet2</span>
+                <span class="sheet-tab">Sheet3</span>
+                <span class="sheet-add">⊕</span>
+            </div>
+            <div class="zoom-slider">
+                <span>—</span>
+                <div class="slider-track"><div class="slider-thumb"></div></div>
+                <span>+</span>
+                <span>100%</span>
+            </div>
         </footer>
     </div>
 
-    <!-- Setup Modal -->
+    <!-- Setup Modal (Styled like a Windows Dialog) -->
     <div class="modal-overlay" id="setup-modal">
         <div class="setup-box">
-            <h2>💻 초기화 설정</h2>
-            <p>월급과 근무시간을 입력하세요. (서버 전송 없음)</p>
-            
-            <div class="form-group">
-                <label>세후 월급 (만원)</label>
-                <input type="number" id="input-salary" placeholder="예: 300">
+            <div class="dialog-header">
+                <span>Data Connection Properties</span>
+                <button class="btn-close-dialog" onclick="alert('필수 입력 사항입니다.')">✕</button>
             </div>
-            
-            <div class="form-group">
-                <label>출근 시간</label>
-                <input type="time" id="input-start" value="09:00">
+            <div class="dialog-body">
+                <p style="margin-bottom: 15px; font-size: 0.85rem; color: #333;">Enter parameters to establish connection. (Data is saved locally)</p>
+                
+                <div class="form-group">
+                    <label>Base Value (Salary in 10k KRW)</label>
+                    <input type="number" id="input-salary" placeholder="예: 300">
+                </div>
+                
+                <div class="form-group">
+                    <label>Start Timestamp</label>
+                    <input type="time" id="input-start" value="09:00">
+                </div>
+                
+                <div class="form-group">
+                    <label>End Timestamp</label>
+                    <input type="time" id="input-end" value="18:00">
+                </div>
+                
+                <div class="dialog-footer">
+                    <button class="btn-dialog-ok" onclick="saveSetup()">OK</button>
+                </div>
             </div>
-            
-            <div class="form-group">
-                <label>퇴근 시간</label>
-                <input type="time" id="input-end" value="18:00">
-            </div>
-            
-            <button class="btn-start" onclick="saveSetup()">시스템 가동</button>
         </div>
     </div>
 
-    <!-- Lupin Result Modal -->
+    <!-- Lupin Result Modal (Styled like Excel Alert) -->
     <div class="modal-overlay" id="result-modal" style="display: none;">
-        <div class="result-box">
-            <h3>🎉 루팡 성공!</h3>
-            <p id="result-msg" class="result-msg">화장실 다녀오는 동안 <strong>1,200원</strong>을 벌었습니다!</p>
-            <button class="btn-start" onclick="closeResult()">확인</button>
+        <div class="setup-box" style="max-width: 350px;">
+            <div class="dialog-header">
+                <span>Microsoft Excel</span>
+                <button class="btn-close-dialog" onclick="closeResult()">✕</button>
+            </div>
+            <div class="dialog-body" style="text-align: center; padding: 20px;">
+                <div style="font-size: 2rem; margin-bottom: 15px;">ℹ️</div>
+                <p id="result-msg" style="font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px;">
+                    Process completed.<br>Value generated: <strong>1,200</strong>
+                </p>
+                <button class="btn-dialog-ok" onclick="closeResult()">OK</button>
+            </div>
         </div>
     </div>
 
