@@ -16,8 +16,9 @@
 <body>
     <div class="app-container">
         
-        <!-- Language Selector -->
-        <div class="lang-selector-container">
+        <!-- Header containing Guide Button and Language Selector -->
+        <div class="lang-selector-container" style="display: flex; justify-content: space-between; align-items: center;">
+            <button onclick="openGuide()" style="padding: 8px 12px; border-radius: 12px; border: 1px solid #e2e8f0; background: #fff; color: #1e293b; font-size: 0.9rem; font-weight: 600; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.05);" data-i18n="btnGuideTop">📖 Guide</button>
             <select id="lang-select" class="lang-select">
                 <option value="en">🇺🇸 English</option>
                 <option value="ko">🇰🇷 한국어</option>
@@ -81,38 +82,40 @@
 
     <!-- SEO & AdSense Heavy Content Section (Strictly Factual & Administrative) -->
     <details id="k-medical-guide" style="max-width: 800px; margin: 40px auto; padding: 20px; background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-        <summary style="display:block; text-align:center; cursor:pointer; color:#555; font-weight:bold; padding:15px; border:2px dashed #ddd; border-radius:12px; font-size:18px; outline:none;">
+        <summary style="display:block; text-align:center; cursor:pointer; color:#555; font-weight:bold; padding:15px; border:2px dashed #ddd; border-radius:12px; font-size:18px; outline:none;" data-i18n="guideSummary">
             📖 Read K-Medical Guide & Tips (Click to Expand)
         </summary>
         
         <div style="margin-top: 30px;">
-            <h2 style="color: #2c3e50; font-size: 24px; margin-bottom: 20px; border-bottom: 2px solid #3498db; padding-bottom: 10px;">The Ultimate Guide to Health Checkups in South Korea for Foreigners</h2>
+            <h2 style="color: #2c3e50; font-size: 24px; margin-bottom: 20px; border-bottom: 2px solid #3498db; padding-bottom: 10px;" data-i18n="guideTitle">The Ultimate Guide to Health Checkups in South Korea for Foreigners</h2>
         
-        <p style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px;">South Korea has emerged as one of the top destinations globally for medical tourism, particularly renowned for its highly efficient, technologically advanced, and comprehensive health screening programs. Whether you are an expatriate residing in Korea or a medical tourist visiting specifically for healthcare purposes, navigating the Korean medical system requires understanding certain administrative protocols. This guide provides strictly factual, administrative, and procedural information to help you prepare for a health checkup in South Korea.</p>
+            <p style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px;" data-i18n="guideIntro">South Korea has emerged as one of the top destinations globally for medical tourism, particularly renowned for its highly efficient, technologically advanced, and comprehensive health screening programs. Whether you are an expatriate residing in Korea or a medical tourist visiting specifically for healthcare purposes, navigating the Korean medical system requires understanding certain administrative protocols. This guide provides strictly factual, administrative, and procedural information to help you prepare for a health checkup in South Korea.</p>
 
-        <h3 style="color: #2980b9; font-size: 20px; margin-top: 30px; margin-bottom: 15px;">1. National Health Insurance Service (NHIS) Applicability</h3>
-        <p style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px;">For foreigners residing in South Korea, enrollment in the <strong>National Health Insurance Service (NHIS)</strong> is generally mandatory after residing in the country for six consecutive months (with some exceptions depending on visa types, such as D-2 students or E-9 workers who may have different timelines). Once enrolled, foreigners receive the exact same benefits as Korean citizens. This includes the biennial (every two years) general health screening provided free of charge by the NHIS for individuals aged 20 and older. However, comprehensive VIP screening packages that include MRI, MRA, or advanced endoscopy are usually not fully covered by NHIS and require out-of-pocket payments.</p>
+            <h3 style="color: #2980b9; font-size: 20px; margin-top: 30px; margin-bottom: 15px;" data-i18n="guideSec1Title">1. National Health Insurance Service (NHIS) Applicability</h3>
+            <p style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px;" data-i18n="guideSec1Desc">For foreigners residing in South Korea, enrollment in the <strong>National Health Insurance Service (NHIS)</strong> is generally mandatory after residing in the country for six consecutive months (with some exceptions depending on visa types, such as D-2 students or E-9 workers who may have different timelines). Once enrolled, foreigners receive the exact same benefits as Korean citizens. This includes the biennial (every two years) general health screening provided free of charge by the NHIS for individuals aged 20 and older. However, comprehensive VIP screening packages that include MRI, MRA, or advanced endoscopy are usually not fully covered by NHIS and require out-of-pocket payments.</p>
 
-        <h3 style="color: #2980b9; font-size: 20px; margin-top: 30px; margin-bottom: 15px;">2. Language Support and International Clinics</h3>
-        <p style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px;">One of the biggest concerns for international patients is the language barrier. Fortunately, South Korea's Ministry of Health and Welfare officially designates certain hospitals as accredited medical institutions for foreign patients. Most tertiary hospitals (university hospitals) and large specialized checkup centers in Seoul, Busan, and Incheon operate dedicated <strong>International Healthcare Centers (IHC)</strong>. These centers typically provide full-time interpretation services in English, Chinese, Russian, Japanese, and Mongolian. It is highly recommended to book your appointment through the IHC rather than the general domestic reception to ensure an interpreter accompanies you during the medical consultations and examinations.</p>
+            <h3 style="color: #2980b9; font-size: 20px; margin-top: 30px; margin-bottom: 15px;" data-i18n="guideSec2Title">2. Language Support and International Clinics</h3>
+            <p style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px;" data-i18n="guideSec2Desc">One of the biggest concerns for international patients is the language barrier. Fortunately, South Korea's Ministry of Health and Welfare officially designates certain hospitals as accredited medical institutions for foreign patients. Most tertiary hospitals (university hospitals) and large specialized checkup centers in Seoul, Busan, and Incheon operate dedicated <strong>International Healthcare Centers (IHC)</strong>. These centers typically provide full-time interpretation services in English, Chinese, Russian, Japanese, and Mongolian. It is highly recommended to book your appointment through the IHC rather than the general domestic reception to ensure an interpreter accompanies you during the medical consultations and examinations.</p>
 
-        <h3 style="color: #2980b9; font-size: 20px; margin-top: 30px; margin-bottom: 15px;">3. General Administrative Preparations for Screening</h3>
-        <p style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px;">While medical advice should always come directly from your designated clinic, there are universal administrative and procedural steps required by all Korean health screening centers:</p>
-        <ul style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px; padding-left: 20px;">
-            <li style="margin-bottom: 10px;"><strong>Fasting Requirement:</strong> Most comprehensive screenings require a strict fasting period of 8 to 12 hours prior to the exam. This usually means no food, water, gum, or coffee after 9:00 PM the night before a morning appointment.</li>
-            <li style="margin-bottom: 10px;"><strong>Medication Guidelines:</strong> Patients are typically advised by the hospital administrators to bring their current prescriptions. Blood pressure medications are often allowed with a small sip of water early in the morning, while diabetes medications or insulin should generally be skipped on the morning of the fasting exam. <em>(Always follow the specific written instructions provided by your hospital).</em></li>
-            <li style="margin-bottom: 10px;"><strong>Identification:</strong> Foreign residents must bring their Alien Registration Card (ARC), while medical tourists must present their Passport.</li>
-        </ul>
+            <h3 style="color: #2980b9; font-size: 20px; margin-top: 30px; margin-bottom: 15px;" data-i18n="guideSec3Title">3. General Administrative Preparations for Screening</h3>
+            <p style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px;" data-i18n="guideSec3Desc">While medical advice should always come directly from your designated clinic, there are universal administrative and procedural steps required by all Korean health screening centers: <br><br><strong>Fasting Requirement:</strong> Most comprehensive screenings require a strict fasting period of 8 to 12 hours prior to the exam. This usually means no food, water, gum, or coffee after 9:00 PM the night before a morning appointment.<br><strong>Medication Guidelines:</strong> Patients are typically advised by the hospital administrators to bring their current prescriptions. Blood pressure medications are often allowed with a small sip of water early in the morning, while diabetes medications or insulin should generally be skipped on the morning of the fasting exam.<br><strong>Identification:</strong> Foreign residents must bring their Alien Registration Card (ARC), while medical tourists must present their Passport.</p>
 
-        <h3 style="color: #2980b9; font-size: 20px; margin-top: 30px; margin-bottom: 15px;">4. Medical Tourism Visas (C-3-3 & G-1-10)</h3>
-        <p style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px;">If you are traveling to South Korea specifically for medical treatment or comprehensive health screenings that require a long stay, you may need a Medical Visa. The South Korean government issues the <strong>C-3-3 visa (Short-term Medical Tourism)</strong> for treatments lasting less than 90 days, and the <strong>G-1-10 visa (Long-term Medical Tourism)</strong> for treatments exceeding 90 days. To apply for these visas, you generally need an invitation letter from a medical institution registered with the Korean government or a certified medical tourism facilitation agency.</p>
+            <h3 style="color: #2980b9; font-size: 20px; margin-top: 30px; margin-bottom: 15px;" data-i18n="guideSec4Title">4. Medical Tourism Visas (C-3-3 & G-1-10)</h3>
+            <p style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px;" data-i18n="guideSec4Desc">If you are traveling to South Korea specifically for medical treatment or comprehensive health screenings that require a long stay, you may need a Medical Visa. The South Korean government issues the <strong>C-3-3 visa (Short-term Medical Tourism)</strong> for treatments lasting less than 90 days, and the <strong>G-1-10 visa (Long-term Medical Tourism)</strong> for treatments exceeding 90 days. To apply for these visas, you generally need an invitation letter from a medical institution registered with the Korean government or a certified medical tourism facilitation agency.</p>
 
-        <div style="background: #fff3e0; border-left: 5px solid #f39c12; padding: 15px; margin-top: 30px; border-radius: 4px;">
-            <p style="font-size: 14px; color: #d35400; margin: 0;"><strong>Important Notice:</strong> The information provided in this guide is sourced from general administrative guidelines regarding the Korean healthcare system. Prices, policies, and visa regulations are subject to change. Please contact the Korean Embassy or your chosen medical facility directly for the most up-to-date administrative information.</p>
-        </div>
+            <div style="background: #fff3e0; border-left: 5px solid #f39c12; padding: 15px; margin-top: 30px; border-radius: 4px;">
+                <p style="font-size: 14px; color: #d35400; margin: 0;" data-i18n="guideNotice"><strong>Important Notice:</strong> The information provided in this guide is sourced from general administrative guidelines regarding the Korean healthcare system. Prices, policies, and visa regulations are subject to change. Please contact the Korean Embassy or your chosen medical facility directly for the most up-to-date administrative information.</p>
+            </div>
         </div>
     </details>
 
+    <script>
+        function openGuide() {
+            const guide = document.getElementById('k-medical-guide');
+            guide.open = true;
+            guide.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
     <script src="app.js"></script>
 </body>
 </html>
