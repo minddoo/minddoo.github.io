@@ -76,14 +76,14 @@
                 <tbody>
                     <tr>
                         <td class="row-header">1</td>
-                        <td class="label-cell"><strong>Projected Revenue (KRW)</strong></td>
+                        <td class="label-cell"><strong>Projected Revenue</strong> <span style="font-size: 0.75rem; color: #999;">(오늘 번 돈)</span></td>
                         <td class="value-cell highlight"><span id="money-earned">0</span></td>
                         <td class="info-cell" id="money-rate">0/s</td>
                         <td></td>
                     </tr>
                     <tr>
                         <td class="row-header">2</td>
-                        <td class="label-cell">Estimated Time to Completion</td>
+                        <td class="label-cell">Est. Time to Completion <span style="font-size: 0.75rem; color: #999;">(퇴근까지)</span></td>
                         <td class="value-cell"><span id="time-left">00:00:00</span></td>
                         <td class="progress-cell">
                             <div class="progress-wrapper">
@@ -99,16 +99,16 @@
                     </tr>
                     <tr>
                         <td class="row-header">4</td>
-                        <td class="label-cell">Background Processing (Lupin)</td>
+                        <td class="label-cell">Background Process <span style="font-size: 0.75rem; color: #999;">(월급 루팡)</span></td>
                         <td colspan="2">
                             <div id="lupin-idle" class="lupin-actions">
-                                <button class="excel-btn" onclick="startLupin('Data Sync (Toilet)')">Run Data Sync</button>
-                                <button class="excel-btn" onclick="startLupin('Compiling (Coffee)')">Run Compiling</button>
+                                <button class="excel-btn" onclick="startLupin('Data Sync (화장실)')" title="화장실 갈 때 누르세요">Run Data Sync <span style="font-size:0.7rem; color:#888;">(화장실)</span></button>
+                                <button class="excel-btn" onclick="startLupin('Compiling (커피)')" title="커피 마실 때 누르세요">Run Compiling <span style="font-size:0.7rem; color:#888;">(커피)</span></button>
                             </div>
                             <div id="lupin-active" class="lupin-active" style="display: none;">
                                 <span id="lupin-task-name">Syncing...</span> 
                                 <span id="lupin-timer" style="font-weight: bold; margin: 0 10px;">00:00</span>
-                                <button class="excel-btn stop" onclick="stopLupin()">Abort Process</button>
+                                <button class="excel-btn stop" onclick="stopLupin()">Abort Process <span style="font-size:0.7rem;">(자리 복귀)</span></button>
                             </div>
                         </td>
                         <td></td>
