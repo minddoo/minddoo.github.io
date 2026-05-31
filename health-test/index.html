@@ -81,12 +81,10 @@
     </div>
 
     <!-- SEO & AdSense Heavy Content Section (Strictly Factual & Administrative) -->
-    <details id="k-medical-guide" style="max-width: 800px; margin: 40px auto; padding: 20px; background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-        <summary style="display:block; text-align:center; cursor:pointer; color:#555; font-weight:bold; padding:15px; border:2px dashed #ddd; border-radius:12px; font-size:18px; outline:none;" data-i18n="guideSummary">
-            📖 Read K-Medical Guide & Tips (Click to Expand)
-        </summary>
+    <!-- SEO & AdSense Heavy Content Section (Strictly Factual & Administrative) -->
+    <div id="k-medical-guide" style="display:none; max-width: 800px; width: 90%; margin: 40px auto; padding: 20px; background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); box-sizing: border-box;">
         
-        <div style="margin-top: 30px;">
+        <div style="margin-top: 10px;">
             <h2 style="color: #2c3e50; font-size: 24px; margin-bottom: 20px; border-bottom: 2px solid #3498db; padding-bottom: 10px;" data-i18n="guideTitle">The Ultimate Guide to Health Checkups in South Korea for Foreigners</h2>
         
             <p style="font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px;" data-i18n="guideIntro">South Korea has emerged as one of the top destinations globally for medical tourism, particularly renowned for its highly efficient, technologically advanced, and comprehensive health screening programs. Whether you are an expatriate residing in Korea or a medical tourist visiting specifically for healthcare purposes, navigating the Korean medical system requires understanding certain administrative protocols. This guide provides strictly factual, administrative, and procedural information to help you prepare for a health checkup in South Korea.</p>
@@ -106,14 +104,22 @@
             <div style="background: #fff3e0; border-left: 5px solid #f39c12; padding: 15px; margin-top: 30px; border-radius: 4px;">
                 <p style="font-size: 14px; color: #d35400; margin: 0;" data-i18n="guideNotice"><strong>Important Notice:</strong> The information provided in this guide is sourced from general administrative guidelines regarding the Korean healthcare system. Prices, policies, and visa regulations are subject to change. Please contact the Korean Embassy or your chosen medical facility directly for the most up-to-date administrative information.</p>
             </div>
+            
+            <button onclick="closeGuide()" style="display:block; width:100%; margin-top:30px; padding:15px; background:#34495e; color:#fff; border:none; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer;" data-i18n="btnCloseGuide">Close Guide</button>
         </div>
-    </details>
+    </div>
 
     <script>
         function openGuide() {
             const guide = document.getElementById('k-medical-guide');
-            guide.open = true;
+            guide.style.display = 'block';
             guide.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function closeGuide() {
+            const guide = document.getElementById('k-medical-guide');
+            guide.style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
     <script src="app.js"></script>

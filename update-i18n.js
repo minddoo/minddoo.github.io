@@ -102,15 +102,15 @@ const newTranslations = {
         guideSec3Desc: "<strong>Голодание:</strong> 8-12 часов до обследования.<br><strong>Медикаменты:</strong> Таблетки от давления можно запить глотком воды, лекарства от диабета следует пропустить.<br><strong>Документы:</strong> ARC или Паспорт.",
         guideSec4Title: "4. Медицинские визы (C-3-3 и G-1-10)",
         guideSec4Desc: "Корея выдает визу <strong>C-3-3</strong> (до 90 дней) и <strong>G-1-10</strong> (более 90 дней) для медицинского туризма.",
-        guideNotice: "<strong>Важно:</strong> Это руководство носит информационный характер. Правила могут меняться. Проверяйте актуальную информацию в посольстве или клинике.",`
+        guideNotice: "<strong>Важно:</strong> Это руководство носит информационный характер. Правила могут меняться. Проверяйте актуальную информацию в посольстве или клинике."
 };
 
 for (const lang in newTranslations) {
-  const marker = \`\${lang}: {\`;
+  const marker = `${lang}: {`;
   const insertIndex = content.indexOf(marker);
   if (insertIndex !== -1) {
     const afterMarker = insertIndex + marker.length;
-    content = content.slice(0, afterMarker) + '\\n' + newTranslations[lang] + content.slice(afterMarker);
+    content = content.slice(0, afterMarker) + '\n' + newTranslations[lang] + content.slice(afterMarker);
   }
 }
 
