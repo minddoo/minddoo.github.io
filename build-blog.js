@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const vocabDB = require('./data.js');
 
 const langs = [
@@ -29,7 +29,7 @@ langs.forEach(langInfo => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>필수 ${langInfo.title} 단어 총정리 (블로그) - ${langInfo.subtitle}</title>
     <meta name="description" content="필수 고급 ${langInfo.title} 단어의 뜻과 예문, 완벽한 활용 팁을 정리한 사전 해설 블로그입니다. 7일 챌린지와 함께 단어의 쓰임새를 마스터하세요.">
-    <meta name="keywords" content="${langInfo.title} 단어 사전, 영단어 뜻, 필수 해설, 영어 단어 블로그">
+    <meta name="keywords" content="${langInfo.title} 단어 사전, 외국어 단어 뜻, 필수 해설, 영어 단어 블로그">
     <meta property="og:title" content="필수 ${langInfo.title} 단어 총정리 사전">
     <meta property="og:description" content="필수 ${langInfo.title} 단어의 뜻과 예문, 완벽한 활용 팁을 정리한 해설 블로그입니다.">
     <meta property="og:image" content="https://minddoo.github.io/og-image.png">

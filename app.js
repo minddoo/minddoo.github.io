@@ -1,4 +1,4 @@
-// 상태
+﻿// 상태
 let currentLang = 'en';
 let completedDays = { en: [], ja: [], zh: [] };
 let currentDay = null;
