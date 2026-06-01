@@ -306,3 +306,55 @@ footer { padding: 20px; color: #b0a5a8; font-size: 14px; margin-top: auto; }
     border-color: var(--pastel-blue-shadow);
     box-shadow: 0 3px 0 var(--pastel-blue-shadow);
 }
+
+/* Certificate Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center; justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+.certificate-content {
+    background: #fff;
+    width: 100%; max-width: 400px;
+    border-radius: 16px;
+    padding: 15px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.cert-border {
+    border: 4px solid var(--pastel-green);
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    background: #fdfbf7;
+    position: relative;
+    overflow: hidden;
+}
+.cert-close {
+    position: absolute; top: 20px; right: 25px;
+    background: none; border: none; font-size: 28px; color: #888; cursor: pointer; z-index: 10;
+}
+.cert-header { font-family: 'Baloo 2', cursive; color: var(--pastel-red); font-size: 18px; font-weight: 800; letter-spacing: 2px; margin-bottom: 10px; }
+.cert-title { font-size: 26px; font-weight: bold; color: var(--text-dark); margin-bottom: 20px; word-break: keep-all; }
+.cert-body { font-size: 16px; color: #666; line-height: 1.6; margin-bottom: 30px; word-break: keep-all; }
+.cert-stamp { position: absolute; bottom: 10px; right: 10px; opacity: 0; transform: scale(3) rotate(-20deg); animation: stampHit 0.6s 0.5s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.stamp-img { width: 90px; height: 90px; opacity: 0.9; }
+.cert-footer { margin-top: 20px; position: relative; z-index: 5; }
+.btn-share { background: var(--pastel-red); color: #fff; border: none; padding: 12px 20px; border-radius: 20px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 0 var(--pastel-red-shadow); transition: all 0.2s; font-family: 'Jua', sans-serif; }
+.btn-share:active { transform: translateY(4px); box-shadow: 0 0 0 transparent; }
+
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+@keyframes stampHit {
+    0% { transform: scale(3) rotate(-20deg); opacity: 0; }
+    50% { transform: scale(0.9) rotate(-10deg); opacity: 1; }
+    100% { transform: scale(1) rotate(-15deg); opacity: 1; }
+}

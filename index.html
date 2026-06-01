@@ -168,6 +168,27 @@
         <p>&copy; 2026 7-Day Vocab Challenge. Keep studying!</p>
     </footer>
 
+    <!-- Certificate Modal -->
+    <div id="certificate-modal" class="modal-overlay">
+        <div class="certificate-content">
+            <button class="cert-close" onclick="closeCertificate()">&times;</button>
+            <div class="cert-border">
+                <div class="cert-header">CERTIFICATE of COMPLETION</div>
+                <div class="cert-title">영단어 7일 챌린지 마스터</div>
+                <div class="cert-body" id="cert-message">
+                    위 사람은 7일간의 필수 영단어 챌린지를<br>
+                    성공적으로 완수하였기에 이 증서를 수여합니다.
+                </div>
+                <div class="cert-stamp">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1151/1151322.png" alt="Stamp" class="stamp-img">
+                </div>
+                <div class="cert-footer">
+                    <button class="btn-share" onclick="shareCertificate()">자랑하기 (URL 복사)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="data.js"></script>
     <script src="app.js"></script>
 </body>

@@ -134,14 +134,28 @@ function renderDayGrid() {
     
     const badgeId = 'season2-badge';
     const existingBadge = document.getElementById(badgeId);
+    const existingCertBtn = document.getElementById('btn-view-cert');
+    
     if (isSeason2Unlocked && !existingBadge) {
         const badge = document.createElement('div');
         badge.id = badgeId;
         badge.className = 'season2-unlock-badge';
         badge.innerHTML = '🎉 축하합니다! 시즌 2 잠금 해제! 🎉';
         ui.dayGrid.parentNode.insertBefore(badge, ui.dayGrid);
-    } else if (!isSeason2Unlocked && existingBadge) {
-        existingBadge.remove();
+        
+        const certBtn = document.createElement('button');
+        certBtn.id = 'btn-view-cert';
+        certBtn.className = 'btn-cute btn-pink';
+        certBtn.style.marginTop = '15px';
+        certBtn.style.marginBottom = '20px';
+        certBtn.style.width = '100%';
+        certBtn.innerHTML = '🏅 내 7일 마스터 수료증 보기';
+        certBtn.onclick = openCertificate;
+        ui.dayGrid.parentNode.insertBefore(certBtn, ui.dayGrid);
+        
+    } else if (!isSeason2Unlocked) {
+        if (existingBadge) existingBadge.remove();
+        if (existingCertBtn) existingCertBtn.remove();
     }
 }
 
@@ -317,6 +331,9 @@ function showResult() {
                 const isSeason2Unlocked = [1,2,3,4,5,6,7].every(d => progress.includes(d));
                 if(isSeason2Unlocked && currentDay <= 7) {
                     ui.resultMessage.innerHTML = "최고예요! 완벽하게 외우셨네요! 🌟<br><br><span style='color: var(--pastel-purple); font-weight: bold; font-size: 20px;'>🎉 짝짝짝! 심화 [시즌 2]가 잠금 해제되었습니다! 메인에서 확인하세요! 🎉</span>";
+                    setTimeout(() => {
+                        openCertificate();
+                    }, 1000);
                 }
             }
         } else {
@@ -338,3 +355,19 @@ function showResult() {
 
 // 앱 시작
 init();
+
+// Certificate Modal Logic
+function openCertificate() {
+    document.getElementById('certificate-modal').classList.add('active');
+}
+function closeCertificate() {
+    document.getElementById('certificate-modal').classList.remove('active');
+}
+function shareCertificate() {
+    const text = '🎉 영단어 7일 챌린지를 마스터했습니다! 저와 함께 영어 공부 하실래요?\nhttps://minddoo.github.io/';
+    navigator.clipboard.writeText(text).then(() => {
+        alert('인증서 URL이 클립보드에 복사되었습니다! 친구들에게 자랑해보세요.');
+    }).catch(() => {
+        alert('복사에 실패했습니다. 직접 주소창을 복사해주세요!');
+    });
+}
