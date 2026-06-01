@@ -363,11 +363,3 @@ function openCertificate() {
 function closeCertificate() {
     document.getElementById('certificate-modal').classList.remove('active');
 }
-function shareCertificate() {
-    const text = '🎉 영단어 7일 챌린지를 마스터했습니다! 저와 함께 영어 공부 하실래요?\nhttps://minddoo.github.io/';
-    navigator.clipboard.writeText(text).then(() => {
-        alert('인증서 URL이 클립보드에 복사되었습니다! 친구들에게 자랑해보세요.');
-    }).catch(() => {
-        alert('복사에 실패했습니다. 직접 주소창을 복사해주세요!');
-    });
-}
