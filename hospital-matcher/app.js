@@ -153,6 +153,114 @@ const infoData = [
         }
     },
     {
+        deptKorean: "안과",
+        deptNative: {
+            en: "Ophthalmology",
+            ja: "眼科",
+            zh: "眼科",
+            th: "จักษุวิทยา (แผนกตา)",
+            ru: "Офтальмология",
+            vi: "Khoa Mắt"
+        },
+        symptoms: {
+            en: "Eye pain, Red eye, Pink eye, Blurry vision, Dry eyes",
+            ja: "目の痛み、充血、結膜炎、視界のぼやけ、ドライアイ",
+            zh: "眼痛、红眼、结膜炎、视力模糊、干眼症",
+            th: "ปวดตา, ตาแดง, เยื่อบุตาอักเสบ, ตาพร่ามัว, ตาแห้ง",
+            ru: "Боль в глазах, Покраснение глаз, Конъюнктивит, Нечеткое зрение, Сухость глаз",
+            vi: "Đau mắt, Đỏ mắt, Đau mắt đỏ, Mờ mắt, Khô mắt"
+        },
+        desc: {
+            en: "Ophthalmology (An-gwa) treats all eye-related issues. If you have an eye infection like pink eye, or need an eye exam for glasses, visit here.",
+            ja: "眼科(アングァ)は目に関するすべての問題に対応します。結膜炎などの感染症や、メガネのための視力検査が必要な場合はここを受診してください。",
+            zh: "眼科 (An-gwa) 治疗所有与眼睛相关的问题。如果您有红眼病等眼部感染，或者需要验光配镜，请来这里。",
+            th: "แผนกตา (อันกวา) รักษาปัญหาเกี่ยวกับตาทั้งหมด หากคุณติดเชื้อที่ตาเช่นตาแดง หรือต้องการตรวจสายตาเพื่อตัดแว่น ให้มาที่นี่",
+            ru: "Офтальмология (Ан-гва) лечит все заболевания глаз. Если у вас глазная инфекция (конъюнктивит) или вам нужно проверить зрение для очков, обращайтесь сюда.",
+            vi: "Khoa Mắt (An-gwa) điều trị tất cả các vấn đề liên quan đến mắt. Nếu bạn bị nhiễm trùng mắt như đau mắt đỏ hoặc cần khám mắt để đo kính, hãy đến đây."
+        }
+    },
+    {
+        deptKorean: "치과",
+        deptNative: {
+            en: "Dentistry",
+            ja: "歯科",
+            zh: "牙科",
+            th: "ทันตกรรม (คลินิกทำฟัน)",
+            ru: "Стоматология",
+            vi: "Nha khoa"
+        },
+        symptoms: {
+            en: "Toothache, Bleeding gums, Cavities, Scaling (Teeth cleaning)",
+            ja: "歯痛、歯茎の出血、虫歯、スケーリング（歯石除去）",
+            zh: "牙痛、牙龈出血、蛀牙、洗牙",
+            th: "ปวดฟัน, เหงือกเลือดออก, ฟันผุ, ขูดหินปูน",
+            ru: "Зубная боль, Кровоточивость десен, Кариес, Чистка зубов (Скейлинг)",
+            vi: "Đau răng, Chảy máu chân răng, Sâu răng, Lấy cao răng"
+        },
+        desc: {
+            en: "Dentistry (Chi-gwa) treats teeth and gums. Note that annual scaling (teeth cleaning) is highly subsidized by Korean National Health Insurance and is very affordable.",
+            ja: "歯科(チグァ)は歯と歯茎を治療します。年に1回のスケーリング(歯石除去)は韓国の国民健康保険が適用され、非常に安く受けられます。",
+            zh: "牙科 (Chi-gwa) 治疗牙齿和牙龈。请注意，每年一次的洗牙受到韩国国民健康保险的高额补贴，价格非常便宜。",
+            th: "คลินิกทำฟัน (ชิกวา) รักษาฟันและเหงือก โปรดทราบว่าการขูดหินปูนประจำปีได้รับการอุดหนุนจากประกันสุขภาพของเกาหลีทำให้มีราคาถูกมาก",
+            ru: "Стоматология (Чи-гва) лечит зубы и десны. Обратите внимание, что ежегодная чистка зубов субсидируется корейской страховкой и стоит очень дешево.",
+            vi: "Nha khoa (Chi-gwa) điều trị răng và nướu. Lưu ý rằng việc lấy cao răng hàng năm được bảo hiểm y tế Hàn Quốc trợ giá và rất rẻ."
+        }
+    },
+    {
+        deptKorean: "산부인과",
+        deptNative: {
+            en: "OB/GYN (Women's Health)",
+            ja: "産婦人科",
+            zh: "妇产科",
+            th: "สูตินรีเวช (สุขภาพสตรี)",
+            ru: "Гинекология",
+            vi: "Sản phụ khoa"
+        },
+        symptoms: {
+            en: "Irregular periods, Pregnancy, Vaginitis, Women's checkup",
+            ja: "生理不順、妊娠、膣炎、女性の健康診断",
+            zh: "月经不调、怀孕、阴道炎、女性健康检查",
+            th: "ประจำเดือนมาไม่ปกติ, การตั้งครรภ์, ช่องคลอดอักเสบ, การตรวจสุขภาพสตรี",
+            ru: "Нерегулярные месячные, Беременность, Вагинит, Женский осмотр",
+            vi: "Kinh nguyệt không đều, Mang thai, Viêm âm đạo, Khám phụ khoa"
+        },
+        desc: {
+            en: "OB/GYN (San-bu-in-gwa) is for women's health. In Korea, unmarried women also visit freely for regular checkups or minor issues like vaginitis.",
+            ja: "産婦人科(サンブイングァ)は女性の健康のための科です。韓国では未婚女性も定期検診や膣炎などの軽い症状で気軽に受診します。",
+            zh: "妇产科 (San-bu-in-gwa) 负责女性健康。在韩国，未婚女性也经常来做定期检查或治疗阴道炎等小问题。",
+            th: "สูตินรีเวช (ซานบูอินกวา) สำหรับสุขภาพสตรี ในเกาหลีผู้หญิงที่ยังไม่แต่งงานก็สามารถมาตรวจสุขภาพประจำปีหรือรักษาอาการทั่วไปได้ตามปกติ",
+            ru: "Гинекология (Сан-бу-ин-гва) заботится о женском здоровье. В Корее незамужние женщины также свободно посещают ее для регулярных осмотров или мелких проблем.",
+            vi: "Sản phụ khoa (San-bu-in-gwa) dành cho sức khỏe phụ nữ. Ở Hàn Quốc, phụ nữ chưa kết hôn cũng tự do đến khám sức khỏe định kỳ hoặc các vấn đề nhỏ."
+        }
+    },
+    {
+        deptKorean: "비뇨기과",
+        deptNative: {
+            en: "Urology (Men's Health)",
+            ja: "泌尿器科",
+            zh: "泌尿科",
+            th: "ระบบทางเดินปัสสาวะ (สุขภาพเพศชาย)",
+            ru: "Урология",
+            vi: "Tiết niệu"
+        },
+        symptoms: {
+            en: "Painful urination, Kidney stones, Prostate issues",
+            ja: "排尿痛、尿路結石、前立腺の問題",
+            zh: "排尿疼痛、肾结石、前列腺问题",
+            th: "ปัสสาวะเจ็บ, นิ่วในไต, ปัญหาต่อมลูกหมาก",
+            ru: "Боль при мочеиспускании, Камни в почках, Проблемы с простатой",
+            vi: "Tiểu buốt, Sỏi thận, Vấn đề tuyến tiền liệt"
+        },
+        desc: {
+            en: "Urology (Bi-nyo-gi-gwa) deals with the urinary tract and men's health. Don't hesitate to visit if you have pain during urination.",
+            ja: "泌尿器科(ピニョギグァ)は尿路と男性の健康を扱います。排尿時に痛みがある場合はためらわずに受診してください。",
+            zh: "泌尿科 (Bi-nyo-gi-gwa) 治疗泌尿道和男性健康问题。如果您排尿时感到疼痛，请不要犹豫来这里就诊。",
+            th: "แผนกระบบทางเดินปัสสาวะ (บีนโยกิกวา) ดูแลทางเดินปัสสาวะและสุขภาพเพศชาย อย่าลังเลที่จะมาตรวจหากคุณมีอาการปวดขณะปัสสาวะ",
+            ru: "Урология (Би-нё-ги-гва) занимается мочевыводящими путями и мужским здоровьем. Не стесняйтесь обращаться при болях во время мочеиспускания.",
+            vi: "Tiết niệu (Bi-nyo-gi-gwa) giải quyết các vấn đề về đường tiết niệu và sức khỏe nam giới. Đừng ngần ngại đến khám nếu bạn bị đau khi đi tiểu."
+        }
+    },
+    {
         deptKorean: "신경과",
         deptNative: {
             en: "Neurology",
@@ -177,6 +285,33 @@ const infoData = [
             th: "แผนกประสาทวิทยา (ชินกยองกวา) มุ่งเน้นไปที่สมองและระบบประสาท หากคุณมีอาการปวดหัวรุนแรงผิดปกติหรือเวียนหัวเป็นเวลานาน ให้มาที่นี่แทนแผนกอายุรกรรม",
             ru: "Неврология (Син-гёнг-гва) специализируется на мозге и нервной системе. Если у вас необычно сильная головная боль или длительное головокружение, обращайтесь сюда, а не в терапевтическое отделение.",
             vi: "Khoa Thần kinh (Sin-gyeong-gwa) tập trung vào não và hệ thần kinh. Nếu bạn bị đau đầu dữ dội bất thường hoặc chóng mặt kéo dài, hãy đến đây thay vì Nội khoa."
+        }
+    },
+    {
+        deptKorean: "정신건강의학과",
+        deptNative: {
+            en: "Psychiatry",
+            ja: "精神健康医学科",
+            zh: "精神健康医学科 (精神科)",
+            th: "จิตเวชศาสตร์",
+            ru: "Психиатрия",
+            vi: "Tâm thần học"
+        },
+        symptoms: {
+            en: "Severe insomnia, Depression, Anxiety, Panic attacks",
+            ja: "ひどい不眠症、うつ病、不安、パニック障害",
+            zh: "严重失眠、抑郁、焦虑、恐慌发作",
+            th: "นอนไม่หลับรุนแรง, ซึมเศร้า, วิตกกังวล, อาการแพนิค",
+            ru: "Сильная бессонница, Депрессия, Тревожность, Панические атаки",
+            vi: "Mất ngủ nặng, Trầm cảm, Lo âu, Các cơn hoảng loạn"
+        },
+        desc: {
+            en: "Psychiatry (Jeong-sin-geon-gang-ui-hak-gwa) treats mental health. Getting a prescription for sleep medication or anxiety pills in Korea requires a visit here.",
+            ja: "精神健康医学科(チョンシンコンガンウィハックァ)は心の健康を治療します。韓国で睡眠薬や抗不安薬の処方を受けるにはここを受診する必要があります。",
+            zh: "精神健康医学科 (Jeong-sin-geon-gang-ui-hak-gwa) 治疗心理健康。在韩国，获取安眠药或抗焦虑药的处方必须来这里。",
+            th: "แผนกจิตเวช (จองชินกอนกังอึยฮักกวา) รักษาปัญหาสุขภาพจิต การจะรับยาแก้โรคนอนไม่หลับหรือยาลดความวิตกกังวลในเกาหลีจำเป็นต้องมาที่นี่",
+            ru: "Психиатрия (Джонг-син-гон-ганг-уй-хак-гва) лечит психическое здоровье. Для получения рецепта на снотворное или таблетки от тревожности в Корее нужно обратиться сюда.",
+            vi: "Khoa Tâm thần (Jeong-sin-geon-gang-ui-hak-gwa) điều trị sức khỏe tâm thần. Để được kê đơn thuốc ngủ hoặc thuốc chống lo âu ở Hàn Quốc, bạn phải đến đây."
         }
     }
 ];
