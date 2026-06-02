@@ -46,7 +46,14 @@ const dictionary = {
 const infoData = [
     {
         deptKorean: "내과",
-        deptEnglish: "Internal Medicine",
+        deptNative: {
+            en: "Internal Medicine",
+            ja: "内科",
+            zh: "内科",
+            th: "แผนกอายุรกรรม",
+            ru: "Терапевтическое отделение",
+            vi: "Nội khoa"
+        },
         symptoms: {
             en: "Fever, General Cold, Stomachache, Indigestion, Diarrhea, Heartburn",
             ja: "熱、風邪、腹痛、消化不良、下痢、胸焼け",
@@ -66,7 +73,14 @@ const infoData = [
     },
     {
         deptKorean: "이비인후과",
-        deptEnglish: "ENT (Ear, Nose & Throat)",
+        deptNative: {
+            en: "ENT (Ear, Nose & Throat)",
+            ja: "耳鼻咽喉科",
+            zh: "耳鼻喉科",
+            th: "คลินิก หู คอ จมูก",
+            ru: "ЛОР-отделение",
+            vi: "Khoa Tai Mũi Họng"
+        },
         symptoms: {
             en: "Sore throat, Runny nose, Earache, Severe cough, Tonsillitis",
             ja: "喉の痛み、鼻水、耳の痛み、ひどい咳、扁桃炎",
@@ -86,7 +100,14 @@ const infoData = [
     },
     {
         deptKorean: "정형외과",
-        deptEnglish: "Orthopedics",
+        deptNative: {
+            en: "Orthopedics",
+            ja: "整形外科",
+            zh: "骨科",
+            th: "แผนกกระดูกและข้อ",
+            ru: "Ортопедия",
+            vi: "Khoa Chấn thương chỉnh hình"
+        },
         symptoms: {
             en: "Sprained ankle, Back pain, Joint pain, Muscle cramps, Fractures",
             ja: "足首の捻挫、腰痛、関節痛、筋肉の痙攣、骨折",
@@ -106,7 +127,14 @@ const infoData = [
     },
     {
         deptKorean: "피부과",
-        deptEnglish: "Dermatology",
+        deptNative: {
+            en: "Dermatology",
+            ja: "皮膚科",
+            zh: "皮肤科",
+            th: "แผนกผิวหนัง",
+            ru: "Дерматология",
+            vi: "Khoa Da liễu"
+        },
         symptoms: {
             en: "Skin rash, Hives, Severe acne, Itching, Minor burns",
             ja: "発疹、じんましん、ひどいニキビ、かゆみ、軽いやけど",
@@ -126,7 +154,14 @@ const infoData = [
     },
     {
         deptKorean: "신경과",
-        deptEnglish: "Neurology",
+        deptNative: {
+            en: "Neurology",
+            ja: "神経科",
+            zh: "神经科",
+            th: "แผนกประสาทวิทยา",
+            ru: "Неврология",
+            vi: "Khoa Thần kinh"
+        },
         symptoms: {
             en: "Severe Migraine, Persistent Dizziness, Numbness, Seizures",
             ja: "ひどい偏頭痛、続くめまい、しびれ、けいれん",
@@ -194,8 +229,8 @@ function renderApp() {
             
             <div class="dept-box">
                 <div class="dept-box-label">${dict.visitLabel}</div>
-                <div class="dept-name">${item.deptKorean}</div>
-                <div class="dept-name" style="font-size: 18px; margin-top: 5px;">(${item.deptEnglish})</div>
+                <div class="dept-name">${item.deptNative[currentLang]}</div>
+                <div class="dept-name" style="font-size: 18px; margin-top: 5px;">(${item.deptKorean})</div>
             </div>
             
             <div class="dept-desc">${item.desc[currentLang]}</div>
