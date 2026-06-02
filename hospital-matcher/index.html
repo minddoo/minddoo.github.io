@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hospital Matcher - Which Doctor in Korea?</title>
+    <title>Korean Hospital Guide</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <!-- AdSense Script -->
@@ -11,8 +11,8 @@
 </head>
 <body>
     <header>
-        <h1>🏥 Doctor Matcher</h1>
-        <p>Find the right hospital department</p>
+        <h1 id="page-title">🏥 Korean Hospital Guide</h1>
+        <p id="page-subtitle">Where to go when you are sick in Korea</p>
         
         <div class="lang-selector">
             <button class="lang-btn active" onclick="changeLanguage('en', event)">English</button>
@@ -27,27 +27,14 @@
     <div class="ad-container">AdSense Banner</div>
 
     <main>
-        <div class="category-tabs" id="category-tabs">
-            <!-- Categories rendered here -->
+        <div class="info-intro" id="info-intro">
+            In Korea, you usually don't visit a General Practitioner. You go directly to a specialist clinic based on your symptoms. Find your symptoms below to know which clinic to visit.
         </div>
 
-        <div class="phrase-list" id="phrase-list">
-            <!-- Phrases rendered here -->
+        <div class="info-list" id="info-list">
+            <!-- Information blocks rendered here -->
         </div>
     </main>
-
-    <!-- Modal for showing Korean Department -->
-    <div class="korean-modal" id="korean-modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">✕</button>
-            <div class="modal-label" id="modal-label">Show this to Taxi/Reception:</div>
-            
-            <div class="dept-text" id="dept-text">내과</div>
-            <div class="korean-phrase" id="korean-phrase">내과로 가주세요.</div>
-            
-            <div class="original-text" id="original-text">Internal Medicine</div>
-        </div>
-    </div>
 
     <footer>
         <a href="../index.html">← Back to Main</a>
