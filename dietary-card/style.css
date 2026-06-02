@@ -1,0 +1,233 @@
+:root {
+    --bg-color: #fff9f5;
+    --primary: #f26a4f;
+    --primary-light: #fae1dd;
+    --text-dark: #333;
+    --text-light: #777;
+    --warning: #d90429;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Nunito', 'Noto Sans KR', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    line-height: 1.5;
+    word-break: keep-all;
+}
+
+header {
+    background: #fff;
+    padding: 20px 15px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-bottom: 3px solid var(--primary);
+}
+
+h1 {
+    font-size: 26px;
+    color: var(--primary);
+    font-weight: 900;
+}
+
+header p {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+.lang-selector {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.lang-btn {
+    padding: 8px 14px;
+    border: 2px solid #ddd;
+    background: #fff;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.lang-btn.active {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
+.ad-container {
+    width: 100%;
+    height: 100px;
+    background: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-weight: bold;
+    border-bottom: 1px dashed #ccc;
+}
+
+main {
+    padding: 20px 15px;
+    padding-bottom: 80px;
+}
+
+.category-tabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+.category-tabs::-webkit-scrollbar { 
+    display: none; 
+}
+
+.cat-btn {
+    white-space: nowrap;
+    padding: 10px 15px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    font-weight: bold;
+    color: var(--text-dark);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    cursor: pointer;
+}
+
+.cat-btn.active {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.phrase-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.phrase-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-left: 5px solid var(--primary);
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+.phrase-card:active {
+    transform: scale(0.98);
+}
+
+.phrase-text {
+    font-size: 17px;
+    font-weight: bold;
+    word-break: keep-all;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+.phrase-hint {
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+/* Modal */
+.korean-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.korean-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 24px;
+    padding: 30px 20px 40px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: slideUp 0.3s ease-out;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px; right: 20px;
+    background: none; border: none;
+    font-size: 30px; font-weight: bold; color: #ccc;
+    cursor: pointer;
+}
+
+.modal-label {
+    font-size: 14px;
+    color: var(--warning);
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.warning-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.korean-text {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--warning);
+    line-height: 1.4;
+    word-break: keep-all;
+    margin-bottom: 30px;
+}
+
+.original-text {
+    font-size: 16px;
+    color: #666;
+    background: #fff9f5;
+    padding: 15px;
+    border-radius: 12px;
+    word-break: keep-all;
+    border: 1px solid #fae1dd;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+}
+footer a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
