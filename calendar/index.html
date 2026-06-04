@@ -119,9 +119,13 @@
 
             <div class="modal-section new-event-section">
                 <h3>새 일정 추가</h3>
-                <input type="text" id="new-event-title" placeholder="일정 내용을 입력하세요" class="input-modern">
-                <button class="btn-primary" onclick="addEvent()">추가</button>
+                <div style="display:flex; gap:10px;">
+                    <input type="text" id="new-event-title" placeholder="일정 내용을 입력하세요" class="input-modern" style="flex:1;">
+                    <button class="btn-primary" onclick="addEvent()">추가</button>
+                </div>
             </div>
+
+            <button class="btn-primary w-100 mt-10" style="font-size:1.2rem; padding:15px; background:var(--primary-hover);" onclick="closeDayModal()">완료</button>
         </div>
     </div>
 
@@ -147,6 +151,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=4"></script>
+    <script src="app.js?v=6"></script>
 </body>
 </html>
