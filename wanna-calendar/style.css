@@ -357,9 +357,9 @@ body {
 /* Gacha Animation */
 .gacha-animation-box {
     margin: 20px auto;
-    width: 200px;
-    height: 120px;
-    background: repeating-linear-gradient(45deg, var(--pop-cyan), var(--pop-cyan) 15px, var(--pop-yellow) 15px, var(--pop-yellow) 30px);
+    width: 240px;
+    height: 140px;
+    background: repeating-linear-gradient(-45deg, var(--pop-cyan), var(--pop-cyan) 20px, var(--pop-yellow) 20px, var(--pop-yellow) 40px);
     border: 4px solid var(--text-main);
     border-radius: 20px;
     box-shadow: inset 0 -10px 0 rgba(0,0,0,0.1), 5px 5px 0 var(--text-main);
@@ -379,6 +379,12 @@ body {
     box-shadow: 3px 3px 0 var(--text-main);
     z-index: 2;
     font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    min-height: 100px;
 }
 
 /* Lunar Convertor */

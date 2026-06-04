@@ -329,10 +329,12 @@ function convertLunar() {
 // === Gacha ===
 function playGacha() {
     document.getElementById('gacha-modal').classList.add('active');
-    document.getElementById('gacha-item').innerText = "🎁";
-    document.getElementById('gacha-item').style.color = "var(--text-main)";
+    document.getElementById('gacha-item').innerHTML = '<div style="font-size: 3rem;">🎁</div>';
     document.getElementById('gacha-result-text').innerText = "버튼을 눌러 뽑기를 시작하세요!";
-    document.getElementById('gacha-action-btn').style.display = 'block';
+    const btn = document.getElementById('gacha-action-btn');
+    btn.style.display = 'block';
+    btn.innerText = "뽑기 시작!";
+    btn.onclick = startGachaRoll;
 }
 
 function closeGachaModal() {
@@ -350,16 +352,22 @@ function startGachaRoll() {
     const resultText = document.getElementById('gacha-result-text');
     
     btn.style.display = 'none';
-    resultText.innerText = "으랏가챠 돌아가는 중... 🌀";
+    resultText.innerText = "으랏가챠 캡슐 뽑는 중... 🌀";
+    
+    const capsules = ['🔴', '🔵', '🟡', '🟢', '🟣', '🔮'];
     
     const interval = setInterval(() => {
-        itemEl.innerText = rewards[count % rewards.length];
+        itemEl.innerHTML = `<div style="font-size: 4rem;">${capsules[count % capsules.length]}</div>`;
         count++;
         if(count > 25) {
             clearInterval(interval);
             const finalReward = rewards[Math.floor(Math.random() * rewards.length)];
-            itemEl.innerHTML = `<span style="color:var(--pop-pink);">🎉 ${finalReward} 🎉</span>`;
+            itemEl.innerHTML = `<div style="font-size: 2.5rem; transform: scale(1.1);">🎉</div><div style="color:var(--pop-pink); font-size: 1.1rem; margin-top:5px; text-align:center;">${finalReward}</div>`;
             resultText.innerText = "당첨을 축하합니다!! 꺄아아앙 💖";
+            
+            btn.innerText = "확인";
+            btn.onclick = closeGachaModal;
+            btn.style.display = 'block';
         }
     }, 100);
 }
