@@ -328,3 +328,106 @@ function calcPercent2() {
     if(pct === 0) text = `변동 없음`;
     document.getElementById('pct2-result').innerText = `결과: ${text}`;
 }
+
+// 11. 부동산 평수 변환
+function convertPyung(source) {
+    const m2Input = document.getElementById('pyung-m2');
+    const pyInput = document.getElementById('pyung-py');
+    
+    if (source === 'm2') {
+        const m2 = parseFloat(m2Input.value);
+        if (!isNaN(m2)) {
+            pyInput.value = (m2 / 3.305785).toFixed(2);
+        } else {
+            pyInput.value = '';
+        }
+    } else {
+        const py = parseFloat(pyInput.value);
+        if (!isNaN(py)) {
+            m2Input.value = (py * 3.305785).toFixed(2);
+        } else {
+            m2Input.value = '';
+        }
+    }
+}
+
+// 12. 무게 & 한 근 변환
+function convertWeight(source) {
+    const gIn = document.getElementById('weight-g');
+    const kgIn = document.getElementById('weight-kg');
+    const lbIn = document.getElementById('weight-lb');
+    const meatIn = document.getElementById('weight-meat');
+    const vegIn = document.getElementById('weight-veg');
+    
+    let g = 0;
+    let val = 0;
+    
+    if (source === 'g') val = parseFloat(gIn.value);
+    else if (source === 'kg') val = parseFloat(kgIn.value);
+    else if (source === 'lb') val = parseFloat(lbIn.value);
+    else if (source === 'meat') val = parseFloat(meatIn.value);
+    else if (source === 'veg') val = parseFloat(vegIn.value);
+    
+    if (isNaN(val)) {
+        gIn.value = ''; kgIn.value = ''; lbIn.value = ''; meatIn.value = ''; vegIn.value = '';
+        return;
+    }
+    
+    // convert everything to grams first
+    if (source === 'g') g = val;
+    else if (source === 'kg') g = val * 1000;
+    else if (source === 'lb') g = val * 453.592;
+    else if (source === 'meat') g = val * 600;
+    else if (source === 'veg') g = val * 400;
+    
+    // update all fields except the source
+    if (source !== 'g') gIn.value = g.toFixed(2).replace(/\.00$/, '');
+    if (source !== 'kg') kgIn.value = (g / 1000).toFixed(4).replace(/0+$/, '').replace(/\.$/, '');
+    if (source !== 'lb') lbIn.value = (g / 453.592).toFixed(4).replace(/0+$/, '').replace(/\.$/, '');
+    if (source !== 'meat') meatIn.value = (g / 600).toFixed(2).replace(/\.00$/, '');
+    if (source !== 'veg') vegIn.value = (g / 400).toFixed(2).replace(/\.00$/, '');
+}
+
+// 13. 온도 및 길이 변환
+function convertTemp(source) {
+    const cIn = document.getElementById('temp-c');
+    const fIn = document.getElementById('temp-f');
+    if (source === 'c') {
+        const c = parseFloat(cIn.value);
+        if (!isNaN(c)) fIn.value = ((c * 9/5) + 32).toFixed(2).replace(/\.00$/, '');
+        else fIn.value = '';
+    } else {
+        const f = parseFloat(fIn.value);
+        if (!isNaN(f)) cIn.value = ((f - 32) * 5/9).toFixed(2).replace(/\.00$/, '');
+        else cIn.value = '';
+    }
+}
+
+function convertLength(source) {
+    const cmIn = document.getElementById('len-cm');
+    const inIn = document.getElementById('len-in');
+    const mIn = document.getElementById('len-m');
+    const ftIn = document.getElementById('len-ft');
+    
+    if (source === 'cm' || source === 'in') {
+        if (source === 'cm') {
+            const cm = parseFloat(cmIn.value);
+            if(!isNaN(cm)) inIn.value = (cm / 2.54).toFixed(2).replace(/\.00$/, '');
+            else inIn.value = '';
+        } else {
+            const inch = parseFloat(inIn.value);
+            if(!isNaN(inch)) cmIn.value = (inch * 2.54).toFixed(2).replace(/\.00$/, '');
+            else cmIn.value = '';
+        }
+    } else if (source === 'm' || source === 'ft') {
+        if (source === 'm') {
+            const m = parseFloat(mIn.value);
+            if(!isNaN(m)) ftIn.value = (m * 3.28084).toFixed(2).replace(/\.00$/, '');
+            else ftIn.value = '';
+        } else {
+            const ft = parseFloat(ftIn.value);
+            if(!isNaN(ft)) mIn.value = (ft / 3.28084).toFixed(2).replace(/\.00$/, '');
+            else mIn.value = '';
+        }
+    }
+}

@@ -37,6 +37,9 @@
             <button class="tab-btn" data-target="char-count">글자 수 📝</button>
             <button class="tab-btn" data-target="dutch-pay">더치페이 💸</button>
             <button class="tab-btn" data-target="percent">퍼센트 📊</button>
+            <button class="tab-btn" data-target="pyung">부동산 평수 🏠</button>
+            <button class="tab-btn" data-target="weight">무게/한 근 🥩</button>
+            <button class="tab-btn" data-target="unit">온도/길이 🌡️</button>
         </nav>
 
         <!-- 상단 광고 배너 영역 -->
@@ -258,6 +261,87 @@
             </div>
         </section>
 
+        <!-- 11. 부동산 평수 계산기 -->
+        <section id="pyung" class="calc-section">
+            <h2>🏠 부동산 평수 계산기</h2>
+            <p class="subtitle">제곱미터(㎡) ↔ 평(坪) 양방향 자동 변환</p>
+            <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                <label style="font-weight: 700; margin-bottom: 8px; display:block; color: var(--text-main);">아파트 분양 면적 변환기</label>
+                <div style="display:flex; gap: 10px; align-items: center; margin-bottom: 15px;">
+                    <input type="number" id="pyung-m2" style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" placeholder="제곱미터(㎡) 입력" oninput="convertPyung('m2')">
+                    <span style="font-weight: bold; min-width:30px;">㎡</span>
+                </div>
+                <div style="text-align: center; color: var(--primary); margin-bottom: 15px; font-size:1.5rem;">↕️</div>
+                <div style="display:flex; gap: 10px; align-items: center;">
+                    <input type="number" id="pyung-py" style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" placeholder="평(坪) 입력" oninput="convertPyung('py')">
+                    <span style="font-weight: bold; min-width:30px;">평</span>
+                </div>
+                <p style="margin-top:15px; font-size: 0.9rem; color: #ff7675;">* 1평 = 약 3.305785㎡</p>
+            </div>
+        </section>
+
+        <!-- 12. 무게 & 한 근 변환기 -->
+        <section id="weight" class="calc-section">
+            <h2>🥩 무게 & '한 근' 환산기</h2>
+            <p class="subtitle">아무 칸에나 입력하면 전체가 자동 변환됩니다!</p>
+            <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                <div style="display:flex; flex-direction:column; gap: 10px;">
+                    <div style="display:flex; gap: 10px; align-items: center;">
+                        <span style="width: 80px; font-weight:600;">그램(g)</span>
+                        <input type="number" id="weight-g" style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" placeholder="g 입력" oninput="convertWeight('g')">
+                    </div>
+                    <div style="display:flex; gap: 10px; align-items: center;">
+                        <span style="width: 80px; font-weight:600;">킬로그램(kg)</span>
+                        <input type="number" id="weight-kg" style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" placeholder="kg 입력" oninput="convertWeight('kg')">
+                    </div>
+                    <div style="display:flex; gap: 10px; align-items: center;">
+                        <span style="width: 80px; font-weight:600;">파운드(lb)</span>
+                        <input type="number" id="weight-lb" style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" placeholder="lb 입력" oninput="convertWeight('lb')">
+                    </div>
+                    <div style="display:flex; gap: 10px; align-items: center; border-top: 2px dashed #ffcccc; padding-top: 10px;">
+                        <span style="width: 80px; color: var(--primary); font-weight:bold;">고기 한 근</span>
+                        <input type="number" id="weight-meat" style="flex:1; padding: 10px; border-radius: 8px; border: 2px solid var(--primary); background: #fff0f5;" placeholder="1근 = 600g" oninput="convertWeight('meat')">
+                    </div>
+                    <div style="display:flex; gap: 10px; align-items: center;">
+                        <span style="width: 80px; color: #1dd1a1; font-weight:bold;">채소 한 근</span>
+                        <input type="number" id="weight-veg" style="flex:1; padding: 10px; border-radius: 8px; border: 2px solid #1dd1a1; background: #f1fbf7;" placeholder="1근 = 400g" oninput="convertWeight('veg')">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 13. 길이 & 온도 변환기 -->
+        <section id="unit" class="calc-section">
+            <h2>🌡️ 길이 & 온도 변환기</h2>
+            <p class="subtitle">해외 직구 & 오븐 레시피 필수템</p>
+            
+            <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                <label style="font-weight: 700; margin-bottom: 8px; display:block; color: var(--text-main);">🌡️ 온도 변환</label>
+                <div style="display:flex; gap: 10px; align-items: center;">
+                    <input type="number" id="temp-c" style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" placeholder="섭씨(℃)" oninput="convertTemp('c')">
+                    <span style="font-weight: bold;">℃ ↔</span>
+                    <input type="number" id="temp-f" style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" placeholder="화씨(℉)" oninput="convertTemp('f')">
+                    <span style="font-weight: bold;">℉</span>
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px;">
+                <label style="font-weight: 700; margin-bottom: 8px; display:block; color: var(--text-main);">📏 길이 변환 (TV/옷 사이즈)</label>
+                <div style="display:flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                    <input type="number" id="len-cm" style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" placeholder="cm" oninput="convertLength('cm')">
+                    <span style="font-weight: bold;">cm ↔</span>
+                    <input type="number" id="len-in" style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" placeholder="inch" oninput="convertLength('in')">
+                    <span style="font-weight: bold;">inch</span>
+                </div>
+                <div style="display:flex; gap: 10px; align-items: center;">
+                    <input type="number" id="len-m" style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" placeholder="m" oninput="convertLength('m')">
+                    <span style="font-weight: bold; margin: 0 4px;">m ↔</span>
+                    <input type="number" id="len-ft" style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" placeholder="ft" oninput="convertLength('ft')">
+                    <span style="font-weight: bold;">ft</span>
+                </div>
+            </div>
+        </section>
+
         <!-- 블로그 링크 배너 -->
         <a href="guide.html" class="blog-link-banner">
             📚 2024년 4대보험, 주휴수당, BMI 총정리 가이드 보러가기
@@ -282,6 +366,6 @@
         <p>© 2026 Minddoo's All-in-One Calculator. All rights reserved.</p>
     </footer>
 
-    <script src="app.js?v=3"></script>
+    <script src="app.js?v=6"></script>
 </body>
 </html>
