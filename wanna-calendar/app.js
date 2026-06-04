@@ -1,5 +1,9 @@
+// SVGs
+const cassetteSVG = `<svg width="32" height="20" viewBox="0 0 100 65" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(2px 2px 0px #000);"><rect x="0" y="0" width="100" height="65" rx="8" fill="#1b4fb3" stroke="#111" stroke-width="3"/><rect x="15" y="15" width="70" height="35" rx="4" fill="#a1c4fd" stroke="#111" stroke-width="2"/><circle cx="30" cy="32.5" r="10" fill="#ff9ff3" stroke="#111" stroke-width="2"/><circle cx="70" cy="32.5" r="10" fill="#ff9ff3" stroke="#111" stroke-width="2"/><circle cx="30" cy="32.5" r="4" fill="#111"/><circle cx="70" cy="32.5" r="4" fill="#111"/><path d="M 25 65 L 35 55 L 65 55 L 75 65 Z" fill="#0f2f70" stroke="#111" stroke-width="2"/></svg>`;
+
+const gachaMachineSVG = `<svg width="30" height="40" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(2px 2px 0px #000);"><rect x="20" y="60" width="60" height="60" rx="5" fill="#4facfe" stroke="#111" stroke-width="4"/><rect x="35" y="75" width="30" height="30" rx="3" fill="#ecf0f1" stroke="#111" stroke-width="3"/><rect x="45" y="80" width="10" height="15" rx="2" fill="#bdc3c7" stroke="#111" stroke-width="2"/><rect x="40" y="105" width="20" height="15" fill="#bdc3c7" stroke="#111" stroke-width="3"/><circle cx="50" cy="35" r="30" fill="rgba(255,255,255,0.9)" stroke="#111" stroke-width="4"/><circle cx="35" cy="45" r="7" fill="#ff9ff3" stroke="#111" stroke-width="1"/><circle cx="50" cy="50" r="7" fill="#feca57" stroke="#111" stroke-width="1"/><circle cx="65" cy="45" r="7" fill="#54a0ff" stroke="#111" stroke-width="1"/><circle cx="45" cy="35" r="7" fill="#55efc4" stroke="#111" stroke-width="1"/><circle cx="55" cy="25" r="7" fill="#ff9ff3" stroke="#111" stroke-width="1"/><path d="M 30 20 Q 40 10 50 10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><rect x="40" y="2" width="20" height="5" rx="2" fill="#4facfe" stroke="#111" stroke-width="3"/></svg>`;
+
 // State
-let currentDate = new Date();
 let selectedDateStr = null;
 
 // LocalStorage data
@@ -82,13 +86,13 @@ function renderCalendar() {
         
         // Habit Check Stamp (Gacha Capsule)
         if (habitChecks[dateStr]) {
-            html += `<div class="habit-stamp">🔮</div>`;
+            html += `<div class="habit-stamp">${gachaMachineSVG}</div>`;
         }
         
         // Event Tape highlight
         const combined = getCombinedEvents(dateStr);
         if (combined.length > 0) {
-            html += `<div class="event-cloud">📼</div>`;
+            html += `<div class="event-cloud">${cassetteSVG}</div>`;
         }
         
         cell.innerHTML = html;
