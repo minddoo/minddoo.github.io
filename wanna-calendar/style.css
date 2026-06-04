@@ -582,7 +582,8 @@ body.modal-open {
     border: 3px solid rgba(255,255,255,0.9) !important;
     box-shadow: 0 8px 32px 0 rgba(0, 150, 136, 0.2), inset 0 0 20px rgba(255,255,255,0.8) !important;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
 }
 .mint-glass-card::before { display: none !important; }
 
@@ -607,4 +608,115 @@ body.modal-open {
 .mint-glass-card .modal-header h2 {
     color: #005f5f !important;
     text-shadow: 2px 2px 0px rgba(255,255,255,0.8) !important;
+}
+
+/* WANNABLE GO Logo Styles */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Paytone+One&display=swap');
+
+.wanna-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    transform: rotate(-3deg);
+}
+
+.wanna-top {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -2px;
+    -webkit-text-stroke: 2px #0a3d91;
+    text-shadow: 
+        1px 1px 0 #0a3d91, 2px 2px 0 #0a3d91, 3px 3px 0 #0a3d91, 4px 4px 0 #0a3d91, 5px 5px 0 #0a3d91, 6px 6px 0 #0a3d91, 7px 7px 0 #0a3d91,
+        8px 8px 0 #111;
+    z-index: 2;
+    line-height: 1;
+}
+
+.wanna-bottom {
+    display: flex;
+    align-items: center;
+    margin-top: -15px;
+}
+
+.wanna-go {
+    display: flex;
+    align-items: center;
+    font-family: 'Paytone One', sans-serif;
+}
+
+.go-g {
+    font-size: 5rem;
+    color: #ff6b81;
+    -webkit-text-stroke: 3px #fff;
+    text-shadow: 
+        1px 1px 0 #0a3d91, 2px 2px 0 #0a3d91, 3px 3px 0 #0a3d91, 4px 4px 0 #0a3d91, 5px 5px 0 #0a3d91, 6px 6px 0 #0a3d91;
+    z-index: 3;
+    margin-right: -10px;
+    line-height: 1;
+}
+
+.go-o {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(161, 196, 253, 0.9), rgba(10, 61, 145, 0.8));
+    border: 3px solid #fff;
+    box-shadow: 3px 3px 0 #0a3d91;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.o-inner {
+    font-size: 2.5rem;
+    color: transparent;
+    -webkit-text-stroke: 2px #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.wanna-right {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.wanna-diary {
+    font-family: 'Paytone One', sans-serif;
+    font-size: 3.2rem;
+    color: #ff6b81;
+    -webkit-text-stroke: 2px #fff;
+    text-shadow: 
+        1px 1px 0 #0a3d91, 2px 2px 0 #0a3d91, 3px 3px 0 #0a3d91, 4px 4px 0 #0a3d91, 5px 5px 0 #0a3d91;
+    line-height: 1;
+}
+
+.wanna-base {
+    background: #ffcf24;
+    color: #0a3d91;
+    font-family: 'Jua', sans-serif;
+    font-size: 1.2rem;
+    padding: 2px 15px;
+    border-radius: 20px;
+    border: 2px solid #0a3d91;
+    align-self: flex-start;
+    margin-top: -5px;
+    margin-left: 20px;
+    transform: rotate(-2deg);
+}
+
+@media (max-width: 480px) {
+    .wanna-top { font-size: 2.5rem; }
+    .go-g { font-size: 3.5rem; }
+    .go-o { width: 50px; height: 50px; }
+    .o-inner { font-size: 2rem; }
+    .wanna-diary { font-size: 2.2rem; }
+    .wanna-base { font-size: 1rem; margin-left: 10px; }
 }
