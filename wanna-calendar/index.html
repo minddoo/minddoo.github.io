@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=8">
+    <link rel="stylesheet" href="style.css?v=9">
 
     <!-- Lunar Calendar JS (그대로 사용) -->
     <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.js"></script>
@@ -167,19 +167,46 @@
 
     <!-- 으랏가챠 팝업 모달 -->
     <div id="gacha-modal" class="modal-overlay">
-        <div class="modal-content gacha-card" style="text-align:center;">
-            <div class="modal-header">
+        <div class="modal-content gacha-card" style="text-align:center; padding: 20px;">
+            <div class="modal-header" style="justify-content: center; margin-bottom: 15px;">
                 <h2 style="color: black; text-shadow: none;">🎰 으랏차차 가챠 🎰</h2>
-                <button class="close-btn" onclick="closeGachaModal()">❌</button>
+                <button class="close-btn" style="position:absolute; right:20px;" onclick="closeGachaModal()">❌</button>
             </div>
-            <div class="gacha-animation-box">
-                <div id="gacha-item" class="gacha-item"><div style="font-size: 3rem;">🎁</div></div>
+            
+            <div id="gacha-machine-container" style="width: 160px; height: 200px; margin: 0 auto; position: relative;">
+                <svg width="100%" height="100%" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(4px 4px 0px #000); overflow: visible;">
+                    <rect x="20" y="60" width="60" height="60" rx="5" fill="#4facfe" stroke="#111" stroke-width="4"/>
+                    <rect x="35" y="75" width="30" height="30" rx="3" fill="#ecf0f1" stroke="#111" stroke-width="3"/>
+                    <rect x="45" y="80" width="10" height="15" rx="2" fill="#bdc3c7" stroke="#111" stroke-width="2"/>
+                    <rect x="40" y="105" width="20" height="15" fill="#bdc3c7" stroke="#111" stroke-width="3"/>
+                    <rect x="45" y="105" width="10" height="10" fill="#111"/>
+                    
+                    <circle cx="50" cy="35" r="30" fill="rgba(255,255,255,0.9)" stroke="#111" stroke-width="4"/>
+                    
+                    <g id="gacha-capsules-group" style="transform-origin: 50px 35px;">
+                        <circle cx="35" cy="45" r="7" fill="#ff9ff3" stroke="#111" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="7" fill="#feca57" stroke="#111" stroke-width="2"/>
+                        <circle cx="65" cy="45" r="7" fill="#54a0ff" stroke="#111" stroke-width="2"/>
+                        <circle cx="45" cy="30" r="7" fill="#55efc4" stroke="#111" stroke-width="2"/>
+                        <circle cx="55" cy="22" r="7" fill="#ff9ff3" stroke="#111" stroke-width="2"/>
+                    </g>
+                    
+                    <path d="M 30 20 Q 40 10 50 10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+                    <rect x="40" y="2" width="20" height="5" rx="2" fill="#ff4757" stroke="#111" stroke-width="3"/>
+                </svg>
+                <div id="dropped-capsule" style="display:none; position:absolute; bottom: -10px; left: 50%; transform: translateX(-50%); font-size: 2.5rem; text-shadow: 2px 2px 0 #000;">🔴</div>
             </div>
-            <p id="gacha-result-text" style="margin: 15px 0; font-size:1.2rem; color:var(--pop-yellow); text-shadow: 1px 1px 0px #000; font-weight:bold;">버튼을 눌러 뽑기를 시작하세요!</p>
-            <button id="gacha-action-btn" class="btn-complete w-100" style="background: var(--pop-cyan); color: white;" onclick="startGachaRoll()">뽑기 시작!</button>
+
+            <div id="gacha-result-box" style="display:none; background: #fff; border: 3px solid #000; border-radius: 12px; padding: 15px; margin: 15px 0; box-shadow: 3px 3px 0 #000;">
+                <div style="font-size: 2rem; animation: pop 0.3s ease-out;">🎉</div>
+                <div id="gacha-reward-text" style="color:var(--pop-pink); font-size: 1.2rem; font-weight:bold; margin-top:5px;"></div>
+            </div>
+
+            <p id="gacha-result-text" style="margin: 15px 0; font-size:1.2rem; color:var(--text-main); font-weight:bold;">버튼을 눌러 뽑기를 시작하세요!</p>
+            <button id="gacha-action-btn" class="btn-complete w-100" style="background: var(--pop-cyan); color: white;" onclick="startGachaRoll()">으랏가챠!</button>
         </div>
     </div>
 
-    <script src="app.js?v=8"></script>
+    <script src="app.js?v=9"></script>
 </body>
 </html>

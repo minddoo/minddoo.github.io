@@ -330,11 +330,17 @@ function convertLunar() {
 // === Gacha ===
 function playGacha() {
     document.getElementById('gacha-modal').classList.add('active');
-    document.getElementById('gacha-item').innerHTML = '<div style="font-size: 3rem;">🎁</div>';
     document.getElementById('gacha-result-text').innerText = "버튼을 눌러 뽑기를 시작하세요!";
+    
+    document.getElementById('gacha-machine-container').classList.remove('machine-shake');
+    document.getElementById('gacha-capsules-group').classList.remove('spin-active');
+    document.getElementById('dropped-capsule').style.display = 'none';
+    document.getElementById('dropped-capsule').classList.remove('capsule-drop');
+    document.getElementById('gacha-result-box').style.display = 'none';
+    
     const btn = document.getElementById('gacha-action-btn');
     btn.style.display = 'block';
-    btn.innerText = "뽑기 시작!";
+    btn.innerText = "으랏가챠!";
     btn.onclick = startGachaRoll;
 }
 
@@ -346,29 +352,43 @@ function startGachaRoll() {
     const rewards = (goalInfo && goalInfo.rewards && goalInfo.rewards.length > 0) 
         ? goalInfo.rewards 
         : ['맛있는 치킨 시켜먹기 🍗', '덕질용 굿즈 하나 사기 🛍️', '하루 종일 푹 쉬기 🛌'];
-    
-    let count = 0;
-    const itemEl = document.getElementById('gacha-item');
+        
     const btn = document.getElementById('gacha-action-btn');
     const resultText = document.getElementById('gacha-result-text');
+    const machine = document.getElementById('gacha-machine-container');
+    const capsulesGroup = document.getElementById('gacha-capsules-group');
+    const droppedCapsule = document.getElementById('dropped-capsule');
+    const resultBox = document.getElementById('gacha-result-box');
+    const rewardTextEl = document.getElementById('gacha-reward-text');
     
     btn.style.display = 'none';
-    resultText.innerText = "으랏가챠 캡슐 뽑는 중... 🌀";
+    resultText.innerText = "으랏가챠 머신 돌아가는 중... 🌀";
     
-    const capsules = ['🔴', '🔵', '🟡', '🟢', '🟣', '🔮'];
+    machine.classList.add('machine-shake');
+    capsulesGroup.classList.add('spin-active');
     
-    const interval = setInterval(() => {
-        itemEl.innerHTML = `<div style="font-size: 4rem;">${capsules[count % capsules.length]}</div>`;
-        count++;
-        if(count > 25) {
-            clearInterval(interval);
+    setTimeout(() => {
+        machine.classList.remove('machine-shake');
+        capsulesGroup.classList.remove('spin-active');
+        
+        resultText.innerText = "캡슐이 나왔어요! 🎁";
+        const randomCapsules = ['🔴', '🔵', '🟡', '🟢', '🟣', '🔮'];
+        droppedCapsule.innerText = randomCapsules[Math.floor(Math.random() * randomCapsules.length)];
+        droppedCapsule.style.display = 'block';
+        droppedCapsule.classList.add('capsule-drop');
+        
+        setTimeout(() => {
+            droppedCapsule.style.display = 'none';
             const finalReward = rewards[Math.floor(Math.random() * rewards.length)];
-            itemEl.innerHTML = `<div style="font-size: 2.5rem; transform: scale(1.1);">🎉</div><div style="color:var(--pop-pink); font-size: 1.1rem; margin-top:5px; text-align:center;">${finalReward}</div>`;
+            rewardTextEl.innerText = finalReward;
+            resultBox.style.display = 'block';
             resultText.innerText = "당첨을 축하합니다!! 꺄아아앙 💖";
             
             btn.innerText = "확인";
             btn.onclick = closeGachaModal;
             btn.style.display = 'block';
-        }
-    }, 100);
+            
+        }, 800);
+        
+    }, 1500);
 }
