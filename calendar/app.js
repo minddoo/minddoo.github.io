@@ -105,9 +105,23 @@ function openDayModal(dateStr) {
     // Goal Section
     const goalSection = document.getElementById('modal-goal-section');
     if (goalInfo) {
-        goalSection.style.display = 'block';
-        document.getElementById('modal-goal-text').innerText = goalInfo.title;
-        document.getElementById('goal-checkbox').checked = !!habitChecks[dateStr];
+        const selectedDate = new Date(dateStr);
+        selectedDate.setHours(0,0,0,0);
+        
+        const goalStart = new Date(goalInfo.startDate);
+        goalStart.setHours(0,0,0,0);
+        
+        const goalEnd = new Date(goalInfo.endDate);
+        goalEnd.setHours(0,0,0,0);
+        
+        // 목표 기간 내의 날짜만 체크 가능
+        if (selectedDate >= goalStart && selectedDate <= goalEnd) {
+            goalSection.style.display = 'block';
+            document.getElementById('modal-goal-text').innerText = goalInfo.title;
+            document.getElementById('goal-checkbox').checked = !!habitChecks[dateStr];
+        } else {
+            goalSection.style.display = 'none';
+        }
     } else {
         goalSection.style.display = 'none';
     }
