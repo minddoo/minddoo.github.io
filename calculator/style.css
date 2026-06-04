@@ -75,37 +75,32 @@ body {
     padding: 0 20px 60px;
 }
 
-/* Scrollable Tabs */
+/* Tabs Container */
 .tabs {
     display: flex;
-    overflow-x: auto;
+    flex-wrap: wrap;
+    justify-content: center;
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 16px;
-    padding: 6px;
+    padding: 10px;
     margin-bottom: 25px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    gap: 5px;
-}
-
-.tabs::-webkit-scrollbar {
-    display: none;
+    gap: 8px;
 }
 
 /* Responsive */
 @media (max-width: 480px) {
     .tabs {
-        padding: 0 20px;
+        padding: 10px 5px;
         border-radius: 0;
         background: transparent;
         box-shadow: none;
         margin: 0 -20px 20px;
-        flex-wrap: nowrap; /* Keep it horizontally scrolling on mobile */
-        justify-content: flex-start;
-        gap: 8px; 
+        flex-wrap: wrap; 
+        justify-content: center;
+        gap: 6px; 
     }
     .tab-btn {
         background: var(--surface);
