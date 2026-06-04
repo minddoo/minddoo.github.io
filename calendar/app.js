@@ -60,13 +60,9 @@ function renderCalendar() {
             html += `<div class="habit-stamp">🏅</div>`;
         }
         
-        // Event Dots
+        // Event Border Highlight
         if (events[dateStr] && events[dateStr].length > 0) {
-            html += `<div class="event-dots">`;
-            for(let e = 0; e < Math.min(events[dateStr].length, 4); e++) {
-                html += `<div class="event-dot"></div>`;
-            }
-            html += `</div>`;
+            cell.classList.add('has-event');
         }
         
         cell.innerHTML = html;

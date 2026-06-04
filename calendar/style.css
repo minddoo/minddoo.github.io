@@ -1,16 +1,16 @@
-/* Clean Glassmorphism Theme */
+/* Sky Blue Clouds Theme */
 :root {
-    --primary: #4a6ee0;
-    --primary-hover: #3553b5;
-    --bg-gradient-1: #e0c3fc;
-    --bg-gradient-2: #8ec5fc;
-    --surface: rgba(255, 255, 255, 0.75);
+    --primary: #54a0ff;
+    --primary-hover: #2e86de;
+    --bg-gradient-1: #c8d6e5;
+    --bg-gradient-2: #e0f7fa;
+    --surface: rgba(255, 255, 255, 0.85);
     --surface-solid: #ffffff;
-    --text-main: #2d3436;
-    --text-muted: #636e72;
-    --border: rgba(255, 255, 255, 0.6);
-    --border-dark: #dfe6e9;
-    --shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    --text-main: #222f3e;
+    --text-muted: #576574;
+    --border: rgba(255, 255, 255, 0.8);
+    --border-dark: #cdd1d5;
+    --shadow: 0 8px 32px rgba(84, 160, 255, 0.15);
     --radius: 20px;
 }
 
@@ -252,11 +252,12 @@ body {
 }
 
 .day-cell.today {
-    background: var(--surface-solid);
-    border: 2px solid var(--primary);
+    background: var(--primary);
+    border: none;
+    box-shadow: 0 4px 15px rgba(84, 160, 255, 0.4);
 }
 .day-cell.today .day-num {
-    color: var(--primary);
+    color: white;
 }
 
 .day-cell.sun .day-num { color: #ff7675; }
@@ -271,19 +272,10 @@ body {
     opacity: 0.9;
 }
 
-/* Event Dots */
-.event-dots {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3px;
-    margin-top: auto;
-    justify-content: center;
-}
-.event-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--primary);
+/* Has Event Border Highlight */
+.day-cell.has-event {
+    border: 2px solid var(--primary);
+    background: rgba(255, 255, 255, 0.9);
 }
 
 /* Lunar Convertor */
