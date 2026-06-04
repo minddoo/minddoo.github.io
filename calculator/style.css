@@ -113,15 +113,29 @@ body {
 
 /* Responsive */
 @media (max-width: 480px) {
+    .app-header h1 { font-size: 1.8rem; }
+    .app-header p { font-size: 1rem; }
+    .calc-section { padding: 25px 15px; }
+    .calc-section h2 { font-size: 1.4rem; }
+    
     .tabs {
-        padding: 10px 5px;
-        border-radius: 24px;
-        gap: 6px; 
+        padding: 8px 5px;
+        border-radius: 20px;
+        gap: 5px; 
     }
     .tab-btn {
-        padding: 8px 12px;
-        font-size: 1rem;
+        padding: 6px 10px;
+        font-size: 0.95rem;
     }
+    .input-group input[type="number"],
+    .input-group input[type="text"],
+    .input-group input[type="date"],
+    .input-group textarea {
+        padding: 12px 15px;
+        font-size: 1.1rem;
+    }
+    .result-row { font-size: 1rem; }
+    .result-row.total { font-size: 1.3rem; }
 }
 
 .tab-btn {
@@ -199,8 +213,12 @@ body {
 .input-group input[type="number"],
 .input-group input[type="text"],
 .input-group input[type="date"],
-.input-group textarea {
+.input-group textarea,
+input[type="number"],
+input[type="text"],
+input[type="date"] {
     width: 100%;
+    min-width: 0;
     padding: 16px 20px;
     border: 2px solid var(--border);
     border-radius: 20px;
