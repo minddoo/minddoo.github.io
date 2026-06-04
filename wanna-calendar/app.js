@@ -112,6 +112,7 @@ function openGoalModal() {
     if (goalInfo) {
         document.getElementById('goal-input-title').value = goalInfo.title;
         document.getElementById('goal-input-date').value = goalInfo.endDate;
+        document.getElementById('goal-input-rewards').value = (goalInfo.rewards || []).join('\n');
     }
 }
 
@@ -162,10 +163,12 @@ function closeDayModal() {
 function saveGoal() {
     const title = document.getElementById('goal-input-title').value;
     const endDate = document.getElementById('goal-input-date').value;
+    const rewardsRaw = document.getElementById('goal-input-rewards').value || '';
+    const rewards = rewardsRaw.split('\n').map(r => r.trim()).filter(r => r);
     
     if (!title || !endDate) return alert('약속 이름과 디데이를 입력해주세요 💖');
     
-    goalInfo = { title, endDate, startDate: new Date().toISOString().split('T')[0] };
+    goalInfo = { title, endDate, startDate: new Date().toISOString().split('T')[0], rewards };
     localStorage.setItem('wanna_calendar_goal', JSON.stringify(goalInfo));
     
     closeGoalModal();
@@ -317,4 +320,42 @@ function convertLunar() {
     } catch(e) {
         resultBox.innerText = '앗, 오류가 났어요! 😭';
     }
+}
+
+// === Gacha ===
+function playGacha() {
+    document.getElementById('gacha-modal').classList.add('active');
+    document.getElementById('gacha-item').innerText = "🎁";
+    document.getElementById('gacha-item').style.color = "var(--text-main)";
+    document.getElementById('gacha-result-text').innerText = "버튼을 눌러 뽑기를 시작하세요!";
+    document.getElementById('gacha-action-btn').style.display = 'block';
+}
+
+function closeGachaModal() {
+    document.getElementById('gacha-modal').classList.remove('active');
+}
+
+function startGachaRoll() {
+    const rewards = (goalInfo && goalInfo.rewards && goalInfo.rewards.length > 0) 
+        ? goalInfo.rewards 
+        : ['맛있는 치킨 시켜먹기 🍗', '덕질용 굿즈 하나 사기 🛍️', '하루 종일 푹 쉬기 🛌'];
+    
+    let count = 0;
+    const itemEl = document.getElementById('gacha-item');
+    const btn = document.getElementById('gacha-action-btn');
+    const resultText = document.getElementById('gacha-result-text');
+    
+    btn.style.display = 'none';
+    resultText.innerText = "으랏가챠 돌아가는 중... 🌀";
+    
+    const interval = setInterval(() => {
+        itemEl.innerText = rewards[count % rewards.length];
+        count++;
+        if(count > 25) {
+            clearInterval(interval);
+            const finalReward = rewards[Math.floor(Math.random() * rewards.length)];
+            itemEl.innerHTML = `<span style="color:var(--pop-pink);">🎉 ${finalReward} 🎉</span>`;
+            resultText.innerText = "당첨을 축하합니다!! 꺄아아앙 💖";
+        }
+    }, 100);
 }

@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=1">
+    <link rel="stylesheet" href="style.css?v=2">
 
     <!-- Lunar Calendar JS (그대로 사용) -->
     <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.js"></script>
@@ -37,7 +37,10 @@
                 <div class="progress-bar-container">
                     <div class="progress-bar" id="goal-progress-bar"></div>
                 </div>
-                <p class="goal-status" id="goal-status-display">진행률 0% (D-Day)</p>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+                    <p class="goal-status" id="goal-status-display">진행률 0% (D-Day)</p>
+                    <button class="btn-gacha-play" onclick="playGacha()">으랏가챠 돌리기 🕹️</button>
+                </div>
             </div>
             <div id="no-goal-info" class="no-goal">
                 <p>아직 정해진 약속이 없어요! 버튼을 눌러 새 약속을 만들어주세요 💖</p>
@@ -147,12 +150,31 @@
                     <label>언제까지? (D-Day)</label>
                     <input type="date" id="goal-input-date" class="input-retro">
                 </div>
+                <div class="form-group">
+                    <label>나에게 주는 보상들 🎁<br><span style="font-size:0.9rem; color:#aaa;">(엔터로 여러 개 적어주세요!)</span></label>
+                    <textarea id="goal-input-rewards" class="input-retro" rows="3" placeholder="치킨 시켜먹기&#10;굿즈 사기&#10;하루종일 뒹굴기"></textarea>
+                </div>
                 <button class="btn-primary w-100" onclick="saveGoal()">저장할래 💖</button>
                 <button class="btn-danger w-100 mt-10" onclick="deleteGoal()">삭제할래 🗑️</button>
             </div>
         </div>
     </div>
 
-    <script src="app.js?v=1"></script>
+    <!-- 으랏가챠 팝업 모달 -->
+    <div id="gacha-modal" class="modal-overlay">
+        <div class="modal-content gacha-card" style="text-align:center;">
+            <div class="modal-header">
+                <h2>🎰 으랏차차 가챠 🎰</h2>
+                <button class="close-btn" onclick="closeGachaModal()">❌</button>
+            </div>
+            <div class="gacha-animation-box">
+                <div id="gacha-item" class="gacha-item">🎁</div>
+            </div>
+            <p id="gacha-result-text" style="margin: 15px 0; font-size:1.2rem; color:var(--pop-yellow);">버튼을 눌러 뽑기를 시작하세요!</p>
+            <button id="gacha-action-btn" class="btn-complete w-100" onclick="startGachaRoll()">뽑기 시작!</button>
+        </div>
+    </div>
+
+    <script src="app.js?v=2"></script>
 </body>
 </html>
