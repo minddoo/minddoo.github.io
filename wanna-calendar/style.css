@@ -732,8 +732,8 @@ body.modal-open {
     .btn-small { padding: 4px 8px; font-size: 0.9rem; }
 
     /* Stamps and Icons */
-    .habit-stamp { font-size: 1.1rem; top: -4px; right: -4px; }
-    .event-cloud { font-size: 1rem; bottom: 0px; right: 2px; }
+    .habit-stamp { font-size: 1.1rem; top: -6px; right: -4px; }
+    .event-cloud { font-size: 1rem; bottom: -2px; left: 2px; right: auto; }
     .input-group { flex-direction: column; }
     
     /* Modals */
