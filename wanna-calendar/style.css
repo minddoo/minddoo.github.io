@@ -340,18 +340,27 @@ body {
     position: absolute;
     top: -8px;
     right: -8px;
-    font-size: 1.6rem;
-    filter: drop-shadow(2px 2px 0px #000);
     z-index: 5;
+    animation: bounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
-/* Event Cassette Tape */
+.habit-stamp svg {
+    width: 30px;
+    height: 40px;
+}
 .event-cloud {
     position: absolute;
     bottom: 2px;
     right: 5px;
-    font-size: 1.4rem;
-    filter: drop-shadow(1px 1px 0px #000);
+    z-index: 4;
+}
+.event-cloud svg {
+    width: 32px;
+    height: 20px;
+}
+
+@media (max-width: 600px) {
+    .habit-stamp svg { width: 20px; height: 26px; }
+    .event-cloud svg { width: 22px; height: 14px; }
 }
 
 /* Gacha Animation */
@@ -731,9 +740,12 @@ body.modal-open {
     .habit-header h2, .calendar-header h2 { font-size: 1.3rem; }
     .btn-small { padding: 4px 8px; font-size: 0.9rem; }
 
-    /* Stamps and Icons */
-    .habit-stamp { font-size: 1.1rem; top: -6px; right: -4px; }
-    .event-cloud { font-size: 1rem; bottom: -2px; left: 2px; right: auto; }
+    /* Stamps and Icons SVG resizing */
+    .habit-stamp svg { width: 22px; height: 29px; }
+    .event-cloud svg { width: 22px; height: 14px; }
+    
+    .habit-stamp { top: -4px; right: -4px; }
+    .event-cloud { bottom: -2px; left: 2px; right: auto; }
     .input-group { flex-direction: column; }
     
     /* Modals */
