@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>스마트 캘린더 & 해빗 트래커</title>
+    
+    <!-- Pretendard Font -->
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css?v=1">
+
+    <!-- Lunar Calendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.js"></script>
+
+    <!-- Google AdSense (동일) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6117526240662405" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <header class="top-header">
+            <a href="../calculator/index.html" class="back-btn">← 홈</a>
+            <h1>스마트 캘린더</h1>
+        </header>
+
+        <!-- 해빗 트래커 (목표 관리) 영역 -->
+        <section class="glass-card habit-tracker">
+            <div class="habit-header">
+                <h2>🎯 나의 목표</h2>
+                <button class="btn-small" onclick="openGoalModal()">목표 설정</button>
+            </div>
+            <div id="goal-info" class="goal-info" style="display:none;">
+                <p class="goal-title" id="goal-title-display">매일 물 2리터 마시기</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="goal-progress-bar"></div>
+                </div>
+                <p class="goal-status" id="goal-status-display">진행률 0% (D-Day)</p>
+            </div>
+            <div id="no-goal-info" class="no-goal">
+                <p>현재 설정된 목표가 없습니다. 우측 버튼을 눌러 목표를 설정하세요!</p>
+            </div>
+        </section>
+
+        <!-- 캘린더 영역 -->
+        <section class="glass-card calendar-section">
+            <div class="calendar-header">
+                <button class="nav-btn" onclick="prevMonth()">❮</button>
+                <h2 id="month-display">2026년 6월</h2>
+                <button class="nav-btn" onclick="nextMonth()">❯</button>
+            </div>
+            <div class="calendar-grid">
+                <div class="weekday sun">일</div>
+                <div class="weekday">월</div>
+                <div class="weekday">화</div>
+                <div class="weekday">수</div>
+                <div class="weekday">목</div>
+                <div class="weekday">금</div>
+                <div class="weekday sat">토</div>
+            </div>
+            <div class="calendar-grid" id="calendar-days">
+                <!-- 달력 날짜들이 자바스크립트로 생성됩니다 -->
+            </div>
+        </section>
+
+        <!-- 음력/양력 변환기 영역 -->
+        <section class="glass-card lunar-section">
+            <h2>🌙 음/양력 변환기</h2>
+            <div class="lunar-controls">
+                <div class="input-group">
+                    <select id="lunar-type">
+                        <option value="solar-to-lunar">양력 → 음력</option>
+                        <option value="lunar-to-solar">음력 → 양력</option>
+                    </select>
+                    <input type="date" id="lunar-date-input">
+                </div>
+                <button class="btn-primary" onclick="convertLunar()">변환하기</button>
+            </div>
+            <div id="lunar-result" class="lunar-result"></div>
+        </section>
+
+        <!-- 하단 광고 배너 영역 -->
+        <div class="ad-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6117526240662405"
+                 data-ad-slot="1234567890" 
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+    </div>
+
+    <!-- 일정 및 체크 모달 -->
+    <div id="day-modal" class="modal-overlay">
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h2 id="modal-date-title">2026. 06. 04</h2>
+                <button class="close-btn" onclick="closeDayModal()">×</button>
+            </div>
+            
+            <div id="modal-goal-section" class="modal-section" style="display:none;">
+                <h3>🎯 오늘의 목표 달성</h3>
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="goal-checkbox" onchange="toggleGoalCheck()">
+                    <span class="checkmark"></span>
+                    <span id="modal-goal-text">목표 텍스트</span>
+                </label>
+            </div>
+
+            <div class="modal-section">
+                <h3>🗓️ 등록된 일정</h3>
+                <ul id="event-list" class="event-list"></ul>
+            </div>
+
+            <div class="modal-section new-event-section">
+                <h3>새 일정 추가</h3>
+                <input type="text" id="new-event-title" placeholder="일정 내용을 입력하세요" class="input-modern">
+                <button class="btn-primary" onclick="addEvent()">추가</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 목표 설정 모달 -->
+    <div id="goal-modal" class="modal-overlay">
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h2>🎯 목표 설정</h2>
+                <button class="close-btn" onclick="closeGoalModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>목표 이름 (예: 다이어트 100일)</label>
+                    <input type="text" id="goal-input-title" class="input-modern" placeholder="목표 입력">
+                </div>
+                <div class="form-group">
+                    <label>목표 종료일 (D-Day)</label>
+                    <input type="date" id="goal-input-date" class="input-modern">
+                </div>
+                <button class="btn-primary w-100" onclick="saveGoal()">목표 저장</button>
+                <button class="btn-danger w-100 mt-10" onclick="deleteGoal()">목표 삭제</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=1"></script>
+</body>
+</html>
