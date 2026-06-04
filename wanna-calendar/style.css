@@ -1,0 +1,468 @@
+/* Wanna One Go Gacha Theme */
+:root {
+    --primary: #4ab6b5; /* Aqua */
+    --primary-hover: #3a9796;
+    --gray-accent: #c4c9cc; /* Gray */
+    --bg-gradient-1: #e0f2f1;
+    --bg-gradient-2: #ffffff;
+    --surface: #ffffff;
+    --text-main: #2f3542;
+    --text-muted: #747d8c;
+    --border: #4ab6b5;
+    --border-dark: #ced6e0;
+    --shadow: 4px 4px 0px rgba(74, 182, 181, 0.3);
+    --radius: 16px;
+    --pop-yellow: #feca57;
+    --pop-pink: #ff9ff3;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Jua', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background: radial-gradient(circle, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 100%);
+    background-size: 20px 20px;
+    background-image: radial-gradient(var(--gray-accent) 1px, transparent 1px);
+    background-color: var(--bg-gradient-1);
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.app-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 60px;
+}
+
+/* Retro Gacha Card */
+.gacha-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 3px solid var(--text-main);
+    box-shadow: 6px 6px 0px var(--text-main);
+    padding: 25px;
+    margin-bottom: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add a cute tape detail */
+.gacha-card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 60px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid var(--text-main);
+    z-index: 10;
+}
+
+/* Header */
+.top-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-top: 10px;
+}
+
+.top-header h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--text-main);
+    text-shadow: 2px 2px 0px var(--primary);
+}
+.top-header p {
+    font-size: 1.2rem;
+    color: var(--primary-hover);
+}
+
+/* Buttons */
+.btn-small {
+    background: var(--pop-yellow);
+    color: var(--text-main);
+    border: 2px solid var(--text-main);
+    box-shadow: 2px 2px 0px var(--text-main);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-small:hover { transform: translate(2px, 2px); box-shadow: 0 0 0; }
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: 2px solid var(--text-main);
+    box-shadow: 3px 3px 0px var(--text-main);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-primary:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0px var(--text-main); }
+
+.btn-danger {
+    background: #ff7675;
+    color: white;
+    border: 2px solid var(--text-main);
+    box-shadow: 3px 3px 0px var(--text-main);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-danger:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0px var(--text-main); }
+
+.btn-complete {
+    background: var(--pop-yellow);
+    color: var(--text-main);
+    border: 2px solid var(--text-main);
+    box-shadow: 3px 3px 0px var(--text-main);
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-complete:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0px var(--text-main); }
+
+.w-100 { width: 100%; }
+.mt-10 { margin-top: 10px; }
+
+/* Habit Tracker */
+.habit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.habit-header h2 { font-size: 1.5rem; }
+
+.goal-info .goal-title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.progress-bar-container {
+    background: #f1f2f6;
+    border-radius: 10px;
+    height: 16px;
+    overflow: hidden;
+    margin-bottom: 8px;
+    border: 2px solid var(--text-main);
+}
+
+.progress-bar {
+    background: var(--pop-pink);
+    height: 100%;
+    width: 0%;
+    transition: width 0.5s ease-out;
+}
+
+.goal-status {
+    font-size: 1rem;
+    color: var(--text-muted);
+    text-align: right;
+}
+
+.no-goal p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 10px;
+}
+
+/* Calendar */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+    font-size: 1.8rem;
+    color: var(--primary);
+    text-shadow: 1px 1px 0px var(--text-main);
+}
+
+.nav-btn {
+    background: white;
+    border: 2px solid var(--text-main);
+    box-shadow: 2px 2px 0 var(--text-main);
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.2s;
+    color: var(--text-main);
+}
+.nav-btn:hover { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--text-main); }
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    text-align: center;
+}
+
+.weekday {
+    font-size: 1.1rem;
+    padding-bottom: 5px;
+    color: var(--text-main);
+}
+.weekday.sun { color: #ff4757; }
+.weekday.sat { color: #1e90ff; }
+
+.day-cell {
+    background: white;
+    border: 2px solid var(--text-main);
+    border-radius: 8px;
+    aspect-ratio: 1 / 1.1;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.1s;
+    position: relative;
+    box-shadow: 2px 2px 0px var(--text-main);
+}
+
+.day-cell:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--text-main);
+    background: #f1f2f6;
+}
+
+.day-cell.empty {
+    background: transparent;
+    border: none;
+    cursor: default;
+    box-shadow: none;
+}
+.day-cell.empty:hover { transform: none; }
+
+.day-num {
+    font-size: 1.1rem;
+    align-self: flex-start;
+    margin-bottom: 4px;
+}
+
+.day-cell.today {
+    background: var(--primary);
+    border-color: var(--text-main);
+}
+.day-cell.today .day-num {
+    color: white;
+}
+
+.day-cell.sun .day-num { color: #ff4757; }
+.day-cell.sat .day-num { color: #1e90ff; }
+
+/* Habit Stamp (Gacha Capsule) */
+.habit-stamp {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 1.5rem;
+    filter: drop-shadow(1px 1px 0px #000);
+    z-index: 5;
+}
+
+/* Event Cassette Tape */
+.event-cloud {
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+    font-size: 1.2rem;
+}
+
+/* Lunar Convertor */
+.lunar-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.lunar-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+select, .input-retro {
+    padding: 12px 15px;
+    border: 2px solid var(--text-main);
+    box-shadow: 2px 2px 0 var(--text-main);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    background: white;
+    color: var(--text-main);
+    flex: 1;
+    min-width: 0;
+}
+
+select:focus, .input-retro:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.lunar-result {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f1f2f6;
+    border: 2px dashed var(--text-main);
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--primary);
+    min-height: 50px;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    width: 90%;
+    max-width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: translateY(20px);
+    transition: transform 0.3s;
+    margin-bottom: 0;
+}
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.modal-header h2 { font-size: 1.6rem; }
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+.modal-section {
+    margin-bottom: 25px;
+}
+.modal-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--text-main);
+    border-bottom: 2px dashed var(--border-dark);
+    padding-bottom: 5px;
+}
+
+/* Custom Checkbox */
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    user-select: none;
+    background: #f1f2f6;
+    padding: 12px;
+    border-radius: 12px;
+    border: 2px solid var(--text-main);
+    box-shadow: 2px 2px 0 var(--text-main);
+}
+.custom-checkbox input { display: none; }
+.checkmark {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--text-main);
+    border-radius: 6px;
+    margin-right: 12px;
+    position: relative;
+    background: white;
+}
+.custom-checkbox input:checked ~ .checkmark {
+    background: var(--pop-pink);
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+    content: "🌟";
+    position: absolute;
+    color: white;
+    left: 1px;
+    top: -2px;
+    font-size: 16px;
+}
+
+.event-list {
+    list-style: none;
+}
+.event-item {
+    background: white;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid var(--text-main);
+    box-shadow: 2px 2px 0 var(--text-main);
+}
+.delete-event {
+    background: none;
+    border: none;
+    color: #ff4757;
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 480px) {
+    .calendar-grid { gap: 4px; }
+    .day-cell { padding: 3px; }
+    .day-num { font-size: 1rem; }
+    .habit-stamp { font-size: 1.2rem; }
+    .input-group { flex-direction: column; }
+}
