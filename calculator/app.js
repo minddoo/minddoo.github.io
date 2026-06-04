@@ -431,3 +431,90 @@ function convertLength(source) {
         }
     }
 }
+
+// 0. 일반 계산기 로직
+let stdCurrentVal = '0';
+let stdPrevVal = null;
+let stdOperator = null;
+let stdNewNum = false;
+
+function updateStdDisplay() {
+    const display = document.getElementById('std-display');
+    if (stdCurrentVal === 'Error') {
+        display.innerText = 'Error';
+        return;
+    }
+    let parts = stdCurrentVal.toString().split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    display.innerText = parts.join('.');
+}
+
+function stdCalcInput(val) {
+    if (val >= '0' && val <= '9') {
+        if (stdCurrentVal === '0' || stdCurrentVal === 'Error' || stdNewNum) {
+            stdCurrentVal = val;
+            stdNewNum = false;
+        } else {
+            if(stdCurrentVal.replace(/[^0-9]/g, '').length < 15) {
+                stdCurrentVal += val;
+            }
+        }
+    } else if (val === '.') {
+        if (stdNewNum || stdCurrentVal === 'Error') {
+            stdCurrentVal = '0.';
+            stdNewNum = false;
+        } else if (!stdCurrentVal.includes('.')) {
+            stdCurrentVal += '.';
+        }
+    } else if (val === 'C') {
+        stdCurrentVal = '0';
+    } else if (val === 'AC') {
+        stdCurrentVal = '0';
+        stdPrevVal = null;
+        stdOperator = null;
+        stdNewNum = false;
+    } else if (val === '%') {
+        if (stdCurrentVal !== 'Error') {
+            stdCurrentVal = (parseFloat(stdCurrentVal) / 100).toString();
+            stdNewNum = true;
+        }
+    } else if (val === '+' || val === '-' || val === '*' || val === '/') {
+        if (stdCurrentVal !== 'Error') {
+            if (stdOperator && !stdNewNum) {
+                stdCalcCompute();
+            }
+            stdPrevVal = parseFloat(stdCurrentVal);
+            stdOperator = val;
+            stdNewNum = true;
+        }
+    } else if (val === '=') {
+        if (stdOperator && stdCurrentVal !== 'Error') {
+            stdCalcCompute();
+            stdOperator = null;
+        }
+    }
+    updateStdDisplay();
+}
+
+function stdCalcCompute() {
+    let current = parseFloat(stdCurrentVal);
+    let result = 0;
+    if (stdPrevVal === null) return;
+    
+    switch (stdOperator) {
+        case '+': result = stdPrevVal + current; break;
+        case '-': result = stdPrevVal - current; break;
+        case '*': result = stdPrevVal * current; break;
+        case '/': 
+            if (current === 0) { result = 'Error'; }
+            else { result = stdPrevVal / current; }
+            break;
+    }
+    
+    if (result !== 'Error') {
+        // 소수점 10자리까지만
+        result = parseFloat(result.toFixed(10));
+    }
+    stdCurrentVal = result.toString();
+    stdNewNum = true;
+}

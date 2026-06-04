@@ -394,3 +394,108 @@ input[type="date"] {
     align-items: center;
     justify-content: center;
 }
+
+/* Standard Calculator */
+.std-calc-container {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 20px;
+    border: 3px solid var(--border);
+    box-shadow: 0 8px 0 #ffcccc;
+    margin-bottom: 20px;
+}
+
+.std-calc-display {
+    background: #fff9fa;
+    border-radius: 16px;
+    padding: 20px;
+    font-size: 2.5rem;
+    text-align: right;
+    margin-bottom: 20px;
+    border: 2px solid var(--border);
+    color: var(--text-main);
+    word-break: break-all;
+    min-height: 80px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.std-calc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.std-btn {
+    border: none;
+    border-radius: 16px;
+    padding: 20px 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: #fdfbfb;
+    color: var(--text-main);
+    box-shadow: 0 4px 0 #f0e6e6;
+    transition: 0.2s;
+    font-weight: 600;
+}
+
+.std-btn:hover {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #f0e6e6;
+}
+
+.std-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #f0e6e6;
+}
+
+.std-btn.num {
+    background: #ffffff;
+    border: 2px solid #f0e6e6;
+}
+
+.std-btn.cmd {
+    background: #ffcccc;
+    color: var(--primary);
+    box-shadow: 0 4px 0 #ff9999;
+    border: 2px solid #ff9999;
+}
+.std-btn.cmd:hover { box-shadow: 0 2px 0 #ff9999; }
+.std-btn.cmd:active { box-shadow: 0 0 0 #ff9999; }
+
+.std-btn.op {
+    background: #ffb8b8;
+    color: #ffffff;
+    box-shadow: 0 4px 0 #ff7675;
+    border: 2px solid #ff7675;
+}
+.std-btn.op:hover { box-shadow: 0 2px 0 #ff7675; }
+.std-btn.op:active { box-shadow: 0 0 0 #ff7675; }
+
+.std-btn.equal {
+    background: var(--primary);
+    color: #ffffff;
+    box-shadow: 0 4px 0 var(--primary-hover);
+    border: 2px solid var(--primary-hover);
+}
+.std-btn.equal:hover { box-shadow: 0 2px 0 var(--primary-hover); }
+.std-btn.equal:active { box-shadow: 0 0 0 var(--primary-hover); }
+
+.std-btn.zero {
+    grid-column: span 2;
+}
+
+@media (max-width: 480px) {
+    .std-calc-grid {
+        gap: 8px;
+    }
+    .std-btn {
+        padding: 15px 5px;
+        font-size: 1.3rem;
+    }
+    .std-calc-display {
+        font-size: 2rem;
+        padding: 15px;
+    }
+}

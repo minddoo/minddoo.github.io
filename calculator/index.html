@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=8">
 
     <!-- Google AdSense (본진과 동일) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6117526240662405" crossorigin="anonymous"></script>
@@ -27,7 +27,8 @@
         
         <!-- 상단 탭 (네비게이션) -->
         <nav class="tabs">
-            <button class="tab-btn active" data-target="salary">연봉/월급 💰</button>
+            <button class="tab-btn active" data-target="standard-calc">일반 계산기 🧮</button>
+            <button class="tab-btn" data-target="salary">연봉/월급 💰</button>
             <button class="tab-btn" data-target="wage">시급/알바 ⏱️</button>
             <button class="tab-btn" data-target="discount">할인율(%) 🛍️</button>
             <button class="tab-btn" data-target="bmi">비만도 🏃</button>
@@ -55,8 +56,42 @@
             </script>
         </div>
 
+        <!-- 0. 일반 계산기 -->
+        <section id="standard-calc" class="calc-section active">
+            <h2>🧮 일반 계산기</h2>
+            <p class="subtitle">기본 중에 기본! 진짜 사칙연산 계산기</p>
+            <div class="std-calc-container">
+                <div class="std-calc-display" id="std-display">0</div>
+                <div class="std-calc-grid">
+                    <button class="std-btn cmd" onclick="stdCalcInput('C')">C</button>
+                    <button class="std-btn cmd" onclick="stdCalcInput('AC')">AC</button>
+                    <button class="std-btn op" onclick="stdCalcInput('%')">%</button>
+                    <button class="std-btn op" onclick="stdCalcInput('/')">÷</button>
+
+                    <button class="std-btn num" onclick="stdCalcInput('7')">7</button>
+                    <button class="std-btn num" onclick="stdCalcInput('8')">8</button>
+                    <button class="std-btn num" onclick="stdCalcInput('9')">9</button>
+                    <button class="std-btn op" onclick="stdCalcInput('*')">×</button>
+
+                    <button class="std-btn num" onclick="stdCalcInput('4')">4</button>
+                    <button class="std-btn num" onclick="stdCalcInput('5')">5</button>
+                    <button class="std-btn num" onclick="stdCalcInput('6')">6</button>
+                    <button class="std-btn op" onclick="stdCalcInput('-')">-</button>
+
+                    <button class="std-btn num" onclick="stdCalcInput('1')">1</button>
+                    <button class="std-btn num" onclick="stdCalcInput('2')">2</button>
+                    <button class="std-btn num" onclick="stdCalcInput('3')">3</button>
+                    <button class="std-btn op" onclick="stdCalcInput('+')">+</button>
+
+                    <button class="std-btn num zero" onclick="stdCalcInput('0')">0</button>
+                    <button class="std-btn num" onclick="stdCalcInput('.')">.</button>
+                    <button class="std-btn equal" onclick="stdCalcInput('=')">=</button>
+                </div>
+            </div>
+        </section>
+
         <!-- 1. 연봉 계산기 -->
-        <section id="salary" class="calc-section active">
+        <section id="salary" class="calc-section">
             <h2>💰 연봉 실수령액 계산기</h2>
             <p class="subtitle">2024년 4대보험 요율 적용</p>
             <div class="input-group">
@@ -366,6 +401,6 @@
         <p>© 2026 Minddoo's All-in-One Calculator. All rights reserved.</p>
     </footer>
 
-    <script src="app.js?v=7"></script>
+    <script src="app.js?v=8"></script>
 </body>
 </html>
