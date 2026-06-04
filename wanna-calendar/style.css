@@ -41,7 +41,7 @@ body {
 
 /* House Layout */
 .house-wrapper {
-    margin-top: 40px;
+    margin-top: 0px;
     filter: drop-shadow(3px 0 0 #000) drop-shadow(-3px 0 0 #000) drop-shadow(0 -3px 0 #000) drop-shadow(0 3px 0 #000) drop-shadow(8px 8px 0 #000);
 }
 .house-roof {
@@ -617,9 +617,11 @@ body.modal-open {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: -40px;
     margin-top: 10px;
     transform: rotate(-3deg);
+    position: relative;
+    z-index: 10;
 }
 
 .wanna-top {
