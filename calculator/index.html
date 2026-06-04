@@ -29,6 +29,11 @@
             <button class="tab-btn" data-target="discount">할인율(%)</button>
             <button class="tab-btn" data-target="bmi">비만도(BMI)</button>
             <button class="tab-btn" data-target="dday">디데이</button>
+            <button class="tab-btn" data-target="pet-age">반려동물 나이</button>
+            <button class="tab-btn" data-target="real-age">만 나이/띠</button>
+            <button class="tab-btn" data-target="char-count">글자 수</button>
+            <button class="tab-btn" data-target="dutch-pay">더치페이</button>
+            <button class="tab-btn" data-target="percent">퍼센트</button>
         </nav>
 
         <!-- 상단 광고 배너 영역 -->
@@ -144,6 +149,109 @@
             <button class="calc-btn" onclick="calculateDday()">계산하기</button>
             <div class="result-box" id="dday-result" style="display: none;">
                 <!-- 결과 출력 -->
+            </div>
+        </section>
+
+        <!-- 6. 반려동물 나이 환산기 -->
+        <section id="pet-age" class="calc-section">
+            <h2>🐶 반려동물 나이 환산기</h2>
+            <p class="subtitle">우리 아이는 사람 나이로 몇 살일까?</p>
+            <div class="input-group">
+                <label>반려동물 종류</label>
+                <div class="radio-group" style="flex-wrap: wrap;">
+                    <input type="radio" id="pet-dog-small" name="pet-type" value="dog-small" checked>
+                    <label for="pet-dog-small">소형견</label>
+                    <input type="radio" id="pet-dog-medium" name="pet-type" value="dog-medium">
+                    <label for="pet-dog-medium">중형견</label>
+                    <input type="radio" id="pet-dog-large" name="pet-type" value="dog-large">
+                    <label for="pet-dog-large">대형견</label>
+                    <input type="radio" id="pet-cat" name="pet-type" value="cat">
+                    <label for="pet-cat">고양이</label>
+                </div>
+            </div>
+            <div class="input-group" style="display: flex; gap: 10px;">
+                <div style="flex:1;">
+                    <label>나이 (년)</label>
+                    <input type="number" id="pet-years" placeholder="예: 3" value="0">
+                </div>
+                <div style="flex:1;">
+                    <label>개월수</label>
+                    <input type="number" id="pet-months" placeholder="예: 6" value="0">
+                </div>
+            </div>
+            <button class="calc-btn" onclick="calculatePetAge()">계산하기</button>
+            <div class="result-box" id="pet-age-result" style="display: none;"></div>
+        </section>
+
+        <!-- 7. 만 나이 & 띠 계산기 -->
+        <section id="real-age" class="calc-section">
+            <h2>🎂 만 나이 & 띠 계산기</h2>
+            <p class="subtitle">나의 정확한 법적 나이와 별자리는?</p>
+            <div class="input-group">
+                <label>생년월일 입력</label>
+                <input type="date" id="birth-date-input">
+            </div>
+            <button class="calc-btn" onclick="calculateRealAge()">계산하기</button>
+            <div class="result-box" id="real-age-result" style="display: none;"></div>
+        </section>
+
+        <!-- 8. 1초 글자 수 세기 -->
+        <section id="char-count" class="calc-section">
+            <h2>📝 1초 글자 수 세기</h2>
+            <p class="subtitle">자소서, 블로그 글자 수 즉시 확인</p>
+            <div class="input-group">
+                <label>텍스트 입력</label>
+                <textarea id="text-input" placeholder="여기에 텍스트를 붙여넣으세요..." oninput="countText()"></textarea>
+            </div>
+            <div class="result-box" id="char-count-result" style="display: block;">
+                <div class="result-row">공백 포함 글자 수: <span class="value" id="char-with-space">0 자</span></div>
+                <div class="result-row">공백 제외 글자 수: <span class="value" id="char-no-space">0 자</span></div>
+                <div class="result-row total">총 단어 수: <span class="value" id="word-count">0 개</span></div>
+            </div>
+        </section>
+
+        <!-- 9. 더치페이 계산기 -->
+        <section id="dutch-pay" class="calc-section">
+            <h2>💸 칼치기 더치페이 정산기</h2>
+            <p class="subtitle">1원 단위까지 깔끔하게</p>
+            <div class="input-group">
+                <label>총 결제 금액 (원)</label>
+                <input type="number" id="total-amount-input" placeholder="예: 45000">
+            </div>
+            <div class="input-group">
+                <label>나눌 인원 수 (명)</label>
+                <input type="number" id="people-count-input" placeholder="예: 3">
+            </div>
+            <button class="calc-btn" onclick="calculateDutch()">계산하기</button>
+            <div class="result-box" id="dutch-result" style="display: none;"></div>
+        </section>
+
+        <!-- 10. 퍼센트 마법사 -->
+        <section id="percent" class="calc-section">
+            <h2>📊 헷갈리는 퍼센트(%) 계산기</h2>
+            
+            <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                <label style="font-weight: 700; margin-bottom: 8px; display:block; color: var(--text-main);">1. 비율 계산 (A의 B%는?)</label>
+                <div style="display:flex; gap: 10px; align-items: center;">
+                    <input type="number" id="pct1-a" style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" placeholder="전체 값">
+                    <span>의</span>
+                    <input type="number" id="pct1-b" style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" placeholder="비율">
+                    <span>%</span>
+                </div>
+                <button class="calc-btn" style="padding: 10px; margin-top: 10px; font-size: 1rem; margin-bottom: 0;" onclick="calcPercent1()">계산</button>
+                <div id="pct1-result" style="margin-top: 10px; font-weight: 800; color: var(--primary);"></div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px;">
+                <label style="font-weight: 700; margin-bottom: 8px; display:block; color: var(--text-main);">2. 증감 계산 (A가 B가 되면 몇 % 증감?)</label>
+                <div style="display:flex; gap: 10px; align-items: center;">
+                    <input type="number" id="pct2-a" style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" placeholder="기존 값">
+                    <span>에서</span>
+                    <input type="number" id="pct2-b" style="flex:1; padding: 10px; border-radius: 8px; border: 1px solid var(--border);" placeholder="새로운 값">
+                    <span>으로</span>
+                </div>
+                <button class="calc-btn" style="padding: 10px; margin-top: 10px; font-size: 1rem; margin-bottom: 0;" onclick="calcPercent2()">계산</button>
+                <div id="pct2-result" style="margin-top: 10px; font-weight: 800; color: var(--primary);"></div>
             </div>
         </section>
 

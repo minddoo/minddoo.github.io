@@ -98,23 +98,21 @@ body {
 /* Responsive */
 @media (max-width: 480px) {
     .tabs {
-        padding: 0;
+        padding: 0 20px;
         border-radius: 0;
         background: transparent;
         box-shadow: none;
         margin: 0 -20px 20px;
-        padding: 0 20px;
-        flex-wrap: wrap; /* Wrap tabs to next line */
-        justify-content: center;
-        gap: 8px; /* Spacing between wrapped items */
+        flex-wrap: nowrap; /* Keep it horizontally scrolling on mobile */
+        justify-content: flex-start;
+        gap: 8px; 
     }
     .tab-btn {
         background: var(--surface);
         box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        flex: 1 1 calc(33.333% - 8px); /* 3 items per row approx */
-        text-align: center;
-        padding: 10px 5px;
-        font-size: 0.85rem; /* Slightly smaller font to fit */
+        flex: 0 0 auto; /* Don't grow, just take content width */
+        padding: 10px 15px;
+        font-size: 0.85rem;
     }
 }
 
@@ -193,7 +191,8 @@ body {
 
 .input-group input[type="number"],
 .input-group input[type="text"],
-.input-group input[type="date"] {
+.input-group input[type="date"],
+.input-group textarea {
     width: 100%;
     padding: 16px 20px;
     border: 1px solid var(--border);
@@ -205,12 +204,20 @@ body {
     background: rgba(255,255,255,0.5);
 }
 
-.input-group input::placeholder {
+.input-group textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
     color: #c7c7cc;
     font-weight: 500;
 }
 
-.input-group input:focus {
+.input-group input:focus,
+.input-group textarea:focus {
     outline: none;
     border-color: var(--primary);
     background: var(--surface-solid);

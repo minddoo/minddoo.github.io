@@ -200,3 +200,131 @@ function calculateDday() {
         </div>
     `;
 }
+
+// 6. 반려동물 나이 환산기
+function calculatePetAge() {
+    const type = document.querySelector('input[name="pet-type"]:checked').value;
+    const years = parseInt(document.getElementById('pet-years').value) || 0;
+    const months = parseInt(document.getElementById('pet-months').value) || 0;
+    
+    if(years === 0 && months === 0) return alert('나이를 입력해주세요.');
+    
+    let totalYears = years + (months / 12);
+    let humanAge = 0;
+    
+    if (totalYears <= 1) {
+        humanAge = totalYears * 15;
+    } else if (totalYears <= 2) {
+        humanAge = 15 + ((totalYears - 1) * 9);
+    } else {
+        let base = 24;
+        let multi = 4; // cat and small dog
+        if (type === 'dog-medium') multi = 5;
+        if (type === 'dog-large') multi = 7;
+        
+        humanAge = base + ((totalYears - 2) * multi);
+    }
+    
+    const resBox = document.getElementById('pet-age-result');
+    resBox.style.display = 'block';
+    resBox.innerHTML = `
+        <div class="result-row"><span>사람 나이 환산</span></div>
+        <div class="result-row total" style="justify-content: center; font-size: 2rem;">
+            <span style="color:var(--primary);">${Math.round(humanAge)} 살</span>
+        </div>
+    `;
+}
+
+// 7. 만 나이 & 띠 계산기
+function calculateRealAge() {
+    const birthStr = document.getElementById('birth-date-input').value;
+    if(!birthStr) return alert('생년월일을 입력해주세요.');
+    
+    const birthDate = new Date(birthStr);
+    const today = new Date();
+    
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    
+    const zodiacs = ["원숭이", "닭", "개", "돼지", "쥐", "소", "호랑이", "토끼", "용", "뱀", "말", "양"];
+    const zodiac = zodiacs[birthDate.getFullYear() % 12];
+    
+    const month = birthDate.getMonth() + 1;
+    const day = birthDate.getDate();
+    let sign = "";
+    if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) sign = "물병자리";
+    else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) sign = "물고기자리";
+    else if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) sign = "양자리";
+    else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) sign = "황소자리";
+    else if ((month == 5 && day >= 21) || (month == 6 && day <= 21)) sign = "쌍둥이자리";
+    else if ((month == 6 && day >= 22) || (month == 7 && day <= 22)) sign = "게자리";
+    else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) sign = "사자자리";
+    else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) sign = "처녀자리";
+    else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) sign = "천칭자리";
+    else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) sign = "전갈자리";
+    else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) sign = "사수자리";
+    else sign = "염소자리";
+    
+    const resBox = document.getElementById('real-age-result');
+    resBox.style.display = 'block';
+    resBox.innerHTML = `
+        <div class="result-row"><span>법적 만 나이</span> <span class="value" style="font-size:1.5rem; color:var(--primary);">${age} 세</span></div>
+        <div class="result-row"><span>12지신 (띠)</span> <span class="value">${zodiac}띠</span></div>
+        <div class="result-row"><span>별자리</span> <span class="value">${sign}</span></div>
+    `;
+}
+
+// 8. 글자 수 세기
+function countText() {
+    const text = document.getElementById('text-input').value;
+    const withSpace = text.length;
+    const noSpace = text.replace(/\s/g, '').length;
+    const words = text.trim().split(/\s+/).filter(w => w.length > 0).length;
+    
+    document.getElementById('char-with-space').innerText = withSpace.toLocaleString('ko-KR') + ' 자';
+    document.getElementById('char-no-space').innerText = noSpace.toLocaleString('ko-KR') + ' 자';
+    document.getElementById('word-count').innerText = words.toLocaleString('ko-KR') + ' 개';
+}
+
+// 9. 더치페이 정산기
+function calculateDutch() {
+    const total = parseInt(document.getElementById('total-amount-input').value) || 0;
+    const people = parseInt(document.getElementById('people-count-input').value) || 0;
+    
+    if(total <= 0 || people <= 0) return alert('올바른 금액과 인원을 입력해주세요.');
+    
+    const perPerson = Math.ceil(total / people);
+    
+    const resBox = document.getElementById('dutch-result');
+    resBox.style.display = 'block';
+    resBox.innerHTML = `
+        <div class="result-row"><span>1인당 결제 금액</span></div>
+        <div class="result-row total" style="justify-content: center; font-size: 2rem;">
+            <span class="counter" style="color:var(--primary);" data-target="${perPerson}">0</span> <span style="color:var(--primary); font-size:1.2rem; margin-left:5px;">원</span>
+        </div>
+    `;
+    runAnimations();
+}
+
+// 10. 퍼센트 마법사
+function calcPercent1() {
+    const a = parseFloat(document.getElementById('pct1-a').value) || 0;
+    const b = parseFloat(document.getElementById('pct1-b').value) || 0;
+    if(a === 0 || b === 0) return;
+    const res = a * (b / 100);
+    document.getElementById('pct1-result').innerText = `결과: ${res.toLocaleString('ko-KR')}`;
+}
+
+function calcPercent2() {
+    const a = parseFloat(document.getElementById('pct2-a').value) || 0;
+    const b = parseFloat(document.getElementById('pct2-b').value) || 0;
+    if(a === 0) return;
+    const diff = b - a;
+    const pct = (diff / a) * 100;
+    let text = pct > 0 ? `${pct.toFixed(2)}% 증가 (+)` : `${Math.abs(pct).toFixed(2)}% 감소 (-)`;
+    if(pct === 0) text = `변동 없음`;
+    document.getElementById('pct2-result').innerText = `결과: ${text}`;
+}
