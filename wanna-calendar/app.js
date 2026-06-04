@@ -113,6 +113,7 @@ function nextMonth() {
 
 // === Modals ===
 function openGoalModal() {
+    document.body.classList.add('modal-open');
     document.getElementById('goal-modal').classList.add('active');
     if (goalInfo) {
         document.getElementById('goal-input-title').value = goalInfo.title;
@@ -122,10 +123,12 @@ function openGoalModal() {
 }
 
 function closeGoalModal() {
+    document.body.classList.remove('modal-open');
     document.getElementById('goal-modal').classList.remove('active');
 }
 
 function openDayModal(dateStr) {
+    document.body.classList.add('modal-open');
     selectedDateStr = dateStr;
     const parts = dateStr.split('-');
     document.getElementById('modal-date-title').innerText = `${parts[0]}. ${parts[1]}. ${parts[2]}`;
@@ -158,6 +161,7 @@ function openDayModal(dateStr) {
 }
 
 function closeDayModal() {
+    document.body.classList.remove('modal-open');
     document.getElementById('day-modal').classList.remove('active');
     document.getElementById('new-event-title').value = '';
     renderCalendar(); 
@@ -329,6 +333,7 @@ function convertLunar() {
 
 // === Gacha ===
 function playGacha() {
+    document.body.classList.add('modal-open');
     document.getElementById('gacha-modal').classList.add('active');
     document.getElementById('gacha-result-text').innerText = "버튼을 눌러 뽑기를 시작하세요!";
     
@@ -345,6 +350,7 @@ function playGacha() {
 }
 
 function closeGachaModal() {
+    document.body.classList.remove('modal-open');
     document.getElementById('gacha-modal').classList.remove('active');
 }
 

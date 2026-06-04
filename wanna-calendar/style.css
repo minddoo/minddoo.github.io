@@ -438,6 +438,10 @@ select:focus, .input-retro:focus {
     min-height: 50px;
 }
 
+body.modal-open {
+    overflow: hidden; /* Prevent background scrolling */
+}
+
 /* Modal */
 .modal-overlay {
     position: fixed;
@@ -459,11 +463,13 @@ select:focus, .input-retro:focus {
 .modal-content {
     width: 90%;
     max-width: 400px;
-    max-height: 90vh;
+    max-height: 85vh; /* Safe area for mobile */
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* iOS smooth scroll */
     transform: translateY(20px);
     transition: transform 0.3s;
     margin-bottom: 0;
+    padding-bottom: 30px !important; /* Ensure bottom padding */
 }
 .modal-overlay.active .modal-content {
     transform: translateY(0);
