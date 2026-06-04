@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=11">
 
     <!-- Lunar Calendar JS (그대로 사용) -->
     <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.js"></script>
@@ -32,7 +32,7 @@
                 <!-- 해빗 트래커 (우리들의 약속) 영역 -->
                 <section class="gacha-card room-pink habit-tracker">
             <div class="habit-header">
-                <h2>🤙 우리들의 약속</h2>
+                <h2 class="room-title pink-title">🤙 약속해요 ~잊지 않겠다고</h2>
                 <button class="btn-small" onclick="openGoalModal()">약속 정하기</button>
             </div>
             <div id="goal-info" class="goal-info" style="display:none;">
@@ -141,9 +141,9 @@
 
     <!-- 약속 설정 모달 -->
     <div id="goal-modal" class="modal-overlay">
-        <div class="modal-content gacha-card">
+        <div class="modal-content gacha-card mint-glass-card">
             <div class="modal-header">
-                <h2>🤙 새 약속 만들기</h2>
+                <h2>👀 워너원이 보고있다</h2>
                 <button class="close-btn" onclick="closeGoalModal()">❌</button>
             </div>
             <div class="modal-body">
@@ -207,6 +207,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=10"></script>
+    <script src="app.js?v=11"></script>
 </body>
 </html>

@@ -568,3 +568,37 @@ select:focus, .input-retro:focus {
     .habit-stamp { font-size: 1.2rem; }
     .input-group { flex-direction: column; }
 }
+
+/* Transparent Mint Glassmorphism Card */
+.mint-glass-card {
+    background: linear-gradient(135deg, rgba(161, 255, 239, 0.95), rgba(64, 224, 208, 0.8));
+    backdrop-filter: blur(8px);
+    border: 3px solid rgba(255,255,255,0.9) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 150, 136, 0.3), inset 0 0 20px rgba(255,255,255,0.6) !important;
+    position: relative;
+    overflow: hidden;
+}
+.mint-glass-card::before { display: none !important; }
+
+.mint-glass-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    transform: rotate(30deg);
+    animation: shineGlass 3s infinite;
+    pointer-events: none;
+    z-index: 10;
+}
+@keyframes shineGlass {
+    0% { transform: translateX(-100%) rotate(30deg); }
+    20% { transform: translateX(100%) rotate(30deg); }
+    100% { transform: translateX(100%) rotate(30deg); }
+}
+.mint-glass-card .modal-header h2 {
+    color: #005f5f !important;
+    text-shadow: 2px 2px 0px rgba(255,255,255,0.8) !important;
+}
