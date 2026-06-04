@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=6">
 
     <!-- Lunar Calendar JS (그대로 사용) -->
     <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.js"></script>
@@ -26,8 +26,11 @@
             <p>언제나 우리 마음속에 저장 📸</p>
         </header>
 
-        <!-- 해빗 트래커 (우리들의 약속) 영역 -->
-        <section class="gacha-card habit-tracker">
+        <div class="house-wrapper">
+            <div class="house-roof"></div>
+            <div class="house-body">
+                <!-- 해빗 트래커 (우리들의 약속) 영역 -->
+                <section class="gacha-card room-pink habit-tracker">
             <div class="habit-header">
                 <h2>🤙 우리들의 약속</h2>
                 <button class="btn-small" onclick="openGoalModal()">약속 정하기</button>
@@ -48,7 +51,7 @@
         </section>
 
         <!-- 캘린더 영역 -->
-        <section class="gacha-card calendar-section">
+        <section class="gacha-card room-cyan calendar-section">
             <div class="calendar-header">
                 <button class="nav-btn" onclick="prevMonth()">◀</button>
                 <h2 id="month-display">2026년 6월</h2>
@@ -67,6 +70,8 @@
                 <!-- 달력 날짜들이 자바스크립트로 생성됩니다 -->
             </div>
         </section>
+            </div>
+        </div>
 
         <!-- 음력/양력 변환기 영역 -->
         <section class="gacha-card lunar-section">
@@ -175,6 +180,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=4"></script>
+    <script src="app.js?v=6"></script>
 </body>
 </html>
