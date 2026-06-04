@@ -272,10 +272,13 @@ body {
     opacity: 0.9;
 }
 
-/* Has Event Border Highlight */
-.day-cell.has-event {
-    border: 2px solid var(--primary);
-    background: rgba(255, 255, 255, 0.9);
+/* Event Cloud Stamp */
+.event-cloud {
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+    font-size: 1.3rem;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
 }
 
 /* Lunar Convertor */

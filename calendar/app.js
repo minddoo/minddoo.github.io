@@ -60,9 +60,9 @@ function renderCalendar() {
             html += `<div class="habit-stamp">🏅</div>`;
         }
         
-        // Event Border Highlight
+        // Event Cloud Highlight
         if (events[dateStr] && events[dateStr].length > 0) {
-            cell.classList.add('has-event');
+            html += `<div class="event-cloud">☁️</div>`;
         }
         
         cell.innerHTML = html;
