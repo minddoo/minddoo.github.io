@@ -1,17 +1,17 @@
-/* Sky Blue Clouds Theme */
+/* Refreshing Sky Theme */
 :root {
-    --primary: #54a0ff;
-    --primary-hover: #2e86de;
-    --bg-gradient-1: #c8d6e5;
-    --bg-gradient-2: #e0f7fa;
-    --surface: rgba(255, 255, 255, 0.85);
+    --primary: #4A90E2;
+    --primary-hover: #357ABD;
+    --bg-gradient-1: #89f7fe;
+    --bg-gradient-2: #66a6ff;
+    --surface: rgba(255, 255, 255, 0.9);
     --surface-solid: #ffffff;
-    --text-main: #222f3e;
-    --text-muted: #576574;
-    --border: rgba(255, 255, 255, 0.8);
-    --border-dark: #cdd1d5;
-    --shadow: 0 8px 32px rgba(84, 160, 255, 0.15);
-    --radius: 20px;
+    --text-main: #2c3e50;
+    --text-muted: #7f8c8d;
+    --border: rgba(255, 255, 255, 0.95);
+    --border-dark: #bdc3c7;
+    --shadow: 0 10px 40px rgba(102, 166, 255, 0.2);
+    --radius: 28px;
 }
 
 * {
