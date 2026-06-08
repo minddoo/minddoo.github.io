@@ -472,11 +472,50 @@ button {
 .cta-box {
     background: linear-gradient(135deg, var(--primary), var(--accent));
     border-radius: 16px;
-    padding: 24px;
+    padding: 32px 24px;
     color: white;
     text-align: center;
     margin-bottom: 16px;
     box-shadow: 0 4px 15px rgba(205, 46, 58, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-secret-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.secret-logo {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    filter: blur(8px) contrast(1.2);
+    transition: filter 0.4s ease;
+    opacity: 0.8;
+}
+
+.secret-question {
+    position: absolute;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary);
+    text-shadow: 0 2px 4px rgba(255,255,255,0.8);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.cta-box:hover .secret-logo {
+    filter: blur(3px) contrast(1.1);
+    opacity: 1;
 }
 
 .cta-title {

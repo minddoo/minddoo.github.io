@@ -60,9 +60,9 @@ const translations = {
         "reviewsTitle": "Other Expats Said...",
         "review1Text": "\"I was so lost with the Korean medical apps, but Checkit booked my health checkup in 5 mins! Complete lifesaver.\"",
         "review2Text": "\"Don't rely on translation apps for your health. Having professional support made everything stress-free.\"",
-        "ctaTitle": "Korean Hospitals Are Too Complex?",
-        "ctaSubtitle": "From finding the right clinic to booking an appointment, <strong>Checkit</strong> handles all the administrative hassle for you.",
-        "btnCta": "Get Help from Checkit ➔",
+        "ctaTitle": "Unlock the Ultimate Cheat Code 🤫",
+        "ctaSubtitle": "Want to skip the language barrier and administrative nightmare? Discover the secret weapon used by smart expats in Korea.",
+        "btnCta": "Reveal the Secret ➔",
         "btnRetake": "Retake Test"
     },
     
@@ -127,9 +127,9 @@ const translations = {
         "reviewsTitle": "Người nước ngoài khác nói...",
         "review1Text": "\"Tôi đã rất bối rối với các ứng dụng y tế của Hàn Quốc, nhưng Checkit đã đặt lịch khám sức khỏe cho tôi trong 5 phút! Đúng là cứu tinh.\"",
         "review2Text": "\"Đừng dựa vào ứng dụng dịch thuật cho sức khỏe của bạn. Có sự hỗ trợ chuyên nghiệp giúp mọi thứ trở nên nhẹ nhàng hơn nhiều.\"",
-        "ctaTitle": "Bệnh viện Hàn Quốc quá phức tạp?",
-        "ctaSubtitle": "Từ việc tìm đúng phòng khám đến đặt lịch hẹn, <strong>Checkit</strong> sẽ giải quyết mọi rắc rối hành chính cho bạn.",
-        "btnCta": "Nhận trợ giúp từ Checkit ➔",
+        "ctaTitle": "Mở khóa Bí kíp Sinh tồn 🤫",
+        "ctaSubtitle": "Muốn thoát khỏi rào cản ngôn ngữ và cơn ác mộng thủ tục? Khám phá vũ khí bí mật mà người nước ngoài thông minh đang sử dụng.",
+        "btnCta": "Khám phá Bí mật ➔",
         "btnRetake": "Làm lại bài kiểm tra"
     },
     
@@ -194,9 +194,9 @@ const translations = {
         "reviewsTitle": "他の外国人の声...",
         "review1Text": "「韓国の医療アプリにはとても戸惑いましたが、Checkitが5分で健診の予約をしてくれました！完全に命の恩人です。」",
         "review2Text": "「健康のために翻訳アプリに頼らないでください。専門的なサポートがあれば、すべてがストレスフリーになります。」",
-        "ctaTitle": "韓国の病院は複雑すぎますか？",
-        "ctaSubtitle": "適切なクリニックの見つけ方から予約まで、<strong>Checkit</strong>がすべての面倒な手続きを代行します。",
-        "btnCta": "Checkitに助けを求める ➔",
+        "ctaTitle": "究極の裏技をアンロックする 🤫",
+        "ctaSubtitle": "言葉の壁や面倒な手続きから解放されたいですか？賢い外国人が密かに使っている秘密の武器を公開します。",
+        "btnCta": "秘密を明かす ➔",
         "btnRetake": "再テスト"
     },
     
@@ -261,9 +261,9 @@ const translations = {
         "reviewsTitle": "其他外国人说...",
         "review1Text": "“我对韩国的医疗应用程序感到非常迷茫，但Checkit在5分钟内就帮我预约了体检！真是救命恩人。”",
         "review2Text": "“不要为了健康依赖翻译应用程序。有专业的支持让一切都没有压力。”",
-        "ctaTitle": "韩国医院太复杂了？",
-        "ctaSubtitle": "从寻找合适的诊所到预约，<strong>Checkit</strong>为您处理所有繁琐的行政事务。",
-        "btnCta": "从Checkit获取帮助 ➔",
+        "ctaTitle": "解锁终极生存秘籍 🤫",
+        "ctaSubtitle": "想跳过语言障碍和繁琐的行政噩梦吗？点击发现聪明的外国人在韩国使用的秘密武器。",
+        "btnCta": "揭开秘密 ➔",
         "btnRetake": "重新测试"
     },
     
@@ -328,9 +328,9 @@ const translations = {
         "reviewsTitle": "Другие экспаты говорят...",
         "review1Text": "\"Я так запутался в корейских медицинских приложениях, но Checkit записал меня на медосмотр за 5 минут! Настоящее спасение.\"",
         "review2Text": "\"Не полагайтесь на приложения-переводчики в вопросах здоровья. Наличие профессиональной поддержки избавило меня от стресса.\"",
-        "ctaTitle": "Корейские больницы слишком сложные?",
-        "ctaSubtitle": "От поиска подходящей клиники до записи на прием, <strong>Checkit</strong> возьмет на себя все административные хлопоты за вас.",
-        "btnCta": "Получить помощь от Checkit ➔",
+        "ctaTitle": "Разблокируйте ультимативный чит-код 🤫",
+        "ctaSubtitle": "Хотите избежать языкового барьера и административных кошмаров? Откройте секретное оружие умных экспатов в Корее.",
+        "btnCta": "Узнать секрет ➔",
         "btnRetake": "Пройти тест заново"
     },
     
@@ -395,9 +395,9 @@ const translations = {
         "reviewsTitle": "ชาวต่างชาติคนอื่นๆ กล่าวว่า...",
         "review1Text": "\"ฉันหลงทางมากกับแอปทางการแพทย์ของเกาหลี แต่ Checkit จองคิวตรวจสุขภาพให้ฉันใน 5 นาที! ช่วยชีวิตได้จริงๆ\"",
         "review2Text": "\"อย่าพึ่งพาแอปแปลภาษาเพื่อสุขภาพของคุณ การมีการสนับสนุนอย่างมืออาชีพทำให้ทุกอย่างปราศจากความเครียด\"",
-        "ctaTitle": "โรงพยาบาลในเกาหลีซับซ้อนเกินไป?",
-        "ctaSubtitle": "ตั้งแต่การค้นหาคลินิกที่เหมาะสมไปจนถึงการจองคิว <strong>Checkit</strong> จะจัดการความยุ่งยากด้านธุรการทั้งหมดให้กับคุณ",
-        "btnCta": "รับความช่วยเหลือจาก Checkit ➔",
+        "ctaTitle": "ปลดล็อกสูตรโกงลับ 🤫",
+        "ctaSubtitle": "อยากข้ามกำแพงภาษาและฝันร้ายด้านธุรการไหม? ค้นพบอาวุธลับที่ชาวต่างชาติฉลาดๆ ใช้ในเกาหลี",
+        "btnCta": "เปิดเผยความลับ ➔",
         "btnRetake": "ทำแบบทดสอบอีกครั้ง"
     }
 };
