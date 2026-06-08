@@ -67,8 +67,14 @@ function renderQuestion() {
     
     // Update progress
     const progress = ((currentQ) / 5) * 100;
-    document.getElementById('progress-fill').style.width = progress + '%';
-    document.getElementById('q-current').innerText = currentQ + 1;
+    document.getElementById('track-fill').style.width = progress + '%';
+    const runner = document.getElementById('runner-icon');
+    if (runner) {
+        runner.style.left = progress + '%';
+        runner.classList.add('running');
+        setTimeout(() => runner.classList.remove('running'), 400);
+    }
+    document.getElementById('q-counter').innerText = `STAGE ${currentQ + 1} / 5`;
     
     // Set text
     document.getElementById('q-title').innerText = qData.q;

@@ -57,10 +57,19 @@
         <!-- 2. Quiz Screen -->
         <div id="quiz-screen" class="screen">
             <div class="quiz-header">
-                <div class="progress-bar">
-                    <div id="progress-fill"></div>
+                <div class="survival-track">
+                    <div class="track-line"></div>
+                    <div class="track-fill" id="track-fill"></div>
+                    <div class="milestones">
+                        <div class="milestone"></div>
+                        <div class="milestone"></div>
+                        <div class="milestone"></div>
+                        <div class="milestone"></div>
+                        <div class="milestone"></div>
+                    </div>
+                    <div id="runner-icon" class="runner">🏃‍♂️💨</div>
                 </div>
-                <div class="q-counter"><span data-i18n="questionHeader">Question</span> <span id="q-current">1</span>/5</div>
+                <div class="q-counter" id="q-counter">STAGE 1 / 5</div>
             </div>
             
             <h2 id="q-title" class="question-title">Question goes here</h2>
