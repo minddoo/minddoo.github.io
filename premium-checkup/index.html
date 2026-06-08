@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex"> <!-- AdSense Protection -->
+    <title>Korea Premium Health Checkup Matcher</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Korea Medical Concierge</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Hospitals</a>
+            <a href="#">About Us</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Discover Premium Healthcare in Korea</h1>
+            <p>Compare the finest comprehensive health checkup packages from Korea's top-tier hospitals.</p>
+            
+            <!-- Search / Filter Bar -->
+            <div class="search-box">
+                <select id="filter-type" class="filter-select">
+                    <option value="all">All Packages</option>
+                    <option value="VVIP">VVIP</option>
+                    <option value="VIP">VIP / Premium</option>
+                    <option value="Basic">Basic / Essential</option>
+                </select>
+                <select id="filter-focus" class="filter-select">
+                    <option value="all">All Specialties</option>
+                    <option value="Cancer Screening">Cancer Screening</option>
+                    <option value="Cardiovascular">Cardiovascular</option>
+                    <option value="Brain Health">Brain Health</option>
+                    <option value="Women's Health">Women's Health</option>
+                </select>
+                <button id="btn-search" class="btn-primary">Search Packages</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="section-title">
+            <h2>Featured Packages</h2>
+            <p>World-class medical technology meets premium hospitality.</p>
+        </div>
+
+        <div id="package-list" class="package-grid">
+            <!-- Packages will be rendered here by app.js -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Korea Medical Concierge. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Subtle CTA Modal -->
+    <div id="cta-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="btn-close" id="btn-close-modal">&times;</button>
+            <h3 class="modal-title">Request a Consultation</h3>
+            <p class="modal-desc">
+                This premium package requires careful coordination with the hospital's VIP center. 
+                Would you like Checkit's bilingual coordinators to handle the booking process and provide 1:1 on-site interpretation?
+            </p>
+            <div class="modal-actions">
+                <a href="https://checkit082.kr" class="btn-primary">Yes, Connect with Checkit</a>
+                <button class="btn-secondary" id="btn-cancel-modal">Maybe Later</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
