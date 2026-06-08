@@ -1,70 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const packageList = document.getElementById('package-list');
-    const filterType = document.getElementById('filter-type');
-    const filterFocus = document.getElementById('filter-focus');
-    const btnSearch = document.getElementById('btn-search');
-
+    const hospitalList = document.getElementById('hospital-list');
     const modal = document.getElementById('cta-modal');
     const btnCloseModal = document.getElementById('btn-close-modal');
     const btnCancelModal = document.getElementById('btn-cancel-modal');
 
     // Initial render
-    renderPackages(packages);
-
-    // Search button event
-    btnSearch.addEventListener('click', () => {
-        const type = filterType.value;
-        const focus = filterFocus.value;
-
-        const filtered = packages.filter(p => {
-            const matchType = type === 'all' || p.type.includes(type);
-            const matchFocus = focus === 'all' || p.tags.includes(focus) || p.features.some(f => f.includes(focus));
-            return matchType && matchFocus;
-        });
-
-        renderPackages(filtered);
-    });
+    renderHospitals(hospitals);
 
     // Render function
-    function renderPackages(data) {
-        packageList.innerHTML = '';
+    function renderHospitals(data) {
+        hospitalList.innerHTML = '';
         
-        if (data.length === 0) {
-            packageList.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: #666;">No packages found matching your criteria.</p>';
-            return;
-        }
-
-        data.forEach(pkg => {
+        data.forEach(hospital => {
             const card = document.createElement('div');
             card.className = 'package-card';
             
-            const tagsHTML = pkg.tags.map(t => 
-                `<span class="badge ${t === 'VIP' || t === 'VVIP' ? 'badge-vip' : ''}">${t}</span>`
-            ).join('');
-
-            const featuresHTML = pkg.features.map(f => `<li>${f}</li>`).join('');
-
             card.innerHTML = `
                 <div class="card-header">
-                    <div class="hospital-name">${pkg.hospitalName}</div>
-                    <h3 class="package-title">${pkg.title}</h3>
-                    <div class="tags">${tagsHTML}</div>
+                    <h3 class="package-title" style="margin-bottom: 5px;">${hospital.name}</h3>
                 </div>
                 <div class="card-body">
-                    <p style="color: #666; margin-bottom: 15px; font-size: 0.9rem;">⏱ Duration: ${pkg.duration}</p>
-                    <ul class="feature-list">
-                        ${featuresHTML}
-                    </ul>
+                    <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">${hospital.description}</p>
                 </div>
                 <div class="card-footer" style="flex-direction: column; gap: 10px;">
-                    <div class="price" style="align-self: flex-start; margin-bottom: 5px;">${pkg.price}</div>
                     <div style="display: flex; gap: 10px; width: 100%;">
-                        <a href="${pkg.officialUrl}" target="_blank" class="btn-secondary" style="flex: 1; text-align: center; text-decoration: none; padding: 10px 0; font-size: 0.9rem;">🌐 Official Info</a>
-                        <button class="btn-primary btn-book" data-id="${pkg.id}" style="flex: 1; padding: 10px 0; font-size: 0.9rem;">🤝 Book via Checkit</button>
+                        <a href="${hospital.officialUrl}" target="_blank" class="btn-secondary" style="flex: 1; text-align: center; text-decoration: none; padding: 12px 0; font-size: 0.95rem; font-weight: 600;">🌐 Official Website</a>
+                        <button class="btn-primary btn-book" data-id="${hospital.id}" style="flex: 1; padding: 12px 0; font-size: 0.95rem;">🤝 Book via Checkit</button>
                     </div>
                 </div>
             `;
-            packageList.appendChild(card);
+            hospitalList.appendChild(card);
         });
 
         // Add event listeners to newly created book buttons

@@ -1,87 +1,32 @@
-const packages = [
+const hospitals = [
     {
         id: 1,
-        hospitalName: "Severance Hospital (Sinchon/Gangnam)",
-        type: "Basic",
-        title: "Basic Health Examination",
-        price: "Est. ₩ 700,000 ~",
-        duration: "2-3 Hours",
-        features: [
-            "Basic Examinations (Blood, Urine, ECG)",
-            "Chest X-Ray & Abdominal Ultrasound",
-            "Gastroscopy (Sedation fee +156k KRW)",
-            "Checkit VIP Concierge Available"
-        ],
-        tags: ["Essential", "Fast", "English Support"],
-        popular: true,
+        name: "Severance Hospital (Sinchon/Gangnam)",
+        description: "One of the oldest and most prestigious university hospitals in Korea, renowned for cutting-edge robotic surgery and comprehensive cancer care.",
         officialUrl: "https://translate.google.com/translate?sl=ko&tl=en&u=https://gs.severance.healthcare/gs-en/index.do"
     },
     {
         id: 2,
-        hospitalName: "Severance Hospital (Sinchon/Gangnam)",
-        type: "VIP",
-        title: "VIP (Noblesse) Health Examination",
-        price: "Est. ₩ 4,000,000 ~",
-        duration: "4-5 Hours",
-        features: [
-            "Brain MRA & MRI",
-            "Chest & Abdominal CT",
-            "Full Body Cancer Screening",
-            "Checkit 1:1 Medical Interpretation"
-        ],
-        tags: ["VIP", "Brain Health", "Cancer Screening"],
-        popular: false,
-        officialUrl: "https://translate.google.com/translate?sl=ko&tl=en&u=https://gs.severance.healthcare/gs-en/index.do"
+        name: "Asan Medical Center",
+        description: "Korea's largest medical complex, consistently ranked #1 in Korea. World-class in organ transplantation, heart disease, and oncology.",
+        officialUrl: "https://translate.google.com/translate?sl=ko&tl=en&u=https://eng.amc.seoul.kr/asan/eng/main.do"
     },
     {
         id: 3,
-        hospitalName: "Asan Medical Center",
-        type: "Premium",
-        title: "Essential B (Age 40+)",
-        price: "Est. ₩ 2,870,000 ~",
-        duration: "1 Day",
-        features: [
-            "Basic + Gastroscopy & Colonoscopy",
-            "Low-Dose Chest CT",
-            "Bone Density Test",
-            "Checkit Fast-Track Booking"
-        ],
-        tags: ["Premium", "Over 40", "Comprehensive"],
-        popular: true,
-        officialUrl: "https://translate.google.com/translate?sl=ko&tl=en&u=https://eng.amc.seoul.kr/asan/eng/main.do"
+        name: "Seoul National University Hospital",
+        description: "The top-ranked national hospital in Korea. Its Gangnam Center is highly specialized in premium executive health screenings.",
+        officialUrl: "https://translate.google.com/translate?sl=ko&tl=en&u=https://healthcare.snuh.org/english/front.do"
     },
     {
         id: 4,
-        hospitalName: "Asan Medical Center",
-        type: "VVIP",
-        title: "Premium I (2-Day / 1-Night)",
-        price: "Est. ₩ 8,000,000 ~",
-        duration: "2 Days / 1 Night",
-        features: [
-            "VIP Room Accommodation",
-            "Brain MRA/MRI & Whole Body CT",
-            "Extensive Cardiovascular Tests",
-            "Checkit VVIP Premium Escort"
-        ],
-        tags: ["VVIP", "Overnight", "Luxury"],
-        popular: false,
-        officialUrl: "https://translate.google.com/translate?sl=ko&tl=en&u=https://eng.amc.seoul.kr/asan/eng/main.do"
+        name: "Samsung Medical Center",
+        description: "Famous for its state-of-the-art facilities and patient-centered care. Highly acclaimed for severe diseases and comprehensive checkups.",
+        officialUrl: "https://translate.google.com/translate?sl=ko&tl=en&u=https://www.samsunghospital.com/m/english/main/index.do"
     },
     {
         id: 5,
-        hospitalName: "Seoul National University Hospital (Gangnam)",
-        type: "Premium",
-        title: "Intensive / Specialized Program",
-        price: "Est. $1,000 ~ $2,500 USD",
-        duration: "3-4 Hours",
-        features: [
-            "Customized based on personal risk",
-            "Organ-specific deep dive (Heart/Brain)",
-            "World-Class Diagnostic Equipment",
-            "Checkit Multi-Language Support"
-        ],
-        tags: ["Customized", "Premium", "English Support"],
-        popular: true,
-        officialUrl: "https://translate.google.com/translate?sl=ko&tl=en&u=https://healthcare.snuh.org/english/front.do"
+        name: "Seoul St. Mary's Hospital",
+        description: "A major Catholic hospital network offering compassionate care and top-tier expertise in hematology and comprehensive health promotion.",
+        officialUrl: "https://translate.google.com/translate?sl=ko&tl=en&u=https://www.cmcseoul.or.kr/en.common.main.main.sp"
     }
 ];
