@@ -11,22 +11,24 @@
 </head>
 <body>
     <div class="app-container">
-        <!-- Language Selector -->
-        <div class="lang-selector">
-            <span>🌐</span>
-            <select id="langSelect" onchange="changeLanguage(this.value)">
-                <option value="en">English</option>
-                <option value="vi">Tiếng Việt</option>
-                <option value="ja">日本語</option>
-                <option value="zh">中文</option>
-                <option value="ru">Русский</option>
-                <option value="th">ภาษาไทย</option>
-            </select>
+        <!-- Top Header -->
+        <div class="top-header">
+            <div class="brand-logo">🇰🇷 Checkit</div>
+            <div class="lang-selector">
+                <span>🌐</span>
+                <select id="langSelect" onchange="changeLanguage(this.value)">
+                    <option value="en">English</option>
+                    <option value="vi">Tiếng Việt</option>
+                    <option value="ja">日本語</option>
+                    <option value="zh">中文</option>
+                    <option value="ru">Русский</option>
+                    <option value="th">ภาษาไทย</option>
+                </select>
+            </div>
         </div>
 
         <!-- 1. Start Screen -->
         <div id="start-screen" class="screen active">
-            <div class="brand-logo">🇰🇷 Checkit</div>
             <div class="badge-hook">
                 <span class="pulse-dot"></span>
                 <span data-i18n="hookText1">Today,</span> <span id="live-count" style="margin: 0 4px; font-weight: 800; color: var(--primary);">1,204</span> <span data-i18n="hookText2">expats took this test!</span>
