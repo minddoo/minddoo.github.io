@@ -13,9 +13,12 @@
     <div class="app-container">
         <!-- Top Header -->
         <div class="top-header">
-            <div class="brand-logo">🇰🇷 Checkit</div>
+            <div class="brand-logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px; color:var(--accent);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="10" r="3"/></svg>
+                Checkit
+            </div>
             <div class="lang-selector">
-                <span>🌐</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                 <select id="langSelect" onchange="changeLanguage(this.value)">
                     <option value="en">English</option>
                     <option value="vi">Tiếng Việt</option>
@@ -29,16 +32,22 @@
 
         <!-- 1. Start Screen -->
         <div id="start-screen" class="screen active">
-            <div class="badge-hook">
+            <div class="badge-hook premium-badge">
                 <span class="pulse-dot"></span>
-                <span data-i18n="hookText1">Today,</span> <span id="live-count" style="margin: 0 4px; font-weight: 800; color: var(--primary);">1,204</span> <span data-i18n="hookText2">expats took this test!</span>
+                <span data-i18n="hookText1">Today,</span> <span id="live-count" style="margin: 0 4px; font-weight: 800;">1,204</span> <span data-i18n="hookText2">expats took this test!</span>
             </div>
             
-            <h1 class="main-title"><span data-i18n="title1">K-Healthcare</span><br><span style="color: var(--accent);" data-i18n="title2">Survival Test</span></h1>
+            <div class="title-container">
+                <h1 class="main-title"><span data-i18n="title1">K-Healthcare</span><br><span style="color: var(--accent);" data-i18n="title2">Survival Test</span></h1>
+                <div class="title-divider"></div>
+            </div>
+            
             <p class="subtitle" id="i18n-subtitle">Getting sick in Korea can be a nightmare.<br>How well would you survive the Korean medical system?</p>
             
-            <div class="hero-graphic" style="font-size: 3.5rem;">
-                🏯 🩺 🇰🇷
+            <div class="hero-graphic premium-graphic">
+                <div class="graphic-circle">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
             </div>
             
             <button class="btn-primary pulse-btn" onclick="startTest()" data-i18n="btnStart">Start Test Now</button>
