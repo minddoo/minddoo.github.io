@@ -10,9 +10,10 @@ const sites = [
   { name: 'hospital-matcher', path: 'hospital-matcher/index.html', today: 98, total: 37562 },
   { name: 'dietary-card', path: 'dietary-card/index.html', today: 39, total: 10035 },
   { name: 'coffee-order', path: 'coffee-order/index.html', today: 82, total: 20076 },
-  { name: 'checkup-talk', path: 'checkup-talk/index.html', today: 32, total: 9845 },
+  { name: 'checkit-talk', path: 'checkup-talk/index.html', today: 32, total: 9845 },
   { name: 'calendar', path: 'calendar/index.html', today: 64, total: 4623 },
-  { name: 'calculator', path: 'calculator/index.html', today: 27, total: 8645 }
+  { name: 'calculator', path: 'calculator/index.html', today: 27, total: 8645 },
+  { name: 'checkit-global', path: 'checkit-global/index.html', today: 121, total: 24502 }
 ];
 
 function getTemplate(siteName, baseToday, baseTotal) {
