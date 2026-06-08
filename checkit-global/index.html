@@ -11,23 +11,36 @@
 </head>
 <body>
     <div class="app-container">
+        <!-- Language Selector -->
+        <div class="lang-selector">
+            <span>🌐</span>
+            <select id="langSelect" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="vi">Tiếng Việt</option>
+                <option value="ja">日本語</option>
+                <option value="zh">中文</option>
+                <option value="ru">Русский</option>
+                <option value="th">ภาษาไทย</option>
+            </select>
+        </div>
+
         <!-- 1. Start Screen -->
         <div id="start-screen" class="screen active">
             <div class="brand-logo">Checkit</div>
             <div class="badge-hook">
                 <span class="pulse-dot"></span>
-                <span id="live-count">1,204</span> expats took this test today!
+                <span data-i18n="hookText1">Today,</span> <span id="live-count" style="margin: 0 4px; font-weight: 800; color: var(--primary);">1,204</span> <span data-i18n="hookText2">expats took this test!</span>
             </div>
             
-            <h1 class="main-title">K-Healthcare<br><span class="highlight">Survival Test</span></h1>
-            <p class="subtitle">Getting sick in Korea can be a nightmare.<br>How well would you survive the Korean medical system?</p>
+            <h1 class="main-title"><span data-i18n="title1">K-Healthcare</span><br><span class="highlight" data-i18n="title2">Survival Test</span></h1>
+            <p class="subtitle" id="i18n-subtitle">Getting sick in Korea can be a nightmare.<br>How well would you survive the Korean medical system?</p>
             
             <div class="hero-graphic">
                 🏥 🩺 💊
             </div>
             
-            <button class="btn-primary pulse-btn" onclick="startTest()">Start Test Now</button>
-            <p class="disclaimer">Takes only 1 minute • 100% Free</p>
+            <button class="btn-primary pulse-btn" onclick="startTest()" data-i18n="btnStart">Start Test Now</button>
+            <p class="disclaimer" data-i18n="disclaimer">Takes only 1 minute • 100% Free</p>
         </div>
 
         <!-- 2. Quiz Screen -->
@@ -36,7 +49,7 @@
                 <div class="progress-bar">
                     <div id="progress-fill"></div>
                 </div>
-                <div class="q-counter">Question <span id="q-current">1</span>/5</div>
+                <div class="q-counter"><span data-i18n="questionHeader">Question</span> <span id="q-current">1</span>/5</div>
             </div>
             
             <h2 id="q-title" class="question-title">Question goes here</h2>
@@ -49,17 +62,17 @@
         <!-- 3. Loading Screen -->
         <div id="loading-screen" class="screen">
             <div class="loading-spinner"></div>
-            <h2 class="loading-title">Analyzing your answers...</h2>
+            <h2 class="loading-title" data-i18n="loading1">Analyzing your answers...</h2>
             <ul class="loading-steps">
-                <li id="step1">Evaluating language skills...</li>
-                <li id="step2">Checking medical knowledge...</li>
-                <li id="step3">Calculating survival rate...</li>
+                <li id="step1" data-i18n="loading2">Evaluating language skills...</li>
+                <li id="step2" data-i18n="loading3">Checking medical knowledge...</li>
+                <li id="step3" data-i18n="loading4">Calculating survival rate...</li>
             </ul>
         </div>
 
         <!-- 4. Result Screen -->
         <div id="result-screen" class="screen">
-            <div class="result-header">Your Survival Type:</div>
+            <div class="result-header" data-i18n="resultHeader">Your Survival Type:</div>
             <h1 id="r-title" class="result-title">Result Title</h1>
             
             <div class="result-card">
@@ -68,9 +81,9 @@
                         <div id="gauge-fill"></div>
                     </div>
                     <div class="gauge-labels">
-                        <span>Low</span>
+                        <span data-i18n="gaugeLow">Low</span>
                         <span id="r-level-text" class="level-highlight">Survival Level</span>
-                        <span>High</span>
+                        <span data-i18n="gaugeHigh">High</span>
                     </div>
                 </div>
                 <p id="r-desc" class="result-desc">Description goes here.</p>
@@ -78,56 +91,46 @@
             
             <!-- Social Proof Section -->
             <div class="reviews-section">
-                <h3 class="reviews-title">Other Expats Said...</h3>
+                <h3 class="reviews-title" data-i18n="reviewsTitle">Other Expats Said...</h3>
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"I was so lost with the Korean medical apps, but Checkit booked my appointment in 5 mins! Complete lifesaver."</p>
+                    <p class="review-text" data-i18n="review1Text">"I was so lost with the Korean medical apps, but Checkit booked my appointment in 5 mins! Complete lifesaver."</p>
                     <div class="review-author">- Sarah, USA</div>
                 </div>
                 <div class="review-card">
                     <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Don't rely on Papago for your health. Having English support made everything stress-free."</p>
+                    <p class="review-text" data-i18n="review2Text">"Don't rely on Papago for your health. Having English support made everything stress-free."</p>
                     <div class="review-author">- Michael, Canada</div>
                 </div>
             </div>
             
             <!-- CTA Section -->
             <div class="cta-box">
-                <h3 class="cta-title">Korean Hospitals Are Too Complex?</h3>
-                <p class="cta-subtitle">From finding the right clinic to booking an appointment, <strong>Checkit</strong> handles all the administrative hassle for you in English.</p>
-                <a href="https://checkit082.kr" class="btn-primary" target="_blank" rel="noopener">Get Help from Checkit ➔</a>
+                <h3 class="cta-title" data-i18n="ctaTitle">Korean Hospitals Are Too Complex?</h3>
+                <p class="cta-subtitle" id="i18n-ctaSubtitle">From finding the right clinic to booking an appointment, <strong>Checkit</strong> handles all the administrative hassle for you.</p>
+                <a href="https://checkit082.kr" class="btn-primary" target="_blank" rel="noopener" data-i18n="btnCta">Get Help from Checkit ➔</a>
             </div>
             
-            <button class="btn-secondary" onclick="location.reload()">Retake Test</button>
+            <button class="btn-secondary" onclick="location.reload()" data-i18n="btnRetake">Retake Test</button>
         </div>
     </div>
 
+    <script src="translations.js"></script>
     <!-- Live Visitor Counter Script -->
     <script>
     (function() {
-        // Base counts to hook users
         const baseToday = 1204;
-        
-        // Faking a live counter that increments slightly during the session
         let currentCount = baseToday + Math.floor(Math.random() * 50);
         const liveCountEl = document.getElementById('live-count');
         
         if (liveCountEl) {
             liveCountEl.innerText = currentCount.toLocaleString();
-            
-            // Randomly increment to simulate live users taking the test
             setInterval(() => {
                 if (Math.random() > 0.7) {
                     currentCount += Math.floor(Math.random() * 3) + 1;
                     liveCountEl.innerText = currentCount.toLocaleString();
-                    
-                    // Add a tiny bump animation
                     liveCountEl.style.transform = "scale(1.2)";
-                    liveCountEl.style.color = "#2563eb"; // Highlight color
-                    setTimeout(() => {
-                        liveCountEl.style.transform = "scale(1)";
-                        liveCountEl.style.color = "inherit";
-                    }, 300);
+                    setTimeout(() => { liveCountEl.style.transform = "scale(1)"; }, 300);
                 }
             }, 4000);
         }

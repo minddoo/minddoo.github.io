@@ -1,53 +1,39 @@
-const questions = [
-    {
-        q: "You suddenly get a high fever in Seoul. What do you do?",
-        a: [
-            { text: "Panic and hope it goes away.", score: 20 },
-            { text: "Go to a pharmacy using body language.", score: 10 },
-            { text: "Search for an English-speaking clinic.", score: 5 },
-            { text: "Call a Korean friend to help.", score: 15 }
-        ]
-    },
-    {
-        q: "You arrive at a clinic, but the receptionists don't speak English. Your reaction?",
-        a: [
-            { text: "Turn around and walk out.", score: 20 },
-            { text: "Use Papago/Google Translate.", score: 5 },
-            { text: "Show them a pre-written translated text.", score: 10 },
-            { text: "Just nod and say 'Yes' to everything.", score: 15 }
-        ]
-    },
-    {
-        q: "They hand you a complex medical history form entirely in Korean.",
-        a: [
-            { text: "Use Google Lens to translate line by line.", score: 5 },
-            { text: "Sign the bottom without reading.", score: 20 },
-            { text: "Ask the nurse to explain it in simple terms.", score: 15 },
-            { text: "Call someone to translate over the phone.", score: 10 }
-        ]
-    },
-    {
-        q: "You need to book a follow-up appointment with a specialist.",
-        a: [
-            { text: "Book it via phone call in broken Korean.", score: 10 },
-            { text: "Try to book online but get stuck at verification.", score: 20 },
-            { text: "Ask the front desk to book it before leaving.", score: 5 },
-            { text: "I'll just wait until I'm back in my home country.", score: 15 }
-        ]
-    },
-    {
-        q: "How do you feel about dealing with Korean healthcare administration overall?",
-        a: [
-            { text: "Terrified. It's too complex.", score: 20 },
-            { text: "Stressful, but I manage somehow.", score: 10 },
-            { text: "I rely entirely on my Korean partner/friend.", score: 15 },
-            { text: "It's fine, I can handle it myself.", score: 0 }
-        ]
-    }
-];
-
+let currentLang = 'en';
 let currentQ = 0;
 let totalScore = 0;
+
+// Update static text elements
+function updateStaticTexts() {
+    const t = translations[currentLang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) {
+            el.innerHTML = t[key];
+        }
+    });
+    
+    // Special handling for subtitle with html
+    const subtitleEl = document.getElementById('i18n-subtitle');
+    if (subtitleEl && t.subtitle) subtitleEl.innerHTML = t.subtitle;
+
+    const ctaSubtitleEl = document.getElementById('i18n-ctaSubtitle');
+    if (ctaSubtitleEl && t.ctaSubtitle) ctaSubtitleEl.innerHTML = t.ctaSubtitle;
+}
+
+function changeLanguage(lang) {
+    currentLang = lang;
+    updateStaticTexts();
+    
+    // If currently on quiz screen, re-render question
+    if (document.getElementById('quiz-screen').classList.contains('active')) {
+        renderQuestion();
+    }
+    
+    // If currently on result screen, re-render result
+    if (document.getElementById('result-screen').classList.contains('active')) {
+        renderResultData();
+    }
+}
 
 function switchScreen(screenId) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -62,11 +48,25 @@ function startTest() {
     renderQuestion();
 }
 
+function getQuestionData(index) {
+    const t = translations[currentLang];
+    const qNum = index + 1;
+    return {
+        q: t[`q${qNum}_q`],
+        a: [
+            { text: t[`q${qNum}_o1`], score: (qNum===1?20:qNum===2?20:qNum===3?5:qNum===4?10:20) },
+            { text: t[`q${qNum}_o2`], score: (qNum===1?10:qNum===2?5:qNum===3?20:qNum===4?20:10) },
+            { text: t[`q${qNum}_o3`], score: (qNum===1?5:qNum===2?10:qNum===3?15:qNum===4?5:15) },
+            { text: t[`q${qNum}_o4`], score: (qNum===1?15:qNum===2?15:qNum===3?10:qNum===4?15:0) }
+        ]
+    };
+}
+
 function renderQuestion() {
-    const qData = questions[currentQ];
+    const qData = getQuestionData(currentQ);
     
     // Update progress
-    const progress = ((currentQ) / questions.length) * 100;
+    const progress = ((currentQ) / 5) * 100;
     document.getElementById('progress-fill').style.width = progress + '%';
     document.getElementById('q-current').innerText = currentQ + 1;
     
@@ -90,7 +90,7 @@ function selectOption(score) {
     totalScore += score;
     currentQ++;
     
-    if (currentQ < questions.length) {
+    if (currentQ < 5) {
         renderQuestion();
     } else {
         showLoading();
@@ -109,34 +109,32 @@ function showLoading() {
     }, 3800);
 }
 
-function showResult() {
-    switchScreen('result-screen');
-    
+function renderResultData() {
+    const t = translations[currentLang];
     let title = "";
     let level = "";
     let desc = "";
     let gaugeColor = "";
     let gaugeWidth = "";
 
-    // Score max is 100
     if (totalScore >= 70) {
-        title = "Lost in Translation 🚨";
-        level = "High Risk";
+        title = t.r1_title;
+        level = t.r1_level;
         gaugeColor = "var(--danger)";
         gaugeWidth = "90%";
-        desc = "You are currently highly vulnerable to the Korean medical system. Language barriers and complex procedures are causing you significant stress. You definitely need administrative support!";
+        desc = t.r1_desc;
     } else if (totalScore >= 40) {
-        title = "Papago Warrior ⚔️";
-        level = "Moderate Risk";
+        title = t.r2_title;
+        level = t.r2_level;
         gaugeColor = "var(--warning)";
         gaugeWidth = "50%";
-        desc = "You can get by with basic needs using translation apps, but you still struggle with specialized clinics, complex forms, and appointment bookings. Professional help would save you hours of stress.";
+        desc = t.r2_desc;
     } else {
-        title = "K-Health Master 🏆";
-        level = "Low Risk";
+        title = t.r3_title;
+        level = t.r3_level;
         gaugeColor = "var(--success)";
         gaugeWidth = "20%";
-        desc = "You navigate the Korean medical system surprisingly well! However, dealing with administrative tasks is still a hassle. Why not delegate the boring stuff and save your precious time?";
+        desc = t.r3_desc;
     }
 
     document.getElementById('r-title').innerText = title;
@@ -145,7 +143,20 @@ function showResult() {
     document.getElementById('r-desc').innerText = desc;
     
     setTimeout(() => {
-        document.getElementById('gauge-fill').style.width = gaugeWidth;
-        document.getElementById('gauge-fill').style.background = gaugeColor;
+        const fill = document.getElementById('gauge-fill');
+        if (fill) {
+            fill.style.width = gaugeWidth;
+            fill.style.background = gaugeColor;
+        }
     }, 100);
 }
+
+function showResult() {
+    switchScreen('result-screen');
+    renderResultData();
+}
+
+// Initialize on load
+document.addEventListener("DOMContentLoaded", () => {
+    updateStaticTexts();
+});
