@@ -56,9 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${featuresHTML}
                     </ul>
                 </div>
-                <div class="card-footer">
-                    <div class="price">${pkg.price}</div>
-                    <button class="btn-primary btn-book" data-id="${pkg.id}">Inquire</button>
+                <div class="card-footer" style="flex-direction: column; gap: 10px;">
+                    <div class="price" style="align-self: flex-start; margin-bottom: 5px;">${pkg.price}</div>
+                    <div style="display: flex; gap: 10px; width: 100%;">
+                        <a href="${pkg.officialUrl}" target="_blank" class="btn-secondary" style="flex: 1; text-align: center; text-decoration: none; padding: 10px 0; font-size: 0.9rem;">🌐 Official Info</a>
+                        <button class="btn-primary btn-book" data-id="${pkg.id}" style="flex: 1; padding: 10px 0; font-size: 0.9rem;">🤝 Book via Checkit</button>
+                    </div>
                 </div>
             `;
             packageList.appendChild(card);

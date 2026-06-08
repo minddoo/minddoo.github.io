@@ -1,86 +1,87 @@
 const packages = [
     {
         id: 1,
-        hospitalName: "Top-Tier University Hospital (Seoul)",
-        type: "Premium",
-        title: "Comprehensive VIP Care",
-        price: "Starting from ₩ 1,500,000",
-        duration: "4-5 Hours",
-        features: [
-            "Basic Examinations (Blood, Urine, ECG)",
-            "Gastroscopy (Sedated)",
-            "Abdominal Ultrasound",
-            "Brain MRA & MRI",
-            "Checkit VIP Concierge Included"
-        ],
-        tags: ["VIP", "Brain Health", "English Support"],
-        popular: true
-    },
-    {
-        id: 2,
-        hospitalName: "Major General Hospital",
+        hospitalName: "Severance Hospital (Sinchon/Gangnam)",
         type: "Basic",
-        title: "Essential Health Check",
-        price: "Starting from ₩ 650,000",
+        title: "Basic Health Examination",
+        price: "Est. ₩ 700,000 ~",
         duration: "2-3 Hours",
         features: [
             "Basic Examinations (Blood, Urine, ECG)",
-            "Chest X-Ray",
-            "Gastroscopy (Sedated)",
-            "Dental Checkup"
+            "Chest X-Ray & Abdominal Ultrasound",
+            "Gastroscopy (Sedation fee +156k KRW)",
+            "Checkit VIP Concierge Available"
         ],
         tags: ["Essential", "Fast", "English Support"],
-        popular: false
+        popular: true,
+        officialUrl: "https://translate.google.com/translate?sl=ko&tl=en&u=https://gs.severance.healthcare/gs-en/index.do"
+    },
+    {
+        id: 2,
+        hospitalName: "Severance Hospital (Sinchon/Gangnam)",
+        type: "VIP",
+        title: "VIP (Noblesse) Health Examination",
+        price: "Est. ₩ 4,000,000 ~",
+        duration: "4-5 Hours",
+        features: [
+            "Brain MRA & MRI",
+            "Chest & Abdominal CT",
+            "Full Body Cancer Screening",
+            "Checkit 1:1 Medical Interpretation"
+        ],
+        tags: ["VIP", "Brain Health", "Cancer Screening"],
+        popular: false,
+        officialUrl: "https://translate.google.com/translate?sl=ko&tl=en&u=https://gs.severance.healthcare/gs-en/index.do"
     },
     {
         id: 3,
-        hospitalName: "Top 3 General Hospital (Seoul)",
-        type: "VVIP",
-        title: "Executive Precision Health",
-        price: "Starting from ₩ 3,000,000",
-        duration: "1 Day (Overnight Optional)",
+        hospitalName: "Asan Medical Center",
+        type: "Premium",
+        title: "Essential B (Age 40+)",
+        price: "Est. ₩ 2,870,000 ~",
+        duration: "1 Day",
         features: [
-            "Full Body PET-CT",
-            "Gastroscopy & Colonoscopy (Sedated)",
-            "Brain MRA & MRI",
-            "Coronary Calcium CT",
-            "Checkit 1:1 Medical Interpretation"
+            "Basic + Gastroscopy & Colonoscopy",
+            "Low-Dose Chest CT",
+            "Bone Density Test",
+            "Checkit Fast-Track Booking"
         ],
-        tags: ["VVIP", "Cancer Screening", "Full Body"],
-        popular: false
+        tags: ["Premium", "Over 40", "Comprehensive"],
+        popular: true,
+        officialUrl: "https://translate.google.com/translate?sl=ko&tl=en&u=https://eng.amc.seoul.kr/asan/eng/main.do"
     },
     {
         id: 4,
-        hospitalName: "Premium Private Clinic (Gangnam)",
-        type: "Premium",
-        title: "Women's Specialized Care",
-        price: "Starting from ₩ 1,200,000",
-        duration: "3-4 Hours",
+        hospitalName: "Asan Medical Center",
+        type: "VVIP",
+        title: "Premium I (2-Day / 1-Night)",
+        price: "Est. ₩ 8,000,000 ~",
+        duration: "2 Days / 1 Night",
         features: [
-            "Basic Examinations",
-            "Breast Ultrasound & Mammography",
-            "Pelvic Ultrasound",
-            "Thyroid Ultrasound",
-            "Female Doctor Available"
+            "VIP Room Accommodation",
+            "Brain MRA/MRI & Whole Body CT",
+            "Extensive Cardiovascular Tests",
+            "Checkit VVIP Premium Escort"
         ],
-        tags: ["Women's Health", "Specialized", "English Support"],
-        popular: true
+        tags: ["VVIP", "Overnight", "Luxury"],
+        popular: false,
+        officialUrl: "https://translate.google.com/translate?sl=ko&tl=en&u=https://eng.amc.seoul.kr/asan/eng/main.do"
     },
     {
         id: 5,
-        hospitalName: "Specialized Cardiology Center",
+        hospitalName: "Seoul National University Hospital (Gangnam)",
         type: "Premium",
-        title: "Cardiovascular Focus",
-        price: "Starting from ₩ 1,800,000",
-        duration: "4 Hours",
+        title: "Intensive / Specialized Program",
+        price: "Est. $1,000 ~ $2,500 USD",
+        duration: "3-4 Hours",
         features: [
-            "Basic Examinations",
-            "Echocardiogram",
-            "Coronary CT Angiography",
-            "Carotid Ultrasound",
-            "Checkit VIP Concierge Included"
+            "Customized based on personal risk",
+            "Organ-specific deep dive (Heart/Brain)",
+            "World-Class Diagnostic Equipment",
+            "Checkit Multi-Language Support"
         ],
-        tags: ["Cardiovascular", "Premium", "English Support"],
-        popular: false
+        tags: ["Customized", "Premium", "English Support"],
+        popular: true,
+        officialUrl: "https://translate.google.com/translate?sl=ko&tl=en&u=https://healthcare.snuh.org/english/front.do"
     }
 ];
