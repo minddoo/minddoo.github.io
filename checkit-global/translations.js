@@ -1,6 +1,6 @@
 const translations = {
     "en": {
-        "hookText1": "Today,",
+        "hookText1": "Already",
         "hookText2": "expats took this test!",
         "title1": "K-Healthcare",
         "title2": "Survival Test",
@@ -67,8 +67,8 @@ const translations = {
     },
     
     "vi": {
-        "hookText1": "Hôm nay, có",
-        "hookText2": "người nước ngoài đã làm bài kiểm tra này!",
+        "hookText1": "Đã có",
+        "hookText2": "người nước ngoài làm bài kiểm tra này!",
         "title1": "K-Healthcare",
         "title2": "Kiểm tra sinh tồn",
         "subtitle": "Khám sức khỏe ở Hàn Quốc có thể là một cơn ác mộng.<br>Khả năng sinh tồn của bạn trong hệ thống y tế Hàn Quốc như thế nào?",
@@ -134,7 +134,7 @@ const translations = {
     },
     
     "ja": {
-        "hookText1": "今日、",
+        "hookText1": "すでに",
         "hookText2": "人の外国人がこのテストを受けました！",
         "title1": "K-Healthcare",
         "title2": "サバイバルテスト",
@@ -201,7 +201,7 @@ const translations = {
     },
     
     "zh": {
-        "hookText1": "今天，有",
+        "hookText1": "已有",
         "hookText2": "名外国人参加了此测试！",
         "title1": "K-Healthcare",
         "title2": "生存测试",
@@ -268,8 +268,8 @@ const translations = {
     },
     
     "ru": {
-        "hookText1": "Сегодня",
-        "hookText2": "иностранцев прошли этот тест!",
+        "hookText1": "Уже",
+        "hookText2": "экспатов прошли этот тест!",
         "title1": "K-Healthcare",
         "title2": "Тест на выживание",
         "subtitle": "Медицинский осмотр в Корее может стать кошмаром.<br>Насколько хорошо вы бы выжили в корейской медицинской системе?",
@@ -335,8 +335,8 @@ const translations = {
     },
     
     "th": {
-        "hookText1": "วันนี้มีชาวต่างชาติ",
-        "hookText2": "คนทำแบบทดสอบนี้!",
+        "hookText1": "มีชาวต่างชาติ",
+        "hookText2": "คนทำแบบทดสอบนี้แล้ว!",
         "title1": "K-Healthcare",
         "title2": "แบบทดสอบการเอาชีวิตรอด",
         "subtitle": "การตรวจสุขภาพในเกาหลีอาจเป็นฝันร้าย<br>คุณจะเอาชีวิตรอดในระบบการแพทย์ของเกาหลีได้ดีแค่ไหน?",
