@@ -1,27 +1,27 @@
 const packages = [
     {
         id: 1,
-        hospitalName: "Severance Hospital",
+        hospitalName: "Top-Tier University Hospital (Seoul)",
         type: "Premium",
         title: "Comprehensive VIP Care",
-        price: "₩ 1,500,000",
+        price: "Starting from ₩ 1,500,000",
         duration: "4-5 Hours",
         features: [
             "Basic Examinations (Blood, Urine, ECG)",
             "Gastroscopy (Sedated)",
             "Abdominal Ultrasound",
             "Brain MRA & MRI",
-            "English Interpretation Included"
+            "Checkit VIP Concierge Included"
         ],
         tags: ["VIP", "Brain Health", "English Support"],
         popular: true
     },
     {
         id: 2,
-        hospitalName: "Asan Medical Center",
+        hospitalName: "Major General Hospital",
         type: "Basic",
         title: "Essential Health Check",
-        price: "₩ 650,000",
+        price: "Starting from ₩ 650,000",
         duration: "2-3 Hours",
         features: [
             "Basic Examinations (Blood, Urine, ECG)",
@@ -34,27 +34,27 @@ const packages = [
     },
     {
         id: 3,
-        hospitalName: "Seoul National University Hospital",
+        hospitalName: "Top 3 General Hospital (Seoul)",
         type: "VVIP",
         title: "Executive Precision Health",
-        price: "₩ 3,200,000",
+        price: "Starting from ₩ 3,000,000",
         duration: "1 Day (Overnight Optional)",
         features: [
             "Full Body PET-CT",
             "Gastroscopy & Colonoscopy (Sedated)",
             "Brain MRA & MRI",
             "Coronary Calcium CT",
-            "Private Room & 1:1 English Concierge"
+            "Checkit 1:1 Medical Interpretation"
         ],
         tags: ["VVIP", "Cancer Screening", "Full Body"],
         popular: false
     },
     {
         id: 4,
-        hospitalName: "Gangnam Premium Clinic",
+        hospitalName: "Premium Private Clinic (Gangnam)",
         type: "Premium",
         title: "Women's Specialized Care",
-        price: "₩ 1,200,000",
+        price: "Starting from ₩ 1,200,000",
         duration: "3-4 Hours",
         features: [
             "Basic Examinations",
@@ -68,17 +68,17 @@ const packages = [
     },
     {
         id: 5,
-        hospitalName: "Samsung Medical Center",
+        hospitalName: "Specialized Cardiology Center",
         type: "Premium",
         title: "Cardiovascular Focus",
-        price: "₩ 1,800,000",
+        price: "Starting from ₩ 1,800,000",
         duration: "4 Hours",
         features: [
             "Basic Examinations",
             "Echocardiogram",
             "Coronary CT Angiography",
             "Carotid Ultrasound",
-            "English Interpretation Included"
+            "Checkit VIP Concierge Included"
         ],
         tags: ["Cardiovascular", "Premium", "English Support"],
         popular: false
