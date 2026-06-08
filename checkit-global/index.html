@@ -32,25 +32,29 @@
 
         <!-- 1. Start Screen -->
         <div id="start-screen" class="screen active">
-            <div class="badge-hook premium-badge">
+            <div class="badge-hook premium-badge survival-badge">
                 <span class="pulse-dot"></span>
-                <span data-i18n="hookText1">Today,</span> <span id="live-count" style="margin: 0 4px; font-weight: 800;">1,204</span> <span data-i18n="hookText2">expats took this test!</span>
+                <span data-i18n="hookText1">Today,</span> <span id="live-count">1,204</span> <span data-i18n="hookText2">expats took this test!</span>
             </div>
             
             <div class="title-container">
-                <h1 class="main-title"><span data-i18n="title1">K-Healthcare</span><br><span style="color: var(--accent);" data-i18n="title2">Survival Test</span></h1>
-                <div class="title-divider"></div>
+                <h1 class="main-title"><span data-i18n="title1">K-Healthcare</span><br><span style="color: #e11d48;" data-i18n="title2">Survival Test</span></h1>
+                <div class="title-divider survival-divider"></div>
             </div>
             
             <p class="subtitle" id="i18n-subtitle">Getting sick in Korea can be a nightmare.<br>How well would you survive the Korean medical system?</p>
             
             <div class="hero-graphic premium-graphic">
-                <div class="graphic-circle">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                <div class="graphic-circle survival-radar">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="1.5">
+                      <circle cx="12" cy="12" r="10"/>
+                      <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+                      <path d="M12 9v6M9 12h6" stroke-width="3" stroke="#e11d48"/>
+                    </svg>
                 </div>
             </div>
             
-            <button class="btn-primary pulse-btn" onclick="startTest()" data-i18n="btnStart">Start Test Now</button>
+            <button class="btn-primary pulse-btn survival-btn" onclick="startTest()" data-i18n="btnStart">Start Test Now</button>
             <p class="disclaimer" data-i18n="disclaimer">Takes only 1 minute • 100% Free</p>
         </div>
 
