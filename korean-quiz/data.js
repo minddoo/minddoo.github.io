@@ -1,4 +1,37 @@
 const quizData = {
+    daily: {
+        title: "Daily Life (일상생활)",
+        icon: "👋",
+        questions: [
+            {
+                id: "d1",
+                scenario: "You accidentally bump into someone on the street.",
+                question: "아이고, _________.",
+                translation: "Oops, _________.",
+                options: ["감사합니다", "안녕하세요", "죄송합니다", "반갑습니다"],
+                correct: 2,
+                explanation: "'죄송합니다' means 'I am sorry'. '감사합니다' means thank you."
+            },
+            {
+                id: "d2",
+                scenario: "You are looking for the restroom in a cafe.",
+                question: "_________이/가 어디예요?",
+                translation: "Where is the _________?",
+                options: ["화장실", "지하철", "편의점", "식당"],
+                correct: 0,
+                explanation: "'화장실' means restroom/toilet. '지하철' is subway, '편의점' is convenience store."
+            },
+            {
+                id: "d3",
+                scenario: "Someone helps you pick up your dropped wallet.",
+                question: "정말 _________.",
+                translation: "Thank you very much.",
+                options: ["미안합니다", "감사합니다", "괜찮습니다", "몰라요"],
+                correct: 1,
+                explanation: "'감사합니다' means 'Thank you'. '미안합니다' means sorry, '괜찮습니다' means it's okay."
+            }
+        ]
+    },
     restaurant: {
         title: "At the Restaurant (식당에서)",
         icon: "🍽️",
