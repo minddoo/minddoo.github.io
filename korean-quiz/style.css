@@ -1,0 +1,343 @@
+:root {
+    --primary: #1E3A8A; /* Deep Academy Blue */
+    --primary-light: #EFF6FF;
+    --success: #10B981;
+    --success-light: #D1FAE5;
+    --error: #EF4444;
+    --error-light: #FEE2E2;
+    --text-main: #1F2937;
+    --text-muted: #6B7280;
+    --bg-main: #F3F4F6;
+    --white: #FFFFFF;
+    --border: #E5E7EB;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 20px 40px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Layout */
+.container {
+    flex: 1;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.text-center { text-align: center; }
+.mb-4 { margin-bottom: 2rem; }
+.mt-4 { margin-top: 2rem; }
+.hidden { display: none !important; }
+
+/* Views */
+.view {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.view.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Typography */
+.main-title {
+    font-size: 2.25rem;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+/* Categories Grid */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.category-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 30px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.category-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 8px 15px rgba(30, 58, 138, 0.1);
+    transform: translateY(-2px);
+}
+
+.category-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.category-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+/* Quiz UI */
+.btn-back {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+    padding: 5px 0;
+}
+
+.btn-back:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.quiz-header {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+}
+
+.quiz-header h2 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.progress-container {
+    height: 8px;
+    background-color: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: right;
+}
+
+/* Question Card */
+.question-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.scenario {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    font-style: italic;
+    background: var(--bg-main);
+    padding: 10px 15px;
+    border-left: 4px solid var(--primary);
+    border-radius: 4px;
+}
+
+.question-text {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.translation-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+/* Options Grid */
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.option-btn {
+    background: var(--white);
+    border: 2px solid var(--border);
+    padding: 16px 20px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-main);
+}
+
+.option-btn:hover:not(:disabled) {
+    background-color: var(--primary-light);
+    border-color: var(--primary);
+}
+
+.option-btn:disabled {
+    cursor: default;
+}
+
+.option-btn.correct {
+    background-color: var(--success-light);
+    border-color: var(--success);
+    color: #065F46;
+}
+
+.option-btn.wrong {
+    background-color: var(--error-light);
+    border-color: var(--error);
+    color: #991B1B;
+}
+
+/* Feedback Area */
+.feedback-area {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+}
+
+.feedback-area.correct-mode {
+    background-color: var(--success-light);
+    border-color: var(--success);
+}
+
+.feedback-area.wrong-mode {
+    background-color: var(--error-light);
+    border-color: var(--error);
+}
+
+.feedback-content {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.feedback-title {
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+}
+
+.correct-mode .feedback-title { color: #065F46; }
+.wrong-mode .feedback-title { color: #991B1B; }
+
+.feedback-explanation {
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    min-width: 150px;
+}
+
+.btn-primary:hover {
+    background-color: #1E40AF;
+}
+
+.btn-primary.btn-next-correct {
+    background-color: var(--success);
+}
+
+.btn-primary.btn-next-correct:hover {
+    background-color: #059669;
+}
+
+.btn-primary.btn-next-wrong {
+    background-color: var(--error);
+}
+
+.btn-primary.btn-next-wrong:hover {
+    background-color: #DC2626;
+}
+
+/* Results */
+.score-display {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 20px 0;
+}
+
+#total-questions {
+    color: var(--text-muted);
+    font-size: 2rem;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+}

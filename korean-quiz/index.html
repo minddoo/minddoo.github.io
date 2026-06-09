@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex"> <!-- AdSense Protection -->
+    <title>Korean Situational Learning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Korea Medical Concierge Learning Center</div>
+    </nav>
+
+    <div class="container">
+        <!-- View: Category Selection -->
+        <div id="view-categories" class="view active">
+            <header class="text-center mb-4">
+                <h1 class="main-title">Practical Korean Quiz</h1>
+                <p class="subtitle">Select a situation to practice essential Korean phrases.</p>
+            </header>
+            
+            <div class="category-grid" id="category-grid">
+                <!-- Categories rendered by JS -->
+            </div>
+        </div>
+
+        <!-- View: Quiz -->
+        <div id="view-quiz" class="view">
+            <button class="btn-back" id="btn-back-quiz">← Back to Situations</button>
+            <div class="quiz-header">
+                <h2 id="quiz-title">Category Title</h2>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="progress-text" id="progress-text">Question 1 of 3</div>
+            </div>
+
+            <div class="question-card">
+                <div class="scenario" id="q-scenario">Scenario goes here...</div>
+                <div class="question-text" id="q-text">Question _________ goes here.</div>
+                <div class="translation-text" id="q-translation">Translation goes here.</div>
+            </div>
+
+            <div class="options-grid" id="options-grid">
+                <!-- Options rendered by JS -->
+            </div>
+
+            <!-- Feedback Area -->
+            <div id="feedback-area" class="feedback-area hidden">
+                <div class="feedback-content">
+                    <h3 id="feedback-title" class="feedback-title">Correct!</h3>
+                    <p id="feedback-explanation" class="feedback-explanation">Explanation goes here.</p>
+                </div>
+                <button class="btn-primary" id="btn-next">Next Question</button>
+            </div>
+        </div>
+
+        <!-- View: Results -->
+        <div id="view-result" class="view text-center">
+            <h2 class="main-title">Quiz Completed!</h2>
+            <div class="score-display">
+                <span id="final-score">3</span> / <span id="total-questions">3</span>
+            </div>
+            <p class="subtitle" id="result-message">Great job! Keep practicing your Korean.</p>
+            
+            <div class="mt-4">
+                <button class="btn-primary" id="btn-restart">Try Another Situation</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Provided by Korea Medical Concierge Education Team.</p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
