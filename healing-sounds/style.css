@@ -84,33 +84,59 @@ body {
 
 @media (max-width: 600px) {
     .glass-container {
-        width: 95%;
-        padding: 20px 15px;
+        width: 98%;
+        padding: 15px 5px;
+    }
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    .header p {
+        font-size: 0.9rem;
     }
     .mixer-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+        gap: 5px;
         max-height: none;
         overflow-y: visible;
-    }
-}
-@media (max-width: 400px) {
-    .mixer-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns even on mini for compact view, or 2 for larger sliders */
-        gap: 8px;
-    }
-    .icon-btn {
-        font-size: 1.8rem;
-        margin-bottom: 5px;
-    }
-    .sound-title {
-        font-size: 0.75rem;
+        padding: 5px;
     }
     .sound-card {
         padding: 8px 2px;
     }
+    .icon-btn {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+    .sound-title {
+        font-size: 0.7rem;
+        margin-bottom: 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-align: center;
+    }
     .volume-slider {
-        width: 80%;
+        width: 90%;
+        height: 4px;
+    }
+    .volume-slider::-webkit-slider-thumb {
+        width: 12px;
+        height: 12px;
+    }
+    button {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+    .master-control {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        justify-content: center;
+    }
+    .visitor-counter {
+        padding: 6px 12px;
+        font-size: 0.75rem;
     }
 }
 
