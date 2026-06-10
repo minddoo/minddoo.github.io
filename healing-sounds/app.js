@@ -21,12 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 slider.value = 0.5;
                 audio.volume = 0.5;
                 card.classList.add('active');
-                if (isMasterPlaying) audio.play();
+                audio.play().catch(e => console.log(e));
+                isMasterPlaying = true;
             } else {
                 // Mute
                 slider.value = 0;
                 audio.volume = 0;
                 card.classList.remove('active');
+                audio.pause();
             }
         });
 
@@ -37,11 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (vol > 0) {
                 card.classList.add('active');
-                if (isMasterPlaying && audio.paused) {
-                    audio.play();
+                if (audio.paused) {
+                    audio.play().catch(e => console.log(e));
+                    isMasterPlaying = true;
                 }
             } else {
                 card.classList.remove('active');
+                audio.pause();
             }
         });
     });
