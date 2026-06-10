@@ -107,12 +107,22 @@
             </div>
         </div>
 
-        <div class="controls">
-            <button id="btn-master-play" class="btn-primary">▶ Play All Active</button>
-            <button id="btn-master-stop" class="btn-secondary">⏸ Stop All</button>
+        <div class="master-control">
+            <button id="master-play" class="btn-primary">
+                <span class="btn-icon">▶</span> Play All Active
+            </button>
+            <button id="master-mute" class="btn-secondary">
+                <span class="btn-icon">🔇</span> Mute All
+            </button>
         </div>
-    </div>
 
+        <footer>
+            <div class="visitor-counter">
+                <span class="pulse-dot"></span>
+                Today: <strong>178</strong> &nbsp;|&nbsp; Total: <strong>31,562</strong>
+            </div>
+        </footer>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
