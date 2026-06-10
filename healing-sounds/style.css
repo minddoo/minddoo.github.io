@@ -10,11 +10,13 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 20px 0;
 }
 
 .overlay {
@@ -81,6 +83,10 @@ body {
 }
 
 @media (max-width: 600px) {
+    .glass-container {
+        width: 95%;
+        padding: 20px 15px;
+    }
     .mixer-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
