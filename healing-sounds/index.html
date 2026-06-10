@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Daily Peace - ASMR Healing Sounds</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <div class="glass-container">
+        <header class="header">
+            <h1>Daily Peace</h1>
+            <p>Mix your own peaceful environment.</p>
+        </header>
+
+        <div class="mixer-grid">
+            <!-- Rain -->
+            <div class="sound-card" data-sound="rain">
+                <div class="icon-btn">🌧️</div>
+                <div class="sound-title">Rain</div>
+                <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0">
+                <audio id="audio-rain" loop crossorigin="anonymous" src="https://actions.google.com/sounds/v1/weather/rain_heavy_loud.ogg"></audio>
+            </div>
+
+            <!-- Fire -->
+            <div class="sound-card" data-sound="fire">
+                <div class="icon-btn">🔥</div>
+                <div class="sound-title">Campfire</div>
+                <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0">
+                <audio id="audio-fire" loop crossorigin="anonymous" src="https://actions.google.com/sounds/v1/emergency/crackling_fireplace.ogg"></audio>
+            </div>
+
+            <!-- Cafe -->
+            <div class="sound-card" data-sound="cafe">
+                <div class="icon-btn">☕</div>
+                <div class="sound-title">Cafe</div>
+                <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0">
+                <audio id="audio-cafe" loop crossorigin="anonymous" src="https://actions.google.com/sounds/v1/crowds/cafe_restaurant_ambience.ogg"></audio>
+            </div>
+
+            <!-- Waves -->
+            <div class="sound-card" data-sound="waves">
+                <div class="icon-btn">🌊</div>
+                <div class="sound-title">Waves</div>
+                <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0">
+                <audio id="audio-waves" loop crossorigin="anonymous" src="https://actions.google.com/sounds/v1/weather/ocean_waves_crashing.ogg"></audio>
+            </div>
+
+            <!-- Forest -->
+            <div class="sound-card" data-sound="forest">
+                <div class="icon-btn">🌲</div>
+                <div class="sound-title">Forest</div>
+                <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0">
+                <audio id="audio-forest" loop crossorigin="anonymous" src="https://actions.google.com/sounds/v1/nature/birds_in_forest.ogg"></audio>
+            </div>
+            
+            <!-- Night -->
+            <div class="sound-card" data-sound="night">
+                <div class="icon-btn">🦗</div>
+                <div class="sound-title">Night</div>
+                <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0">
+                <audio id="audio-night" loop crossorigin="anonymous" src="https://actions.google.com/sounds/v1/nature/crickets_and_dogs_at_night.ogg"></audio>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="btn-master-play" class="btn-primary">▶ Play All Active</button>
+            <button id="btn-master-stop" class="btn-secondary">⏸ Stop All</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
