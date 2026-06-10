@@ -84,11 +84,27 @@ body {
     .mixer-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
+        max-height: none;
+        overflow-y: visible;
     }
 }
 @media (max-width: 400px) {
     .mixer-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr); /* 3 columns even on mini for compact view, or 2 for larger sliders */
+        gap: 8px;
+    }
+    .icon-btn {
+        font-size: 1.8rem;
+        margin-bottom: 5px;
+    }
+    .sound-title {
+        font-size: 0.75rem;
+    }
+    .sound-card {
+        padding: 8px 2px;
+    }
+    .volume-slider {
+        width: 80%;
     }
 }
 
