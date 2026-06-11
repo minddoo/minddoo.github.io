@@ -2,74 +2,140 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
       <loc>https://minddoo.github.io/</loc>
-      <lastmod>2026-05-30</lastmod>
+      <lastmod>2026-06-11</lastmod>
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
    </url>
    <url>
       <loc>https://minddoo.github.io/index.html</loc>
-      <lastmod>2026-05-30</lastmod>
+      <lastmod>2026-06-11</lastmod>
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
    </url>
    <url>
-      <loc>https://minddoo.github.io/dictionary.html</loc>
-      <lastmod>2026-05-30</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>0.9</priority>
-   </url>
-   <url>
       <loc>https://minddoo.github.io/about.html</loc>
-      <lastmod>2026-05-30</lastmod>
+      <lastmod>2026-06-11</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
    </url>
    <url>
       <loc>https://minddoo.github.io/privacy.html</loc>
-      <lastmod>2026-05-30</lastmod>
+      <lastmod>2026-06-11</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
    </url>
    <url>
       <loc>https://minddoo.github.io/terms.html</loc>
-      <lastmod>2026-05-30</lastmod>
+      <lastmod>2026-06-11</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
    </url>
    <url>
-      <loc>https://minddoo.github.io/mbti/index.html</loc>
-      <lastmod>2026-05-30</lastmod>
-      <changefreq>weekly</changefreq>
+      <loc>https://minddoo.github.io/dictionary-en.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.5</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/dictionary-ja.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.5</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/dictionary-zh.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.5</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/tech-1-frontend-2026.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
-      <loc>https://minddoo.github.io/mbti/result.html</loc>
-      <lastmod>2026-05-30</lastmod>
-      <changefreq>weekly</changefreq>
+      <loc>https://minddoo.github.io/tech-2-seo-guide.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
-      <loc>https://minddoo.github.io/mbti/dictionary.html</loc>
-      <lastmod>2026-05-30</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>0.9</priority>
-   </url>
-   <url>
-      <loc>https://minddoo.github.io/calculator/index.html</loc>
-      <lastmod>2026-05-30</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>0.9</priority>
-   </url>
-   <url>
-      <loc>https://minddoo.github.io/calculator/guide.html</loc>
-      <lastmod>2026-05-30</lastmod>
-      <changefreq>weekly</changefreq>
+      <loc>https://minddoo.github.io/tech-3-cloudflare.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
-      <loc>https://minddoo.github.io/health-test/index.html</loc>
-      <lastmod>2026-05-30</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>0.9</priority>
+      <loc>https://minddoo.github.io/tech-4-ai-coding.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/tech-5-web-performance.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/tech-6-react-vs-vue.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/tech-7-serverless.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/tech-8-web-security.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/tech-9-ux-ui-trends.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/tech-10-pwa-guide.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/tech-11-typescript.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/tech-12-css-tailwind.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/tech-13-github-actions.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/tech-14-webaccessibility.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://minddoo.github.io/tech-15-jamstack.html</loc>
+      <lastmod>2026-06-11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
    </url>
 </urlset>
