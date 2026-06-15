@@ -150,3 +150,5 @@ const vocabDB = {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = vocabDB;
 }
+
+if (typeof module !== 'undefined') module.exports = vocabDB;

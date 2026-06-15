@@ -1,4 +1,4 @@
-﻿// 상태
+// 상태
 let currentLang = 'en';
 let completedDays = { en: [], ja: [], zh: [] };
 let currentDay = null;
@@ -50,7 +50,7 @@ window.changeLanguage = function(lang) {
         event.target.classList.add('active');
     }
     
-    document.getElementById('blog-link').href = `dictionary-${lang}.html`;
+    document.getElementById('blog-link').href = `blog-index-${lang}.html`;
     showScreen('home');
 }
 
