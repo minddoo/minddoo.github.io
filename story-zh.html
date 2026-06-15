@@ -15,8 +15,12 @@
         .story-title { font-size: 40px; color: var(--pastel-pink-shadow); font-family: 'Noto Sans KR', sans-serif; font-weight: 900; margin: 0; }
         .story-subtitle { font-size: 20px; color: #888; margin-top: 10px; font-weight: 500; }
         .story-content { font-size: 18px; line-height: 2.0; color: var(--text-main); font-family: 'Noto Sans KR', sans-serif; }
-        .story-content p { margin-bottom: 15px; }
-        .story-content p:nth-child(even) { color: #777; font-size: 16px; margin-bottom: 30px; background: var(--pastel-yellow); padding: 10px 15px; border-radius: 10px; }
+        
+        /* 문장 스타일링 */
+        .story-content p { margin-bottom: 5px; }
+        .story-content p.pronunciation { color: #aaa; font-size: 15px; margin-bottom: 5px; font-style: italic; }
+        .story-content p:not(.pronunciation):nth-of-type(3n) { color: #777; font-size: 16px; margin-bottom: 30px; background: var(--pastel-yellow); padding: 10px 15px; border-radius: 10px; }
+        
         .btn-back { display: inline-block; padding: 10px 20px; background: var(--pastel-pink); color: white; text-decoration: none; border-radius: 20px; font-weight: bold; margin-bottom: 20px; transition: 0.2s;}
         .btn-back:hover { background: var(--pastel-pink-shadow); }
     </style>
@@ -37,30 +41,39 @@
         <div class="story-content">
             
             <p>有一天，兔子嘲笑乌龟的脚短、走得慢。</p>
+            <p class="pronunciation">[Yǒu yītiān, tùzi cháoxiào wūguī de jiǎo duǎn, zǒude màn. / 여우 이티엔, 투즈 챠오샤오 우구이 더 지아오 두안, 조우더 만]</p>
             <p>어느 날, 토끼는 거북이의 다리가 짧고 걷는 속도가 느리다고 조롱했습니다.</p>
             
             <p>乌龟笑着说：“虽然你跑得很快，但我会在比赛中赢你的。”</p>
+            <p class="pronunciation">[Wūguī xiàozhe shuō: "Suīrán nǐ pǎode hěn kuài, dàn wǒ huì zài bǐsàizhōng yíng nǐ de." / 우구이 샤오저 슈오: "수이란 니 파오더 헌 콰이, 단 워 후이 짜이 비싸이중 잉 니 더"]</p>
             <p>거북이는 웃으며 말했습니다. "네가 달리는 속도는 빠르지만, 경주에서는 내가 널 이길 거야."</p>
             
             <p>兔子觉得这简直是不可能的事，于是就答应了。</p>
+            <p class="pronunciation">[Tùzi juéde zhè jiǎnzhí shì bù kěnéng de shì, yúshì jiù dāyìng le. / 투즈 주에더 쩌 지엔즈 스 뿌 커넝 더 스, 위스 지우 따잉 러]</p>
             <p>토끼는 그것이 불가능한 일이라고 생각했고, 경주를 수락했습니다.</p>
             
             <p>比赛开始后，兔子飞快地跑了出去，把乌龟远远地甩在后面。</p>
+            <p class="pronunciation">[Bǐsài kāishǐ hòu, tùzi fēikuàidi pǎole chūqù, bǎ wūguī yuǎnyuǎndi shuǎizài hòumiàn. / 비싸이 카이스 호우, 투즈 페이콰이디 파오러 추취, 바 우구이 위엔위엔디 솨이짜이 호우미엔]</p>
             <p>경주가 시작되자, 토끼는 재빨리 뛰어나가 거북이를 멀찌감치 뒤로 따돌렸습니다.</p>
             
             <p>兔子看到乌龟还在很远的地方，心想：“我先睡一觉，等他快到了我再跑也不迟。”</p>
+            <p class="pronunciation">[Tùzi kàndào wūguī háizài hěn yuǎn de dìfang, xīnxiǎng: "Wǒ xiān shuì yíjiào, děng tā kuài dàole wǒ zài pǎo yě bùchí." / 투즈 칸따오 우구이 하이짜이 헌 위엔 더 띠팡, 씬시앙: "워 시엔 수이 이지아오, 덩 타 콰이 따오러 워 짜이 파오 예 뿌츠"]</p>
             <p>토끼는 거북이가 아직 한참 뒤에 있는 것을 보고 생각했습니다. "한숨 자고 나서, 쟤가 가까이 오면 다시 뛰어도 늦지 않겠지."</p>
             
             <p>于是兔子就在树下睡着了。</p>
+            <p class="pronunciation">[Yúshì tùzi jiù zài shùxià shuìzháo le. / 위스 투즈 지우 짜이 슈시아 수이자오 러]</p>
             <p>그래서 토끼는 나무 아래에서 잠이 들고 말았습니다.</p>
             
             <p>而乌龟一直坚持不懈地慢慢爬着，最终超过了熟睡的兔子，到达了终点。</p>
+            <p class="pronunciation">[Ér wūguī yìzhí jiānchí búxiè di mànmàn pázhe, zuìzhōng chāoguòle shúshuì de tùzi, dàodále zhōngdiǎn. / 얼 우구이 이즈 지엔츠 부시에 디 만만 파저, 주이중 챠오구오러 수수이 더 투즈, 따오따오러 중디엔]</p>
             <p>반면 거북이는 포기하지 않고 천천히 기어갔고, 마침내 잠든 토끼를 지나쳐 결승점에 도달했습니다.</p>
             
             <p>当兔子醒来时，发现乌龟已经赢得了比赛。</p>
+            <p class="pronunciation">[Dāng tùzi xǐnglái shí, fāxiàn wūguī yǐjīng yíngdéle bǐsài. / 땅 투즈 싱라이 스, 파시엔 우구이 이징 잉더라 비싸이]</p>
             <p>토끼가 잠에서 깼을 때, 거북이는 이미 경주에서 이긴 후였습니다.</p>
             
             <p><strong>Lesson:</strong> 稳扎稳打无往而不胜。</p>
+            <p class="pronunciation">[Wěnzhā-wěndǎ wúwǎng ér bú shèng. / 원자원다 우왕 얼 부 셩]</p>
             <p><strong>교훈:</strong> 꾸준하고 성실한 자가 결국 승리합니다.</p>
         
         </div>
