@@ -20,15 +20,15 @@ const template = (wordObj, langInfo) => `<!DOCTYPE html>
     <meta name="description" content="필수 ${langInfo.title} 단어 ${wordObj.word}의 정확한 뜻, 어원, 원어민 뉘앙스, 그리고 실생활 예문을 상세히 알아보세요.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
         .post-container { max-width: 800px; margin: 40px auto; padding: 30px; background: var(--card-bg); border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .word-header { text-align: center; border-bottom: 3px dashed var(--pastel-pink); padding-bottom: 20px; margin-bottom: 30px; }
-        .word-title { font-size: 48px; color: var(--pastel-pink-shadow); font-family: 'Baloo 2', 'Jua', cursive; margin: 0; }
+        .word-title { font-size: 48px; color: var(--pastel-pink-shadow); font-family: 'Noto Sans KR', sans-serif; margin: 0; font-weight: 900;}
         .word-pronounce { font-size: 20px; color: #888; margin-top: 5px; }
-        .word-meaning-main { font-size: 28px; color: var(--text-main); margin-top: 10px; font-weight: bold; font-family: 'Jua', sans-serif; }
-        .section-title { font-size: 22px; color: var(--pastel-pink-shadow); margin-top: 30px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .word-meaning-main { font-size: 28px; color: var(--text-main); margin-top: 10px; font-weight: 700; font-family: 'Noto Sans KR', sans-serif; }
+        .section-title { font-size: 22px; color: var(--pastel-pink-shadow); margin-top: 30px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; font-weight: 700;}
         .section-content { font-size: 17px; line-height: 1.8; color: #555; background: var(--pastel-yellow); padding: 20px; border-radius: 15px; }
         .example-box { background: var(--pastel-yellow); padding: 20px; border-radius: 15px; margin-top: 15px; border-left: 5px solid var(--pastel-pink); }
         .example-en { font-size: 19px; font-weight: bold; color: var(--text-main); margin-bottom: 8px; }
@@ -85,24 +85,24 @@ const indexTemplate = (langCode, langInfo, words) => `<!DOCTYPE html>
     <meta name="description" content="${langInfo.title} 외국어 단어의 어원부터 뉘앙스, 예문까지 완벽하게 파헤치는 프리미엄 어학 블로그입니다.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
         .blog-list { max-width: 800px; margin: 40px auto; padding: 0 20px; }
         .post-card { background: var(--card-bg); padding: 25px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 25px; border-left: 6px solid var(--pastel-pink); text-decoration: none; display: block; color: inherit; transition: transform 0.2s; border: 1px solid #ffeff0; }
         .post-card:hover { transform: translateY(-5px); border-color: var(--pastel-pink); }
-        .post-title { font-size: 28px; color: var(--text-main); font-family: 'Baloo 2', 'Jua', cursive; margin-bottom: 10px; }
-        .post-desc { font-size: 16px; color: #777; font-family: 'Jua', sans-serif; }
+        .post-title { font-size: 28px; color: var(--text-main); font-family: 'Noto Sans KR', sans-serif; font-weight: 700; margin-bottom: 10px; }
+        .post-desc { font-size: 16px; color: #777; font-family: 'Noto Sans KR', sans-serif; }
         .read-more { display: inline-block; margin-top: 15px; color: var(--pastel-pink-shadow); font-weight: bold; }
         .lang-nav { text-align: center; margin-bottom: 30px; }
-        .lang-nav a { display: inline-block; padding: 8px 15px; margin: 0 5px; background: #eee; color: #333; text-decoration: none; border-radius: 20px; font-family: 'Jua', sans-serif;}
+        .lang-nav a { display: inline-block; padding: 8px 15px; margin: 0 5px; background: #eee; color: #333; text-decoration: none; border-radius: 20px; font-family: 'Noto Sans KR', sans-serif; font-weight: 500;}
         .lang-nav a.active { background: var(--pastel-pink); color: white; }
     </style>
 </head>
 <body style="background-color: var(--bg-color);">
     <header style="text-align: center; padding: 30px 20px; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border-bottom: 1px solid #f9f9f9;">
-        <h1 style="color: var(--pastel-pink-shadow); font-family: 'Jua', sans-serif;">📖 ${langInfo.title} 프리미엄 블로그</h1>
-        <p style="color: #666; font-family: 'Jua', sans-serif;">단순 암기를 넘어, 단어의 진짜 이야기를 들려드립니다.</p>
+        <h1 style="color: var(--pastel-pink-shadow); font-family: 'Noto Sans KR', sans-serif; font-weight: 900;">📖 ${langInfo.title} 프리미엄 블로그</h1>
+        <p style="color: #666; font-family: 'Noto Sans KR', sans-serif; margin-top: 10px;">단순 암기를 넘어, 단어의 진짜 이야기를 들려드립니다.</p>
         <a href="index.html" style="display: inline-block; margin-top:15px; padding: 10px 20px; background: var(--pastel-pink); color: white; border-radius: 20px; text-decoration: none; font-weight:bold;">🏠 메인 앱으로 돌아가기</a>
     </header>
 
@@ -113,7 +113,7 @@ const indexTemplate = (langCode, langInfo, words) => `<!DOCTYPE html>
             <a href="blog-index-zh.html" class="${langCode === 'zh' ? 'active' : ''}">🇨🇳 중국어</a>
         </div>
         
-        <h2 style="font-family: 'Jua', sans-serif; color: #333; margin-bottom: 20px;">${langInfo.title} 최신 단어 해설</h2>
+        <h2 style="font-family: 'Noto Sans KR', sans-serif; font-weight: 700; color: #333; margin-bottom: 20px;">${langInfo.title} 최신 단어 해설</h2>
         ${words.map(w => {
             let safeName = getSafeFilename(w.word);
             return '<a href="post-' + langCode + '-' + safeName + '.html" class="post-card"><div class="post-title">' + w.word + ' - ' + w.meaning + '</div><div class="post-desc">' + (w.origin || langInfo.defaultOrigin).substring(0, 60) + '...</div><div class="read-more">자세히 읽기 ➔</div></a>';

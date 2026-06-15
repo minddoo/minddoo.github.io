@@ -26,7 +26,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Jua', 'Baloo 2', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-main);
     min-height: 100vh;
@@ -56,7 +56,8 @@ header {
 .btn-home {
     position: absolute;
     left: 20px;
-    font-family: 'Jua', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
     font-size: 16px;
     padding: 8px 15px;
     background: #fff;
@@ -147,7 +148,8 @@ h2 { color: #ff8b94; margin-bottom: 10px; }
 
 .day-card h3 {
     color: var(--pastel-blue-shadow);
-    font-family: 'Baloo 2', cursive;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
     font-size: 24px;
     margin-bottom: 5px;
 }
@@ -190,12 +192,13 @@ h2 { color: #ff8b94; margin-bottom: 10px; }
     font-size: 18px;
 }
 .study-list li:last-child { border-bottom: none; }
-.study-word { font-family: 'Baloo 2', cursive; font-weight: 700; color: var(--pastel-blue-shadow); font-size: 20px;}
+.study-word { font-family: 'Noto Sans KR', sans-serif; font-weight: 700; color: var(--pastel-blue-shadow); font-size: 20px;}
 .study-meaning { color: var(--text-main); }
 
 /* Buttons */
 .btn-cute {
-    font-family: 'Jua', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
     font-size: 18px;
     padding: 12px 24px;
     border: none;

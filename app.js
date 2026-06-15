@@ -51,6 +51,8 @@ window.changeLanguage = function(lang) {
     }
     
     document.getElementById('blog-link').href = `blog-index-${lang}.html`;
+    const readingBtn = document.getElementById('btn-reading-practice');
+    if(readingBtn) readingBtn.href = `story-${lang}.html`;
     showScreen('home');
 }
 
