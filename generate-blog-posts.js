@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const vocabDB = require('./data.js');
 
 const langs = {
@@ -79,7 +79,7 @@ const template = (wordObj, langInfo) => `<!DOCTYPE html>
     </main>
 
     <footer style="text-align: center; padding: 40px; color: #aaa;">
-        <p>&copy; 2026 7-Day Vocab Challenge. All rights reserved.</p>\n        <div style="margin-top: 15px; font-size: 14px;">\n            <a href="contact.html" style="color: #888; text-decoration: none; margin: 0 10px;">Contact Us</a> | \n            <a href="privacy.html" style="color: #888; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | \n            <a href="terms.html" style="color: #888; text-decoration: none; margin: 0 10px;">Terms of Service</a>\n        </div>
+        <p>&copy; 2026 7-Day Vocab Challenge. All rights reserved.</p>\n        <div style="margin-top: 15px; font-size: 14px;">\n            <a href="about.html" style="color: #888; text-decoration: none; margin: 0 10px;">About Us</a> | \n            <a href="contact.html" style="color: #888; text-decoration: none; margin: 0 10px;">Contact Us</a> | \n            <a href="privacy.html" style="color: #888; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | \n            <a href="terms.html" style="color: #888; text-decoration: none; margin: 0 10px;">Terms of Service</a>\n        </div>
     </footer>
 </body>
 </html>`;
@@ -129,7 +129,7 @@ const indexTemplate = (langCode, langInfo, words) => `<!DOCTYPE html>
     </main>
 
     <footer style="text-align: center; padding: 40px; color: #aaa;">
-        <p>&copy; 2026 7-Day Vocab Challenge. All rights reserved.</p>\n        <div style="margin-top: 15px; font-size: 14px;">\n            <a href="contact.html" style="color: #888; text-decoration: none; margin: 0 10px;">Contact Us</a> | \n            <a href="privacy.html" style="color: #888; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | \n            <a href="terms.html" style="color: #888; text-decoration: none; margin: 0 10px;">Terms of Service</a>\n        </div>
+        <p>&copy; 2026 7-Day Vocab Challenge. All rights reserved.</p>\n        <div style="margin-top: 15px; font-size: 14px;">\n            <a href="about.html" style="color: #888; text-decoration: none; margin: 0 10px;">About Us</a> | \n            <a href="contact.html" style="color: #888; text-decoration: none; margin: 0 10px;">Contact Us</a> | \n            <a href="privacy.html" style="color: #888; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | \n            <a href="terms.html" style="color: #888; text-decoration: none; margin: 0 10px;">Terms of Service</a>\n        </div>
     </footer>
 </body>
 </html>`;
