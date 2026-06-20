@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>필수 영문법 학습 (중등/고등) - Minddoo</title>
+    <meta name="description" content="중학교 기초 영문법부터 고등학교 수능, 토익 필수 영문법까지 한 번에 정리! 핵심 개념 설명과 예문으로 쉽고 완벽하게 마스터하세요.">
+    <meta name="keywords" content="영문법, 기초 영문법, 중학 영문법, 고등 영문법, 수능 영문법, 문법 정리, 영어 문법">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Jua&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- 구글 애드센스 -->
+    <meta name="google-adsense-account" content="ca-pub-6117526240662405">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6117526240662405" crossorigin="anonymous"></script>
+
+    <style>
+        /* 영문법 전용 스타일 추가 */
+        .grammar-container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        .tab-menu { display: flex; justify-content: center; margin-bottom: 30px; background: #fff; padding: 5px; border-radius: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .tab-btn { flex: 1; padding: 12px 20px; text-align: center; font-size: 16px; font-weight: bold; border: none; background: transparent; cursor: pointer; color: #888; border-radius: 25px; transition: all 0.3s ease; }
+        .tab-btn.active { background: var(--pastel-pink); color: #fff; box-shadow: 0 4px 0 var(--pastel-pink-shadow); }
+        
+        .grammar-card { background: #fff; border-radius: 15px; margin-bottom: 15px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.2s; border: 2px solid transparent; }
+        .grammar-card:hover { transform: translateY(-2px); border-color: var(--pastel-yellow); }
+        
+        .grammar-header { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #fdfdfd; font-family: 'Jua', sans-serif; font-size: 20px; color: var(--primary); }
+        .grammar-header .toggle-icon { font-size: 24px; color: var(--pastel-pink); transition: transform 0.3s; }
+        .grammar-card.open .toggle-icon { transform: rotate(45deg); }
+        
+        .grammar-body { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; background: #fff; }
+        .grammar-card.open .grammar-body { padding: 20px; max-height: 800px; border-top: 1px dashed #eee; }
+        
+        .grammar-explanation { font-size: 15px; color: #444; line-height: 1.6; margin-bottom: 20px; background: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid var(--pastel-green); }
+        
+        .example-list { list-style: none; padding: 0; margin: 0; }
+        .example-item { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #f1f1f1; }
+        .example-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .ex-en { font-size: 16px; font-weight: bold; color: #2c3e50; margin-bottom: 5px; }
+        .ex-ko { font-size: 14px; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+    <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px;">
+        <div class="logo">📚 필수 영문법 완성</div>
+        <div style="display: flex; gap: 10px;">
+            <a href="index.html" class="btn-home" style="text-decoration: none; padding: 8px 15px; font-size: 14px;">🏠 메인으로</a>
+        </div>
+    </header>
+
+    <!-- 상단 광고 영역 -->
+    <div class="ad-container ad-top">
+        <div class="ad-placeholder">AdSense Banner<br>(Top)</div>
+    </div>
+
+    <div class="grammar-container">
+        <div class="intro-box" style="margin-top:0;">
+            <h2>중고등 핵심 영문법 마스터!</h2>
+            <p>헷갈리는 문법, 명확한 개념 설명과 핵심 예문으로 완벽히 이해하세요.</p>
+        </div>
+
+        <div class="tab-menu">
+            <button class="tab-btn active" onclick="switchTab('middle')">🌱 중등 기초 문법</button>
+            <button class="tab-btn" onclick="switchTab('high')">🌲 고등 심화 문법</button>
+        </div>
+
+        <div id="grammar-list">
+            <!-- 문법 카드들이 자바스크립트에 의해 여기에 렌더링됩니다 -->
+        </div>
+
+        <!-- 중간 광고 영역 -->
+        <div class="ad-container ad-mid" style="margin: 40px auto;">
+            <div class="ad-placeholder-small">Ad</div>
+        </div>
+        
+        <!-- SEO를 위한 대규모 텍스트 영역 -->
+        <section class="seo-content" style="margin-top: 40px; padding: 25px; text-align: left; background: #fff; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 3px solid var(--pastel-yellow);">
+            <h2 style="font-size: 22px; margin-bottom: 15px; color: #333;">영문법 학습, 왜 중요할까요? 🚀</h2>
+            <article style="font-size: 15px; color: #444; line-height: 1.8; font-family: 'Jua', sans-serif;">
+                <p>영어 학습에 있어서 단어 암기만큼이나 중요한 것이 바로 '영문법(Grammar)'입니다. 문법은 단어라는 벽돌을 쌓아 튼튼한 집을 짓기 위한 설계도와 같습니다. 올바른 문법 구조를 이해하지 못하면, 아무리 많은 단어를 알고 있더라도 정확한 독해나 매끄러운 영작이 불가능합니다.</p>
+                <p>본 영문법 섹션은 중학교에서 반드시 알아야 할 기초 문법(to부정사, 동명사, 관계대명사 등)부터 고등학교 내신 및 수능, 토익에 자주 출제되는 심화 문법(가정법, 도치구문, 분사구문 등)까지 체계적으로 분류하여 제공합니다. 복잡하고 어려운 문법 용어에 얽매이지 않고, 실제 독해와 회화에서 어떻게 쓰이는지 핵심 예문을 통해 직관적으로 이해할 수 있도록 구성했습니다.</p>
+            </article>
+        </section>
+    </div>
+
+    <div class="ad-container ad-bottom">
+        <div class="ad-placeholder">AdSense Banner<br>(Bottom)</div>
+    </div>
+
+    <footer>
+        <div style="margin-bottom:15px;">
+            <a href="about.html" style="color:#b0a5a8; text-decoration:none; margin:0 10px; font-weight:600;">About Us</a>
+            <a href="privacy.html" style="color:#b0a5a8; text-decoration:none; margin:0 10px; font-weight:600;">Privacy Policy</a>
+            <a href="terms.html" style="color:#b0a5a8; text-decoration:none; margin:0 10px; font-weight:600;">Terms of Service</a>
+        </div>
+        <p>&copy; 2026 7-Day Vocab Challenge. Keep studying!</p>
+    </footer>
+
+    <!-- 스크립트 로드 -->
+    <script src="grammar-data.js"></script>
+    <script src="grammar-app.js"></script>
+</body>
+</html>
