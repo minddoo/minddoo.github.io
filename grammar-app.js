@@ -1,28 +1,54 @@
+// 현재 선택된 상태 저장
+let currentLang = 'en';
+let currentLevel = 'basic';
+
 document.addEventListener('DOMContentLoaded', () => {
-    // 초기 로딩 시 중등 문법 렌더링
-    renderGrammarList('middle');
+    // 초기 로딩 시 렌더링
+    renderGrammarList();
 });
 
-// 탭 전환 기능
-function switchTab(level) {
+// 언어 탭 전환 기능
+function switchLang(lang) {
+    currentLang = lang;
+    
+    // 탭 버튼 스타일 변경
+    const buttons = document.querySelectorAll('.lang-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    const clickedBtn = document.querySelector(`.lang-btn[onclick="switchLang('${lang}')"]`);
+    if(clickedBtn) clickedBtn.classList.add('active');
+    
+    // 데이터 다시 렌더링
+    renderGrammarList();
+}
+
+// 난이도 탭 전환 기능
+function switchLevel(level) {
+    currentLevel = level;
+    
     // 탭 버튼 스타일 변경
     const buttons = document.querySelectorAll('.tab-btn');
     buttons.forEach(btn => btn.classList.remove('active'));
     
-    // 클릭한 버튼 활성화
-    const clickedBtn = document.querySelector(`.tab-btn[onclick="switchTab('${level}')"]`);
+    const clickedBtn = document.querySelector(`.tab-btn[onclick="switchLevel('${level}')"]`);
     if(clickedBtn) clickedBtn.classList.add('active');
     
-    // 해당 레벨의 데이터 렌더링
-    renderGrammarList(level);
+    // 데이터 다시 렌더링
+    renderGrammarList();
 }
 
 // 문법 리스트 렌더링
-function renderGrammarList(level) {
+function renderGrammarList() {
     const listContainer = document.getElementById('grammar-list');
     listContainer.innerHTML = ''; // 초기화
     
-    const data = grammarDB[level];
+    // 현재 언어와 난이도에 맞는 데이터 가져오기
+    const data = grammarDB[currentLang][currentLevel];
+    
+    if(!data || data.length === 0) {
+        listContainer.innerHTML = '<div style="text-align:center; padding:30px; color:#999;">데이터가 없습니다.</div>';
+        return;
+    }
     
     data.forEach((item, index) => {
         // 문법 카드 생성
@@ -46,8 +72,8 @@ function renderGrammarList(level) {
         item.examples.forEach(ex => {
             examplesHTML += `
                 <li class="example-item">
-                    <div class="ex-en">${ex.en}</div>
-                    <div class="ex-ko">${ex.ko}</div>
+                    <div class="ex-en">${ex.original}</div>
+                    <div class="ex-ko">${ex.translated}</div>
                 </li>
             `;
         });
@@ -70,11 +96,7 @@ function toggleAccordion(card) {
     // 현재 열려있는지 확인
     const isOpen = card.classList.contains('open');
     
-    // 1. 모든 카드 닫기 (하나씩만 열리게 하고 싶다면)
-    // const allCards = document.querySelectorAll('.grammar-card');
-    // allCards.forEach(c => c.classList.remove('open'));
-    
-    // 2. 클릭한 카드 상태 반전
+    // 클릭한 카드 상태 반전
     if (isOpen) {
         card.classList.remove('open');
     } else {

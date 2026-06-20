@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>필수 영문법 학습 (중등/고등) - Minddoo</title>
-    <meta name="description" content="중학교 기초 영문법부터 고등학교 수능, 토익 필수 영문법까지 한 번에 정리! 핵심 개념 설명과 예문으로 쉽고 완벽하게 마스터하세요.">
-    <meta name="keywords" content="영문법, 기초 영문법, 중학 영문법, 고등 영문법, 수능 영문법, 문법 정리, 영어 문법">
+    <title>필수 외국어 문법 (초급/심화) - Minddoo</title>
+    <meta name="description" content="외국어 기초 문법부터 수능, 토익, JLPT, HSK 필수 문법까지 한 번에 정리! 핵심 개념 설명과 예문으로 쉽고 완벽하게 마스터하세요.">
+    <meta name="keywords" content="영문법, 일본어 문법, 중국어 문법, JLPT, HSK, 기초 문법, 심화 문법, 문법 정리">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +20,14 @@
     <style>
         /* 영문법 전용 스타일 추가 */
         .grammar-container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        
+        .lang-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .lang-btn { flex: 1; min-width: 100px; padding: 12px 15px; text-align: center; font-size: 16px; font-weight: bold; border: 2px solid #eee; background: #fff; cursor: pointer; color: #555; border-radius: 15px; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .lang-btn.active { background: var(--pastel-pink); color: #fff; border-color: var(--pastel-pink-shadow); box-shadow: 0 4px 0 var(--pastel-pink-shadow); transform: translateY(-2px); }
+
         .tab-menu { display: flex; justify-content: center; margin-bottom: 30px; background: #fff; padding: 5px; border-radius: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .tab-btn { flex: 1; padding: 12px 20px; text-align: center; font-size: 16px; font-weight: bold; border: none; background: transparent; cursor: pointer; color: #888; border-radius: 25px; transition: all 0.3s ease; }
-        .tab-btn.active { background: var(--pastel-pink); color: #fff; box-shadow: 0 4px 0 var(--pastel-pink-shadow); }
+        .tab-btn.active { background: var(--pastel-green); color: #fff; box-shadow: 0 4px 0 #2ecc71; }
         
         .grammar-card { background: #fff; border-radius: 15px; margin-bottom: 15px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.2s; border: 2px solid transparent; }
         .grammar-card:hover { transform: translateY(-2px); border-color: var(--pastel-yellow); }
@@ -44,8 +49,8 @@
     </style>
 </head>
 <body>
-    <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px;">
-        <div class="logo">📚 필수 영문법 완성</div>
+    <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; flex-wrap: wrap; gap: 10px;">
+        <div class="logo">📚 필수 외국어 문법 완성</div>
         <div style="display: flex; gap: 10px;">
             <a href="index.html" class="btn-home" style="text-decoration: none; padding: 8px 15px; font-size: 14px;">🏠 메인으로</a>
         </div>
@@ -58,13 +63,21 @@
 
     <div class="grammar-container">
         <div class="intro-box" style="margin-top:0;">
-            <h2>중고등 핵심 영문법 마스터!</h2>
+            <h2>외국어 핵심 문법 마스터!</h2>
             <p>헷갈리는 문법, 명확한 개념 설명과 핵심 예문으로 완벽히 이해하세요.</p>
         </div>
 
+        <!-- 언어 선택 탭 -->
+        <div class="lang-tabs">
+            <button class="lang-btn active" onclick="switchLang('en')">🇺🇸 영어</button>
+            <button class="lang-btn" onclick="switchLang('ja')">🇯🇵 일본어</button>
+            <button class="lang-btn" onclick="switchLang('zh')">🇨🇳 중국어</button>
+        </div>
+
+        <!-- 난이도 선택 탭 -->
         <div class="tab-menu">
-            <button class="tab-btn active" onclick="switchTab('middle')">🌱 중등 기초 문법</button>
-            <button class="tab-btn" onclick="switchTab('high')">🌲 고등 심화 문법</button>
+            <button class="tab-btn active" onclick="switchLevel('basic')">🌱 기초 문법 (초/중등)</button>
+            <button class="tab-btn" onclick="switchLevel('advanced')">🌲 심화 문법 (고등/자격증)</button>
         </div>
 
         <div id="grammar-list">
@@ -78,10 +91,10 @@
         
         <!-- SEO를 위한 대규모 텍스트 영역 -->
         <section class="seo-content" style="margin-top: 40px; padding: 25px; text-align: left; background: #fff; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 3px solid var(--pastel-yellow);">
-            <h2 style="font-size: 22px; margin-bottom: 15px; color: #333;">영문법 학습, 왜 중요할까요? 🚀</h2>
+            <h2 style="font-size: 22px; margin-bottom: 15px; color: #333;">외국어 문법 학습, 왜 중요할까요? 🚀</h2>
             <article style="font-size: 15px; color: #444; line-height: 1.8; font-family: 'Jua', sans-serif;">
-                <p>영어 학습에 있어서 단어 암기만큼이나 중요한 것이 바로 '영문법(Grammar)'입니다. 문법은 단어라는 벽돌을 쌓아 튼튼한 집을 짓기 위한 설계도와 같습니다. 올바른 문법 구조를 이해하지 못하면, 아무리 많은 단어를 알고 있더라도 정확한 독해나 매끄러운 영작이 불가능합니다.</p>
-                <p>본 영문법 섹션은 중학교에서 반드시 알아야 할 기초 문법(to부정사, 동명사, 관계대명사 등)부터 고등학교 내신 및 수능, 토익에 자주 출제되는 심화 문법(가정법, 도치구문, 분사구문 등)까지 체계적으로 분류하여 제공합니다. 복잡하고 어려운 문법 용어에 얽매이지 않고, 실제 독해와 회화에서 어떻게 쓰이는지 핵심 예문을 통해 직관적으로 이해할 수 있도록 구성했습니다.</p>
+                <p>외국어 학습에 있어서 단어 암기만큼이나 중요한 것이 바로 '문법(Grammar)'입니다. 문법은 단어라는 벽돌을 쌓아 튼튼한 집을 짓기 위한 설계도와 같습니다. 올바른 문법 구조를 이해하지 못하면, 아무리 많은 단어를 알고 있더라도 정확한 독해나 매끄러운 회화가 불가능합니다.</p>
+                <p>본 외국어 문법 섹션은 필수 영어 문법(중등/고등)뿐만 아니라, 많은 학습자들이 어려워하는 <strong>일본어 문법(JLPT N5~N2)</strong>과 <strong>중국어 문법(HSK 1~5급)</strong>까지 체계적으로 분류하여 제공합니다. 복잡하고 어려운 문법 용어에 얽매이지 않고, 실제 독해와 회화에서 어떻게 쓰이는지 핵심 예문을 통해 직관적으로 이해할 수 있도록 구성했습니다. 매일매일 단어와 함께 문법을 복습하며 언어 실력을 한 단계 업그레이드 해보세요!</p>
             </article>
         </section>
     </div>
