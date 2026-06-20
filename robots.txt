@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
 
+# 기타 개인 프로젝트 폴더는 구글 로봇 수집 금지
+Disallow: /calculator/
+Disallow: /calendar/
+Disallow: /checkit-global/
+Disallow: /checkup-talk/
+Disallow: /coffee-order/
+Disallow: /dietary-card/
+Disallow: /healing-sounds/
+Disallow: /health-test/
+Disallow: /hospital-matcher/
+Disallow: /korean-quiz/
+Disallow: /mbti/
+Disallow: /premium-checkup/
+Disallow: /wanna-calendar/
+Disallow: /work-timer/
+
 Sitemap: https://minddoo.github.io/sitemap.xml
