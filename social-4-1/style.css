@@ -631,3 +631,99 @@ img, svg {
 .modal-overlay {
     z-index: 99999 !important;
 }
+/* --- 퀴즈 및 게시판 선생님 확인 배지 스타일 --- */
+.quiz-btn {
+    background-color: #9B59B6;
+    color: white;
+    font-weight: bold;
+}
+.quiz-btn:hover {
+    background-color: #8E44AD;
+}
+
+.check-btn {
+    background-color: #F39C12;
+    color: white;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 12px;
+}
+.check-btn:hover {
+    background-color: #D35400;
+}
+.checked-badge {
+    background-color: #E8F8F5;
+    color: #1ABC9C;
+    font-size: 0.85rem;
+    padding: 5px 10px;
+    border-radius: 12px;
+    border: 1px solid #1ABC9C;
+    font-weight: bold;
+}
+.item-checked {
+    border-left: 5px solid #1ABC9C !important;
+    background-color: #FAFCFB;
+}
+
+/* 퀴즈 폼 스타일 */
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.quiz-question {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #F9F9F9;
+    border-radius: 8px;
+    border-left: 4px solid #3498DB;
+}
+.quiz-question h3 {
+    margin-top: 0;
+    color: #2C3E50;
+    font-size: 1.1rem;
+}
+.quiz-options label {
+    display: block;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #34495E;
+}
+.quiz-options input[type="radio"] {
+    margin-right: 10px;
+}
+.quiz-answer {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #E8F8F5;
+    color: #16A085;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.quiz-result {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+.quiz-result.perfect { background-color: #D5F5E3; color: #27AE60; }
+.quiz-result.good { background-color: #FCF3CF; color: #F39C12; }
+.quiz-result.tryagain { background-color: #FADBD8; color: #C0392B; }
+
+.submit-quiz-btn {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 30px auto 0;
+    background-color: #3498DB;
+    font-size: 1.2rem;
+    padding: 15px;
+}
+.submit-quiz-btn:hover { background-color: #2980B9; }
