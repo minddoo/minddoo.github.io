@@ -767,3 +767,38 @@ textarea.input-field {
     min-height: 100px;
     resize: vertical;
 }
+
+/* --- 햄버거 메뉴 모바일 최적화 --- */
+.hamburger-btn {
+    display: none;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.hamburger-btn:hover { background-color: rgba(255,255,255,0.2); }
+
+@media (max-width: 768px) {
+    .hamburger-btn {
+        display: block; /* 모바일에서만 보임 */
+    }
+    .tab-buttons {
+        display: none; /* 기본으로 숨김 */
+        flex-direction: column;
+        width: 100%;
+        background-color: #34495E;
+        padding: 10px 0;
+        border-radius: 8px;
+    }
+    .tab-buttons.show {
+        display: flex; /* 토글 시 보임 */
+    }
+    .nav-btn {
+        width: 90%;
+        margin: 5px auto;
+    }
+}

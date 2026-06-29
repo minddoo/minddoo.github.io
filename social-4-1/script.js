@@ -1,5 +1,13 @@
-﻿// --- 탭 전환 로직 ---
+﻿function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('show');
+}
+// --- 탭 전환 로직 ---
 function switchSubject(subject) {
+    const menu = document.getElementById('mobileMenu');
+    if (menu && menu.classList.contains('show')) {
+        menu.classList.remove('show');
+    }
     const buttons = document.querySelectorAll('.nav-btn');
     buttons.forEach(btn => btn.classList.remove('active'));
 
@@ -412,5 +420,6 @@ function submitQuiz() {
     
     window.scrollTo({ top: resultDiv.offsetTop - 50, behavior: 'smooth' });
 }
+
 
 
