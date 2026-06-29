@@ -285,6 +285,7 @@ async function submitRecording() {
                 
                 alert('✅ 숙제 제출이 완료되었습니다! 닫기 버튼을 누르고 게시판에서 확인하세요.');
                 closeRecordModal();
+                openBoardModal();
             } catch(err) {
                 console.error("Firestore Upload failed", err);
                 alert('업로드에 실패했습니다: ' + err.message);
@@ -432,6 +433,7 @@ function submitQuiz() {
     
     window.scrollTo({ top: resultDiv.offsetTop - 50, behavior: 'smooth' });
 }
+
 
 
 
