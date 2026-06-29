@@ -879,3 +879,88 @@ audio::-webkit-media-controls-current-time-display {
     color: #7f8c8d;
     min-width: 30px;
 }
+
+/* --- 꺾은선그래프 이론 전용 스타일 --- */
+.graph-compare-wrap {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 14px 0;
+}
+.graph-box {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 10px;
+    flex: 1;
+    min-width: 130px;
+    text-align: center;
+}
+.graph-box.mini-graph {
+    min-width: 80px;
+    max-width: 100px;
+    padding: 6px;
+}
+.graph-label {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 6px;
+}
+.svg-graph {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.concept-def {
+    background: #EAF4FB;
+    border-left: 4px solid #3498DB;
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+.concept-note {
+    background: #f0faf5;
+    border-left: 4px solid #2ECC71;
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+.wave-note {
+    background: #fefcec;
+    border-left: 4px solid #F1C40F;
+}
+.step-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.step-list li {
+    padding: 4px 0;
+    font-size: 0.9rem;
+    color: #2C3E50;
+}
+.flow-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+.flow-step {
+    background: #3498DB;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+.flow-arrow {
+    font-size: 1.3rem;
+    color: #7f8c8d;
+    font-weight: bold;
+}
