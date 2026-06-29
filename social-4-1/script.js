@@ -141,31 +141,30 @@ async function submitRecording() {
     document.getElementById('submitRecordBtn').disabled = true;
     
     try {
-        const timestamp = new Date().getTime();
-        const fileName = `recordings/${studentName}_${timestamp}.webm`;
-        const storageRef = storage.ref().child(fileName);
-        
-        // Storage 업로드
-        await storageRef.put(audioBlob);
-        const downloadURL = await storageRef.getDownloadURL();
-        
-        // Firestore에 기록
-        await db.collection("homeworks").add({
-            name: studentName,
-            audioUrl: downloadURL,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            timeStr: new Date().toLocaleString()
-        });
-        
-        alert('✅ 숙제 제출이 완료되었습니다! 선생님께 전송되었습니다.');
-        closeRecordModal();
-        
-    } catch(err) {
-        console.error("Upload failed", err);
-        alert('업로드에 실패했습니다: ' + err.message);
-        document.getElementById('recordStatusMessage').innerText = '업로드 실패. 다시 시도해주세요.';
-        document.getElementById('recordStatusMessage').style.color = '#E74C3C';
-    } finally {
-        document.getElementById('submitRecordBtn').disabled = false;
-    }
+        // Base64로 변환하여 Firestore에 직접 저장 (Storage 요금제 우회)
+        const reader = new FileReader();
+        reader.readAsDataURL(audioBlob);
+        reader.onloadend = async () => {
+            const base64data = reader.result;
+            
+            try {
+                // Firestore에 기록 (음성 데이터를 통째로 텍스트로 저장)
+                await db.collection("homeworks").add({
+                    name: studentName,
+                    audioUrl: base64data, // Storage URL 대신 Base64 문자열 사용
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    timeStr: new Date().toLocaleString()
+                });
+                
+                alert('✅ 숙제 제출이 완료되었습니다! 게시판에 방금 올린 숙제가 뜹니다.');
+                closeRecordModal();
+            } catch(err) {
+                console.error("Firestore Upload failed", err);
+                alert('업로드에 실패했습니다: ' + err.message);
+                document.getElementById('recordStatusMessage').innerText = '업로드 실패. 다시 시도해주세요.';
+                document.getElementById('recordStatusMessage').style.color = '#E74C3C';
+            } finally {
+                document.getElementById('submitRecordBtn').disabled = false;
+            }
+        };
 }
