@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- 검색 엔진 노출 차단 -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>백점 수학 4학년 핵심 공식 요약 노트</title>
+    <!-- 구글 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- KaTeX CDN (수식 렌더링용) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>📐 초등 수학 4학년</h1>
+        <p>교과서 핵심 개념 및 공식 공부방</p>
+    </header>
+
+    <div class="app-container">
+        <!-- 네비게이션 탭 -->
+        <nav class="tab-navigation">
+            <button class="tab-btn active" onclick="switchTab('tab1')">🍰 1. 분수의 덧셈과 뺄셈</button>
+            <button class="tab-btn" onclick="switchTab('tab2')">🔍 2. 소수의 덧셈과 뺄셈</button>
+            <button class="tab-btn" onclick="switchTab('tab3')">📐 3. 도형 (삼각형, 사각형)</button>
+            <button class="tab-btn" onclick="switchTab('tab4')">📈 4. 꺾은선 그래프</button>
+        </nav>
+
+        <!-- 학습 콘텐츠 영역 -->
+        <main class="content-area">
+            
+            <!-- 단원 1: 분수의 덧셈과 뺄셈 -->
+            <section id="tab1" class="tab-content active">
+                <h2 class="section-title">1. 분수의 덧셈과 뺄셈</h2>
+                
+                <div class="theory-card">
+                    <h3 class="card-subtitle">🍰 분모가 같은 분수의 덧셈</h3>
+                    <div class="card-body">
+                        <div class="def-box">
+                            <strong>방법:</strong> 분모는 그대로 두고, <strong>분자끼리만</strong> 더합니다.
+                        </div>
+                        
+                        <div class="formula-box">
+                            \[\frac{a}{c} + \frac{b}{c} = \frac{a+b}{c}\]
+                        </div>
+
+                        <div class="tip-box">
+                            💡 <strong>대분수 변환(진분수의 합이 가분수가 될 때):</strong><br>
+                            더한 결과가 가분수가 되면 자연수가 포함된 <strong>대분수</strong>로 바꾸어 줍니다.<br>
+                            예시: \(\frac{3}{5} + \frac{4}{5} = \frac{7}{5} = 1\frac{2}{5}\)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="card-subtitle">🍰 분모가 같은 분수의 뺄셈</h3>
+                    <div class="card-body">
+                        <div class="def-box">
+                            <strong>방법:</strong> 분모는 그대로 두고, <strong>분자끼리만</strong> 뺍니다. (단, 앞의 분자가 더 크거나 같아야 합니다.)
+                        </div>
+                        
+                        <div class="formula-box">
+                            \[\frac{a}{c} - \frac{b}{c} = \frac{a-b}{c} \quad (\text{단, } a \ge b)\]
+                        </div>
+
+                        <div class="tip-box">
+                            💡 <strong>1에서 빼는 방법:</strong><br>
+                            자연수 1을 분모가 같은 가분수로 바꾼 뒤 계산합니다.<br>
+                            예시: \(1 - \frac{3}{7} = \frac{7}{7} - \frac{3}{7} = \frac{4}{7}\)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="card-subtitle">🍰 대분수의 덧셈과 뺄셈</h3>
+                    <div class="card-body">
+                        <ul class="concept-list">
+                            <li>
+                                <strong>더할 때 방법:</strong> <strong>자연수는 자연수끼리, 분수는 분수끼리</strong> 나누어서 더합니다.<br>
+                                예시: \(1\frac{2}{5} + 2\frac{1}{5} = (1+2) + (\frac{2}{5}+\frac{1}{5}) = 3\frac{3}{5}\)
+                            </li>
+                            <li>
+                                <strong>뺄 때 방법:</strong> 자연수끼리, 분수끼리 빼서 계산하되, **분수끼리 뺄 수 없는 경우**가 생깁니다.
+                            </li>
+                            <div class="tip-box warning">
+                                ⚠️ <strong>분수끼리 뺄 수 없을 때 (받아내림):</strong><br>
+                                자연수 부분에서 1을 빌려와서 분수를 가분수로 고쳐서 계산합니다.<br>
+                                예시: \(3\frac{1}{4} - 1\frac{3}{4} = 2\frac{5}{4} - 1\frac{3}{4} = (2-1) + (\frac{5}{4}-\frac{3}{4}) = 1\frac{2}{4}\)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 단원 2: 소수의 덧셈과 뺄셈 -->
+            <section id="tab2" class="tab-content">
+                <h2 class="section-title">2. 소수의 덧셈과 뺄셈</h2>
+                
+                <div class="theory-card">
+                    <h3 class="card-subtitle">🔍 소수의 계산 규칙</h3>
+                    <div class="card-body">
+                        <div class="def-box">
+                            <strong>소수 계산의 핵심:</strong> 세로셈을 할 때 **소수점의 위치**를 세로로 반듯하게 맞추는 것이 가장 중요합니다.
+                        </div>
+
+                        <ul class="concept-list">
+                            <li>
+                                <strong>소수 자릿수 맞추기:</strong> 소수점 위치를 위아래로 일렬로 맞춘 후 계산합니다. 소수 자리 수가 다른 경우, 빈자리는 <strong>0</strong>이 있는 것으로 생각하여 계산합니다.<br>
+                                예시: \(1.2\) 와 \(0.35\) 를 더할 때, \(1.2\) 뒤에 \(0\)을 붙여 \(1.20 + 0.35\)로 계산합니다.
+                            </li>
+                            <li>
+                                <strong>계산 방법:</strong> 일반 자연수와 똑같이 뒤에서부터 더하거나 뺀 후, **소수점을 원래 자리에 그대로 내려 찍습니다.**
+                            </li>
+                        </ul>
+
+                        <div class="tip-box success">
+                            📝 <strong>계산 예시:</strong><br>
+                            자릿수가 달라도 소수점의 축을 맞춰 정렬하는 것이 핵심입니다.
+                            <div style="font-family: monospace; white-space: pre; margin-top: 10px; font-size: 1.2rem; background: #fff; padding: 10px; border-radius: 5px; border: 1px solid #e2e8f0;">
+  1.20
++ 0.35
+------
+  1.55
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 단원 3: 도형 -->
+            <section id="tab3" class="tab-content">
+                <h2 class="section-title">3. 도형 (삼각형, 사각형, 다각형)</h2>
+                
+                <div class="theory-card">
+                    <h3 class="card-subtitle">📐 삼각형의 분류 (변의 길이 기준)</h3>
+                    <div class="card-body">
+                        <ul class="concept-list">
+                            <li>
+                                <span class="badge blue">이등변삼각형</span>
+                                <strong>성질:</strong> 두 변의 길이가 같은 삼각형입니다. 두 각의 크기도 서로 같습니다.
+                            </li>
+                            <li>
+                                <span class="badge green">정삼각형</span>
+                                <strong>성질:</strong> 세 변의 길이가 모두 같은 삼각형입니다. 세 각의 크기가 모두 <strong>60도</strong>로 같습니다.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="card-subtitle">📐 삼각형의 분류 (각의 크기 기준)</h3>
+                    <div class="card-body">
+                        <ul class="concept-list">
+                            <li>
+                                <span class="badge orange">예각삼각형</span>
+                                <strong>성질:</strong> 세 각이 모두 예각(0도보다 크고 90도보다 작은 각)인 삼각형입니다.
+                            </li>
+                            <li>
+                                <span class="badge red">둔각삼각형</span>
+                                <strong>성질:</strong> 한 각이 둔각(90도보다 크고 180도보다 작은 각)인 삼각형입니다.
+                            </li>
+                            <li>
+                                <span class="badge blue">직각삼각형</span>
+                                <strong>성질:</strong> 한 각이 직각(90도)인 삼각형입니다.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="card-subtitle">📐 사각형의 종류와 성질</h3>
+                    <div class="card-body">
+                        <div class="compare-table-wrapper">
+                            <table class="compare-table">
+                                <thead>
+                                    <tr>
+                                        <th>도형 이름</th>
+                                        <th>정의 및 특징</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>사다리꼴</strong></td>
+                                        <td>평행한 변이 적어도 **한 쌍**이라도 있는 사각형입니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>평행사변형</strong></td>
+                                        <td>마주 보는 **두 쌍**의 변이 각각 서로 평행한 사각형입니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>마름모</strong></td>
+                                        <td>**네 변**의 길이가 모두 같은 사각형입니다. 마주 보는 두 쌍의 변이 평행합니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>직사각형</strong></td>
+                                        <td>**네 각**이 모두 직각인 사각형입니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>정사각형</strong></td>
+                                        <td>네 변의 길이가 모두 같고, 네 각이 모두 직각인 완벽한 사각형입니다.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="card-subtitle">📐 다각형</h3>
+                    <div class="card-body">
+                        <div class="def-box">
+                            <strong>다각형이란?</strong> 선분(곧은 선)으로만 둘러싸인 도형입니다. 
+                        </div>
+                        <p>변의 수에 따라 3개면 삼각형, 4개면 사각형, 5개면 오각형 등으로 부릅니다.</p>
+                        <p style="margin-top: 10px;">💡 <strong>정다각형:</strong> 변의 길이가 모두 같고, 각의 크기도 모두 같은 다각형입니다. (예: 정삼각형, 정사각형, 정오각형 등)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 단원 4: 꺾은선 그래프 -->
+            <section id="tab4" class="tab-content">
+                <h2 class="section-title">4. 꺾은선 그래프</h2>
+                
+                <div class="theory-card">
+                    <h3 class="card-subtitle">📈 꺾은선 그래프 읽기</h3>
+                    <div class="card-body">
+                        <div class="def-box">
+                            <strong>정의:</strong> 수량을 점으로 표시하고, 그 점들을 선분으로 연결하여 **시간에 따른 변화의 흐름**을 한눈에 알아보게 만든 그래프입니다.
+                        </div>
+
+                        <ul class="concept-list">
+                            <li>
+                                <strong>읽는 법 순서:</strong>
+                                <ol style="margin-left: 20px; margin-top: 10px; display: flex; flex-direction: column; gap: 8px;">
+                                    <li>가로축과 세로축이 각각 무엇을 나타내는지 확인합니다.</li>
+                                    <li>세로축의 한 칸의 크기가 얼마인지 읽어냅니다.</li>
+                                    <li>점들의 높이를 통해 정확한 수량을 파악합니다.</li>
+                                    <li>선이 기울어진 정도를 보고 값이 늘어났는지(증가), 줄어들었는지(감소), 그대로인지(유지) 확인합니다.</li>
+                                </ol>
+                            </li>
+                            <div class="tip-box success">
+                                💡 <strong>꺾은선 그래프의 장점:</strong><br>
+                                연속적으로 변하는 양을 나타내는 데 아주 유용하며, 미래의 변화를 예상하기 좋습니다. (예: 기온 변화, 몸무게 변화, 매출 추이 등)
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

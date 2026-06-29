@@ -17,5 +17,6 @@ Disallow: /premium-checkup/
 Disallow: /wanna-calendar/
 Disallow: /work-timer/
 Disallow: /social-4-1/
+Disallow: /math-4/
 
 Sitemap: https://minddoo.github.io/sitemap.xml

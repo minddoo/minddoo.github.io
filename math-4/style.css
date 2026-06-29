@@ -1,0 +1,271 @@
+/* 기본 스타일 초기화 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f7f9fc;
+    color: #2d3748;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+/* 헤더 디자인 (보라-남색 그라데이션) */
+.main-header {
+    width: 100%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 30px 20px;
+    text-align: center;
+    color: white;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+}
+
+.main-header h1 {
+    font-family: 'Jua', sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.15);
+}
+
+.main-header p {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #f3f0ff;
+}
+
+/* 전체 컨테이너 */
+.app-container {
+    width: 95%;
+    max-width: 800px;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 탭 네비게이션 */
+.tab-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+@media (min-width: 600px) {
+    .tab-navigation {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 15px 10px;
+    font-family: 'Jua', sans-serif;
+    font-size: 1.1rem;
+    color: #4a5568;
+    background-color: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.tab-btn:hover {
+    background-color: #edf2f7;
+    border-color: #cbd5e0;
+}
+
+.tab-btn.active {
+    color: white;
+    background-color: #764ba2;
+    border-color: #764ba2;
+    box-shadow: 0 4px 10px rgba(118, 75, 162, 0.25);
+}
+
+/* 학습 콘텐츠 영역 */
+.content-area {
+    width: 100%;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section-title {
+    font-family: 'Jua', sans-serif;
+    font-size: 1.8rem;
+    color: #764ba2;
+    margin-bottom: 20px;
+    border-left: 6px solid #764ba2;
+    padding-left: 12px;
+}
+
+/* 이론 카드 레이아웃 */
+.theory-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.card-subtitle {
+    font-family: 'Jua', sans-serif;
+    font-size: 1.4rem;
+    color: #2d3748;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #edf2f7;
+}
+
+.card-body {
+    font-size: 1.15rem; /* 글씨 크기 확대 */
+    color: #4a5568;
+}
+
+/* 개념 정의 박스 */
+.def-box {
+    background-color: #f3f0ff;
+    border-left: 5px solid #764ba2;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    color: #553c7b;
+    font-weight: 500;
+}
+
+.def-box strong {
+    color: #764ba2;
+}
+
+/* 수식 상자 */
+.formula-box {
+    background-color: #f7fafc;
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    overflow-x: auto;
+}
+
+/* 특징 리스트 */
+.concept-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.concept-list li {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 5px 0;
+}
+
+.concept-list li strong {
+    color: #2d3748;
+    font-weight: 700;
+}
+
+/* 배지 종류 */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.badge.blue { background-color: #3182ce; }
+.badge.green { background-color: #38a169; }
+.badge.orange { background-color: #dd6b20; }
+.badge.red { background-color: #e53e3e; }
+
+/* 요약 / 정보 박스 */
+.tip-box {
+    background-color: #f7fafc;
+    border: 1px dashed #cbd5e0;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 1.05rem;
+}
+
+.tip-box.warning {
+    background-color: #fff5f5;
+    border-color: #feb2b2;
+    color: #c53030;
+}
+
+.tip-box.success {
+    background-color: #f0fff4;
+    border-color: #9ae6b4;
+    color: #22543d;
+}
+
+.tip-box ul {
+    margin-left: 20px;
+    margin-top: 8px;
+}
+
+.tip-box li {
+    background: transparent;
+    margin-bottom: 5px;
+}
+
+/* 비교 테이블 */
+.compare-table-wrapper {
+    overflow-x: auto;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+}
+
+.compare-table th, .compare-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.compare-table th {
+    background-color: #edf2f7;
+    color: #2d3748;
+    font-weight: 700;
+}
+
+.compare-table td {
+    background-color: white;
+    font-size: 1.05rem;
+}
