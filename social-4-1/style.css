@@ -529,29 +529,60 @@ audio {
 
 .board-item {
     background: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.07);
     border-left: 4px solid #27AE60;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
 }
 
-.board-item-header {
+.board-top-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    gap: 8px;
+    flex-wrap: nowrap;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .board-name {
     font-weight: bold;
     color: #2C3E50;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    flex-shrink: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .board-time {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #95A5A6;
+    margin: 3px 0 8px;
+}
+
+.check-wrap {
+    flex-shrink: 0;
+}
+
+.check-btn {
+    font-size: 0.75rem !important;
+    padding: 5px 8px !important;
+    white-space: nowrap;
+}
+
+.checked-badge {
+    font-size: 0.75rem;
+    color: #27AE60;
+    border: 1.5px solid #27AE60;
+    border-radius: 20px;
+    padding: 4px 8px;
+    white-space: nowrap;
 }
 
 /* 모바일 화면 대응 */
@@ -963,4 +994,33 @@ audio::-webkit-media-controls-current-time-display {
     font-size: 1.3rem;
     color: #7f8c8d;
     font-weight: bold;
+}
+
+
+/* --- 게시판 모달 모바일 완전 고정 --- */
+#boardModal .modal-content,
+#qnaBoardModal .modal-content {
+    width: 92vw !important;
+    max-width: 480px !important;
+    max-height: 88vh !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+    padding: 18px !important;
+}
+
+#publicAudioBoard {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.custom-player {
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.progress-bar-wrap {
+    flex: 1;
+    min-width: 0;
 }
