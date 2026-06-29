@@ -563,3 +563,22 @@ audio {
         max-height: 300px;
     }
 }
+
+/* 모바일 텍스트 튀어나옴 방지 글로벌 설정 */
+body, p, li, h1, h2, h3, h4, h5, h6, span, div {
+    word-break: keep-all; /* 한국어 단어 유지하면서 줄바꿈 */
+    overflow-wrap: break-word; /* 긴 단어나 URL 강제 줄바꿈 */
+    max-width: 100%;
+}
+
+/* 수식이나 긴 코드가 화면을 넘어갈 경우 스크롤 허용 */
+.formula, .math-rule-box, .highlight-box {
+    overflow-x: auto;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+img, svg {
+    max-width: 100%;
+    height: auto;
+}
