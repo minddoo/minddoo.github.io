@@ -167,4 +167,8 @@ async function submitRecording() {
                 document.getElementById('submitRecordBtn').disabled = false;
             }
         };
+    } catch(err) {
+        console.error("Conversion failed", err);
+        document.getElementById('submitRecordBtn').disabled = false;
+    }
 }
