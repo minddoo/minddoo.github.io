@@ -73,15 +73,15 @@ function loadPublicAudioBoard() {
             let html = '';
             snapshot.forEach((doc) => {
                 const data = doc.data();
-                html += \
+                html += `
                     <div class="board-item">
                         <div class="board-item-header">
-                            <span class="board-name">🧑‍🎓 \</span>
-                            <span class="board-time">\</span>
+                            <span class="board-name">🧑‍🎓 ${data.name}</span>
+                            <span class="board-time">${data.timeStr}</span>
                         </div>
-                        <audio controls src="\"></audio>
+                        <audio controls src="${data.audioUrl}"></audio>
                     </div>
-                \;
+                `;
             });
             boardDiv.innerHTML = html;
         }, (error) => {
