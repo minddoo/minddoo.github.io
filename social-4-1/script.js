@@ -264,44 +264,41 @@ async function submitRecording() {
         return;
     }
     
-    document.getElementById('recordStatusMessage').innerText = '클라우드에 안전하게 업로드 중입니다... 잠시만 기다려주세요.';
+    document.getElementById('recordStatusMessage').innerText = '숙제를 제출하고 있습니다... 잠시만 기다려주세요.';
     document.getElementById('recordStatusMessage').style.color = '#3498DB';
     document.getElementById('submitRecordBtn').disabled = true;
     
     try {
-        // Base64 대신 정식 Firebase Storage 사용 (모바일 호환성 100% 보장 및 용량 무제한)
-        const fileName = `homeworks/${Date.now()}_${studentName}.webm`;
-        const storageRef = storage.ref().child(fileName);
-        
-                // 확장자를 mimeType에 맞게 동적으로 설정 (webm 또는 mp4)
-        const ext = (audioBlob.type && audioBlob.type.includes('mp4')) ? 'mp4' : 'webm';
-        
-        // 메타데이터에 contentType 명시 (iOS에서 다운로드/재생 시 필수)
-        const metadata = { contentType: audioBlob.type };
-        await storageRef.put(audioBlob, metadata);
-        const downloadUrl = await storageRef.getDownloadURL();
-        
-        // 다운로드 URL을 Firestore에 기록
-        await db.collection("homeworks").add({
-            name: studentName,
-            audioUrl: downloadUrl,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            timeStr: new Date().toLocaleString(),
-            isChecked: false
-        });
-        
-        alert('✅ 숙제 제출이 완료되었습니다! 닫기 버튼을 누르고 게시판에서 확인하세요.');
-        closeRecordModal();
+        const reader = new FileReader();
+        reader.readAsDataURL(audioBlob);
+        reader.onloadend = async () => {
+            const base64data = reader.result;
+            
+            try {
+                await db.collection("homeworks").add({
+                    name: studentName,
+                    audioUrl: base64data,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    timeStr: new Date().toLocaleString(),
+                    isChecked: false
+                });
+                
+                alert('✅ 숙제 제출이 완료되었습니다! 닫기 버튼을 누르고 게시판에서 확인하세요.');
+                closeRecordModal();
+            } catch(err) {
+                console.error("Firestore Upload failed", err);
+                alert('업로드에 실패했습니다: ' + err.message);
+                document.getElementById('recordStatusMessage').innerText = '업로드 실패. 다시 시도해주세요.';
+                document.getElementById('recordStatusMessage').style.color = '#E74C3C';
+            } finally {
+                document.getElementById('submitRecordBtn').disabled = false;
+            }
+        };
     } catch(err) {
-        console.error("Upload failed", err);
-        alert('업로드에 실패했습니다: ' + err.message);
-        document.getElementById('recordStatusMessage').innerText = '업로드 실패. 다시 시도해주세요.';
-        document.getElementById('recordStatusMessage').style.color = '#E74C3C';
-    } finally {
+        console.error("Conversion failed", err);
         document.getElementById('submitRecordBtn').disabled = false;
     }
 }
-
 // --- 다이내믹 랜덤 퀴즈 ---
 const quizBank = [
     {
@@ -435,6 +432,7 @@ function submitQuiz() {
     
     window.scrollTo({ top: resultDiv.offsetTop - 50, behavior: 'smooth' });
 }
+
 
 
 
