@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- 검색 엔진 노출 차단 -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>백점 사회 4-1 (3단원)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🌟 백점 사회 4-1 🌟</h1>
+        <p>3단원. 경제활동과 지역 간 교류</p>
+        <a href="../" class="home-btn">🏠 홈으로</a>
+    </header>
+
+    <main class="dashboard">
+        <section class="menu-card" onclick="openModal('chapter1')">
+            <div class="icon">🤔</div>
+            <h2>1. 경제활동과 선택</h2>
+            <p>자원의 희소성, 합리적 선택</p>
+        </section>
+
+        <section class="menu-card" onclick="openModal('chapter2')">
+            <div class="icon">🏭</div>
+            <h2>2. 생산과 소비</h2>
+            <p>생산 활동, 다양한 시장</p>
+        </section>
+
+        <section class="menu-card" onclick="openModal('chapter3')">
+            <div class="icon">🤝</div>
+            <h2>3. 지역 간 교류</h2>
+            <p>교류의 까닭, 좋은 점</p>
+        </section>
+    </main>
+
+    <!-- 팝업(모달) 창: 1단원 -->
+    <div id="chapter1" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('chapter1')">&times;</span>
+            <h2>🤔 경제활동과 선택</h2>
+            <p class="guide-text">💡 카드를 터치해서 정답을 확인해 보세요!</p>
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="front">자원의 희소성이란?</div>
+                    <div class="back">사람들의 필요나 욕구에 비하여 <strong>자원의 양이 부족한 상태</strong>를 말해요.</div>
+                </div>
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="front">합리적 선택이란?</div>
+                    <div class="back">여러 가지 기준을 고려하여 돈이나 시간 등 자원의 낭비를 막고 <strong>큰 만족감을 얻는 선택</strong>을 말해요.</div>
+                </div>
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="front">합리적 선택의 방법은?</div>
+                    <div class="back">필요한 물건과 돈 확인하기 ➡️ 정보 수집 ➡️ 선택 기준 세우기 ➡️ 물건 평가 ➡️ 선택 되돌아보기</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 팝업(모달) 창: 2단원 -->
+    <div id="chapter2" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('chapter2')">&times;</span>
+            <h2>🏭 생산과 소비</h2>
+            <p class="guide-text">💡 카드를 터치해서 정답을 확인해 보세요!</p>
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="front">생산이란?</div>
+                    <div class="back">생활에 필요한 <strong>물건을 만들거나 서비스를 제공하는 활동</strong>을 말해요.<br>(예: 벼농사 짓기, 물고기 잡기)</div>
+                </div>
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="front">소비란?</div>
+                    <div class="back">생활에 필요한 <strong>물건이나 서비스를 이용하는 활동</strong>을 말해요.<br>(예: 마트에서 물건 사기, 병원에서 진찰 받기)</div>
+                </div>
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="front">시장(Market)이란?</div>
+                    <div class="back">사람들이 생활하면서 필요한 <strong>여러 가지 상품을 사고파는 곳</strong>이에요.<br>(전통시장, 대형 할인점, 온라인 쇼핑 등)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 팝업(모달) 창: 3단원 -->
+    <div id="chapter3" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('chapter3')">&times;</span>
+            <h2>🤝 지역 간 교류</h2>
+            <p class="guide-text">💡 카드를 터치해서 정답을 확인해 보세요!</p>
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="front">교류란?</div>
+                    <div class="back">개인이나 지역이 경제적 이익을 얻기 위해 상품, 자원, 기술, 정보 등을 <strong>서로 주고받는 것</strong>을 말해요.</div>
+                </div>
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="front">교류가 일어나는 까닭은?</div>
+                    <div class="back">지역마다 <strong>자연환경과 생산 기술, 자원, 시설 등이 다르기 때문</strong>에 발생해요. 서로 필요한 것을 주고 받아요!</div>
+                </div>
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="front">교류를 하면 좋은 점은?</div>
+                    <div class="back">1. 필요한 물건을 쉽게 구할 수 있어요.<br>2. 두 지역 모두 경제적 이익을 얻어요.<br>3. 지역 경제가 성장하고 발전해요.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
