@@ -1,4 +1,24 @@
-﻿function toggleMobileMenu() {
+﻿// --- Base64 to Blob 변환 (iOS 재생 오류 방지) ---
+function base64ToBlobUrl(base64Str) {
+    if (!base64Str || !base64Str.startsWith('data:')) return base64Str;
+    try {
+        const parts = base64Str.split(',');
+        const match = parts[0].match(/:(.*?);/);
+        const mime = match ? match[1] : 'audio/mp4';
+        const bstr = atob(parts[1]);
+        let n = bstr.length;
+        const u8arr = new Uint8Array(n);
+        while(n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        const blob = new Blob([u8arr], {type: mime});
+        return URL.createObjectURL(blob);
+    } catch (e) {
+        console.error("Base64 to Blob conversion failed", e);
+        return base64Str;
+    }
+}
+function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
     menu.classList.toggle('show');
 }
@@ -433,6 +453,7 @@ function submitQuiz() {
     
     window.scrollTo({ top: resultDiv.offsetTop - 50, behavior: 'smooth' });
 }
+
 
 
 
