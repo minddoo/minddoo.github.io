@@ -30,8 +30,11 @@ let mediaRecorder;
 let audioChunks = [];
 let audioBlob = null;
 
+let unsubscribeBoard = null;
+
 function openRecordModal() {
     document.getElementById('recordModal').style.display = 'flex';
+    loadPublicAudioBoard();
 }
 
 function closeRecordModal() {
@@ -39,6 +42,42 @@ function closeRecordModal() {
     if(mediaRecorder && mediaRecorder.state !== 'inactive') {
         stopRecording();
     }
+    if (unsubscribeBoard) {
+        unsubscribeBoard();
+        unsubscribeBoard = null;
+    }
+}
+
+function loadPublicAudioBoard() {
+    const boardDiv = document.getElementById('publicAudioBoard');
+    
+    unsubscribeBoard = db.collection("homeworks")
+        .orderBy("createdAt", "desc")
+        .limit(20)
+        .onSnapshot((snapshot) => {
+            if (snapshot.empty) {
+                boardDiv.innerHTML = '<p style="text-align: center; color: #7F8C8D; padding: 20px;">아직 등록된 숙제가 없습니다. 첫 번째로 올려보세요!</p>';
+                return;
+            }
+            
+            let html = '';
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                html += `
+                    <div class="board-item">
+                        <div class="board-item-header">
+                            <span class="board-name">🧑‍🎓 ${data.name}</span>
+                            <span class="board-time">${data.timeStr}</span>
+                        </div>
+                        <audio controls src="${data.audioUrl}"></audio>
+                    </div>
+                `;
+            });
+            boardDiv.innerHTML = html;
+        }, (error) => {
+            console.error("Error fetching board", error);
+            boardDiv.innerHTML = '<p style="color: #E74C3C; text-align: center; padding: 20px;">데이터를 불러오지 못했습니다.</p>';
+        });
 }
 
 async function startRecording() {

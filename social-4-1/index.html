@@ -570,27 +570,42 @@
 
     <!-- 녹음 숙제 모달 -->
     <div id="recordModal" class="modal-overlay" style="display: none;">
-        <div class="modal-content">
+        <div class="modal-content large-modal">
             <span class="close-btn" onclick="closeRecordModal()">&times;</span>
-            <h2>🎙️ 녹음 숙제 제출</h2>
-            <p>마이크 버튼을 눌러 숙제를 녹음하고 선생님께 제출하세요!</p>
             
-            <div class="record-form">
-                <input type="text" id="studentName" placeholder="이름을 입력하세요 (예: 홍길동)" class="input-field">
-            </div>
+            <div class="modal-split">
+                <!-- 위/왼쪽: 녹음 제출 영역 -->
+                <div class="record-section">
+                    <h2>🎙️ 새 숙제 올리기</h2>
+                    <p>본인 이름을 적고 마이크 버튼을 누르세요.</p>
+                    
+                    <div class="record-form">
+                        <input type="text" id="studentName" placeholder="이름을 적어주세요 (예: 홍길동)" class="input-field">
+                    </div>
 
-            <div class="record-controls">
-                <button id="startRecordBtn" class="action-btn start-btn" onclick="startRecording()">🔴 녹음 시작</button>
-                <button id="stopRecordBtn" class="action-btn stop-btn" onclick="stopRecording()" style="display: none;">⏹️ 녹음 중지 (녹음 중...)</button>
+                    <div class="record-controls">
+                        <button id="startRecordBtn" class="action-btn start-btn" onclick="startRecording()">🔴 녹음 시작</button>
+                        <button id="stopRecordBtn" class="action-btn stop-btn" onclick="stopRecording()" style="display: none;">⏹️ 녹음 중지 (녹음 중...)</button>
+                    </div>
+                    
+                    <div id="audioPlaybackContainer" class="audio-container" style="display: none;">
+                        <p>미리듣기:</p>
+                        <audio id="audioPlayback" controls></audio>
+                        <button id="submitRecordBtn" class="action-btn submit-btn" onclick="submitRecording()">서버에 제출하기</button>
+                    </div>
+                    
+                    <p id="recordStatusMessage" class="status-message"></p>
+                </div>
+
+                <!-- 아래/오른쪽: 게시판 영역 -->
+                <div class="board-section">
+                    <h2 style="color: #27AE60;">🎧 다함께 듣는 숙제 게시판</h2>
+                    <p style="font-size: 0.9rem; color: #7F8C8D; margin-bottom: 10px;">친구들이 제출한 숙제가 실시간으로 올라옵니다!</p>
+                    <div id="publicAudioBoard" class="audio-board">
+                        <p style="text-align: center; color: #7F8C8D; padding: 20px;">불러오는 중입니다...</p>
+                    </div>
+                </div>
             </div>
-            
-            <div id="audioPlaybackContainer" class="audio-container" style="display: none;">
-                <p>미리듣기:</p>
-                <audio id="audioPlayback" controls></audio>
-                <button id="submitRecordBtn" class="action-btn submit-btn" onclick="submitRecording()">제출하기</button>
-            </div>
-            
-            <p id="recordStatusMessage" class="status-message"></p>
         </div>
     </div>
 
