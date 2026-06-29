@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="100%" height="100%">
+    <defs>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700&amp;display=swap');
+            text { font-family: 'Noto Sans KR', sans-serif; }
+        </style>
+    </defs>
+    <rect width="400" height="200" fill="#FDFCF8" rx="12" />
+    
+    <!-- Factory (Production) -->
+    <path d="M 50 120 L 50 60 L 70 80 L 90 60 L 110 80 L 130 60 L 130 120 Z" fill="#BDC3C7" stroke="#2C3E50" stroke-width="2"/>
+    <rect x="80" y="90" width="20" height="30" fill="#2C3E50" />
+    <text x="90" y="150" text-anchor="middle" font-size="18" font-weight="700" fill="#2C3E50">생산 활동</text>
+    <text x="90" y="170" text-anchor="middle" font-size="13" fill="#566573">물건을 만드는 것</text>
+    
+    <!-- Arrow -->
+    <path d="M 160 90 L 220 90 L 220 80 L 240 100 L 220 120 L 220 110 L 160 110 Z" fill="#F39C12" />
+    
+    <!-- Shop (Consumption) -->
+    <rect x="270" y="70" width="80" height="50" rx="4" fill="#FAD7A1" stroke="#E67E22" stroke-width="2"/>
+    <path d="M 260 70 L 360 70 L 350 40 L 270 40 Z" fill="#E67E22" />
+    <rect x="300" y="90" width="20" height="30" fill="#FFFFFF" />
+    <text x="310" y="150" text-anchor="middle" font-size="18" font-weight="700" fill="#E67E22">소비 활동</text>
+    <text x="310" y="170" text-anchor="middle" font-size="13" fill="#566573">물건을 사서 쓰는 것</text>
+</svg>
