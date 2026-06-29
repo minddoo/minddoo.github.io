@@ -1,4 +1,46 @@
-﻿// --- Base64 to Blob 변환 (iOS 재생 오류 방지) ---
+﻿// --- 커스텀 오디오 플레이어 ---
+const audioInstances = {};
+
+function togglePlay(playerId, audioUrl) {
+    const btn = document.querySelector('#' + playerId + ' .play-btn');
+    const progressBar = document.getElementById('progress_' + playerId.replace('player_',''));
+    const timeLabel = document.getElementById('time_' + playerId.replace('player_',''));
+
+    if (audioInstances[playerId]) {
+        const audio = audioInstances[playerId];
+        if (audio.paused) {
+            audio.play();
+            btn.textContent = '⏸';
+        } else {
+            audio.pause();
+            btn.textContent = '▶';
+        }
+        return;
+    }
+
+    // 새 오디오 인스턴스 생성
+    const blobUrl = base64ToBlobUrl(audioUrl);
+    const audio = new Audio(blobUrl);
+    audioInstances[playerId] = audio;
+
+    audio.addEventListener('timeupdate', () => {
+        const pct = (audio.currentTime / audio.duration) * 100 || 0;
+        if (progressBar) progressBar.style.width = pct + '%';
+        const mins = Math.floor(audio.currentTime / 60);
+        const secs = Math.floor(audio.currentTime % 60).toString().padStart(2,'0');
+        if (timeLabel) timeLabel.textContent = mins + ':' + secs;
+    });
+
+    audio.addEventListener('ended', () => {
+        btn.textContent = '▶';
+        if (progressBar) progressBar.style.width = '0%';
+        if (timeLabel) timeLabel.textContent = '0:00';
+    });
+
+    audio.play();
+    btn.textContent = '⏸';
+}
+// --- Base64 to Blob 변환 (iOS 재생 오류 방지) ---
 function base64ToBlobUrl(base64Str) {
     if (!base64Str || !base64Str.startsWith('data:')) return base64Str;
     try {
@@ -191,7 +233,13 @@ function loadPublicAudioBoard() {
                             </div>
                             <div>${checkBtnHtml}</div>
                         </div>
-                        <audio controls src="${data.audioUrl}" preload="metadata"></audio>
+                        <div class="custom-player" id="player_${doc.id}">
+                        <button class="play-btn" onclick="togglePlay('player_${doc.id}', '${data.audioUrl}')">▶</button>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar" id="progress_${doc.id}"></div>
+                        </div>
+                        <span class="play-time" id="time_${doc.id}">0:00</span>
+                    </div
                     </div>
                 `;
             });
@@ -453,6 +501,7 @@ function submitQuiz() {
     
     window.scrollTo({ top: resultDiv.offsetTop - 50, behavior: 'smooth' });
 }
+
 
 
 

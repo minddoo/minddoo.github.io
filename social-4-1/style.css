@@ -834,3 +834,48 @@ audio::-webkit-media-controls-time-remaining-display,
 audio::-webkit-media-controls-current-time-display {
     display: none !important;
 }
+
+/* --- 커스텀 오디오 플레이어 --- */
+.custom-player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #ecf0f1;
+    border-radius: 25px;
+    padding: 8px 15px;
+    margin-top: 8px;
+}
+.play-btn {
+    background: #2ECC71;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.play-btn:hover { background: #27AE60; }
+.progress-bar-wrap {
+    flex: 1;
+    height: 6px;
+    background: #bdc3c7;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #2ECC71;
+    border-radius: 3px;
+    transition: width 0.2s linear;
+}
+.play-time {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    min-width: 30px;
+}
