@@ -1,14 +1,16 @@
-/* style.css - 이론 중심의 프리미엄 디자인 */
+@charset "UTF-8";
+
+/* style.css - 인터넷 교과서 반응형 디자인 */
 :root {
-    --primary: #4F46E5;
-    --primary-light: #EEF2FF;
-    --secondary: #10B981;
-    --secondary-light: #ECFDF5;
-    --text-main: #1F2937;
-    --text-muted: #4B5563;
-    --bg-page: #F3F4F6;
-    --bg-content: #FFFFFF;
-    --border-color: #E5E7EB;
+    --primary: #2C3E50; /* 교과서 느낌의 차분한 네이비 */
+    --primary-light: #EBF5FB;
+    --secondary: #27AE60;
+    --secondary-light: #E9F7EF;
+    --text-main: #2C3E50; /* 짙은 회색/네이비 혼합으로 가독성 극대화 */
+    --text-muted: #566573;
+    --bg-page: #EBE7E0; /* 교과서 밖 책상 배경 느낌의 톤다운된 베이지 */
+    --bg-content: #FDFCF8; /* 실제 교과서 종이 질감 느낌의 웜화이트 */
+    --border-color: #D5D8DC;
 }
 
 * {
@@ -30,10 +32,11 @@ body {
     position: sticky;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(253, 252, 248, 0.95);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .nav-container {
@@ -78,14 +81,18 @@ body {
 .nav-btn.active {
     background: var(--primary);
     color: white;
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
 }
 
-/* 메인 콘텐츠 컨테이너 */
+/* 메인 콘텐츠 컨테이너 (교과서 본문) */
 .content-container {
-    max-width: 900px;
+    max-width: 850px;
     margin: 40px auto;
-    padding: 0 20px;
+    padding: 50px 60px;
+    background-color: var(--bg-content);
+    border-radius: 4px 16px 16px 4px; /* 실제 책 오른쪽 페이지 같은 느낌 */
+    box-shadow: -5px 0 15px rgba(0,0,0,0.03), 5px 10px 25px rgba(0,0,0,0.08);
+    border-left: 3px solid #D6D3CD; /* 책등(Spine) 느낌 */
 }
 
 /* 과목별 콘텐츠 전환 */
@@ -108,14 +115,14 @@ body {
     text-align: center;
     margin-bottom: 40px;
     padding-bottom: 30px;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 3px double var(--border-color); /* 교과서적인 이중선 */
 }
 
 .subject-title {
     font-family: 'Noto Serif KR', serif;
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--text-main);
+    color: var(--primary);
     margin-bottom: 15px;
     letter-spacing: -0.5px;
 }
@@ -127,62 +134,89 @@ body {
 
 /* 이론 섹션 스타일 */
 .theory-section {
-    background: var(--bg-content);
-    border-radius: 16px;
-    padding: 40px;
-    margin-bottom: 30px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    margin-bottom: 50px;
 }
 
-.theory-section h2 {
+.theory-section > h2 {
     font-family: 'Noto Serif KR', serif;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: var(--primary);
-    margin-bottom: 25px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--primary-light);
+    margin-bottom: 20px;
+    padding-left: 10px;
+    border-left: 6px solid var(--primary); /* 교과서 챕터 제목 스타일 */
+    background: linear-gradient(to right, var(--primary-light), transparent);
+    padding: 8px 15px;
+    border-radius: 0 8px 8px 0;
 }
 
 .theory-body {
     font-size: 1.1rem;
-    color: var(--text-muted);
+    color: var(--text-main);
 }
 
-.theory-body h3 {
-    font-size: 1.3rem;
-    color: var(--text-main);
-    margin: 30px 0 15px 0;
+/* 소단원 제목 (1., 2. 등) */
+.theory-body > h2 {
+    font-size: 1.4rem;
+    font-family: 'Noto Serif KR', serif;
+    color: var(--primary);
+    margin: 35px 0 15px 0;
     font-weight: 700;
+}
+
+/* 세부 소항목 ((1), (2) 등) */
+.theory-body h3 {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    margin: 25px 0 10px 0;
+    font-weight: 700;
+}
+
+.theory-body p {
+    margin-bottom: 12px;
 }
 
 /* 리스트 스타일 */
 .step-list, .bullet-list {
-    margin: 15px 0 15px 20px;
-    padding-left: 10px;
+    margin: 15px 0 20px 25px;
+    padding-left: 0;
 }
 
 .step-list li, .bullet-list li {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
+    list-style-type: disc;
 }
 
-/* 하이라이트 박스 */
+/* 교과서 속 이미지 (반응형) */
+.textbook-img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 8px;
+    margin: 25px auto;
+    display: block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: 1px solid #E5E7EB;
+}
+
+/* 하이라이트 박스 (교과서 핵심요약 박스 느낌) */
 .highlight-box {
-    background: #F9FAFB;
-    border-left: 6px solid var(--primary);
+    background: #F4F6F7;
+    border: 1px solid var(--border-color);
+    border-top: 4px solid var(--primary);
     padding: 20px 25px;
-    border-radius: 0 8px 8px 0;
+    border-radius: 4px;
     margin: 25px 0;
 }
 
 .highlight-box h3 {
     margin-top: 0;
     color: var(--primary);
+    font-size: 1.15rem;
 }
 
 .highlight-box.success {
-    border-left-color: var(--secondary);
-    background: var(--secondary-light);
+    border-top-color: var(--secondary);
+    background: #FAFCFB;
 }
 
 .highlight-box.success h3 {
@@ -197,96 +231,144 @@ body {
     margin: 25px 0;
 }
 
-@media (min-width: 600px) {
-    .definition-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
 .def-item {
     background: white;
     border: 1px solid var(--border-color);
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
 }
 
 .def-item h4 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: var(--primary);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--primary-light);
+    padding-bottom: 5px;
 }
 
-/* 카드 레이아웃 (3단) */
+/* 카드 레이아웃 */
 .cards-layout {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 15px;
     margin: 25px 0;
 }
 
-@media (min-width: 768px) {
-    .cards-layout {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
 .info-card {
-    background: #F9FAFB;
-    padding: 25px;
-    border-radius: 12px;
-    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
     border: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
 }
 
 .info-card h4 {
-    color: var(--text-main);
-    font-size: 1.15rem;
-    margin-bottom: 12px;
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
 }
 
 /* 수학 공식 및 규칙 박스 */
 .math-rule-box {
-    background: #F8FAFC;
-    border: 1px dashed #CBD5E1;
+    background: white;
+    border: 2px solid var(--primary-light);
     padding: 25px;
-    border-radius: 12px;
+    border-radius: 8px;
     margin-bottom: 25px;
 }
 
 .math-rule-box h3 {
     margin-top: 0;
-    color: #0F172A;
+    color: var(--primary);
+    text-align: center;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 10px;
 }
 
 .formula {
     text-align: center;
-    font-size: 1.8rem;
-    margin: 20px 0;
-    padding: 15px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
+    font-size: 1.6rem;
+    margin: 15px 0;
+    padding: 10px;
+    color: #111827;
 }
 
 .note {
     font-size: 0.95rem;
-    color: #64748B;
-    background: #F1F5F9;
+    color: #E67E22; /* 주의사항 주황색 */
+    background: #FDEDEC;
     padding: 10px 15px;
     border-radius: 6px;
-    display: inline-block;
+    display: block;
+    margin-top: 15px;
 }
 
-/* 특별한 관계 박스 */
-.relation-box {
-    background: linear-gradient(to right, #EEF2FF, #F3E8FF);
-    padding: 25px;
-    border-radius: 12px;
-    margin: 30px 0;
-    border: 1px solid #E0E7FF;
+/* === 모바일 반응형 미디어 쿼리 (스마트폰 최적화) === */
+@media screen and (max-width: 768px) {
+    /* 모바일에서는 여백을 줄이고 화면을 꽉 차게 */
+    .content-container {
+        margin: 15px;
+        padding: 25px 20px;
+        border-radius: 12px; /* 모바일은 책등 대신 일반적인 둥근 모서리 */
+        border-left: none;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .subject-title {
+        font-size: 1.8rem;
+    }
+
+    .subject-subtitle {
+        font-size: 1rem;
+    }
+
+    .theory-section > h2 {
+        font-size: 1.4rem;
+    }
+
+    .theory-body > h2 {
+        font-size: 1.25rem;
+    }
+
+    .theory-body h3 {
+        font-size: 1.1rem;
+    }
+
+    .theory-body {
+        font-size: 1rem;
+    }
+
+    .math-rule-box {
+        padding: 15px;
+    }
+
+    .formula {
+        font-size: 1.3rem; /* 모바일에서 수식 크기 조정 */
+    }
+
+    .textbook-img {
+        margin: 20px auto;
+    }
+
+    /* 그리드는 모바일에서 무조건 1단(세로) 배치 */
+    .definition-grid, .cards-layout {
+        grid-template-columns: 1fr;
+    }
 }
 
-.relation-box h3 {
-    margin-top: 0;
+/* 태블릿 (세로 모드) */
+@media screen and (min-width: 769px) {
+    .definition-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cards-layout {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
