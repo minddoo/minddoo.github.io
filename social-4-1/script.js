@@ -193,18 +193,33 @@ window.markAsChecked = async function(docId) {
 
 async function startRecording() {
     try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        mediaRecorder = new MediaRecorder(stream);
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+        
+        let options = {};
+        if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) {
+            options = { mimeType: 'audio/webm;codecs=opus' };
+        } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
+            options = { mimeType: 'audio/mp4' };
+        }
+        
+        mediaRecorder = new MediaRecorder(stream, options);
         audioChunks = [];
 
         mediaRecorder.ondataavailable = event => {
-            if (event.data.size > 0) audioChunks.push(event.data);
+            if (event.data && event.data.size > 0) {
+                audioChunks.push(event.data);
+            }
         };
 
         mediaRecorder.onstop = () => {
-            // 각 모바일 브라우저(iOS 사파리, 안드로이드 크롬)가 기본으로 생성한 MIME 타입을 정확히 추출하여 Blob에 적용
-            const mimeType = (audioChunks.length > 0 && audioChunks[0].type) ? audioChunks[0].type : 'audio/mp4';
+            // iOS 사파리 버그 해결: onstop 내부에서 트랙을 종료해야 파일이 손상(오류)되지 않음
+            if (mediaRecorder.stream) {
+                mediaRecorder.stream.getTracks().forEach(track => track.stop());
+            }
+
+            const mimeType = mediaRecorder.mimeType || (audioChunks[0] ? audioChunks[0].type : 'audio/mp4');
             audioBlob = new Blob(audioChunks, { type: mimeType });
+            
             const audioUrl = URL.createObjectURL(audioBlob);
             const audioPlayback = document.getElementById('audioPlayback');
             audioPlayback.src = audioUrl;
@@ -228,7 +243,7 @@ async function startRecording() {
 function stopRecording() {
     if (mediaRecorder && mediaRecorder.state !== 'inactive') {
         mediaRecorder.stop();
-        mediaRecorder.stream.getTracks().forEach(track => track.stop());
+        // 트랙 종료는 onstop 이벤트 안에서 처리하도록 이동함 (파일 손상 방지)
     }
     
     document.getElementById('startRecordBtn').style.display = 'inline-block';
@@ -259,7 +274,7 @@ async function submitRecording() {
         const storageRef = storage.ref().child(fileName);
         
                 // 확장자를 mimeType에 맞게 동적으로 설정 (webm 또는 mp4)
-        const ext = audioBlob.type.includes('mp4') ? 'mp4' : 'webm';
+        const ext = (audioBlob.type && audioBlob.type.includes('mp4')) ? 'mp4' : 'webm';
         
         // 메타데이터에 contentType 명시 (iOS에서 다운로드/재생 시 필수)
         const metadata = { contentType: audioBlob.type };
@@ -420,6 +435,8 @@ function submitQuiz() {
     
     window.scrollTo({ top: resultDiv.offsetTop - 50, behavior: 'smooth' });
 }
+
+
 
 
 
