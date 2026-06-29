@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>초등 4학년 사회/수학 개념 노트</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
     
     <!-- Firebase SDK (Compat Version) -->
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
@@ -38,6 +38,8 @@
                 <button class="nav-btn quiz-btn" onclick="switchSubject('quiz')">🧠 배운 내용 퀴즈</button>
                 <button class="nav-btn record-btn" onclick="openRecordModal()">🎙️ 녹음 숙제 올리기</button>
                 <button class="nav-btn board-btn" onclick="openBoardModal()">🎧 친구들 녹음 듣기</button>
+                <button class="nav-btn qna-btn" onclick="openQnaModal()">❓ 질문 남기기</button>
+                <button class="nav-btn qna-board-btn" onclick="openQnaBoardModal()">💡 질문 게시판</button>
             </div>
         </div>
     </nav>
@@ -421,59 +423,17 @@
         </article>
 
         <!-- 퀴즈 탭 콘텐츠 -->
-        <article id="quiz" class="subject-content">
+                <article id="quiz" class="subject-content">
             <header class="subject-header">
-                <h1 class="subject-title">🧠 배운 내용 확인 퀴즈</h1>
-                <p class="subject-subtitle">이론 탭에서 배운 내용을 얼마나 잘 기억하고 있는지 확인해볼까요?</p>
+                <h1 class="subject-title">🧠 다이내믹 랜덤 퀴즈</h1>
+                <p class="subject-subtitle">매번 접속할 때마다 문제가 달라집니다! 이론을 잘 기억하고 있는지 확인해보세요.</p>
             </header>
 
             <div class="quiz-container">
-                <div class="quiz-question">
-                    <h3>1. (사회) 지역 간 교류를 하면 좋은 점이 아닌 것은 무엇일까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q1" value="1"> 물건을 사고팔아 경제적 이익을 얻는다.</label>
-                        <label><input type="radio" name="q1" value="2"> 우리 지역을 찾는 사람이 많아져 지역이 발전한다.</label>
-                        <label><input type="radio" name="q1" value="3"> 우리 지역에 없는 시설을 이용할 수 있어서 생활이 편리해진다.</label>
-                        <label><input type="radio" name="q1" value="4"> 사람들과 물건이 오가는 과정에서 인구가 줄어든다.</label>
-                    </div>
-                    <div class="quiz-answer"><strong>정답: 4번.</strong> 교류를 통해 인구가 줄어드는 것은 좋은 점이 아닙니다! 지역이 발전하고 살기 좋아집니다.</div>
+                <div id="dynamicQuizContainer">
+                    <!-- 문제들이 여기에 렌더링됩니다 -->
                 </div>
-
-                <div class="quiz-question">
-                    <h3>2. (사회) 생활에 필요한 물건을 만들거나 서비스를 제공하는 활동을 무엇이라고 부를까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q2" value="1"> 생산 활동</label>
-                        <label><input type="radio" name="q2" value="2"> 소비 활동</label>
-                        <label><input type="radio" name="q2" value="3"> 선택 활동</label>
-                        <label><input type="radio" name="q2" value="4"> 환경 활동</label>
-                    </div>
-                    <div class="quiz-answer"><strong>정답: 1번 (생산 활동).</strong> 물건이나 서비스를 직접 '만드는' 활동을 생산 활동이라고 부릅니다.</div>
-                </div>
-
-                <div class="quiz-question">
-                    <h3>3. (수학) 모든 삼각형의 세 각의 크기의 합은 무조건 몇 도일까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q3" value="1"> 180도</label>
-                        <label><input type="radio" name="q3" value="2"> 270도</label>
-                        <label><input type="radio" name="q3" value="3"> 360도</label>
-                        <label><input type="radio" name="q3" value="4"> 400도</label>
-                    </div>
-                    <div class="quiz-answer"><strong>정답: 1번 (180도).</strong> 크기나 모양에 상관없이 모든 삼각형 내각의 합은 180도입니다!</div>
-                </div>
-
-                <div class="quiz-question">
-                    <h3>4. (수학) 네 변의 길이가 모두 같고, 네 각이 모두 직각인 가장 완벽한 사각형의 이름은 무엇일까요?</h3>
-                    <div class="quiz-options">
-                        <label><input type="radio" name="q4" value="1"> 사다리꼴</label>
-                        <label><input type="radio" name="q4" value="2"> 평행사변형</label>
-                        <label><input type="radio" name="q4" value="3"> 정사각형</label>
-                        <label><input type="radio" name="q4" value="4"> 마름모</label>
-                    </div>
-                    <div class="quiz-answer"><strong>정답: 3번 (정사각형).</strong> 변의 길이와 각의 크기가 모두 같은 완벽한 사각형은 정사각형입니다.</div>
-                </div>
-
                 <button class="action-btn submit-quiz-btn" onclick="submitQuiz()">💯 정답 확인하기</button>
-
                 <div id="quizResult" class="quiz-result"></div>
             </div>
         </article>
@@ -519,6 +479,36 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+        <!-- 질문 남기기 모달 -->
+    <div id="qnaModal" class="modal-overlay" style="display: none; z-index: 9999;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeQnaModal()">&times;</span>
+            <h2>❓ "이해가 안 돼요" 질문하기</h2>
+            <p>공부하다가 모르는 부분을 솔직하게 남겨주세요.</p>
+            
+            <div class="record-form">
+                <input type="text" id="qnaName" placeholder="이름을 적어주세요" class="input-field">
+                <textarea id="qnaText" placeholder="어떤 부분이 이해가 안 되나요? 편하게 적어주세요." class="input-field" style="margin-top: 10px;"></textarea>
+            </div>
+            
+            <button id="submitQnaBtn" class="action-btn submit-btn" style="width: 100%; margin-top: 20px;" onclick="submitQna()">질문 등록하기</button>
+            <p id="qnaStatusMessage" class="status-message"></p>
+        </div>
+    </div>
+
+    <!-- 질문 게시판 모달 -->
+    <div id="qnaBoardModal" class="modal-overlay" style="display: none; z-index: 9999;">
+        <div class="modal-content large-modal">
+            <span class="close-btn" onclick="closeQnaBoardModal()">&times;</span>
+            <h2 style="color: #8E44AD;">💡 친구들의 질문 게시판</h2>
+            <p style="font-size: 0.9rem; color: #7F8C8D; margin-bottom: 10px;">누구나 모를 수 있어요! 친구들의 질문을 함께 확인해보세요.</p>
+            <div class="board-section">
+                <div id="qnaBoardContent" class="audio-board">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js?v=2"></script>
 </body>
 </html>
+
