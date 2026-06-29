@@ -828,3 +828,9 @@ textarea.input-field {
     margin-bottom: 8px;
     color: #2C3E50;
 }
+
+/* --- iOS/Safari 오디오 재생기 '오류' 텍스트 숨기기 --- */
+audio::-webkit-media-controls-time-remaining-display,
+audio::-webkit-media-controls-current-time-display {
+    display: none !important;
+}
