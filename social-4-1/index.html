@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -19,6 +19,7 @@
             <div class="tab-buttons">
                 <button class="nav-btn active" onclick="switchSubject('social')">사회 이론</button>
                 <button class="nav-btn" onclick="switchSubject('math')">수학 이론</button>
+                <button class="nav-btn record-btn" onclick="openRecordModal()">🎙️ 녹음 숙제</button>
             </div>
         </div>
     </nav>
@@ -372,8 +373,247 @@
         </article>
     </main>
 
+    <!-- 녹음 숙제 모달 -->
+    <div id="recordModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeRecordModal()">&times;</span>
+            <h2>🎙️ 녹음 숙제 제출</h2>
+            <p>마이크 버튼을 눌러 숙제를 녹음하고 선생님께 제출하세요!</p>
+            
+            <div class="record-form">
+                <input type="text" id="studentName" placeholder="이름을 입력하세요 (예: 홍길동)" class="input-field">
+            </div>
+
+            <div class="record-controls">
+                <button id="startRecordBtn" class="action-btn start-btn" onclick="startRecording()">🔴 녹음 시작</button>
+                <button id="stopRecordBtn" class="action-btn stop-btn" onclick="stopRecording()" style="display: none;">⏹️ 녹음 중지 (녹음 중...)</button>
+            </div>
+            
+            <div id="audioPlaybackContainer" class="audio-container" style="display: none;">
+                <p>미리듣기:</p>
+                <audio id="audioPlayback" controls></audio>
+                <button id="submitRecordBtn" class="action-btn submit-btn" onclick="submitRecording()">제출하기</button>
+            </div>
+            
+            <p id="recordStatusMessage" class="status-message"></p>
+                    <img src="./images/social_exchange.svg" alt="지역 간 교류" class="textbook-img">
+
+                    <h2>2. 교류를 하면 좋은 점</h2>
+                    <ul class="bullet-list">
+                        <li>지역마다 풍부하게 생산되는 물건을 사고팔아 경제적 이익을 얻습니다.</li>
+                        <li>우리 지역을 찾는 사람들이 많아져서 지역이 발전합니다.</li>
+                        <li>우리 지역에 없는 것을 이용할 수 있어서 생활이 편리해집니다.</li>
+                        <li>지역끼리 힘을 합해 서로 돕고 좋은 관계를 맺습니다.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>7회. 지역 간 교류의 사례</h2>
+                <div class="theory-body">
+                    <h2>1. 지역 간 교류 분야</h2>
+                    <h3>(1) 지역 간 교류 분야</h3>
+                    <ul class="bullet-list">
+                        <li>지역 간 교류는 생산물, 기술, 문화 등 다양한 분야에서 이루어지고 있습니다.</li>
+                        <li>각 지역은 교류를 통해 다른 지역과 밀접한 관계를 맺고 있습니다.</li>
+                        <li>오늘날 교통과 통신의 발달로 지역 간 교류가 더욱 활발해지고 있습니다.</li>
+                    </ul>
+
+                    <h3>(2) 각 지역의 대표 상품</h3>
+                    <ul class="bullet-list">
+                        <li>자연환경, 기술, 자원, 시설 등에 따라 지역의 대표 상품이 달라집니다.</li>
+                        <li>지역 간 경제 교류는 지역의 대표 상품을 중심으로 이루어집니다.</li>
+                    </ul>
+
+                    <h3>(3) 지역 간 경제 교류 사례</h3>
+                    <ul class="bullet-list">
+                        <li>생산물 교류: 각 지역의 풍부한 생산물을 중심으로 경제적 교류를 합니다.</li>
+                        <li>기술 교류: 각 지역은 기술 교류를 통해 서로의 지역에 부족한 기술을 보완하여 경제적 이익을 얻습니다.</li>
+                        <li>문화 교류: 각 지역은 공연, 전시회, 운동 경기, 관광 등을 통해 교류합니다.</li>
+                    </ul>
+
+                    <h2>2. 지역 간 교류 사례 조사</h2>
+                    <h3>(1) 여러 지역이 교류하는 모습을 조사하는 방법</h3>
+                    <p>지역 신문이나 책자 살펴보기, 인터넷 검색하기, 지역 누리집 방문하기 등이 있습니다.</p>
+
+                    <h3>(2) 지역 간 경제 교류 사례를 살펴보고 알 수 있는 점</h3>
+                    <ul class="bullet-list">
+                        <li>각 지역은 다양한 방법으로 경제 교류를 하며 서로 밀접한 관계를 맺습니다.</li>
+                        <li>지역들은 서로 필요한 것을 주고받으며 상호 의존하고 있습니다.</li>
+                    </ul>
+                </div>
+            </section>
+        </article>
+
+        <!-- 수학 탭 콘텐츠 -->
+        <article id="math" class="subject-content">
+            <header class="subject-header">
+                <h1 class="subject-title">수학: 핵심 개념과 계산법</h1>
+                <p class="subject-subtitle">분수, 소수의 덧셈과 뺄셈, 그리고 다각형의 성질을 완벽하게 이해해 보세요.</p>
+            </header>
+
+            <section class="theory-section">
+                <h2>1. 분수의 덧셈과 뺄셈</h2>
+                <div class="theory-body">
+                    <img src="./images/math_fractions.svg" alt="분수" class="textbook-img">
+                    
+                    <div class="math-rule-box">
+                        <h3>분모가 같은 분수의 덧셈</h3>
+                        <p>분모는 그대로 두고, <strong>분자끼리</strong> 더합니다.</p>
+                        <p class="formula"><span>\(\frac{a}{c} + \frac{b}{c} = \frac{a+b}{c}\)</span></p>
+                    </div>
+
+                    <div class="math-rule-box">
+                        <h3>대분수의 덧셈</h3>
+                        <p>자연수는 자연수끼리, 분수는 분수끼리 더합니다.</p>
+                        <p class="formula" style="font-size: 1.2rem; color: #E67E22;"><span>예시: \(2\frac{1}{4} + 1\frac{2}{4} = (2+1) + (\frac{1+2}{4}) = 3\frac{3}{4}\)</span></p>
+                        <p class="note">※ 분수끼리 더해서 가분수가 되면 대분수로 고쳐 자연수에 올려줍니다.</p>
+                    </div>
+
+                    <div class="math-rule-box">
+                        <h3>분모가 같은 분수의 뺄셈</h3>
+                        <p>분모는 그대로 두고, <strong>분자끼리</strong> 뺍니다.</p>
+                        <p class="formula"><span>\(\frac{a}{c} - \frac{b}{c} = \frac{a-b}{c}\)</span> (단, a ≥ b)</p>
+                    </div>
+
+                    <div class="math-rule-box">
+                        <h3>대분수의 뺄셈</h3>
+                        <p>자연수는 자연수끼리, 분수는 분수끼리 뺍니다.</p>
+                        <p class="note">※ 분수끼리 뺄 수 없을 때는 자연수에서 1을 빌려와 분수와 합친 후 뺍니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>2. 소수의 덧셈과 뺄셈</h2>
+                <div class="theory-body">
+                    <div class="highlight-box">
+                        <h3>핵심 원리</h3>
+                        <p><strong>소수점의 위치를 위아래로 똑같이 맞추어</strong> 자릿수를 맞춰줍니다.</p>
+                    </div>
+                    <div class="highlight-box success">
+                        <h3>계산법</h3>
+                        <p>소수점의 위치는 그대로 내려 찍고, <strong>일반 자연수 덧셈/뺄셈과 같은 방법</strong>으로 계산합니다.</p>
+                        <p class="formula" style="font-size: 1.2rem; color: #27AE60;"><span>예시: \(1.25 + 2.34 = 3.59\)</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>3. 삼각형과 사각형</h2>
+                <div class="theory-body">
+                    <img src="./images/math_shapes.svg" alt="도형" class="textbook-img">
+                    <img src="./images/math_triangle.svg" alt="삼각형 각도" class="textbook-img">
+
+                    <div class="math-rule-box">
+                        <h3>내각의 크기의 합</h3>
+                        <p>모든 삼각형의 세 각의 크기의 합은 \(180^\circ\)입니다. 모든 사각형의 네 각의 크기의 합은 \(360^\circ\)입니다.</p>
+                        <p class="formula"><span>삼각형 내각의 합 = \(180^\circ\)</span></p>
+                        <p class="formula"><span>사각형 내각의 합 = \(360^\circ\)</span></p>
+                    </div>
+                    
+                    <h3>삼각형의 분류</h3>
+                    <ul class="bullet-list">
+                        <li><strong>예각삼각형:</strong> 세 각이 모두 예각인 삼각형</li>
+                        <li><strong>둔각삼각형:</strong> 한 각이 둔각인 삼각형</li>
+                        <li><strong>이등변삼각형:</strong> 두 변의 길이가 같은 삼각형</li>
+                        <li><strong>정삼각형:</strong> 세 변의 길이가 모두 같은 삼각형</li>
+                    </ul>
+
+                    <h3>사각형의 분류</h3>
+                    <ul class="bullet-list">
+                        <li><strong>사다리꼴:</strong> 평행한 변이 적어도 한 쌍인 사각형</li>
+                        <li><strong>평행사변형:</strong> 마주 보는 두 쌍의 변이 각각 평행한 사각형</li>
+                        <li><strong>마름모:</strong> 네 변의 길이가 모두 같은 사각형</li>
+                        <li><strong>직사각형:</strong> 네 각이 모두 직각인 사각형</li>
+                        <li><strong>정사각형:</strong> 네 변의 길이가 같고 네 각이 직각인 사각형</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>4. 다각형</h2>
+                <div class="theory-body">
+                    <img src="./images/math_polygon.svg" alt="다각형 대각선" class="textbook-img">
+                    
+                    <div class="math-rule-box">
+                        <h3>다각형의 핵심 공식</h3>
+                        <p>\(n\)각형의 대각선 개수를 구하는 공식입니다.</p>
+                        <p class="formula"><span>\(\frac{n \times (n-3)}{2}\)</span></p>
+                        <p>\(n\)각형의 내각의 크기의 합을 구하는 공식입니다.</p>
+                        <p class="formula"><span>\(180^\circ \times (n-2)\)</span></p>
+                    </div>
+
+                    <h3>대각선의 수</h3>
+                    <p>다각형에서 이웃하지 않는 두 꼭짓점을 이은 선분입니다.</p>
+                    <div class="highlight-box">
+                        <h3>사각형의 대각선</h3>
+                        <p>사각형의 대각선 개수는 <strong>2개</strong>입니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>5. 꺾은선그래프</h2>
+                <div class="theory-body">
+                    <img src="./images/math_graph.svg" alt="꺾은선그래프" class="textbook-img">
+                    
+                    <div class="highlight-box success">
+                        <h3>특징</h3>
+                        <p>수량을 점으로 표시하고, 그 점들을 선분으로 이어 <strong>변화의 흐름</strong>을 쉽게 알 수 있는 그래프입니다.</p>
+                    </div>
+                </div>
+            </section>
+
+        </article>
+    </main>
+
+    <!-- 녹음 숙제 모달 -->
+    <div id="recordModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeRecordModal()">&times;</span>
+            <h2>🎙️ 녹음 숙제 제출</h2>
+            <p>마이크 버튼을 눌러 숙제를 녹음하고 선생님께 제출하세요!</p>
+            
+            <div class="record-form">
+                <input type="text" id="studentName" placeholder="이름을 입력하세요 (예: 홍길동)" class="input-field">
+            </div>
+
+            <div class="record-controls">
+                <button id="startRecordBtn" class="action-btn start-btn" onclick="startRecording()">🔴 녹음 시작</button>
+                <button id="stopRecordBtn" class="action-btn stop-btn" onclick="stopRecording()" style="display: none;">⏹️ 녹음 중지 (녹음 중...)</button>
+            </div>
+            
+            <div id="audioPlaybackContainer" class="audio-container" style="display: none;">
+                <p>미리듣기:</p>
+                <audio id="audioPlayback" controls></audio>
+                <button id="submitRecordBtn" class="action-btn submit-btn" onclick="submitRecording()">제출하기</button>
+            </div>
+            
+            <p id="recordStatusMessage" class="status-message"></p>
+        </div>
+    </div>
+
     <!-- 수식 렌더링을 위한 MathJax 라이브러리 추가 -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Firebase SDK (Compat Version) -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBkiMGzhxftqkYdH97wsobJk1HM9xjjkl8",
+        authDomain: "record-93a70.firebaseapp.com",
+        projectId: "record-93a70",
+        storageBucket: "record-93a70.firebasestorage.app",
+        messagingSenderId: "966647106797",
+        appId: "1:966647106797:web:e08772613c724b193e10e4"
+      };
+      firebase.initializeApp(firebaseConfig);
+      const storage = firebase.storage();
+      const db = firebase.firestore();
+    </script>
+    
     <script src="script.js"></script>
 </body>
 </html>
