@@ -194,8 +194,9 @@ async function startRecording() {
         };
 
         mediaRecorder.onstop = () => {
-            // 모바일 iOS 사파리 미리듣기 재생 및 업로드 호환을 위해 타입을 지정하지 않거나 webm으로 처리 후 Storage에서 자동 관리
-            audioBlob = new Blob(audioChunks);
+            // 각 모바일 브라우저(iOS 사파리, 안드로이드 크롬)가 기본으로 생성한 MIME 타입을 정확히 추출하여 Blob에 적용
+            const mimeType = (audioChunks.length > 0 && audioChunks[0].type) ? audioChunks[0].type : 'audio/mp4';
+            audioBlob = new Blob(audioChunks, { type: mimeType });
             const audioUrl = URL.createObjectURL(audioBlob);
             const audioPlayback = document.getElementById('audioPlayback');
             audioPlayback.src = audioUrl;
@@ -249,7 +250,12 @@ async function submitRecording() {
         const fileName = `homeworks/${Date.now()}_${studentName}.webm`;
         const storageRef = storage.ref().child(fileName);
         
-        await storageRef.put(audioBlob);
+                // 확장자를 mimeType에 맞게 동적으로 설정 (webm 또는 mp4)
+        const ext = audioBlob.type.includes('mp4') ? 'mp4' : 'webm';
+        
+        // 메타데이터에 contentType 명시 (iOS에서 다운로드/재생 시 필수)
+        const metadata = { contentType: audioBlob.type };
+        await storageRef.put(audioBlob, metadata);
         const downloadUrl = await storageRef.getDownloadURL();
         
         // 다운로드 URL을 Firestore에 기록
@@ -406,3 +412,5 @@ function submitQuiz() {
     
     window.scrollTo({ top: resultDiv.offsetTop - 50, behavior: 'smooth' });
 }
+
+
