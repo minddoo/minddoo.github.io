@@ -1,4 +1,4 @@
-// --- 커스텀 오디오 플레이어 ---
+﻿// --- 커스텀 오디오 플레이어 ---
 const audioInstances = {};
 
 function togglePlay(playerId, audioUrl) {
@@ -226,18 +226,20 @@ function loadPublicAudioBoard() {
 
                 html += `
                     <div class="board-item ${isChecked ? 'item-checked' : ''}">
-                        <div class="board-top-row">
-                            <span class="board-name">🧑‍🎓 ${data.name}</span>
-                            <div class="check-wrap">${checkBtnHtml}</div>
-                        </div>
-                        <div class="board-time">${data.timeStr}</div>
-                        <div class="custom-player" id="player_${doc.id}">
-                            <button class="play-btn" onclick="togglePlay('player_${doc.id}', '${data.audioUrl}')">▶</button>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" id="progress_${doc.id}"></div>
+                        <div class="board-item-header">
+                            <div>
+                                <span class="board-name">🧑‍🎓 ${data.name}</span>
+                                <span class="board-time">${data.timeStr}</span>
                             </div>
-                            <span class="play-time" id="time_${doc.id}">0:00</span>
+                            <div>${checkBtnHtml}</div>
                         </div>
+                        <div class="custom-player" id="player_${doc.id}">
+                        <button class="play-btn" onclick="togglePlay('player_${doc.id}', '${data.audioUrl}')">▶</button>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar" id="progress_${doc.id}"></div>
+                        </div>
+                        <span class="play-time" id="time_${doc.id}">0:00</span>
+                    </div
                     </div>
                 `;
             });
