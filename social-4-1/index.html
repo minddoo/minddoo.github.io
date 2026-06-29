@@ -5,104 +5,294 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- 검색 엔진 노출 차단 -->
     <meta name="robots" content="noindex, nofollow">
-    <title>백점 사회 4-1 (3단원)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <title>백점 사회 4-1 핵심 이론 요약 노트</title>
+    <!-- 구글 폰트: 가독성이 뛰어난 Noto Sans KR과 포인트용 Jua 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>🌟 백점 사회 4-1 🌟</h1>
-        <p>3단원. 경제활동과 지역 간 교류</p>
-        <a href="../" class="home-btn">🏠 홈으로</a>
+    <header class="main-header">
+        <h1>📖 초등 사회 4학년 1학기</h1>
+        <p>백점 사회 핵심 이론 공부방</p>
     </header>
 
-    <main class="dashboard">
-        <section class="menu-card" onclick="openModal('chapter1')">
-            <div class="icon">🤔</div>
-            <h2>1. 경제활동과 선택</h2>
-            <p>자원의 희소성, 합리적 선택</p>
-        </section>
+    <div class="app-container">
+        <!-- 네비게이션 탭 -->
+        <nav class="tab-navigation">
+            <button class="tab-btn active" onclick="switchTab('tab1')">🗺️ 1. 지도로 만나는 우리 지역</button>
+            <button class="tab-btn" onclick="switchTab('tab2')">🏛️ 2. 우리 지역의 역사와 국가유산</button>
+            <button class="tab-btn" onclick="switchTab('tab3')">🤝 3. 경제활동과 지역 간 교류</button>
+        </nav>
 
-        <section class="menu-card" onclick="openModal('chapter2')">
-            <div class="icon">🏭</div>
-            <h2>2. 생산과 소비</h2>
-            <p>생산 활동, 다양한 시장</p>
-        </section>
+        <!-- 학습 콘텐츠 영역 -->
+        <main class="content-area">
+            
+            <!-- 단원 1 -->
+            <section id="tab1" class="tab-content active">
+                <h2 class="section-title">1단원. 지도로 만나는 우리 지역</h2>
+                
+                <div class="theory-card">
+                    <h3 class="card-subtitle">📍 지도와 항공 사진</h3>
+                    <div class="card-body">
+                        <div class="def-box">
+                            <strong>지도의 의미:</strong> 위에서 내려다본 땅의 실제 모습을 정해진 약속에 따라 일정하게 줄여서 나타낸 그림입니다.
+                        </div>
+                        <div class="compare-table-wrapper">
+                            <table class="compare-table">
+                                <thead>
+                                    <tr>
+                                        <th>구분</th>
+                                        <th>항공 사진</th>
+                                        <th>지도</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>장점</strong></td>
+                                        <td>실제 모습을 있는 그대로 사실적으로 볼 수 있습니다.</td>
+                                        <td>필요한 정보만 기호와 이름으로 보기 쉽게 정리되어 있습니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>단점</strong></td>
+                                        <td>산이나 건물에 가려진 부분이 있고, 이름이 나와 있지 않습니다.</td>
+                                        <td>실제 땅의 세세한 모습이나 사진 같은 실제 풍경은 볼 수 없습니다.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
-        <section class="menu-card" onclick="openModal('chapter3')">
-            <div class="icon">🤝</div>
-            <h2>3. 지역 간 교류</h2>
-            <p>교류의 까닭, 좋은 점</p>
-        </section>
-    </main>
+                <div class="theory-card">
+                    <h3 class="card-subtitle">📍 지도의 4가지 기본 요소</h3>
+                    <div class="card-body">
+                        <ul class="concept-list">
+                            <li>
+                                <span class="badge blue">방위표</span>
+                                <p>지도에서 동서남북 방향을 나타냅니다. 보통 4방위(동, 서, 남, 북)와 더 세분화된 8방위(북동, 남동, 남서, 북서 등)를 사용합니다. <strong>방위표가 없는 경우에는 지도의 위쪽이 북쪽, 아래쪽이 남쪽, 오른쪽이 동쪽, 왼쪽이 서쪽</strong>입니다.</p>
+                            </li>
+                            <li>
+                                <span class="badge green">기호와 범례</span>
+                                <p><strong>기호</strong>는 학교, 우체국, 소방서, 병원, 논, 밭 등 복잡한 실제 모습을 지도 위에 간단하게 나타낸 약속된 표시입니다. <strong>범례</strong>는 지도에 쓰인 기호와 그 뜻을 한곳에 모아 알아보기 쉽게 설명해 둔 상자입니다.</p>
+                            </li>
+                            <li>
+                                <span class="badge orange">축척</span>
+                                <p>지도에서 실제 거리를 일정하게 줄인 정도를 말합니다. <strong>축척 막대자</strong>를 이용하면 지도 위 두 지점 사이의 실제 거리를 쉽게 계산할 수 있습니다.</p>
+                                <div class="tip-box">
+                                    💡 <strong>축척에 따른 지도의 특징:</strong>
+                                    <ul>
+                                        <li>실제 거리를 <strong>많이 줄인 지도</strong>: 넓은 지역을 한눈에 간략하게 보여줍니다. (예: 도 전체 지도)</li>
+                                        <li>실제 거리를 <strong>조금 줄인 지도</strong>: 좁은 지역을 자세하게 보여줍니다. (예: 우리 동네 약도)</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="badge red">등고선과 색깔</span>
+                                <p>땅의 높낮이를 지도에 나타내는 방법입니다. <strong>등고선</strong>은 높이가 같은 곳을 연결한 선으로, <strong>선 사이의 간격이 좁을수록 경사가 급하고, 간격이 넓을수록 경사가 완만</strong>합니다. 또한 높이에 따라 색깔을 달리 칠합니다. (낮은 곳: 초록색 ➡️ 높아질수록 노란색 ➡️ 갈색 ➡️ 높은 곳: 진한 갈색)</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-    <!-- 팝업(모달) 창: 1단원 -->
-    <div id="chapter1" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('chapter1')">&times;</span>
-            <h2>🤔 경제활동과 선택</h2>
-            <p class="guide-text">💡 카드를 터치해서 정답을 확인해 보세요!</p>
-            <div class="flashcard-container">
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="front">자원의 희소성이란?</div>
-                    <div class="back">사람들의 필요나 욕구에 비하여 <strong>자원의 양이 부족한 상태</strong>를 말해요.</div>
+                <div class="theory-card">
+                    <h3 class="card-subtitle">📍 우리 지역의 지형과 행정 구역</h3>
+                    <div class="card-body">
+                        <ul class="concept-list">
+                            <li>
+                                <strong>지형:</strong> 산, 평야, 하천, 바다, 섬 등 땅의 생김새를 말합니다.
+                            </li>
+                            <li>
+                                <strong>행정 구역:</strong> 나라를 효율적으로 관리하기 위해 나눈 지역입니다. 우리나라의 행정 구역은 특별시 1곳, 특별자치시 1곳, 광역시 6곳, 도 6곳, 특별자치도 3곳 등으로 이루어져 있으며, 그 아래에 시·군·구가 속해 있습니다.
+                            </li>
+                            <div class="tip-box">
+                                💡 <strong>행정 구역 명칭의 유래:</strong>
+                                <p>각 도의 명칭은 조선 시대에 그 지역에서 가장 중요하고 큰 두 도시의 앞 글자를 따서 정해졌습니다. (예: 충청도는 충주와 청주, 경상도는 경주와 상주, 전라도는 전주와 나주의 첫 글자에서 유래되었습니다.)</p>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="front">합리적 선택이란?</div>
-                    <div class="back">여러 가지 기준을 고려하여 돈이나 시간 등 자원의 낭비를 막고 <strong>큰 만족감을 얻는 선택</strong>을 말해요.</div>
-                </div>
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="front">합리적 선택의 방법은?</div>
-                    <div class="back">필요한 물건과 돈 확인하기 ➡️ 정보 수집 ➡️ 선택 기준 세우기 ➡️ 물건 평가 ➡️ 선택 되돌아보기</div>
-                </div>
-            </div>
-        </div>
-    </div>
+            </section>
 
-    <!-- 팝업(모달) 창: 2단원 -->
-    <div id="chapter2" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('chapter2')">&times;</span>
-            <h2>🏭 생산과 소비</h2>
-            <p class="guide-text">💡 카드를 터치해서 정답을 확인해 보세요!</p>
-            <div class="flashcard-container">
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="front">생산이란?</div>
-                    <div class="back">생활에 필요한 <strong>물건을 만들거나 서비스를 제공하는 활동</strong>을 말해요.<br>(예: 벼농사 짓기, 물고기 잡기)</div>
+            <!-- 단원 2 -->
+            <section id="tab2" class="tab-content">
+                <h2 class="section-title">2단원. 우리 지역의 역사와 국가유산</h2>
+                
+                <div class="theory-card">
+                    <h3 class="card-subtitle">📍 국가유산의 분류와 특징</h3>
+                    <div class="card-body">
+                        <div class="def-box">
+                            <strong>국가유산:</strong> 조상 대대로 전해 내려온 문화 중에서 다음 세대에게 물려줄 만한 가치가 있는 소중한 자산을 말합니다. 크게 세 가지로 분류됩니다.
+                        </div>
+                        <ul class="concept-list">
+                            <li>
+                                <span class="badge orange">문화유산 (형태가 있는 것)</span>
+                                <p>석탑, 건축물, 책, 옛 생활 도구처럼 일정한 모양이나 형태를 가지고 있는 유산입니다.<br>
+                                <em>예시: 창덕궁(궁궐), 고인돌(무덤), 『훈민정음』(책), 안동 하회마을</em></p>
+                            </li>
+                            <li>
+                                <span class="badge blue">무형유산 (형태가 없는 것)</span>
+                                <p>음악, 춤, 연극, 공예 기술처럼 구체적인 형태는 없지만 사람들의 행동이나 목소리를 통해 전해지는 유산입니다.<br>
+                                <em>예시: 판소리(노래), 씨름(운동), 봉산탈춤(무용), 종묘 제례악, 김장 문화</em></p>
+                            </li>
+                            <li>
+                                <span class="badge green">자연유산 (자연 환경과 관련된 것)</span>
+                                <p>역사적·학술적으로 보존할 가치가 높은 동물, 식물, 지형, 동굴 등 자연물이나 경관입니다.<br>
+                                <em>예시: 진도의 신비의 바닷길, 천연기념물로 지정된 오래된 나무나 동물</em></p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="front">소비란?</div>
-                    <div class="back">생활에 필요한 <strong>물건이나 서비스를 이용하는 활동</strong>을 말해요.<br>(예: 마트에서 물건 사기, 병원에서 진찰 받기)</div>
-                </div>
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="front">시장(Market)이란?</div>
-                    <div class="back">사람들이 생활하면서 필요한 <strong>여러 가지 상품을 사고파는 곳</strong>이에요.<br>(전통시장, 대형 할인점, 온라인 쇼핑 등)</div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- 팝업(모달) 창: 3단원 -->
-    <div id="chapter3" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('chapter3')">&times;</span>
-            <h2>🤝 지역 간 교류</h2>
-            <p class="guide-text">💡 카드를 터치해서 정답을 확인해 보세요!</p>
-            <div class="flashcard-container">
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="front">교류란?</div>
-                    <div class="back">개인이나 지역이 경제적 이익을 얻기 위해 상품, 자원, 기술, 정보 등을 <strong>서로 주고받는 것</strong>을 말해요.</div>
+                <div class="theory-card">
+                    <h3 class="card-subtitle">📍 지역의 역사를 배우고 보존하는 시설</h3>
+                    <div class="card-body">
+                        <ul class="concept-list">
+                            <li>
+                                <strong>박물관:</strong> 옛날 조상들이 사용했던 다양한 유물을 보관하고 전시하는 곳입니다. 박물관에는 유물을 발굴하고 연구하는 <strong>고고학자</strong>, 손상된 유물을 복원하는 <strong>보존 과학자</strong>, 전시를 기획하는 <strong>전시 기획자</strong>, 교육 프로그램을 만드는 <strong>교육 연구사</strong> 등이 일하고 있습니다.
+                            </li>
+                            <li>
+                                <strong>기념관:</strong> 역사적으로 뜻깊은 사건이나 훌륭한 인물을 기억하고 기념하기 위해 세운 시설입니다.<br>
+                                <em>예시: 안성 3·1 운동 기념관, 김만덕 기념관(제주 상인), 충무공 이순신 기념관</em>
+                            </li>
+                            <li>
+                                <strong>유적지:</strong> 옛날 사람들이 활동하며 남긴 흔적이 있는 장소나 역사적 사건이 일어난 실제 현장입니다.
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="front">교류가 일어나는 까닭은?</div>
-                    <div class="back">지역마다 <strong>자연환경과 생산 기술, 자원, 시설 등이 다르기 때문</strong>에 발생해요. 서로 필요한 것을 주고 받아요!</div>
+
+                <div class="theory-card">
+                    <h3 class="card-subtitle">📍 역사 조사와 답사 방법</h3>
+                    <div class="card-body">
+                        <div class="step-container">
+                            <div class="step-item">
+                                <span class="step-num">1</span>
+                                <strong>조사 계획 세우기</strong>
+                                <p>주제, 장소, 방법(인터넷 검색, 답사, 면담 등), 준비물을 결정합니다.</p>
+                            </div>
+                            <div class="step-item">
+                                <span class="step-num">2</span>
+                                <strong>직접 답사하기</strong>
+                                <p>현장에서 안내판의 글을 읽고, 유산을 눈으로 관찰하며, 사진 촬영 금지 구역에서는 그림을 그리거나 글로 기록합니다.</p>
+                            </div>
+                            <div class="step-item">
+                                <span class="step-num">3</span>
+                                <strong>보고서 작성하기</strong>
+                                <p>알게 된 점, 더 알고 싶은 점, 느낀 점을 모아 답사 보고서를 씁니다.</p>
+                            </div>
+                        </div>
+                        <div class="tip-box warning">
+                            ⚠️ <strong>답사할 때 지켜야 할 약속:</strong>
+                            <ul>
+                                <li>안전에 유의하며 보호자나 인솔자와 함께 다닙니다.</li>
+                                <li>문화재를 손으로 만지거나 훼손하지 않습니다.</li>
+                                <li>박물관이나 유적지 내에서 뛰어다니거나 시끄럽게 소리 내지 않습니다.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="front">교류를 하면 좋은 점은?</div>
-                    <div class="back">1. 필요한 물건을 쉽게 구할 수 있어요.<br>2. 두 지역 모두 경제적 이익을 얻어요.<br>3. 지역 경제가 성장하고 발전해요.</div>
+            </section>
+
+            <!-- 단원 3 -->
+            <section id="tab3" class="tab-content">
+                <h2 class="section-title">3단원. 경제활동과 지역 간 교류</h2>
+                
+                <div class="theory-card">
+                    <h3 class="card-subtitle">📍 경제활동과 선택의 문제</h3>
+                    <div class="card-body">
+                        <ul class="concept-list">
+                            <li>
+                                <strong>선택의 문제가 일어나는 까닭:</strong> 우리가 쓸 수 있는 돈과 자원은 한정되어 있지만, 가지고 싶고 하고 싶은 욕구는 끝이 없기 때문에 늘 선택의 고민을 하게 됩니다.
+                            </li>
+                            <li>
+                                <strong>자원의 희소성:</strong> 사람들의 필요나 욕구에 비하여 <strong>자원의 양이 상대적으로 부족한 상태</strong>를 뜻합니다.
+                            </li>
+                            <div class="tip-box">
+                                💡 <strong>시대에 따라 변하는 희소성:</strong>
+                                <p>과거에는 깨끗한 물이나 공기가 풍부하여 돈을 주고 살 필요가 없었지만, 오늘날에는 환경 오염 등으로 인해 깨끗한 물의 희소성이 높아져 물을 사 마시는 시대가 되었습니다.</p>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </div>
+
+                <div class="theory-card">
+                    <h3 class="card-subtitle">📍 합리적 선택의 방법</h3>
+                    <div class="card-body">
+                        <div class="def-box">
+                            <strong>합리적 선택:</strong> 돈이나 시간 등 한정된 자원을 낭비하지 않고, 여러 가지 기준을 꼼꼼히 비교하여 <strong>가장 큰 만족감을 얻을 수 있도록 선택하는 것</strong>을 말합니다.
+                        </div>
+                        <div class="flow-chart">
+                            <div class="flow-step">1. 가진 돈 확인하기</div>
+                            <div class="flow-arrow">➡️</div>
+                            <div class="flow-step">2. 물건 정보 수집하기</div>
+                            <div class="flow-arrow">➡️</div>
+                            <div class="flow-step">3. 선택 기준 세우기</div>
+                            <div class="flow-arrow">➡️</div>
+                            <div class="flow-step">4. 비교 및 선택하기</div>
+                            <div class="flow-arrow">➡️</div>
+                            <div class="flow-step">5. 선택 되돌아보기</div>
+                        </div>
+                        <div class="tip-box">
+                            💡 <strong>물건 정보 수집 방법:</strong> 상점 직접 방문하기, 인터넷으로 후기 검색하기, 광고지 확인하기, 주변 사람들의 사용 경험 물어보기 등
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="card-subtitle">📍 생산과 소비, 그리고 시장</h3>
+                    <div class="card-body">
+                        <ul class="concept-list">
+                            <li>
+                                <strong>생산:</strong> 생활에 필요한 물건을 만들거나 서비스를 제공하는 활동입니다.
+                                <ul>
+                                    <li><em>자연에서 얻는 활동:</em> 농사짓기, 물고기 잡기, 과일 따기 등</li>
+                                    <li><em>만드는 활동:</em> 공장에서 빵이나 옷, 자동차 만들기 등</li>
+                                    <li><em>편리함을 주는 활동(서비스):</em> 의사의 진료, 미용사의 머리 손질, 교사의 수업 등</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>소비:</strong> 생활에 필요한 물건이나 서비스를 이용하는 활동입니다. (예: 물건 구입, 대중교통 이용, 영화 관람 등)
+                            </li>
+                            <li>
+                                <strong>생산과 소비의 관계:</strong> 생산이 없으면 소비할 수 없고, 소비가 없으면 생산할 필요가 없으므로 두 활동은 긴밀하게 연결되어 있습니다.
+                            </li>
+                            <li>
+                                <strong>시장:</strong> 사람들이 필요한 상품을 편리하게 사고파는 장소입니다. 전통시장, 대형 할인점, 온라인 쇼핑 등 다양한 형태가 있습니다.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3 class="card-subtitle">📍 지역 간 교류와 상호 의존</h3>
+                    <div class="card-body">
+                        <ul class="concept-list">
+                            <li>
+                                <strong>교류의 의미:</strong> 개인이나 지역이 경제적 이익을 얻기 위해 상품, 자원, 기술, 문화 등을 서로 주고받는 것을 말합니다.
+                            </li>
+                            <li>
+                                <strong>교류가 일어나는 까닭:</strong> 지역마다 **자연환경(기후, 흙 등), 자원의 매장량, 기술 수준, 시설** 등이 다르기 때문에 각자 잘 만드는 상품이나 서비스가 다르기 때문입니다.
+                            </li>
+                            <li>
+                                <strong>교류의 종류:</strong>
+                                <ul>
+                                    <li><em>생산물 교류:</em> 각 지역의 특산물 주고받기 (예: 제주 감귤 ↔️ 이천 쌀)</li>
+                                    <li><em>기술 교류:</em> 다른 지역의 부족한 기술 지원 및 공동 개발 (예: 울산의 자동차 기술 ↔️ 세종의 자율주행 시험 기술)</li>
+                                    <li><em>문화 교류:</em> 다른 지역의 축제나 공연, 전시회에 참가하기</li>
+                                </ul>
+                            </li>
+                            <div class="tip-box success">
+                                👍 <strong>교류를 하면 좋은 점:</strong>
+                                <p>각 지역에 없는 필요한 물건이나 기술을 쉽게 얻을 수 있어 생활이 편리해지고, 서로의 생산물을 판매하여 모두 경제적 이익을 얻고 함께 성장할 수 있습니다.</p>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </main>
     </div>
 
     <script src="script.js"></script>

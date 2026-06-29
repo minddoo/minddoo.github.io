@@ -1,3 +1,4 @@
+/* 기본 스타일 초기화 */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,217 +6,341 @@
 }
 
 body {
-    font-family: 'Jua', sans-serif;
-    background-color: #fcf8e8;
-    color: #333;
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f7f9fc;
+    color: #2d3748;
+    line-height: 1.6;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 50px;
 }
 
-header {
+/* 헤더 디자인 (홈으로 버튼 제외) */
+.main-header {
     width: 100%;
-    background-color: #ffb449;
-    padding: 20px;
+    background: linear-gradient(135deg, #3182ce, #2b6cb0);
+    padding: 30px 20px;
     text-align: center;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    position: relative;
-}
-
-header h1 {
-    font-size: 1.8rem;
     color: white;
-    text-shadow: 2px 2px 0px #e69123;
-    margin-bottom: 5px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    box-shadow: 0 4px 12px rgba(49, 130, 206, 0.2);
 }
 
-header p {
-    font-size: 1.2rem;
-    color: #fff9e6;
+.main-header h1 {
+    font-family: 'Jua', sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.15);
 }
 
-.home-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: white;
-    color: #ffb449;
-    padding: 5px 15px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 0.9rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.main-header p {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #ebf8ff;
 }
 
-.dashboard {
-    width: 90%;
-    max-width: 500px;
-    margin-top: 30px;
+/* 전체 컨테이너 */
+.app-container {
+    width: 95%;
+    max-width: 800px;
+    margin-top: 25px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    padding-bottom: 40px;
+    gap: 20px;
 }
 
-.menu-card {
-    background: white;
-    border-radius: 15px;
-    padding: 20px;
+/* 탭 네비게이션 */
+.tab-navigation {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
-    cursor: pointer;
-    border: 3px solid #ffdfa3;
-}
-
-.menu-card:hover, .menu-card:active {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    border-color: #ffb449;
-}
-
-.menu-card .icon {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-.menu-card h2 {
-    font-size: 1.4rem;
-    color: #e69123;
-    margin-bottom: 5px;
-}
-
-.menu-card p {
-    font-size: 1rem;
-    color: #666;
-}
-
-/* Modals */
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 100; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.5); 
-    backdrop-filter: blur(3px);
-}
-
-.modal-content {
-    background-color: #fcf8e8;
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 20px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    position: relative;
-    animation: slideIn 0.3s ease-out;
-}
-
-@keyframes slideIn {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-.close-btn {
-    color: #aaa;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 32px;
-    font-weight: bold;
-    cursor: pointer;
-    line-height: 1;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: #ff6b6b;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.modal-content h2 {
-    color: #ffb449;
-    margin-bottom: 5px;
-    margin-top: 10px;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.guide-text {
-    text-align: center;
-    color: #777;
-    margin-bottom: 20px;
-    font-size: 0.95rem;
-}
-
-/* Flashcards */
-.flashcard-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.flashcard {
-    perspective: 1000px;
-    height: 140px;
-    cursor: pointer;
-    position: relative;
-}
-
-.flashcard .front, .flashcard .back {
+    gap: 8px;
     width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    backface-visibility: hidden;
-    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-    border-radius: 15px;
-    padding: 20px;
+}
+
+@media (min-width: 600px) {
+    .tab-navigation {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 15px 10px;
+    font-family: 'Jua', sans-serif;
+    font-size: 1.1rem;
+    color: #4a5568;
+    background-color: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.tab-btn:hover {
+    background-color: #edf2f7;
+    border-color: #cbd5e0;
+}
+
+.tab-btn.active {
+    color: white;
+    background-color: #3182ce;
+    border-color: #3182ce;
+    box-shadow: 0 4px 10px rgba(49, 130, 206, 0.25);
+}
+
+/* 학습 콘텐츠 영역 */
+.content-area {
+    width: 100%;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section-title {
+    font-family: 'Jua', sans-serif;
+    font-size: 1.8rem;
+    color: #2b6cb0;
+    margin-bottom: 20px;
+    border-left: 6px solid #3182ce;
+    padding-left: 12px;
+}
+
+/* 이론 카드 레이아웃 */
+.theory-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.card-subtitle {
+    font-family: 'Jua', sans-serif;
+    font-size: 1.4rem;
+    color: #2d3748;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #edf2f7;
+}
+
+.card-body {
+    font-size: 1.15rem; /* 글씨 크기 확대 */
+    color: #4a5568;
+}
+
+/* 개념 정의 박스 */
+.def-box {
+    background-color: #ebf8ff;
+    border-left: 5px solid #3182ce;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    color: #2c5282;
+    font-weight: 500;
+}
+
+.def-box strong {
+    color: #2b6cb0;
+}
+
+/* 특징 리스트 */
+.concept-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.concept-list li {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 5px 0;
+}
+
+.concept-list li strong {
+    color: #2d3748;
+    font-weight: 700;
+}
+
+/* 배지 종류 */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.badge.blue { background-color: #3182ce; }
+.badge.green { background-color: #38a169; }
+.badge.orange { background-color: #dd6b20; }
+.badge.red { background-color: #e53e3e; }
+
+/* 요약 / 정보 박스 */
+.tip-box {
+    background-color: #f7fafc;
+    border: 1px dashed #cbd5e0;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 1.05rem;
+}
+
+.tip-box.warning {
+    background-color: #fff5f5;
+    border-color: #feb2b2;
+    color: #c53030;
+}
+
+.tip-box.success {
+    background-color: #f0fff4;
+    border-color: #9ae6b4;
+    color: #22543d;
+}
+
+.tip-box ul {
+    margin-left: 20px;
+    margin-top: 8px;
+}
+
+.tip-box li {
+    background: transparent;
+    margin-bottom: 5px;
+}
+
+/* 비교 테이블 */
+.compare-table-wrapper {
+    overflow-x: auto;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+}
+
+.compare-table th, .compare-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.compare-table th {
+    background-color: #edf2f7;
+    color: #2d3748;
+    font-weight: 700;
+}
+
+.compare-table td {
+    background-color: white;
+    font-size: 1.05rem;
+}
+
+/* 답사 단계 레이아웃 */
+.step-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 600px) {
+    .step-container {
+        flex-direction: row;
+    }
+}
+
+.step-item {
+    flex: 1;
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 15px;
+    position: relative;
+}
+
+.step-num {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 28px;
+    height: 28px;
+    background-color: #3182ce;
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.step-item strong {
+    display: block;
     font-size: 1.1rem;
-    line-height: 1.4;
+    color: #2d3748;
+    margin-bottom: 5px;
 }
 
-.flashcard .front {
-    background-color: #bce6ff;
-    color: #1e3a8a;
-    border: 3px solid #90cdf4;
-    font-size: 1.25rem;
+.step-item p {
+    font-size: 0.98rem;
+    color: #718096;
 }
 
-.flashcard .back {
-    background-color: #ffdfa3;
-    color: #553c15;
-    border: 3px solid #ffb449;
-    transform: rotateY(180deg);
+/* 합리적 선택 흐름도 */
+.flow-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
 }
 
-.flashcard.flipped .front {
-    transform: rotateY(-180deg);
+@media (min-width: 600px) {
+    .flow-chart {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
-.flashcard.flipped .back {
-    transform: rotateY(0deg);
+.flow-step {
+    background-color: #edf2f7;
+    border: 2px solid #cbd5e0;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-weight: bold;
+    color: #4a5568;
+    text-align: center;
+    flex: 1;
 }
 
-.back strong {
-    color: #d946ef;
-    font-size: 1.15rem;
+.flow-arrow {
+    font-size: 1.2rem;
+    color: #718096;
+}
+
+@media (max-width: 599px) {
+    .flow-arrow {
+        transform: rotate(90deg);
+        margin: 5px 0;
+    }
 }
