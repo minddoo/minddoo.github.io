@@ -582,3 +582,52 @@ img, svg {
     max-width: 100%;
     height: auto;
 }
+/* --- UI/UX 수정 및 게시판 분리 스타일 --- */
+
+/* 네비게이션 컨테이너 모바일 대응 강화 */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* 모바일에서 버튼들이 겹치지 않고 줄바꿈되게 */
+    gap: 10px;
+}
+
+.tab-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* 녹음 버튼 및 게시판 버튼 개별 스타일 */
+.record-btn {
+    background-color: #F1C40F;
+    color: #2C3E50;
+    font-weight: bold;
+}
+.record-btn:hover {
+    background-color: #F39C12;
+}
+
+.board-btn {
+    background-color: #27AE60;
+    color: white;
+    font-weight: bold;
+}
+.board-btn:hover {
+    background-color: #2ECC71;
+}
+
+/* 분리된 게시판 모달용 큰 모달 */
+.large-modal {
+    max-width: 600px;
+    width: 95%;
+}
+
+/* 모달 z-index 강화 (터치 간섭 방지) */
+.modal-overlay {
+    z-index: 99999 !important;
+}

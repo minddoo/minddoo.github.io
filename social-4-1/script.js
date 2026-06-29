@@ -1,3 +1,4 @@
+﻿// --- 탭 전환 로직 ---
 function switchSubject(subject) {
     // 1. 모든 탭 버튼 비활성화
     const buttons = document.querySelectorAll('.nav-btn');
@@ -24,17 +25,16 @@ function switchSubject(subject) {
         behavior: 'smooth'
     });
 }
+
 // --- 녹음 숙제 기능 ---
 
 let mediaRecorder;
 let audioChunks = [];
 let audioBlob = null;
-
 let unsubscribeBoard = null;
 
 function openRecordModal() {
     document.getElementById('recordModal').style.display = 'flex';
-    loadPublicAudioBoard();
 }
 
 function closeRecordModal() {
@@ -42,6 +42,15 @@ function closeRecordModal() {
     if(mediaRecorder && mediaRecorder.state !== 'inactive') {
         stopRecording();
     }
+}
+
+function openBoardModal() {
+    document.getElementById('boardModal').style.display = 'flex';
+    loadPublicAudioBoard();
+}
+
+function closeBoardModal() {
+    document.getElementById('boardModal').style.display = 'none';
     if (unsubscribeBoard) {
         unsubscribeBoard();
         unsubscribeBoard = null;
@@ -50,6 +59,7 @@ function closeRecordModal() {
 
 function loadPublicAudioBoard() {
     const boardDiv = document.getElementById('publicAudioBoard');
+    boardDiv.innerHTML = '<p style="text-align: center; color: #7F8C8D; padding: 20px;">데이터를 불러오는 중입니다...</p>';
     
     unsubscribeBoard = db.collection("homeworks")
         .orderBy("createdAt", "desc")
@@ -63,15 +73,15 @@ function loadPublicAudioBoard() {
             let html = '';
             snapshot.forEach((doc) => {
                 const data = doc.data();
-                html += `
+                html += \
                     <div class="board-item">
                         <div class="board-item-header">
-                            <span class="board-name">🧑‍🎓 ${data.name}</span>
-                            <span class="board-time">${data.timeStr}</span>
+                            <span class="board-name">🧑‍🎓 \</span>
+                            <span class="board-time">\</span>
                         </div>
-                        <audio controls src="${data.audioUrl}"></audio>
+                        <audio controls src="\"></audio>
                     </div>
-                `;
+                \;
             });
             boardDiv.innerHTML = html;
         }, (error) => {
@@ -151,12 +161,12 @@ async function submitRecording() {
                 // Firestore에 기록 (음성 데이터를 통째로 텍스트로 저장)
                 await db.collection("homeworks").add({
                     name: studentName,
-                    audioUrl: base64data, // Storage URL 대신 Base64 문자열 사용
+                    audioUrl: base64data,
                     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                     timeStr: new Date().toLocaleString()
                 });
                 
-                alert('✅ 숙제 제출이 완료되었습니다! 게시판에 방금 올린 숙제가 뜹니다.');
+                alert('✅ 숙제 제출이 완료되었습니다! 닫기 버튼을 누르고 게시판에서 확인하세요.');
                 closeRecordModal();
             } catch(err) {
                 console.error("Firestore Upload failed", err);
