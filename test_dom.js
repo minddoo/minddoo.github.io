@@ -1,0 +1,23 @@
+﻿const jsdom = require('jsdom');
+const { JSDOM } = jsdom;
+
+const htmlString = \
+<div class="board-item ">
+    <div class="board-top-row">
+        <span class="board-name">🧑‍🎓 홍길동</span>
+        <div class="check-wrap"><button class="action-btn check-btn" onclick="markAsChecked('abc')">확인 도장 쾅!</button></div>
+    </div>
+    <div class="board-time">2026. 6. 29. 오후 7:24:11</div>
+    <div class="custom-player" id="player_abc">
+        <button class="play-btn" onclick="togglePlay('player_abc', 'url')">▶</button>
+        <div class="progress-bar-wrap">
+            <div class="progress-bar" id="progress_abc"></div>
+        </div>
+        <span class="play-time" id="time_abc">0:00</span>
+    </div>
+</div>
+\.repeat(3);
+
+const dom = new JSDOM(\<div id="container">\</div>\);
+const container = dom.window.document.getElementById('container');
+console.log('Children count:', container.children.length);

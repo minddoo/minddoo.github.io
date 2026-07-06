@@ -1,0 +1,840 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+        <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>濡?뜲 怨듬?諛?/title>
+    <link rel="stylesheet" href="style.css?v=14">
+    
+    <!-- Firebase SDK (Compat Version) -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBkiMGzhxftqkYdH97wsobJk1HM9xjjkl8",
+        authDomain: "record-93a70.firebaseapp.com",
+        projectId: "record-93a70",
+        storageBucket: "record-93a70.firebasestorage.app",
+        messagingSenderId: "966647106797",
+        appId: "1:966647106797:web:e08772613c724b193e10e4"
+      };
+      firebase.initializeApp(firebaseConfig);
+      const storage = firebase.storage();
+      const db = firebase.firestore();
+    </script>
+
+    <!-- MathJax -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="logo">?뱲 濡?뜲 怨듬?諛?/div>
+            <button class="hamburger-btn" style="background-color: #ECF0F1 !important; color: #2C3E50 !important; border: 2px solid #2C3E50 !important; font-weight: bold !important;" onclick="toggleMobileMenu()">??硫붾돱</button>
+            <div class="tab-buttons" id="mobileMenu">
+                <button class="nav-btn active" onclick="switchSubject('social')">?ы쉶 ?대줎</button>
+                <button class="nav-btn" onclick="switchSubject('math')">?섑븰 ?대줎</button>
+                <button class="nav-btn quiz-btn" onclick="switchSubject('quiz')">?쭬 諛곗슫 ?댁슜 ?댁쫰</button>
+                <button class="nav-btn record-btn" onclick="openRecordModal()">?럺截??뱀쓬 ?숈젣 ?щ━湲?/button>
+                <button class="nav-btn board-btn" onclick="openBoardModal()">?렒 移쒓뎄???뱀쓬 ?ｊ린</button>
+                <button class="nav-btn qna-btn" onclick="openQnaModal()">??吏덈Ц ?④린湲?/button>
+                <button class="nav-btn qna-board-btn" onclick="openQnaBoardModal()">?뮕 吏덈Ц 寃뚯떆??/button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-container">
+        
+<article id="social" class="subject-content active">
+            <header class="subject-header">
+                <h1 class="subject-title">?ы쉶: 寃쎌젣?쒕룞怨?吏??媛?援먮쪟</h1>
+                <p class="subject-subtitle">?좏깮??臾몄젣遺??吏??媛??곹샇 ?섏〈源뚯?, ?듭떖 媛쒕뀗???꾨꼍?섍쾶 ?뺣━??蹂댁꽭??</p>
+            </header>
+
+            <section class="theory-section">
+                <h2>1?? 寃쎌젣?쒕룞怨??⑸━???좏깮</h2>
+                <div class="theory-body">
+                    <h2>1. 寃쎌젣?쒕룞怨??좏깮??臾몄젣</h2>
+                    <h3>(1) 寃쎌젣?쒕룞???섎?</h3>
+                    <p>?щ엺?ㅼ씠 ?앺솢???꾩슂???щ윭 媛吏瑜?留뚮뱾怨??ъ슜?섎뒗 寃껉낵 愿?⑤맂 紐⑤뱺 ?쒕룞??留먰빀?덈떎.</p>
+                    
+                    <h3>(2) ?좏깮???섎?</h3>
+                    <p>?щ읉 媛?대뜲???꾩슂??寃껋쓣 怨⑤씪 戮묐뒗 寃껋쓣 留먰빀?덈떎.</p>
+
+                    <h3>(3) 寃쎌젣?쒕룞???섎ŉ 寃る뒗 ?좏깮??臾몄젣</h3>
+                    <ul class="bullet-list">
+                        <li>吏?섏쿋???덇퉴? 踰꾩뒪瑜??덇퉴?</li>
+                        <li>?대뼡 諛섏갔??留뚮뱾???붽퉴?</li>
+                        <li>?ㅻ뒛? ?대뼡 ?꾨줈洹몃옩???쒖껌??蹂쇨퉴?</li>
+                    </ul>
+
+                    <img src="./images/social_choice.svg" alt="寃쎌젣?쒕룞怨??좏깮" class="textbook-img">
+
+                    <h2>2. ?좏깮??臾몄젣媛 ?쇱뼱?섎뒗 源뚮떗怨??ъ냼??/h2>
+                    <h3>(1) ?좏깮??臾몄젣媛 ?쇱뼱?섎뒗 源뚮떗</h3>
+                    <p>?щ엺???????덈뒗 ?덉씠???먯썝? ?쒖젙?섏뼱 ?덉쑝誘濡??먰븯??寃껋쓣 紐⑤몢 媛吏??섎뒗 ?놁뒿?덈떎. 寃쎌젣?쒕룞?먯꽌 ?좏깮??臾몄젣媛 ?쇱뼱?섎뒗 源뚮떗? ?먯썝???ъ냼???뚮Ц?낅땲??</p>
+
+                    <h3>(2) ?먯썝???ъ냼??/h3>
+                    <p>?щ엺?ㅼ쓽 ?꾩슂???뺢뎄??鍮꾪븯???먯썝???묒씠 ?곷??곸쑝濡?遺議깊븳 ?곹깭瑜?留먰빀?덈떎.</p>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>2?? ?⑸━???좏깮???꾩슂??/h2>
+                <div class="theory-body">
+                    <h2>1. ?좏깮???꾪쉶?덈뜕 寃쏀뿕怨?留뚯”?덈뜕 寃쏀뿕</h2>
+                    <h3>(1) 寃쎌젣?쒕룞?먯꽌 ?좏깮??寃곌낵</h3>
+                    <p>寃쎌젣?쒕룞???섎㈃???먯썝????퉬?섍굅???섏쓽 ?좏깮???꾪쉶?섎뒗 寃쎌슦???덇퀬, ?좏깮??留뚯”?섎뒗 寃쎌슦???덉뒿?덈떎.</p>
+
+                    <h2>2. ?⑸━???좏깮</h2>
+                    <h3>(1) ?⑸━???좏깮???섎?</h3>
+                    <p>?щ윭 媛吏 湲곗???怨좊젮?섏뿬 ?덉씠???쒓컙 ???먯썝????퉬瑜?留됯퀬 ??留뚯”媛먯쓣 ?살쓣 ???덈뒗 ?좏깮??留먰빀?덈떎.</p>
+
+                    <h3>(2) ?⑸━???좏깮???꾩슂??源뚮떗</h3>
+                    <ul class="bullet-list">
+                        <li>?덇낵 ?쒓컙 ?깆쓽 ?먯썝???꾨굜 ???덇린 ?뚮Ц?낅땲??</li>
+                        <li>留뚯”媛먭낵 利먭굅????살쓣 ???덇린 ?뚮Ц?낅땲??</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>3?? ?⑸━???좏깮??諛⑸쾿</h2>
+                <div class="theory-body">
+                    <h2>1. ?⑸━???좏깮??諛⑸쾿</h2>
+                    <h3>(1) ?꾩슂??臾쇨굔怨?媛吏????뺤씤?섍린</h3>
+                    <p>?닿쾶 ?꾩슂??臾쇨굔???앷컖??蹂닿퀬, 媛吏??덉씠 ?쇰쭏?몄? ?뺤씤?⑸땲??</p>
+
+                    <h3>(2) ?뺣낫 ?섏쭛?섍린</h3>
+                    <p>?щ젮??臾쇨굔??媛寃? ?붿옄?? ?뱀쭠 ?깆쓽 ?뺣낫瑜??ㅼ뼇??諛⑸쾿?쇰줈 ?섏쭛?⑸땲??</p>
+
+                    <h3>(3) ?좏깮 湲곗? ?몄슦湲?/h3>
+                    <p>臾쇨굔???좏깮????怨좊젮??湲곗????몄썎?덈떎. (媛寃? ?꾩슂?? ?덉쭏, 湲곕뒫)</p>
+
+                    <h3>(4) 臾쇨굔 ?됯??섍퀬 ?좏깮?섍린</h3>
+                    <p>?좏깮 湲곗????곕씪 媛?臾쇨굔?ㅼ쓽 ?뱀쭠??瑗쇨세?섍쾶 ?댄렣遊낅땲??</p>
+
+                    <h3>(5) ?좏깮 ?섎룎?꾨낫湲?/h3>
+                    <p>?먯떊???⑸━???좏깮????寃껋씤吏 ?먯떊???좏깮???섎룎?꾨낫怨??됯??⑸땲??</p>
+
+                    <h2>2. ?⑸━???좏깮??寃곌낵</h2>
+                    <h3>(1) ?먯떊???좏깮???섎룎?꾨낫湲?/h3>
+                    <ul class="bullet-list">
+                        <li>瑗??꾩슂???좏깮?댁뿀?붿? ?앷컖??遊낅땲??</li>
+                        <li>?몃━?⑥씠??利먭굅? ?깃낵 媛숈? 留뚯”???살뿀?붿? ?앷컖??遊낅땲??</li>
+                    </ul>
+
+                    <h3>(2) ?⑸━???좏깮?????뚯쓽 醫뗭? ??/h3>
+                    <p>?먯떊?먭쾶 ?뚮쭪? 臾쇨굔??怨⑤씪 ??留뚯”???살쓣 ???덉뒿?덈떎.</p>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>4?? ?앹궛怨??뚮퉬???섎?</h2>
+                <div class="theory-body">
+                    <h2>1. ?앹궛怨??뚮퉬 ?쒕룞</h2>
+                    <h3>(1) ?앹궛怨??뚮퉬???섎?</h3>
+                    <ul class="bullet-list">
+                        <li>?앹궛: ?앺솢???꾩슂??臾쇨굔??留뚮뱾嫄곕굹 ?쒕퉬?ㅻ? ?쒓났?섎뒗 ?쒕룞</li>
+                        <li>?뚮퉬: ?앺솢???꾩슂??臾쇨굔?대굹 ?쒕퉬?ㅻ? ?댁슜?섎뒗 ?쒕룞</li>
+                    </ul>
+
+                    <h3>(2) ?앹궛 ?쒕룞??醫낅쪟</h3>
+                    <ul class="bullet-list">
+                        <li>?앺솢???꾩슂??寃껋쓣 ?먯뿰?먯꽌 ?삳뒗 ?쒕룞 (臾쇨퀬湲??↔린, ??湲곕Ⅴ湲? 怨쇱씪 ?곌린)</li>
+                        <li>?앺솢???꾩슂??寃껋쓣 留뚮뱶???쒕룞 (嫄대Ъ 吏볤린, ?꾩씠?ㅽ겕由?留뚮뱾湲? ?먮룞李?留뚮뱾湲?</li>
+                        <li>?앺솢???몃━?섍퀬 利먭쾪寃???二쇰뒗 ?쒕룞 (?숈깮 媛瑜댁튂湲? 怨듭뿰?섍린, 臾쇨굔 ?먮ℓ?섍린)</li>
+                    </ul>
+
+                    <img src="./images/social_production.svg" alt="?앹궛怨??뚮퉬" class="textbook-img">
+
+                    <h2>2. ?앹궛 ?쒕룞怨??뚮퉬 ?쒕룞??愿怨?/h2>
+                    <ul class="bullet-list">
+                        <li>?앹궛?섏? ?딆쑝硫??뚮퉬瑜??????녾퀬, ?뚮퉬?섏? ?딆쑝硫??앹궛?????꾩슂媛 ?놁뒿?덈떎.</li>
+                        <li>?앹궛 ?쒕룞 ?뺣텇???ㅼ뼇???뚮퉬 ?쒕룞???????덇퀬, ?몃━???앺솢???????덉뒿?덈떎.</li>
+                    </ul>
+
+                    <h2>3. ?앹궛 ?쒕룞怨??뚮퉬 ?쒕룞???대（?댁????쒖옣</h2>
+                    <h3>(1) ?쒖옣</h3>
+                    <p>?щ엺?ㅼ씠 ?앺솢???꾩슂??臾쇨굔怨??쒕퉬?ㅻ? ?ш퀬?뚮뒗 怨녹쓣 留먰빀?덈떎.</p>
+
+                    <h3>(2) ?쒖옣?먯꽌 蹂????덈뒗 寃쎌젣?쒕룞 紐⑥뒿 ??/h3>
+                    <ul class="bullet-list">
+                        <li>誘몄슜?ㅼ뿉??癒몃━瑜??먯쭏?⑸땲??</li>
+                        <li>遺꾩떇吏묒뿉???〓낭?대? 留뚮뱾???앸땲??</li>
+                        <li>?좊컻 媛寃뚯뿉???좊컻???쎈땲??</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>5?? 吏??뿉???대（?댁????앹궛怨??뚮퉬</h2>
+                <div class="theory-body">
+                    <h2>1. ?곕━ 吏??뿉 ?덈뒗 臾쇨굔?ㅼ쓽 ?앹궛吏</h2>
+                    <h3>(1) ?앹궛吏???섎?</h3>
+                    <p>臾쇨굔??留뚮뱾?댁쭊 怨??먮뒗 洹?臾쇨굔????덈줈 ?앷꺼?섎뒗 怨녹쓣 留먰빀?덈떎.</p>
+
+                    <h3>(2) ?곕━ 二쇰? 臾쇨굔???앹궛吏</h3>
+                    <ul class="bullet-list">
+                        <li>?곕━ 二쇰???臾쇨굔?ㅼ? ?щ윭 吏??낵 ?섎씪?먯꽌 ?앹궛?섏뿀?듬땲??</li>
+                        <li>?곕━ 吏??뿉???앹궛??寃껋쓣 ?ㅻⅨ 吏???щ엺?ㅼ씠 ?댁슜?섍린???⑸땲??</li>
+                    </ul>
+
+                    <h2>2. 臾쇨굔???앹궛吏 議곗궗 諛⑸쾿</h2>
+                    <h3>(1) 臾쇨굔???뺣낫瑜??뺤씤?섎뒗 諛⑸쾿</h3>
+                    <ul class="bullet-list">
+                        <li>?곹뭹???쒖떆???뺣낫瑜??뺤씤?섍린</li>
+                        <li>愿묎퀬吏瑜??뺤씤?섍린</li>
+                        <li>?곹뭹???먮ℓ?섎뒗 ?꾨━吏묒뿉??寃?됲븯湲?/li>
+                        <li>?ㅻ쭏?명룿?쇰줈 ?먯븣(QR) 肄붾뱶瑜?李띿뼱 ?뺤씤?섍린</li>
+                    </ul>
+
+                    <h3>(2) ?곕━ 吏??뿉???먮ℓ?섎뒗 臾쇨굔???앹궛吏 議곗궗?섍린 ??/h3>
+                    <p>???앹궛吏 議곗궗 怨쇱젙: 議곗궗 二쇱젣 ?뺥븯湲???議곗궗 諛⑸쾿 ?뺥븯湲???議곗궗???댁슜 ?뺣━?섍린</p>
+                    <p>??議곗궗???곹뭹???앹궛吏 ?뺣━?섍린 ?? ?ш낵(異⑹껌遺곷룄 異⑹＜??, 怨좉뎄留?異⑹껌遺곷룄 異⑹＜??, ?좏뭾湲?異⑹껌?⑤룄 泥쒖븞??, ?꾨が??誘멸뎅)</p>
+
+                    <h3>(3) 臾쇨굔???앹궛 ?뺣낫瑜??듯빐 ?????덈뒗 ?ъ떎</h3>
+                    <ul class="bullet-list">
+                        <li>?곕━?섎씪???멸퀎 ?щ윭 ?섎씪? 臾쇨굔??二쇨퀬諛쏆쑝硫??쒕컻?섍쾶 援먮쪟?섍퀬 ?덉뒿?덈떎.</li>
+                        <li>?щ엺?ㅼ? ?꾩슂???곕씪 ?ㅻⅨ 吏??뿉????臾쇨굔???뚮퉬?⑸땲??</li>
+                        <li>?곕━ 吏??뿉??蹂????덈뒗 ?ㅼ뼇??臾쇨굔? ?щ윭 吏??뿉???앹궛?섏뼱 ?곕━ 吏??쑝濡??듬땲??</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>6?? 吏??媛꾩뿉 援먮쪟媛 ?쇱뼱?섎뒗 源뚮떗</h2>
+                <div class="theory-body">
+                    <h2>1. 吏??媛?援먮쪟???섎?? 源뚮떗</h2>
+                    <h3>(1) 援먮쪟???섎?</h3>
+                    <ul class="bullet-list">
+                        <li>?щ엺?ㅼ씠 ?ㅺ퀬 媛嫄곕굹 臾쇨굔?대굹 ?먯썝, 湲곗닠, 臾명솕 ?깆쓣 二쇨퀬諛쏅뒗 寃껋쓣 留먰빀?덈떎.</li>
+                        <li>媛?吏??뿉 ?щ뒗 ?щ엺?ㅼ? ?쒕줈 ?꾩슂??寃껋쓣 二쇨퀬諛쏆쑝硫??곹샇 ?섏〈?섍퀬 ?덉뒿?덈떎.</li>
+                    </ul>
+
+                    <h3>(2) 援먮쪟媛 ?쇱뼱?섎뒗 源뚮떗</h3>
+                    <ul class="bullet-list">
+                        <li>?먯뿰?섍꼍??李⑥씠: 媛먭랠???щ같?섍린???곹빀???곕쑜??吏??뿉?쒕뒗 媛먭랠???앹궛?? 媛?쾶 吏?뺤씠 ?쇱퀜???덈뒗 吏??? 議곌컻瑜?援ы븯湲??ъ?</li>
+                        <li>?쒖꽕??李⑥씠: ??蹂묒썝???덈뒗 吏??뿉 ?щ엺?ㅼ씠 吏꾨즺瑜?諛쏆쑝??媛? ?щ엺?ㅼ씠 鍮꾪뻾湲곕? ??ㅺ퀬 怨듯빆???덈뒗 吏??쑝濡?媛?/li>
+                        <li>湲곗닠??李⑥씠: ?곌뎄 ?⑥?媛 ?덈뒗 吏??뿉?쒕뒗 ?좉린?좎쓣 媛쒕컻?? ?먮룞李⑤? 留뚮뱶??湲곗닠??諛쒕떖??吏??? ???먮룞李?怨듭옣???덉쓬</li>
+                    </ul>
+
+                    <img src="./images/social_exchange.svg" alt="吏??媛?援먮쪟" class="textbook-img">
+
+                    <h2>2. 援먮쪟瑜??섎㈃ 醫뗭? ??/h2>
+                    <ul class="bullet-list">
+                        <li>吏??쭏???띾??섍쾶 ?앹궛?섎뒗 臾쇨굔???ш퀬?붿븘 寃쎌젣???댁씡???살뒿?덈떎.</li>
+                        <li>?곕━ 吏??쓣 李얜뒗 ?щ엺?ㅼ씠 留롮븘?몄꽌 吏??씠 諛쒖쟾?⑸땲??</li>
+                        <li>?곕━ 吏??뿉 ?녿뒗 寃껋쓣 ?댁슜?????덉뼱???앺솢???몃━?댁쭛?덈떎.</li>
+                        <li>吏??겮由??섏쓣 ?⑺빐 ?쒕줈 ?뺢퀬 醫뗭? 愿怨꾨? 留븐뒿?덈떎.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>7?? 吏??媛?援먮쪟???щ?</h2>
+                <div class="theory-body">
+                    <h2>1. 吏??媛?援먮쪟 遺꾩빞</h2>
+                    <h3>(1) 吏??媛?援먮쪟 遺꾩빞</h3>
+                    <ul class="bullet-list">
+                        <li>吏??媛?援먮쪟???앹궛臾? 湲곗닠, 臾명솕 ???ㅼ뼇??遺꾩빞?먯꽌 ?대（?댁?怨??덉뒿?덈떎.</li>
+                        <li>媛?吏??? 援먮쪟瑜??듯빐 ?ㅻⅨ 吏??낵 諛?묓븳 愿怨꾨? 留브퀬 ?덉뒿?덈떎.</li>
+                        <li>?ㅻ뒛??援먰넻怨??듭떊??諛쒕떖濡?吏??媛?援먮쪟媛 ?붿슧 ?쒕컻?댁?怨??덉뒿?덈떎.</li>
+                    </ul>
+
+                    <h3>(2) 媛?吏??쓽 ????곹뭹</h3>
+                    <ul class="bullet-list">
+                        <li>?먯뿰?섍꼍, 湲곗닠, ?먯썝, ?쒖꽕 ?깆뿉 ?곕씪 吏??쓽 ????곹뭹???щ씪吏묐땲??</li>
+                        <li>吏??媛?寃쎌젣 援먮쪟??吏??쓽 ????곹뭹??以묒떖?쇰줈 ?대（?댁쭛?덈떎.</li>
+                    </ul>
+
+                    <h3>(3) 吏??媛?寃쎌젣 援먮쪟 ?щ?</h3>
+                    <ul class="bullet-list">
+                        <li>?앹궛臾?援먮쪟: 媛?吏??쓽 ?띾????앹궛臾쇱쓣 以묒떖?쇰줈 寃쎌젣??援먮쪟瑜??⑸땲??</li>
+                        <li>湲곗닠 援먮쪟: 媛?吏??? 湲곗닠 援먮쪟瑜??듯빐 ?쒕줈??吏??뿉 遺議깊븳 湲곗닠??蹂댁셿?섏뿬 寃쎌젣???댁씡???살뒿?덈떎.</li>
+                        <li>臾명솕 援먮쪟: 媛?吏??? 怨듭뿰, ?꾩떆?? ?대룞 寃쎄린, 愿愿??깆쓣 ?듯빐 援먮쪟?⑸땲??</li>
+                    </ul>
+
+                    <h2>2. 吏??媛?援먮쪟 ?щ? 議곗궗</h2>
+                    <h3>(1) ?щ윭 吏??씠 援먮쪟?섎뒗 紐⑥뒿??議곗궗?섎뒗 諛⑸쾿</h3>
+                    <p>吏???좊Ц?대굹 梨낆옄 ?댄렣蹂닿린, ?명꽣??寃?됲븯湲? 吏???꾨━吏?諛⑸Ц?섍린 ?깆씠 ?덉뒿?덈떎.</p>
+
+                    <h3>(2) 吏??媛?寃쎌젣 援먮쪟 ?щ?瑜??댄렣蹂닿퀬 ?????덈뒗 ??/h3>
+                    <ul class="bullet-list">
+                        <li>媛?吏??? ?ㅼ뼇??諛⑸쾿?쇰줈 寃쎌젣 援먮쪟瑜??섎ŉ ?쒕줈 諛?묓븳 愿怨꾨? 留븐뒿?덈떎.</li>
+                        <li>吏??뱾? ?쒕줈 ?꾩슂??寃껋쓣 二쇨퀬諛쏆쑝硫??곹샇 ?섏〈?섍퀬 ?덉뒿?덈떎.</li>
+                    </ul>
+                </div>
+            </section>
+        </article>
+
+        <!-- ?섑븰 ??肄섑뀗痢?-->
+        <article id="math" class="subject-content">
+            <header class="subject-header">
+                <h1 class="subject-title">?섑븰: ?듭떖 媛쒕뀗怨?怨듭떇 ?ъ쟾 (4-2)</h1>
+                <p class="subject-subtitle">媛쒕뀗?뚮윭?ㅼ쑀???꾨꼍 諛섏쁺! 遺꾩닔, ?뚯닔, ?쇨컖?? ?ш컖?? ?ㅺ컖?뺤쓽 紐⑤뱺 怨듭떇???뺤씤?섏꽭??</p>
+            </header>
+
+            <section class="theory-section">
+                <h2>1. 遺꾩닔???㏃뀍怨?類꾩뀍</h2>
+                <div class="theory-body">
+                    <img src="./images/math_fractions.svg" alt="遺꾩닔" class="textbook-img">
+                    
+                    <div class="highlight-box">
+                        <h3>?뮕 遺꾩닔??3媛吏 醫낅쪟 ?뚯븘蹂닿린</h3>
+                        <ul class="bullet-list">
+                            <li><strong>吏꾨텇??</strong> 遺꾩옄媛 遺꾨え蹂대떎 ?묒? 遺꾩닔 (?? \(\frac{2}{5}\))</li>
+                            <li><strong>媛遺꾩닔:</strong> 遺꾩옄媛 遺꾨え? 媛숆굅??遺꾨え蹂대떎 ??遺꾩닔 (?? \(\frac{5}{5}\), \(\frac{7}{4}\))</li>
+                            <li><strong>?遺꾩닔:</strong> ?먯뿰?섏? 吏꾨텇?섎줈 ?대（?댁쭊 遺꾩닔 (?? \(1\frac{3}{4}\))</li>
+                        </ul>
+                    </div>
+
+                    <div class="math-rule-box">
+                        <h3>遺꾨え媛 媛숈? 吏꾨텇?섏쓽 ?㏃뀍怨?類꾩뀍</h3>
+                        <p>遺꾨え??洹몃?濡??먭퀬, <strong>遺꾩옄?쇰━</strong> 怨꾩궛?⑸땲??</p>
+                        <p class="formula"><span>\(\frac{a}{c} + \frac{b}{c} = \frac{a+b}{c}\)</span></p>
+                        <p class="formula"><span>\(\frac{a}{c} - \frac{b}{c} = \frac{a-b}{c}\)</span> (?? a ??b)</p>
+                    </div>
+
+                    <div class="math-rule-box">
+                        <h3>?遺꾩닔???㏃뀍</h3>
+                        <p>?먯뿰?섎뒗 ?먯뿰?섎겮由? 遺꾩닔??遺꾩닔?쇰━ ?뷀빀?덈떎.</p>
+                        <p class="formula" style="font-size: 1.2rem; color: #E67E22;"><span>?덉떆: \(2\frac{1}{4} + 1\frac{2}{4} = (2+1) + (\frac{1+2}{4}) = 3\frac{3}{4}\)</span></p>
+                        <p class="note">??遺꾩닔?쇰━ ?뷀빐??媛遺꾩닔媛 ?섎㈃ ?遺꾩닔濡?怨좎퀜???먯뿰??遺遺꾩뿉 1???щ젮以띾땲??</p>
+                    </div>
+
+                    <div class="math-rule-box">
+                        <h3>?遺꾩닔??類꾩뀍 (諛쏆븘?대┝???덈뒗 寃쎌슦)</h3>
+                        <p>遺꾩닔 遺遺꾨겮由?類????놁쓣 ?뚮뒗 <strong>?먯뿰??遺遺꾩뿉??1??鍮뚮젮? 媛遺꾩닔濡?諛붽씔 ??/strong> 類띾땲??</p>
+                        <p class="formula" style="font-size: 1.2rem; color: #E67E22;"><span>?덉떆: \(3\frac{1}{5} - 1\frac{3}{5} = 2\frac{6}{5} - 1\frac{3}{5} = 1\frac{3}{5}\)</span></p>
+                        <p class="note">???먯뿰??1? 遺꾨え? 遺꾩옄媛 媛숈? 遺꾩닔(\(\frac{5}{5}\))濡?蹂?좏븳?ㅻ뒗 寃껋쓣 紐낆떖?섏꽭??</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>2. ?뚯닔???㏃뀍怨?類꾩뀍</h2>
+                <div class="theory-body">
+                    <div class="highlight-box">
+                        <h3>?뮕 ?뚯닔???먮┸媛??꾨꼍 ?댄빐</h3>
+                        <ul class="bullet-list">
+                            <li><strong>?뚯닔 泥レ㎏ ?먮━:</strong> 遺꾨え媛 10??遺꾩닔 (\(0.1 = \frac{1}{10}\))</li>
+                            <li><strong>?뚯닔 ?섏㎏ ?먮━:</strong> 遺꾨え媛 100??遺꾩닔 (\(0.01 = \frac{1}{100}\))</li>
+                            <li><strong>?뚯닔 ?뗭㎏ ?먮━:</strong> 遺꾨え媛 1000??遺꾩닔 (\(0.001 = \frac{1}{1000}\))</li>
+                            <li><strong>洹쒖튃:</strong> \(0.1\)??10媛?紐⑥씠硫?\(1\), \(0.01\)??10媛?紐⑥씠硫?\(0.1\)???⑸땲??</li>
+                        </ul>
+                    </div>
+                    <div class="highlight-box success">
+                        <h3>怨꾩궛踰?(媛??以묒슂??怨듭떇)</h3>
+                        <p>臾댁“嫄?<strong>?뚯닔?먯쓽 ?꾩튂瑜??꾩븘?섎줈 ?쇱쭅?좎씠 ?섍쾶</strong> 留욎텛???몃줈濡??곷땲??</p>
+                        <p>鍮덉옄由ш? ?덈떎硫?<strong>0???덈뒗 寃껋쑝濡??앷컖?섍퀬</strong> ?먯뿰?섏쓽 ?㏃뀍/類꾩뀍怨??묎컳??怨꾩궛???? ?뚯닔?먯쓣 洹몃?濡??대젮 李띿뒿?덈떎.</p>
+                        <p class="formula" style="font-size: 1.2rem; color: #27AE60;"><span>?덉떆: \(2.5 + 1.34 = 3.84\)</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>3. ?쇨컖?뺤쓽 鍮꾨?</h2>
+                <div class="theory-body">
+                    <img src="./images/math_shapes.svg" alt="?꾪삎" class="textbook-img">
+                    <img src="./images/math_triangle.svg" alt="?쇨컖??媛곷룄" class="textbook-img">
+
+                    <div class="math-rule-box">
+                        <h3>?쇨컖?뺤쓽 ?닿컖 怨듭떇</h3>
+                        <p>紐⑥뼇怨??ш린???곴??놁씠, 紐⑤뱺 ?쇨컖?뺤쓽 ??媛곸쓽 ?ш린???⑹? 臾댁“嫄?\(180^\circ\)?낅땲??</p>
+                        <p class="formula"><span>?쇨컖???닿컖????= \(180^\circ\)</span></p>
+                    </div>
+                    
+                    <h3>蹂??湲몄씠???곕Ⅸ 遺꾨쪟</h3>
+                    <ul class="bullet-list">
+                        <li><strong>?대벑蹂?쇨컖??</strong> ??蹂??湲몄씠媛 媛숈? ?쇨컖?? ??<strong>(?깆쭏) 湲몄씠媛 媛숈? ??蹂 ?꾨옒???덈뒗 ??諛묎컖???ш린??臾댁“嫄?媛숈뒿?덈떎!</strong></li>
+                        <li><strong>?뺤궪媛곹삎:</strong> ??蹂??湲몄씠媛 紐⑤몢 媛숈? ?쇨컖?? ??<strong>(?깆쭏) ??媛곸쓽 ?ш린媛 紐⑤몢 \(60^\circ\)濡?媛숈뒿?덈떎! (?꾨꼍???移?</strong></li>
+                    </ul>
+
+                    <h3>媛곸쓽 ?ш린???곕Ⅸ 遺꾨쪟</h3>
+                    <ul class="bullet-list">
+                        <li><strong>?덇컖?쇨컖??</strong> ??媛곸씠 '紐⑤몢' ?덇컖(0??90???ъ씠)???쇨컖??/li>
+                        <li><strong>吏곴컖?쇨컖??</strong> ??媛곸씠 '吏곴컖(90??'???쇨컖??/li>
+                        <li><strong>?붽컖?쇨컖??</strong> ??媛곸씠 '?붽컖(90??180???ъ씠)'???쇨컖??/li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>4. ?ш컖?뺤쓽 議깅낫</h2>
+                <div class="theory-body">
+                    <div class="math-rule-box">
+                        <h3>?ш컖?뺤쓽 ?닿컖 怨듭떇</h3>
+                        <p>紐⑤뱺 ?ш컖?뺤쓽 ??媛곸쓽 ?ш린???⑹? 臾댁“嫄?\(360^\circ\)?낅땲?? (?쇨컖??2媛쒕줈 履쇨갇 ???덇린 ?뚮Ц! \(180^\circ \times 2\))</p>
+                        <p class="formula"><span>?ш컖???닿컖????= \(360^\circ\)</span></p>
+                    </div>
+                    
+                    <h3>?ш컖??吏꾪솕 怨쇱젙 (?ы븿 愿怨?</h3>
+                    <ul class="bullet-list">
+                        <li><strong>?щ떎由ш섦:</strong> ?됲뻾??蹂????'?????대씪???덈뒗 ?ш컖??/li>
+                        <li><strong>?됲뻾?щ???</strong> 留덉＜ 蹂대뒗 '??????蹂???쒕줈 ?됲뻾???ш컖????<strong>(?깆쭏) 留덉＜ 蹂대뒗 蹂??湲몄씠媛 媛숆퀬, 留덉＜ 蹂대뒗 媛곸쓽 ?ш린媛 媛숈뒿?덈떎. ?댁썐????媛곸쓣 ?뷀븯硫?180?꾧? ?⑸땲??</strong></li>
+                        <li><strong>留덈쫫紐?</strong> ??蹂??湲몄씠媛 紐⑤몢 媛숈? ?ш컖????<strong>(?깆쭏) 留덉＜ 蹂대뒗 媛곸쓽 ?ш린媛 媛숈뒿?덈떎.</strong></li>
+                        <li><strong>吏곸궗媛곹삎:</strong> ??媛곸씠 紐⑤몢 吏곴컖(90?????ш컖????<strong>(?깆쭏) ???媛곸꽑??湲몄씠媛 ?꾨꼍?섍쾶 媛숈뒿?덈떎.</strong></li>
+                        <li><strong>?뺤궗媛곹삎:</strong> ??蹂??湲몄씠媛 媛숆퀬 ??媛곸씠 紐⑤몢 吏곴컖???꾩쟾泥??ш컖????<strong>(媛???꾨꼍!) 吏곸궗媛곹삎???섍퀬 留덈쫫紐⑤룄 ?⑸땲??</strong></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>5. ?ㅺ컖?뺢낵 ?뺣떎媛곹삎</h2>
+                <div class="theory-body">
+                    <img src="./images/math_polygon.svg" alt="?ㅺ컖???媛곸꽑" class="textbook-img">
+                    
+                    <h3>?ㅺ컖?뺤씠??</h3>
+                    <p>?좊텇?쇰줈留??섎윭?몄씤 ?꾪삎?낅땲?? (怨≪꽑???덇굅???ル젮?덉쑝硫??ㅺ컖?뺤씠 ?꾨떃?덈떎.)</p>
+
+                    <div class="highlight-box success">
+                        <h3>?뺣떎媛곹삎??議곌굔</h3>
+                        <p>諛섎뱶??<strong>??蹂??湲몄씠媛 紐⑤몢 媛숆퀬, ??媛곸쓽 ?ш린媛 紐⑤몢 媛숈븘??/strong> ?뺣떎媛곹삎?대씪怨?遺由낅땲?? (??以??섎굹?쇰룄 ?ㅻⅤ硫????⑸땲??)</p>
+                    </div>
+
+                    <div class="math-rule-box">
+                        <h3>?媛곸꽑怨??ㅺ컖??怨듭떇</h3>
+                        <p><strong>?媛곸꽑:</strong> ?ㅺ컖?뺤뿉???댁썐?섏? ?딅뒗 ??瑗?쭞?먯쓣 ?댁? ?좊텇?낅땲??</p>
+                        <p>?쇨컖?뺤? ?媛곸꽑??洹몄쓣 ???녾퀬(0媛?, ?ш컖?뺤쓽 ?媛곸꽑? 臾댁“嫄?2媛쒖엯?덈떎.</p>
+                        <p class="formula"><span>\(n\)媛곹삎???媛곸꽑 媛쒖닔 = \(\frac{n \times (n-3)}{2}\)</span></p>
+                        <p class="formula"><span>\(n\)媛곹삎???닿컖??珥앺빀 = \(180^\circ \times (n-2)\)</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="theory-section">
+                <h2>6. 爰얠??좉렇?섑봽</h2>
+
+                <!-- 媛쒕뀗 1 -->
+                <div class="theory-card">
+                    <h3>?뱦 媛쒕뀗 1 ??爰얠??좉렇?섑봽??</h3>
+                    <p style="margin-bottom:12px;"><strong>?곗냽?곸쑝濡?蹂?뷀븯????/strong>???먯쑝濡??쒖떆?섍퀬, 洹??먮뱾??<strong>?좊텇?쇰줈 ?댁뼱</strong> 洹몃┛ 洹몃옒??/p>
+                    <div class="graph-compare-wrap">
+                        <div class="graph-box">
+                            <p class="graph-label">???쒓컖蹂?湲곗삩 ?덈쭑?洹몃옒?꾠?/p>
+                            <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                                <line x1="35" y1="10" x2="35" y2="100" stroke="#bbb" stroke-width="1"/>
+                                <line x1="35" y1="100" x2="195" y2="100" stroke="#bbb" stroke-width="1"/>
+                                <text x="28" y="103" font-size="8" text-anchor="end" fill="#666">0</text>
+                                <text x="28" y="78" font-size="8" text-anchor="end" fill="#666">5</text>
+                                <text x="28" y="53" font-size="8" text-anchor="end" fill="#666">10</text>
+                                <text x="50" y="113" font-size="7" text-anchor="middle" fill="#666">?ㅼ쟾8??/text>
+                                <text x="90" y="113" font-size="7" text-anchor="middle" fill="#666">?ㅼ쟾10??/text>
+                                <text x="130" y="113" font-size="7" text-anchor="middle" fill="#666">??2??/text>
+                                <text x="170" y="113" font-size="7" text-anchor="middle" fill="#666">?ㅽ썑2??/text>
+                                <rect x="40" y="80" width="20" height="20" fill="#E8C96A"/>
+                                <rect x="80" y="65" width="20" height="35" fill="#E8C96A"/>
+                                <rect x="120" y="55" width="20" height="45" fill="#E8C96A"/>
+                                <rect x="160" y="45" width="20" height="55" fill="#E8C96A"/>
+                                <text x="50" y="78" font-size="7" text-anchor="middle" fill="#555">2??/text>
+                                <text x="90" y="63" font-size="7" text-anchor="middle" fill="#555">5??/text>
+                                <text x="130" y="53" font-size="7" text-anchor="middle" fill="#555">8??/text>
+                                <text x="170" y="43" font-size="7" text-anchor="middle" fill="#555">10??/text>
+                            </svg>
+                        </div>
+                        <div class="graph-box">
+                            <p class="graph-label">???쒓컖蹂?湲곗삩 ?덇봅??좉렇?섑봽??/p>
+                            <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                                <line x1="35" y1="10" x2="35" y2="100" stroke="#bbb" stroke-width="1"/>
+                                <line x1="35" y1="100" x2="195" y2="100" stroke="#bbb" stroke-width="1"/>
+                                <line x1="35" y1="75" x2="195" y2="75" stroke="#eee" stroke-width="1"/>
+                                <line x1="35" y1="50" x2="195" y2="50" stroke="#eee" stroke-width="1"/>
+                                <text x="28" y="103" font-size="8" text-anchor="end" fill="#666">0</text>
+                                <text x="28" y="78" font-size="8" text-anchor="end" fill="#666">5</text>
+                                <text x="28" y="53" font-size="8" text-anchor="end" fill="#666">10</text>
+                                <text x="50" y="113" font-size="7" text-anchor="middle" fill="#666">8??/text>
+                                <text x="90" y="113" font-size="7" text-anchor="middle" fill="#666">10??/text>
+                                <text x="130" y="113" font-size="7" text-anchor="middle" fill="#666">12??/text>
+                                <text x="170" y="113" font-size="7" text-anchor="middle" fill="#666">2??/text>
+                                <polyline points="50,80 90,65 130,55 170,45" fill="none" stroke="#E74C3C" stroke-width="2.5"/>
+                                <circle cx="50" cy="80" r="4" fill="#E74C3C"/>
+                                <circle cx="90" cy="65" r="4" fill="#E74C3C"/>
+                                <circle cx="130" cy="55" r="4" fill="#E74C3C"/>
+                                <circle cx="170" cy="45" r="4" fill="#E74C3C"/>
+                                <text x="50" y="73" font-size="7" text-anchor="middle" fill="#C0392B">2??/text>
+                                <text x="90" y="58" font-size="7" text-anchor="middle" fill="#C0392B">5??/text>
+                                <text x="130" y="48" font-size="7" text-anchor="middle" fill="#C0392B">8??/text>
+                                <text x="170" y="38" font-size="7" text-anchor="middle" fill="#C0392B">10??/text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="concept-note">
+                        <p>??爰얠??좉렇?섑봽??留됰?洹몃옒?꾩뿉??媛?留됰? 瑗??湲곕? ?좊텇?쇰줈 ?댁뼱 洹몃┛ 寃껋엯?덈떎. ?쒓컙???곕Ⅸ <strong>蹂??/strong>瑜??뚯븘蹂닿린 ???쎌뒿?덈떎.</p>
+                    </div>
+                    <div class="concept-note wave-note" style="margin-top:10px;">
+                        <p>?곤툘 <strong>臾쇨껐???? ?ъ슜</strong> ???꾩슂 ?녿뒗 鍮?遺遺꾩쓣 以꾩씠硫?蹂?붾? ???ш쾶 蹂????덉뒿?덈떎.</p>
+                        <div class="graph-compare-wrap" style="margin-top:10px;">
+                            <div class="graph-box">
+                                <p class="graph-label">臾쇨껐???놁쓬 ??蹂?붽? ?묎쾶 蹂댁엫</p>
+                                <svg viewBox="0 0 150 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                                    <line x1="30" y1="10" x2="30" y2="95" stroke="#bbb" stroke-width="1"/>
+                                    <line x1="30" y1="95" x2="140" y2="95" stroke="#bbb" stroke-width="1"/>
+                                    <text x="23" y="98" font-size="8" text-anchor="end" fill="#666">0</text>
+                                    <text x="23" y="65" font-size="8" text-anchor="end" fill="#666">10</text>
+                                    <text x="23" y="35" font-size="8" text-anchor="end" fill="#666">20</text>
+                                    <text x="55" y="105" font-size="7" text-anchor="middle" fill="#666">1??/text>
+                                    <text x="90" y="105" font-size="7" text-anchor="middle" fill="#666">2??/text>
+                                    <text x="125" y="105" font-size="7" text-anchor="middle" fill="#666">3??/text>
+                                    <polyline points="55,62 90,55 125,48" fill="none" stroke="#3498DB" stroke-width="2"/>
+                                    <circle cx="55" cy="62" r="3" fill="#3498DB"/>
+                                    <circle cx="90" cy="55" r="3" fill="#3498DB"/>
+                                    <circle cx="125" cy="48" r="3" fill="#3498DB"/>
+                                </svg>
+                            </div>
+                            <div class="graph-box">
+                                <p class="graph-label">臾쇨껐???ъ슜 ??蹂?붽? ?쒕졆!</p>
+                                <svg viewBox="0 0 150 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                                    <line x1="30" y1="10" x2="30" y2="95" stroke="#bbb" stroke-width="1"/>
+                                    <line x1="30" y1="95" x2="140" y2="95" stroke="#bbb" stroke-width="1"/>
+                                    <!-- 臾쇨껐??-->
+                                    <path d="M30,82 Q34,78 38,82 Q42,86 46,82 Q50,78 54,82" fill="none" stroke="#999" stroke-width="1.5"/>
+                                    <text x="23" y="80" font-size="8" text-anchor="end" fill="#666">10</text>
+                                    <text x="23" y="50" font-size="8" text-anchor="end" fill="#666">15</text>
+                                    <text x="23" y="20" font-size="8" text-anchor="end" fill="#666">20</text>
+                                    <text x="55" y="105" font-size="7" text-anchor="middle" fill="#666">1??/text>
+                                    <text x="90" y="105" font-size="7" text-anchor="middle" fill="#666">2??/text>
+                                    <text x="125" y="105" font-size="7" text-anchor="middle" fill="#666">3??/text>
+                                    <polyline points="55,65 90,38 125,15" fill="none" stroke="#E74C3C" stroke-width="2"/>
+                                    <circle cx="55" cy="65" r="3" fill="#E74C3C"/>
+                                    <circle cx="90" cy="38" r="3" fill="#E74C3C"/>
+                                    <circle cx="125" cy="15" r="3" fill="#E74C3C"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 媛쒕뀗 2 -->
+                <div class="theory-card">
+                    <h3>?뱦 媛쒕뀗 2 ??爰얠??좉렇?섑봽濡??섑??닿린</h3>
+                    <div class="graph-compare-wrap" style="align-items:flex-start;">
+                        <div style="flex:1;min-width:140px;">
+                            <p class="graph-label" style="text-align:left;">?좎쭨蹂?以꾨꽆湲?湲곕줉</p>
+                            <table class="theory-table">
+                                <thead><tr><th>?좎쭨(??</th><th>1</th><th>2</th><th>3</th></tr></thead>
+                                <tbody><tr><td>?잛닔(??</td><td>42</td><td>54</td><td>60</td></tr></tbody>
+                            </table>
+                            <ol class="step-list" style="margin-top:12px;">
+                                <li>??媛濡??좎쭨), ?몃줈(?잛닔) ?뺥븯湲?/li>
+                                <li>??臾쇨껐???꾩튂 ?뺥븯怨?洹몃━湲?/li>
+                                <li>???몃줈 ?덇툑 ??移??ш린 ?뺥븯湲?/li>
+                                <li>????李띻퀬 ?좊텇?쇰줈 ?뉕린</li>
+                                <li>???쒕ぉ ?곌린</li>
+                            </ol>
+                        </div>
+                        <div class="graph-box" style="flex:1;min-width:150px;">
+                            <p class="graph-label">?좎쭨蹂?以꾨꽆湲?湲곕줉</p>
+                            <svg viewBox="0 0 180 145" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                                <line x1="40" y1="15" x2="40" y2="115" stroke="#bbb" stroke-width="1"/>
+                                <line x1="40" y1="115" x2="170" y2="115" stroke="#bbb" stroke-width="1"/>
+                                <!-- 臾쇨껐??-->
+                                <path d="M40,102 Q44,98 48,102 Q52,106 56,102" fill="none" stroke="#888" stroke-width="1.5"/>
+                                <line x1="37" y1="95" x2="40" y2="95" stroke="#aaa" stroke-width="1"/>
+                                <line x1="37" y1="70" x2="40" y2="70" stroke="#aaa" stroke-width="1"/>
+                                <line x1="37" y1="45" x2="40" y2="45" stroke="#aaa" stroke-width="1"/>
+                                <line x1="37" y1="20" x2="40" y2="20" stroke="#aaa" stroke-width="1"/>
+                                <text x="33" y="99" font-size="9" text-anchor="end" fill="#555">40</text>
+                                <text x="33" y="74" font-size="9" text-anchor="end" fill="#555">50</text>
+                                <text x="33" y="49" font-size="9" text-anchor="end" fill="#555">60</text>
+                                <text x="33" y="24" font-size="9" text-anchor="end" fill="#555">70</text>
+                                <text x="8" y="70" font-size="8" fill="#666" transform="rotate(-90,10,70)">?잛닔(??</text>
+                                <text x="75" y="127" font-size="9" text-anchor="middle" fill="#555">1</text>
+                                <text x="107" y="127" font-size="9" text-anchor="middle" fill="#555">2</text>
+                                <text x="139" y="127" font-size="9" text-anchor="middle" fill="#555">3</text>
+                                <text x="107" y="140" font-size="8" text-anchor="middle" fill="#888">?좎쭨(??</text>
+                                <polyline points="75,95 107,70 139,45" fill="none" stroke="#E74C3C" stroke-width="2.5"/>
+                                <circle cx="75" cy="95" r="4" fill="#E74C3C"/>
+                                <circle cx="107" cy="70" r="4" fill="#E74C3C"/>
+                                <circle cx="139" cy="45" r="4" fill="#E74C3C"/>
+                                <text x="75" y="88" font-size="8" text-anchor="middle" fill="#C0392B">42</text>
+                                <text x="107" y="63" font-size="8" text-anchor="middle" fill="#C0392B">54</text>
+                                <text x="139" y="38" font-size="8" text-anchor="middle" fill="#C0392B">60</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 媛쒕뀗 3 -->
+                <div class="theory-card">
+                    <h3>?뱦 媛쒕뀗 3 ??爰얠??좉렇?섑봽 ?댁꽍?섍린</h3>
+                    <div class="graph-box" style="max-width:360px;margin:0 auto 14px;">
+                        <p class="graph-label">?좎쭨蹂??좊쭏??以꾧린??湲몄씠</p>
+                        <svg viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                            <line x1="42" y1="15" x2="42" y2="125" stroke="#bbb" stroke-width="1"/>
+                            <line x1="42" y1="125" x2="265" y2="125" stroke="#bbb" stroke-width="1"/>
+                            <line x1="42" y1="95" x2="265" y2="95" stroke="#eee" stroke-width="1" stroke-dasharray="3,2"/>
+                            <line x1="42" y1="65" x2="265" y2="65" stroke="#eee" stroke-width="1" stroke-dasharray="3,2"/>
+                            <line x1="42" y1="35" x2="265" y2="35" stroke="#eee" stroke-width="1" stroke-dasharray="3,2"/>
+                            <!-- 臾쇨껐??-->
+                            <path d="M42,112 Q46,108 50,112 Q54,116 58,112" fill="none" stroke="#999" stroke-width="1.5"/>
+                            <text x="35" y="99" font-size="8" text-anchor="end" fill="#555">20</text>
+                            <text x="35" y="69" font-size="8" text-anchor="end" fill="#555">25</text>
+                            <text x="35" y="39" font-size="8" text-anchor="end" fill="#555">30</text>
+                            <text x="8" y="75" font-size="8" fill="#666" transform="rotate(-90,10,75)">湲몄씠(cm)</text>
+                            <text x="75" y="137" font-size="8" text-anchor="middle" fill="#555">1</text>
+                            <text x="120" y="137" font-size="8" text-anchor="middle" fill="#555">8</text>
+                            <text x="170" y="137" font-size="8" text-anchor="middle" fill="#555">15</text>
+                            <text x="220" y="137" font-size="8" text-anchor="middle" fill="#555">22</text>
+                            <text x="150" y="150" font-size="8" text-anchor="middle" fill="#888">?좎쭨(??</text>
+                            <!-- 爰얠???(媛??媛?뚮Ⅸ 援ш컙 媛뺤“) -->
+                            <line x1="75" y1="113" x2="120" y2="78" stroke="#F39C12" stroke-width="4" stroke-linecap="round"/>
+                            <polyline points="75,113 120,78 170,55 220,32" fill="none" stroke="#E74C3C" stroke-width="2.5"/>
+                            <circle cx="75" cy="113" r="4" fill="#E74C3C"/>
+                            <circle cx="120" cy="78" r="4" fill="#E74C3C"/>
+                            <circle cx="170" cy="55" r="4" fill="#E74C3C"/>
+                            <circle cx="220" cy="32" r="4" fill="#E74C3C"/>
+                            <!-- 15???먯꽑 -->
+                            <line x1="170" y1="55" x2="170" y2="125" stroke="#3498DB" stroke-width="1.5" stroke-dasharray="4,3"/>
+                            <text x="175" y="52" font-size="8" fill="#2980B9">28cm</text>
+                            <!-- 媛??留롮씠 ?먮? 援ш컙 ?ㅻ챸 -->
+                            <text x="90" y="73" font-size="7" fill="#E67E22">媛??留롮씠 ?먮엺??/text>
+                            <!-- 22?쇱씠 媛??????-->
+                            <text x="222" y="26" font-size="7" fill="#C0392B">媛??????/text>
+                        </svg>
+                    </div>
+                    <div class="concept-note">
+                        <ul class="step-list">
+                            <li>??15?쇱쓽 以꾧린 湲몄씠 ??<strong>28 cm</strong> (?뚮? ?먯꽑)</li>
+                            <li>??以꾧린媛 媛??湲?????<strong>22??/strong> (?먯씠 媛???믪? 怨?</li>
+                            <li>??以꾧린媛 媛??留롮씠 ?먮? ????<strong>1??8??/strong> (二쇳솴??援ш컙 ???좎씠 媛??媛?뚮쫫)</li>
+                            <li>??1?쇰???22?쇨퉴吏 <strong>袁몄???/strong> ?먮옄?듬땲??</li>
+                        </ul>
+                    </div>
+                    <div class="graph-compare-wrap" style="margin-top:14px;">
+                        <div class="graph-box mini-graph">
+                            <p class="graph-label">??利앷?(?곸쓬)</p>
+                            <svg viewBox="0 0 80 55" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                                <line x1="8" y1="5" x2="8" y2="48" stroke="#ccc" stroke-width="1"/><line x1="8" y1="48" x2="73" y2="48" stroke="#ccc" stroke-width="1"/>
+                                <polyline points="15,42 40,36 65,30" fill="none" stroke="#27AE60" stroke-width="2"/>
+                                <circle cx="15" cy="42" r="3" fill="#27AE60"/><circle cx="40" cy="36" r="3" fill="#27AE60"/><circle cx="65" cy="30" r="3" fill="#27AE60"/>
+                            </svg>
+                        </div>
+                        <div class="graph-box mini-graph">
+                            <p class="graph-label">??利앷?(留롮쓬)</p>
+                            <svg viewBox="0 0 80 55" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                                <line x1="8" y1="5" x2="8" y2="48" stroke="#ccc" stroke-width="1"/><line x1="8" y1="48" x2="73" y2="48" stroke="#ccc" stroke-width="1"/>
+                                <polyline points="15,45 40,25 65,8" fill="none" stroke="#27AE60" stroke-width="2"/>
+                                <circle cx="15" cy="45" r="3" fill="#27AE60"/><circle cx="40" cy="25" r="3" fill="#27AE60"/><circle cx="65" cy="8" r="3" fill="#27AE60"/>
+                            </svg>
+                        </div>
+                        <div class="graph-box mini-graph">
+                            <p class="graph-label">??媛먯냼</p>
+                            <svg viewBox="0 0 80 55" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                                <line x1="8" y1="5" x2="8" y2="48" stroke="#ccc" stroke-width="1"/><line x1="8" y1="48" x2="73" y2="48" stroke="#ccc" stroke-width="1"/>
+                                <polyline points="15,10 40,27 65,44" fill="none" stroke="#E74C3C" stroke-width="2"/>
+                                <circle cx="15" cy="10" r="3" fill="#E74C3C"/><circle cx="40" cy="27" r="3" fill="#E74C3C"/><circle cx="65" cy="44" r="3" fill="#E74C3C"/>
+                            </svg>
+                        </div>
+                        <div class="graph-box mini-graph">
+                            <p class="graph-label">???쇱젙</p>
+                            <svg viewBox="0 0 80 55" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                                <line x1="8" y1="5" x2="8" y2="48" stroke="#ccc" stroke-width="1"/><line x1="8" y1="48" x2="73" y2="48" stroke="#ccc" stroke-width="1"/>
+                                <polyline points="15,28 40,28 65,28" fill="none" stroke="#3498DB" stroke-width="2"/>
+                                <circle cx="15" cy="28" r="3" fill="#3498DB"/><circle cx="40" cy="28" r="3" fill="#3498DB"/><circle cx="65" cy="28" r="3" fill="#3498DB"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 媛쒕뀗 4 -->
+                <div class="theory-card">
+                    <h3>?뱦 媛쒕뀗 4 ???먮즺瑜??섏쭛?섏뿬 爰얠??좉렇?섑봽濡??섑??닿린</h3>
+                    <div class="flow-steps">
+                        <div class="flow-step">???먮즺 ?섏쭛</div>
+                        <div class="flow-arrow">??/div>
+                        <div class="flow-step">???쒕줈 ?뺣━</div>
+                        <div class="flow-arrow">??/div>
+                        <div class="flow-step">??洹몃옒??洹몃━湲?/div>
+                    </div>
+                    <div class="graph-compare-wrap" style="align-items:flex-start;margin-top:12px;">
+                        <div style="flex:1;min-width:130px;">
+                            <p class="graph-label" style="text-align:left;">?붾퀎 ??쓽 湲몄씠</p>
+                            <table class="theory-table">
+                                <thead><tr><th>????</th><th>2</th><th>5</th><th>8</th><th>11</th></tr></thead>
+                                <tbody><tr><td>??쓽 湲몄씠(?쒓컙)</td><td>11</td><td>14</td><td>13</td><td>10</td></tr></tbody>
+                            </table>
+                        </div>
+                        <div class="graph-box" style="flex:1;min-width:150px;">
+                            <p class="graph-label">?붾퀎 ??쓽 湲몄씠</p>
+                            <svg viewBox="0 0 200 145" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                                <line x1="38" y1="15" x2="38" y2="115" stroke="#bbb" stroke-width="1"/>
+                                <line x1="38" y1="115" x2="185" y2="115" stroke="#bbb" stroke-width="1"/>
+                                <path d="M38,103 Q42,99 46,103 Q50,107 54,103" fill="none" stroke="#888" stroke-width="1.5"/>
+                                <text x="31" y="102" font-size="8" text-anchor="end" fill="#555">10</text>
+                                <text x="31" y="72" font-size="8" text-anchor="end" fill="#555">12</text>
+                                <text x="31" y="42" font-size="8" text-anchor="end" fill="#555">14</text>
+                                <text x="31" y="18" font-size="8" text-anchor="end" fill="#555">16</text>
+                                <text x="65" y="127" font-size="8" text-anchor="middle" fill="#555">2</text>
+                                <text x="100" y="127" font-size="8" text-anchor="middle" fill="#555">5</text>
+                                <text x="140" y="127" font-size="8" text-anchor="middle" fill="#555">8</text>
+                                <text x="170" y="127" font-size="8" text-anchor="middle" fill="#555">11</text>
+                                <text x="115" y="140" font-size="8" text-anchor="middle" fill="#888">????</text>
+                                <polyline points="65,87 100,42 140,57 170,102" fill="none" stroke="#E74C3C" stroke-width="2.5"/>
+                                <circle cx="65" cy="87" r="4" fill="#E74C3C"/>
+                                <circle cx="100" cy="42" r="4" fill="#E74C3C"/>
+                                <circle cx="140" cy="57" r="4" fill="#E74C3C"/>
+                                <circle cx="170" cy="102" r="4" fill="#E74C3C"/>
+                                <text x="65" y="80" font-size="7" text-anchor="middle" fill="#C0392B">11</text>
+                                <text x="100" y="35" font-size="7" text-anchor="middle" fill="#C0392B">14</text>
+                                <text x="140" y="50" font-size="7" text-anchor="middle" fill="#C0392B">13</text>
+                                <text x="170" y="95" font-size="7" text-anchor="middle" fill="#C0392B">10</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 媛쒕뀗 5 -->
+                <div class="theory-card">
+                    <h3>?뱦 媛쒕뀗 5 ???먮즺???뚮쭪? 洹몃옒???좏깮?섍린</h3>
+                    <div class="graph-compare-wrap">
+                        <div class="graph-box">
+                            <p class="graph-label">?뱤 留됰?洹몃옒?????섎웾 <strong>鍮꾧탳</strong>???몃━</p>
+                            <svg viewBox="0 0 190 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                                <line x1="28" y1="10" x2="28" y2="95" stroke="#bbb" stroke-width="1"/>
+                                <line x1="28" y1="95" x2="180" y2="95" stroke="#bbb" stroke-width="1"/>
+                                <rect x="38" y="48" width="25" height="47" fill="#E8C96A"/>
+                                <rect x="75" y="35" width="25" height="60" fill="#E8C96A"/>
+                                <rect x="112" y="50" width="25" height="45" fill="#E8C96A"/>
+                                <rect x="149" y="25" width="25" height="70" fill="#E8C96A"/>
+                                <text x="50" y="107" font-size="7" text-anchor="middle" fill="#666">9??/text>
+                                <text x="87" y="107" font-size="7" text-anchor="middle" fill="#666">10??/text>
+                                <text x="124" y="107" font-size="7" text-anchor="middle" fill="#666">11??/text>
+                                <text x="161" y="107" font-size="7" text-anchor="middle" fill="#666">12??/text>
+                                <text x="100" y="118" font-size="7" text-anchor="middle" fill="#E67E22">?섎웾 留롪퀬 ?곸쓬 鍮꾧탳???몃━</text>
+                            </svg>
+                        </div>
+                        <div class="graph-box">
+                            <p class="graph-label">?뱢 爰얠??좉렇?섑봽 ??蹂???뚯븙???몃━</p>
+                            <svg viewBox="0 0 190 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                                <line x1="28" y1="10" x2="28" y2="95" stroke="#bbb" stroke-width="1"/>
+                                <line x1="28" y1="95" x2="180" y2="95" stroke="#bbb" stroke-width="1"/>
+                                <polyline points="50,48 87,35 124,50 161,25" fill="none" stroke="#E74C3C" stroke-width="2.5"/>
+                                <circle cx="50" cy="48" r="4" fill="#E74C3C"/>
+                                <circle cx="87" cy="35" r="4" fill="#E74C3C"/>
+                                <circle cx="124" cy="50" r="4" fill="#E74C3C"/>
+                                <circle cx="161" cy="25" r="4" fill="#E74C3C"/>
+                                <text x="50" y="107" font-size="7" text-anchor="middle" fill="#666">9??/text>
+                                <text x="87" y="107" font-size="7" text-anchor="middle" fill="#666">10??/text>
+                                <text x="124" y="107" font-size="7" text-anchor="middle" fill="#666">11??/text>
+                                <text x="161" y="107" font-size="7" text-anchor="middle" fill="#666">12??/text>
+                                <text x="100" y="118" font-size="7" text-anchor="middle" fill="#E74C3C">?쒓컙???곕Ⅸ 蹂???뚯븙???몃━</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="concept-note" style="margin-top:12px;">
+                        <p>?뵻 <strong>留됰?洹몃옒??</strong> ?섎웾??留롪퀬 ?곸쓬???쒕늿??鍮꾧탳????/p>
+                        <p>?뵻 <strong>爰얠??좉렇?섑봽:</strong> ?쒓컙???곕Ⅸ ?곗냽?곸씤 蹂?붾? ?뚯븘蹂???/p>
+                    </div>
+                </div>
+
+            </section>
+        </article>
+
+        <!-- ?댁쫰 ??肄섑뀗痢?-->
+                <article id="quiz" class="subject-content">
+            <header class="subject-header">
+                <h1 class="subject-title">?쭬 ?ㅼ씠?대? ?쒕뜡 ?댁쫰</h1>
+                <p class="subject-subtitle">留ㅻ쾲 ?묒냽???뚮쭏??臾몄젣媛 ?щ씪吏묐땲?? ?대줎????湲곗뼲?섍퀬 ?덈뒗吏 ?뺤씤?대낫?몄슂.</p>
+            </header>
+
+            <div class="quiz-container">
+                <div id="dynamicQuizContainer">
+                    <!-- 臾몄젣?ㅼ씠 ?ш린???뚮뜑留곷맗?덈떎 -->
+                </div>
+                <button class="action-btn submit-quiz-btn" onclick="submitQuiz()">?뮣 ?뺣떟 ?뺤씤?섍린</button>
+                <div id="quizResult" class="quiz-result"></div>
+            </div>
+        </article>
+    </main>
+
+    <!-- ?뱀쓬 ?숈젣 ?щ━湲?紐⑤떖 -->
+    <div id="recordModal" class="modal-overlay" style="display: none; z-index: 9999;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeRecordModal()">&times;</span>
+            <h2>?럺截????숈젣 ?щ━湲?/h2>
+            <p>蹂몄씤 ?대쫫???곴퀬 留덉씠??踰꾪듉???꾨Ⅴ?몄슂.</p>
+            
+            <div class="record-form">
+                <input type="text" id="studentName" placeholder="?대쫫???곸뼱二쇱꽭??(?? ?띻만??" class="input-field">
+            </div>
+
+            <div class="record-controls">
+                <button id="startRecordBtn" class="action-btn start-btn" onclick="startRecording()">?뵶 ?뱀쓬 ?쒖옉</button>
+                <button id="stopRecordBtn" class="action-btn stop-btn" onclick="stopRecording()" style="display: none;">?뱄툘 ?뱀쓬 以묒? (?뱀쓬 以?..)</button>
+            </div>
+            
+            <div id="audioPlaybackContainer" class="audio-container" style="display: none;">
+                <p>誘몃━?ｊ린:</p>
+                <audio id="audioPlayback" controls></audio>
+                <button id="submitRecordBtn" class="action-btn submit-btn" onclick="submitRecording()">?뱀쓬 ?쒖텧?섍린</button>
+            </div>
+            
+            <p id="recordStatusMessage" class="status-message"></p>
+        </div>
+    </div>
+
+    <!-- 移쒓뎄???뱀쓬 ?ｊ린 (寃뚯떆?? 紐⑤떖 -->
+    <div id="boardModal" class="modal-overlay" style="display: none; z-index: 9999;">
+        <div class="modal-content large-modal">
+            <span class="close-btn" onclick="closeBoardModal()">&times;</span>
+            <h2 style="color: #27AE60;">?렒 ?ㅽ븿猿??ｋ뒗 ?숈젣 寃뚯떆??/h2>
+            <p style="font-size: 0.9rem; color: #7F8C8D; margin-bottom: 10px;">移쒓뎄?ㅼ씠 ?쒖텧???숈젣媛 ?ㅼ떆媛꾩쑝濡??щ씪?듬땲??</p>
+            <div class="board-section">
+                <div id="publicAudioBoard" class="audio-board">
+                    <p style="text-align: center; color: #7F8C8D; padding: 20px;">?곗씠?곕? 遺덈윭?ㅻ뒗 以묒엯?덈떎...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- 吏덈Ц ?④린湲?紐⑤떖 -->
+    <div id="qnaModal" class="modal-overlay" style="display: none; z-index: 9999;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeQnaModal()">&times;</span>
+            <h2>??"?댄빐媛 ???쇱슂" 吏덈Ц?섍린</h2>
+            <p>怨듬??섎떎媛 紐⑤Ⅴ??遺遺꾩쓣 ?붿쭅?섍쾶 ?④꺼二쇱꽭??</p>
+            
+            <div class="record-form">
+                <input type="text" id="qnaName" placeholder="?대쫫???곸뼱二쇱꽭?? class="input-field">
+                <textarea id="qnaText" placeholder="?대뼡 遺遺꾩씠 ?댄빐媛 ???섎굹?? ?명븯寃??곸뼱二쇱꽭??" class="input-field" style="margin-top: 10px;"></textarea>
+            </div>
+            
+            <button id="submitQnaBtn" class="action-btn submit-btn" style="width: 100%; margin-top: 20px;" onclick="submitQna()">吏덈Ц ?깅줉?섍린</button>
+            <p id="qnaStatusMessage" class="status-message"></p>
+        </div>
+    </div>
+
+    <!-- 吏덈Ц 寃뚯떆??紐⑤떖 -->
+    <div id="qnaBoardModal" class="modal-overlay" style="display: none; z-index: 9999;">
+        <div class="modal-content large-modal">
+            <span class="close-btn" onclick="closeQnaBoardModal()">&times;</span>
+            <h2 style="color: #8E44AD;">?뮕 移쒓뎄?ㅼ쓽 吏덈Ц 寃뚯떆??/h2>
+            <p style="font-size: 0.9rem; color: #7F8C8D; margin-bottom: 10px;">?꾧뎄??紐⑤? ???덉뼱?? 移쒓뎄?ㅼ쓽 吏덈Ц???④퍡 ?뺤씤?대낫?몄슂.</p>
+            <div class="board-section">
+                <div id="qnaBoardContent" class="audio-board">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js?v=14"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

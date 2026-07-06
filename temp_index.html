@@ -7,7 +7,7 @@
     <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>롯데 공부방</title>
-    <link rel="stylesheet" href="style.css?v=16">
+    <link rel="stylesheet" href="style.css?v=3">
     
     <!-- Firebase SDK (Compat Version) -->
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
@@ -410,105 +410,18 @@
 
             <section class="theory-section">
                 <h2>6. 꺾은선그래프</h2>
-
-                <div class="theory-card">
-                    <h3>📌 개념 1 - 꺾은선그래프란?</h3>
-                    <p><strong>연속적으로 변화하는 양</strong>을 점으로 표시하고, 그 점들을 <strong>선분으로 이어 그린 그래프</strong>를 <strong>꺾은선그래프</strong>라고 합니다.</p>
-                    <div class="highlight-box">
-                        <p>📊 <strong>막대그래프 vs 꺾은선그래프</strong></p>
-                        <ul class="bullet-list">
-                            <li>막대그래프: 수량이 많고 적음을 <strong>한눈에 비교</strong>하기 좋습니다.</li>
-                            <li>꺾은선그래프: 시간에 따라 <strong>연속적으로 변화하는 모습</strong>을 알아보기 좋습니다. (예: 시각별 기온의 변화)</li>
-                        </ul>
-                    </div>
+                <div class="theory-body">
+                    <img src="./images/math_graph.svg" alt="꺾은선그래프" class="textbook-img">
+                    
                     <div class="highlight-box success">
-                        <p>〰️ <strong>물결선(≈) 사용법</strong></p>
-                        <p>꺾은선그래프에서 필요 없는 부분을 <strong>물결선(≈)으로 줄여서</strong> 나타내면, 세로 눈금 한 칸의 크기가 작아져서 변화하는 모습을 더 잘 나타낼 수 있습니다.</p>
-                    </div>
-                </div>
-
-                <div class="theory-card">
-                    <h3>📌 개념 2 - 꺾은선그래프로 나타내기</h3>
-                    <p>아래 표(날짜별 줄넘기 기록)를 꺾은선그래프로 나타내는 방법입니다.</p>
-                    <table class="theory-table">
-                        <thead><tr><th>날짜(일)</th><th>1</th><th>2</th><th>3</th></tr></thead>
-                        <tbody><tr><td>횟수(회)</td><td>42</td><td>54</td><td>60</td></tr></tbody>
-                    </table>
-                    <ol class="bullet-list" style="margin-top:12px;">
-                        <li>① <strong>가로와 세로 정하기:</strong> 가로에 '날짜', 세로에 '횟수'를 나타낼지 정합니다.</li>
-                        <li>② <strong>물결선 위치 정하기:</strong> 물결선을 넣는다면 어디에 넣을지 정하고, 물결선을 그립니다.</li>
-                        <li>③ <strong>눈금 크기 정하기:</strong> 가장 큰 값까지 나타낼 수 있도록 세로 눈금 한 칸의 크기를 정합니다.</li>
-                        <li>④ <strong>점 찍고 선분 잇기:</strong> 가로 눈금과 세로 눈금이 만나는 곳에 점을 찍고, 점들을 선분으로 잇습니다.</li>
-                        <li>⑤ <strong>알맞은 제목 쓰기</strong> ← 제목을 가장 먼저 써도 됩니다.</li>
-                    </ol>
-                </div>
-
-                <div class="theory-card">
-                    <h3>📌 개념 3 - 꺾은선그래프 해석하기</h3>
-                    <div class="highlight-box">
-                        <p>📈 <strong>선분의 기울어진 모양과 정도</strong>에 따라 자료의 변화를 알 수 있습니다.</p>
-                        <table class="theory-table" style="margin-top:10px;">
-                            <thead>
-                                <tr><th>모양</th><th>의미</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>오른쪽 위로 기울어짐 ↗</td><td>수량 <strong>증가</strong> (가파를수록 변화가 많음)</td></tr>
-                                <tr><td>오른쪽 아래로 기울어짐 ↘</td><td>수량 <strong>감소</strong> (가파를수록 변화가 많음)</td></tr>
-                                <tr><td>수평(가로) →</td><td>수량 <strong>일정</strong> (변화 없음)</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="highlight-box success" style="margin-top:12px;">
-                        <p>📍 <strong>[예시] 날짜별 토마토 줄기의 길이 그래프에서</strong></p>
+                        <h3>특징 및 그리는 방법</h3>
                         <ul class="bullet-list">
-                            <li>15일의 토마토 줄기의 길이: <strong>28 cm</strong></li>
-                            <li>토마토 줄기의 길이가 가장 긴 날: <strong>22일</strong> (점이 가장 높게 찍힌 때)</li>
-                            <li>토마토 줄기가 가장 많이 자란 때: <strong>1일과 8일 사이</strong> (선분이 오른쪽으로 가장 기울어진 때)</li>
-                            <li>토마토 줄기의 길이는 1일부터 22일까지 꾸준히 자랐습니다.</li>
+                            <li>시간이나 날짜 등 <strong>연속적으로 변하는 양(온도, 키, 몸무게 등)의 변화 흐름</strong>을 알아볼 때 가장 좋습니다.</li>
+                            <li>선이 위로 올라가면 양이 늘어난 것이고, 아래로 내려가면 줄어든 것입니다. 선이 가파를수록 변화가 큽니다!</li>
+                            <li>물결선(≈)을 사용하면 필요 없는 빈 공간을 줄여서 변화하는 모습을 더 크게 확대해서 보여줄 수 있습니다.</li>
                         </ul>
                     </div>
                 </div>
-
-                <div class="theory-card">
-                    <h3>📌 개념 4 - 자료를 수집하여 꺾은선그래프로 나타내기</h3>
-                    <div class="highlight-box">
-                        <p>순서: <strong>① 자료 수집하기 → ② 자료를 표로 나타내기 → ③ 표를 꺾은선그래프로 나타내기</strong></p>
-                    </div>
-                    <p style="margin-top:10px;"><strong>[예시] 월별 낮의 길이 자료 수집 → 표로 정리 → 꺾은선그래프로 그리기</strong></p>
-                    <table class="theory-table">
-                        <thead><tr><th>월(월)</th><th>2</th><th>5</th><th>8</th><th>11</th></tr></thead>
-                        <tbody><tr><td>낮의 길이(시간)</td><td>11</td><td>14</td><td>13</td><td>10</td></tr></tbody>
-                    </table>
-                    <p style="margin-top:8px; color:#555;">→ 이 표를 이용해 꺾은선그래프를 그리면 낮의 길이 변화를 한눈에 알 수 있습니다.</p>
-                </div>
-
-                <div class="theory-card">
-                    <h3>📌 개념 5 - 자료에 알맞은 그래프 선택하기</h3>
-                    <table class="theory-table">
-                        <thead>
-                            <tr><th>그래프 종류</th><th>언제 사용?</th><th>예시</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>막대그래프 📊</strong></td>
-                                <td>수량이 <strong>많고 적음을 비교</strong>할 때</td>
-                                <td>월별 사과 판매량 비교</td>
-                            </tr>
-                            <tr>
-                                <td><strong>꺾은선그래프 📈</strong></td>
-                                <td>시간에 따른 <strong>연속적인 변화</strong>를 볼 때</td>
-                                <td>월별 사과 판매량의 시간에 따른 변화</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="highlight-box" style="margin-top:12px;">
-                        <ul class="bullet-list">
-                            <li>막대그래프는 자료의 수량이 많고 적음을 한눈에 비교하기 편리한 그래프입니다.</li>
-                            <li>꺾은선그래프는 연속적인 변화를 한눈에 알아보기 편리한 그래프입니다.</li>
-                        </ul>
-                    </div>
-                </div>
-
             </section>
 
         </article>
@@ -599,11 +512,9 @@
             </div>
         </div>
     </div>
-    <script src="script.js?v=16"></script>
+    <script src="script.js?v=3"></script>
 </body>
 </html>
-
-
 
 
 
