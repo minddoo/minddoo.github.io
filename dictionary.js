@@ -1,17 +1,4 @@
-﻿// Global Hamburger Menu Logic
-document.addEventListener("DOMContentLoaded", () => {
-    const hamburgerBtn = document.getElementById("hamburgerBtn");
-    const drawerOverlay = document.getElementById("drawerOverlay");
-    const drawerMenu = document.getElementById("drawerMenu");
-    const drawerClose = document.getElementById("drawerClose");
-
-    if (hamburgerBtn && drawerOverlay && drawerMenu && drawerClose) {
-        hamburgerBtn.addEventListener("click", () => {
-            drawerOverlay.classList.add("active");
-            drawerMenu.classList.add("active");
-        });
-
-        const closeDrawer = () => {
+﻿const closeDrawer = () => {
             drawerOverlay.classList.remove("active");
             drawerMenu.classList.remove("active");
         };
