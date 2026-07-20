@@ -1,16 +1,7 @@
-﻿User-agent: Mediapartners-Google
-Disallow: /social-4-1/
-Disallow: /grammar.html
-Disallow: /story-en.html
-Disallow: /story-ja.html
-Disallow: /story-zh.html
+﻿User-agent: *
+Allow: /
+Disallow: /archive/
 
-User-agent: Googlebot
-Disallow: /social-4-1/
-Disallow: /grammar.html
-Disallow: /story-en.html
-Disallow: /story-ja.html
-Disallow: /story-zh.html
-
-User-agent: *
-Disallow: /social-4-1/
+User-agent: Mediapartners-Google
+Allow: /
+Disallow: /archive/

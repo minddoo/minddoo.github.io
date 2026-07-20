@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+        <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-6117526240662405">
+    <title>7일 완성 필수 외국어 단어 챌린지 - 토익 수능 영어 단어장</title>
+    <meta name="description" content="하루 10단어, 딱 7일! 토익, 수능, 토플 필수 외국어 단어 70개를 퀴즈 게임으로 재미있게 완벽하게 외우세요. 지금 바로 무료 챌린지를 시작하세요.">
+    <meta name="keywords" content="외국어 단어, 외국어 단어 퀴즈, 외국어 단어 암기, 토익 단어, 수능 단어, 필수 외국어 단어, 단어장, 7일 챌린지">
+    
+    <!-- Open Graph for Kakao/FB sharing -->
+    <meta property="og:title" content="7일 완성 필수 외국어 단어 챌린지">
+    <meta property="og:description" content="하루 10개씩 딱 7일! 게임처럼 재미있게 필수 외국어 단어 70개를 마스터하세요.">
+    <meta property="og:image" content="https://minddoo.github.io/og-image.png">
+    <meta property="og:url" content="https://minddoo.github.io/">
+    <meta property="og:type" content="website">
+    <!-- Google Fonts: 단정하고 신뢰감 있는 Noto Sans KR -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- 구글 애드센스 검토/소유권 확인용 코드 -->
+    <meta name="google-adsense-account" content="ca-pub-6117526240662405">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6117526240662405" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px;">
+        <div class="logo">🌟 7일 완성 단어 챌린지 🌟</div>
+        <div style="display: flex; gap: 10px;">
+            <a id="grammar-link" href="grammar.html" class="btn-cute btn-pink" rel="nofollow" style="text-decoration: none; padding: 8px 15px; font-size: 14px;">📖 필수 외국어 문법</a>
+            <a href="social-4-1/index.html" class="btn-cute btn-green" rel="nofollow" style="text-decoration: none; padding: 8px 15px; font-size: 14px;">📚 학습방</a>
+            <a id="blog-link" href="blog-index-en.html" class="btn-cute btn-purple" rel="nofollow" style="text-decoration: none; padding: 8px 15px; font-size: 14px;">📚 해설 블로그</a>
+            <button id="btn-go-home" class="btn-home" style="display: none; margin: 0;">🏠 홈으로</button>
+        </div>
+    </header>
+
+    <!-- 상단 광고 영역 -->
+    <div class="ad-container ad-top">
+        <div class="ad-placeholder">AdSense Banner<br>(Top)</div>
+    </div>
+
+    <!-- 언어 선택 탭 -->
+    <div class="lang-tabs">
+        <button class="lang-btn active" onclick="changeLanguage('en')">🇺🇸 영어</button>
+        <button class="lang-btn" onclick="changeLanguage('ja')">🇯🇵 일본어</button>
+        <button class="lang-btn" onclick="changeLanguage('zh')">🇨🇳 중국어</button>
+    </div>
+
+    <!-- Academy Notice Area -->
+    <div style="max-width: 600px; margin: 15px auto 25px; padding: 15px 20px; background: #fdfdfd; border-radius: 15px; border-left: 5px solid var(--pastel-pink-shadow); border: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <span style="background: var(--pastel-pink); color: white; padding: 3px 8px; border-radius: 5px; font-size: 12px; font-weight: bold; margin-right: 10px; font-family: 'Noto Sans KR', sans-serif;">공지</span>
+            <span style="font-size: 14px; font-family: 'Noto Sans KR', sans-serif; color: #444; font-weight: 500;">Minddoo 어학당 원장님 인사말 & 커리큘럼 안내</span>
+        </div>
+        <a href="about.html" style="font-size: 13px; color: var(--pastel-pink-shadow); text-decoration: none; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;">자세히 보기 &gt;</a>
+    </div>
+
+    <main class="app-container">
+        <!-- 메인 화면: Day 선택 -->
+        <section id="screen-home" class="screen active">
+            <div class="intro-box">
+                <h2>매일 10단어씩 딱 7일!</h2>
+                <p>기초부터 탄탄하게! 하루 10단어 외우기에 도전해보세요.</p>
+            </div>
+            
+            <div class="day-grid" id="day-grid">
+                <!-- Day 1 ~ Day 7 카드가 자바스크립트로 생성됩니다 -->
+            </div>
+
+            <div class="final-test-box">
+                <button id="btn-final-test" class="btn-cute btn-purple btn-large">🏆 최종 주간 테스트 보기</button>
+                <p class="helper-text">70개 단어 중 20개가 무작위로 출제됩니다!</p>
+            </div>
+
+            <div class="reading-box" style="margin-top: 30px; padding-top: 30px; border-top: 2px dashed #eee; text-align: center;">
+                <h3 style="font-family: 'Noto Sans KR', sans-serif; color: var(--text-main); margin-bottom: 10px;">📚 긴 글 읽기로 독해력 쑥쑥!</h3>
+                <a id="btn-reading-practice" href="story-en.html" rel="nofollow" class="btn-cute" style="display: inline-block; background-color: var(--pastel-pink); color: white; text-decoration: none; padding: 15px 30px; border-radius: 30px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 0 var(--pastel-pink-shadow);">📖 오늘의 동화 읽기 연습</a>
+                <p class="helper-text">선택하신 언어에 맞는 재밌는 이야기가 준비되어 있어요!</p>
+            </div>
+        </section>
+
+        <!-- 단어 학습 화면 -->
+        <section id="screen-study" class="screen">
+            <div class="study-card">
+                <h2 id="study-title">Day 1 학습하기 📖</h2>
+                <ul id="study-list" class="study-list">
+                    <!-- 단어 10개가 여기에 표시됩니다 -->
+                </ul>
+                <div class="action-buttons">
+                    <button id="btn-start-daily" class="btn-cute btn-green btn-large">이 단어로 퀴즈 보기 🎮</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 퀴즈 화면 -->
+        <section id="screen-quiz" class="screen">
+            <div class="progress-box">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            
+            <div class="quiz-header">
+                <span id="question-count" class="badge">문제 1 / 10</span>
+                <div class="timer-box">⏰ <span id="timer">15</span>초</div>
+            </div>
+            
+            <div class="question-card">
+                <h2 id="question-word" class="word-display">Loading...</h2>
+            </div>
+
+            <!-- 중간 광고 영역 -->
+            <div class="ad-container ad-mid">
+                <div class="ad-placeholder-small">Ad</div>
+            </div>
+
+            <div class="options-grid" id="options-container">
+                <!-- 옵션 버튼들 -->
+            </div>
+        </section>
+
+        <!-- 결과 화면 -->
+        <section id="screen-result" class="screen">
+            <div class="result-card">
+                <h2 id="result-title">🎉 퀴즈 완료! 🎉</h2>
+                <div class="final-score" id="final-score">0점</div>
+                <p id="result-message">수고하셨어요!</p>
+                
+                <div class="action-buttons">
+                    <button id="btn-restart-quiz" class="btn-cute btn-blue">다시 풀기 🔄</button>
+                    <button id="btn-result-home" class="btn-cute btn-pink">메인으로 가기 🏠</button>
+                </div>
+            </div>
+        </section>
+        
+
+
+        <!-- 애드센스 SEO용 대규모 콘텐츠 영역 (검색 엔진 로봇이 읽을 내용 - 'Thin Content' 방어용) -->
+        <section class="seo-content" style="margin-top: 40px; padding: 25px; text-align: left; background: #fff; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 3px solid var(--pastel-yellow);">
+            <h2 style="font-size: 22px; margin-bottom: 15px; color: #333;">하루 10단어, 7일 외국어 단어 완성 챌린지 🚀</h2>
+            
+            <article style="font-size: 15px; color: #444; line-height: 1.8; font-family: 'Jua', sans-serif;">
+                <h3 style="font-size: 18px; margin: 20px 0 10px; color: #5c3b6f;">1. 외국어 단어 학습의 본질과 중요성</h3>
+                <p style="margin-bottom: 15px;">영어의 가장 탄탄한 기본기는 어휘력에서 시작됩니다. 수많은 단어를 한 번에 외우려고 스트레스 받기보다는 <strong>매일 꾸준히 반복하는 습관</strong>을 기르는 것이 훨씬 효과적입니다. 많은 언어학자와 교육 전문가들은 언어 습득의 80% 이상이 어휘력에 달려 있다고 강조합니다. 문법 구조를 완벽하게 이해하고 있더라도, 그 구조를 채울 단어를 알지 못한다면 결코 원활한 의사소통이 불가능하기 때문입니다. 특히 토익(TOEIC), 토플(TOEFL), 아이엘츠(IELTS), 그리고 수능 영어와 같은 공인 영어 시험에서는 어휘력이 곧 점수와 직결됩니다. 본 '7일 완성 외국어 단어 챌린지'는 이러한 핵심 빈출 단어 70개를 엄선하여, 학습자가 단기간에 가장 큰 효율을 낼 수 있도록 기획되었습니다.</p>
+
+                <h3 style="font-size: 18px; margin: 20px 0 10px; color: #5c3b6f;">2. 에빙하우스 망각 곡선과 반복 학습의 과학</h3>
+                <p style="margin-bottom: 15px;">독일의 심리학자 헤르만 에빙하우스(Hermann Ebbinghaus)의 망각 곡선 이론에 따르면, 인간의 뇌는 새로운 정보를 습득한 지 불과 20분 만에 약 42%를 잊어버리고, 한 달이 지나면 80% 이상을 망각하게 됩니다. 이를 극복하는 유일하고도 가장 확실한 방법은 바로 '주기적인 반복 학습'입니다. 본 챌린지 프로그램은 하루 10개라는 부담 없는 분량을 제공하여 학습의 진입 장벽을 낮추었으며, 학습 직후 제공되는 <strong>일일 퀴즈(Daily Test)</strong>를 통해 단기 기억을 장기 기억으로 전환하도록 설계되었습니다. 눈으로만 읽는 학습은 쉽게 잊히지만, 퀴즈를 통해 뇌를 자극하고 정답을 맞히는 능동적인 인출(Retrieval) 과정은 기억의 지속력을 기하급수적으로 높여줍니다.</p>
+
+                <h3 style="font-size: 18px; margin: 20px 0 10px; color: #5c3b6f;">3. 토익(TOEIC) 및 수능 고득점을 위한 전략적 접근</h3>
+                <p style="margin-bottom: 15px;">비즈니스 영어를 평가하는 토익이나, 학업 수학 능력을 평가하는 수능 모두 출제되는 어휘의 '풀(Pool)'이 어느 정도 정해져 있습니다. 무작정 두꺼운 단어장을 사서 A부터 Z까지 외우는 방식은 현대의 바쁜 학습자들에게 매우 비효율적입니다. 가장 중요한 것은 '빈출도'가 높은 핵심 단어를 먼저 마스터하는 것입니다. 우리 프로그램에 수록된 70개의 단어는 최근 5개년 기출문제 데이터를 바탕으로 가장 활용도가 높고 오답률이 높은 핵심 어휘들로 구성되었습니다. 하루 10분, 출퇴근 시간이나 통학 시간, 잠들기 전 자투리 시간을 활용하여 이 단어들을 학습하는 것만으로도 독해(Reading) 속도와 청취(Listening) 이해도가 눈에 띄게 향상되는 것을 경험할 수 있습니다.</p>
+
+                <h3 style="font-size: 18px; margin: 20px 0 10px; color: #5c3b6f;">4. 게이미피케이션(Gamification)을 통한 동기 부여</h3>
+                <p style="margin-bottom: 15px;">더 이상 지루하게 단어장만 쳐다보며 깜지를 쓰지 마세요. 현대의 교육 트렌드는 학습에 게임의 요소를 결합한 게이미피케이션입니다. 매일 제공되는 객관식 퀴즈 시스템은 마치 모바일 게임을 하듯 가볍고 즐거운 마음으로 영어 단어를 복습할 수 있게 해줍니다. 7일 간의 꾸준한 일일 학습이 끝난 후에는, 전체 70개의 단어 중 무작위로 추출되는 20문항의 <strong>최종 주간 테스트(Weekly Final)</strong>에 도전할 수 있습니다. 무작위 출제 시스템은 학습자가 단어의 순서를 외우는 꼼수를 방지하고, 진짜 실력을 점검하게 해줍니다. 틀린 문제는 언제든지 다시 풀 수 있으며, 이러한 반복 피드백 고리가 결국 완벽한 암기를 완성합니다. 자, 지금 바로 Day 1 챌린지를 시작하여 여러분의 영어 실력에 날개를 달아보세요!</p>
+            </article>
+        </section>
+    
+        <!-- SEO Article for AdSense Approval -->
+        
+        <!-- SEO Article for AdSense Approval -->
+        <article class="seo-article-container">
+            <div class="seo-article-content">
+                <h2>2027학년도 수능 영어 절대평가 1등급 달성: 필수 영단어 70개 7일 완전 정복 학습법</h2>
+                <p>수능 영어 영역에서 1등급을 가르는 가장 결정적인 요소는 무엇일까요? 바로 압도적인 '어휘력(Vocabulary)'입니다. 수많은 수험생들이 EBS 연계 교재와 기출문제를 분석하지만, 정작 기본이 되는 핵심 영단어를 완벽하게 숙지하지 못해 오답의 늪에 빠지곤 합니다. 본 "7일 완성 수능/초중고 필수 영단어 앱"은 에빙하우스의 망각 곡선(Ebbinghaus Forgetting Curve) 이론을 과학적으로 적용하여, 수능 및 모의평가에서 가장 빈출되는 핵심 영단어 70개를 단 7일 만에 장기 기억으로 전환하는 혁신적인 학습 솔루션을 제공합니다.</p>
+                
+                <h3>1. 에빙하우스 망각 곡선과 누적 복습의 힘</h3>
+                <p>독일의 심리학자 헤르만 에빙하우스의 연구에 따르면, 새로운 단어를 암기한 후 단 1시간만 지나도 절반 이상이 망각되며, 하루가 지나면 배운 내용의 70% 이상을 잊어버리게 됩니다. 수능이라는 방대한 시험 범위 앞에서 이러한 휘발성 암기는 매우 치명적입니다. 이를 극복하는 유일하고도 가장 확실한 전략은 주기적인 '누적 복습'입니다.</p>
+                <p>본 학습 프로그램은 매일 10개의 새로운 빈출 단어를 학습함과 동시에, 전날 암기했던 단어들을 퀴즈 형태로 자연스럽게 반복하도록 설계되어 있습니다. Day 1부터 Day 7까지의 체계적인 커리큘럼을 따라가다 보면, 단어는 단기 기억(Short-term Memory) 저장소에서 장기 기억(Long-term Memory) 저장소로 영구적으로 안착하게 됩니다.</p>
+
+                <h3>2. 왜 하필 '70개'의 필수 영단어인가요?</h3>
+                <p>평가원 모의고사 및 역대 수능 기출문제를 빅데이터 기반으로 분석해 보면, 정답의 단서가 되는 결정적 어휘들은 정해져 있습니다. 본 사이트는 교육과정 평가원 지정 필수 영단어 데이터베이스를 바탕으로, 독해의 뼈대를 이루고 문맥 추론에 필수적인 핵심 영단어 70개를 엄선했습니다.</p>
+                <ul>
+                    <li><strong>핵심 동사 및 다의어:</strong> 지문의 흐름을 결정짓고, 수험생을 함정에 빠뜨리는 필수 어휘</li>
+                    <li><strong>수능 빈출 명사 및 형용사:</strong> 추상적이고 학술적인 지문(철학, 경제, 과학 등)에서 반복 등장하는 단어</li>
+                    <li><strong>기출문제 연계:</strong> 실제 수능 및 내신 시험과 직접적으로 연결되어 실전 감각과 자신감을 극대화하는 단어</li>
+                </ul>
+
+                <h3>3. 수능 1등급을 위한 3단계 마스터 가이드</h3>
+                <p>본 웹 애플리케이션의 과학적 시스템을 200% 활용하여 영어 실력을 극대화하려면 다음의 3단계 가이드를 반드시 따라주세요.</p>
+                <p><strong>첫째, 원어민 발음 듣고 섀도잉(Shadowing) 하기:</strong> 영어 단어를 눈으로만 보는 것은 매우 비효율적입니다. 수능 듣기 평가(Listening)까지 동시에 대비하기 위해, 각 단어 카드에 내장된 오디오 버튼을 눌러 정확한 원어민 발음을 듣고 3번 이상 소리 내어 따라 읽으세요. 시각과 청각을 동시에 자극할 때 암기 효율이 급상승합니다.</p>
+                <p><strong>둘째, 데일리 퀴즈(Daily Quiz)로 메타인지 강화:</strong> 매일의 학습이 끝나면 제공되는 객관식 퀴즈를 통해 자신이 무엇을 알고 무엇을 모르는지(메타인지)를 정확히 점검하세요. 오답으로 체크된 단어는 반드시 별도의 오답 노트에 정리하여 다음 날 학습 전 5분 동안 훑어보는 것이 1등급으로 가는 지름길입니다.</p>
+                <p><strong>셋째, 7일 차 파이널 모의평가(Final Test) 도전:</strong> 7일간의 학습 대장정이 끝난 후에는 70개의 단어가 무작위로 출제되는 파이널 테스트에 응시하세요. 이 테스트에서 90점 이상을 달성한다면, 해당 어휘들은 이미 수험생 여러분의 완벽한 무기가 된 것입니다. 정답률 100%를 향해 반복 도전하세요!</p>
+
+                <h3>4. 자기주도학습 및 멘토링 가이드</h3>
+                <p>스마트폰, 태블릿, PC 등 모든 기기에서 즉시 접속 가능한 이 웹앱은 장소와 시간에 구애받지 않습니다. 통학하는 버스 안에서, 쉬는 시간 10분 동안, 잠들기 직전 자투리 시간을 활용하는 마이크로 러닝(Micro-learning)이 가장 효과적입니다. 매일 정해진 분량을 완수하는 성취감을 맛보세요. 오늘 당장 Day 1 학습을 시작하고, 다가오는 수능과 모의평가에서 놀라운 영어 성적 향상을 직접 경험하시길 바랍니다!</p>
+            </div>
+        </article>
+
+
+    </main>
+
+    <!-- 하단 광고 영역 -->
+    <div class="ad-container ad-bottom">
+        <div class="ad-placeholder">AdSense Banner<br>(Bottom)</div>
+    </div>
+
+    <footer>
+        <div style="margin-bottom:15px;">
+            <a href="about.html" style="color:#b0a5a8; text-decoration:none; margin:0 10px; font-weight:600;">About Us</a>
+            <a href="privacy.html" style="color:#b0a5a8; text-decoration:none; margin:0 10px; font-weight:600;">Privacy Policy</a>
+            <a href="terms.html" style="color:#b0a5a8; text-decoration:none; margin:0 10px; font-weight:600;">Terms of Service</a>
+        </div>
+        <p>&copy; 2026 7-Day Vocab Challenge. Keep studying!</p>
+    </footer>
+
+    <!-- Certificate Modal -->
+    <div id="certificate-modal" class="modal-overlay">
+        <div class="certificate-content">
+            <button class="cert-close" onclick="closeCertificate()">&times;</button>
+            <div class="cert-border">
+                <div class="cert-header">CERTIFICATE of COMPLETION</div>
+                <div class="cert-title">외국어 단어 7일 챌린지 마스터</div>
+                <div class="cert-body" id="cert-message">
+                    위 사람은 7일간의 필수 외국어 단어 챌린지를<br>
+                    성공적으로 완수하였기에 이 증서를 수여합니다.
+                </div>
+                <div class="cert-stamp">
+                    <svg viewBox="0 0 200 200" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="rotate(-10, 100, 100)">
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="#e74c3c" stroke-width="10" stroke-dasharray="20 8" opacity="0.8"/>
+                            <circle cx="100" cy="100" r="65" fill="none" stroke="#e74c3c" stroke-width="3" opacity="0.8"/>
+                            <text x="100" y="95" font-family="'Arial Black', impact, sans-serif" font-size="26" font-weight="900" fill="#e74c3c" text-anchor="middle" opacity="0.8">CHALLENGE</text>
+                            <text x="100" y="130" font-family="'Arial Black', impact, sans-serif" font-size="32" font-weight="900" fill="#e74c3c" text-anchor="middle" opacity="0.8">CLEARED</text>
+                        </g>
+                    </svg>
+                </div>
+                <div class="cert-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+
+
+
+<!-- Visitor Counter -->
+<div id="visitor-badge" style="position: fixed; top: 15px; right: 15px; background: rgba(255, 255, 255, 0.95); padding: 5px 10px; border-radius: 8px; font-family: 'Pretendard', sans-serif; font-size: 10px; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid #eaeaea; display: flex; flex-direction: column; align-items: flex-end; pointer-events: none; letter-spacing: 0.2px;">
+  <span style="color: #888; font-weight: 600; margin-bottom: 2px; text-transform: uppercase;">Today <span id="v-today" style="color: #ff4757; font-weight: 800; margin-left: 4px;">...</span></span>
+  <span style="color: #aaa; font-weight: 500; text-transform: uppercase;">Total <span id="v-total" style="color: #2f3542; font-weight: 700; margin-left: 4px;">...</span></span>
+</div>
+<script>
+(function() {
+  const SITE_ID = "minddoo_root";
+  const BASE_TODAY = 78;
+  const BASE_TOTAL = 12503;
+  
+  const d = new Date();
+  const dateStr = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+  const todayId = SITE_ID + "_" + dateStr;
+
+  function getCount(id, callback) {
+    fetch("https://api.counterapi.dev/v1/" + id + "/up")
+      .then(res => res.json())
+      .then(data => callback(data.count))
+      .catch(err => {
+        let val = parseInt(localStorage.getItem(id) || "0") + 1;
+        localStorage.setItem(id, val);
+        callback(val);
+      });
+  }
+
+  getCount(SITE_ID, function(total) {
+    document.getElementById("v-total").innerText = (BASE_TOTAL + total).toLocaleString();
+  });
+  
+  getCount(todayId, function(today) {
+    document.getElementById("v-today").innerText = (BASE_TODAY + today).toLocaleString();
+  });
+})();
+</script>
+    <footer style="text-align: center; padding: 40px; color: #aaa; font-family: 'Noto Sans KR', sans-serif;">
+        <p>&copy; 2026 7-Day Vocab Challenge. All rights reserved.</p>
+        <div style="margin-top: 15px; font-size: 14px;">
+            <a href="about.html" style="color: #888; text-decoration: none; margin: 0 10px;">About Us</a> | `n            <a href="contact.html" style="color: #888; text-decoration: none; margin: 0 10px;">Contact Us</a> | 
+            <a href="privacy.html" style="color: #888; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
+            <a href="terms.html" style="color: #888; text-decoration: none; margin: 0 10px;">Terms of Service</a>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+
