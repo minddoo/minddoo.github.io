@@ -20,18 +20,28 @@
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo">Finance Note <span>자본주의 생존 가이드</span></a>
-            <nav class="nav-links">
-                <a href="beginner.html">초급 (자본주의 기초)</a>
-                <a href="intermediate.html">중급 (절세/투자의 정석)</a>
-                <a href="advanced.html">고급 (거시경제/자산배분)</a>
-            </nav>
+            
+            <button id="hamburgerBtn" class="hamburger-btn">☰</button>
         </div>
-        <nav class="mobile-nav">
-            <a href="beginner.html">초급</a>
-            <a href="intermediate.html">중급</a>
-            <a href="advanced.html">고급</a>
-        </nav>
     </header>
+
+    <!-- Drawer Menu Overlay -->
+    <div id="drawerOverlay" class="drawer-overlay"></div>
+    <div id="drawerMenu" class="drawer-menu">
+        <button id="drawerClose" class="drawer-close">✕</button>
+        <div class="drawer-nav">
+            <h3>자본주의 생존 가이드</h3>
+            <a href="beginner.html">초급 (자본주의 기초)</a>
+            <a href="intermediate.html">중급 (절세/투자의 정석)</a>
+            <a href="advanced.html">고급 (거시경제/자산배분)</a>
+            
+            <h3>스마트 용어 사전 (백과)</h3>
+            <a href="real-estate.html">🏠 부동산 백과사전</a>
+            <a href="stocks.html">📈 주식 백과사전</a>
+            <a href="finance.html">💰 재테크/세무 백과사전</a>
+        </div>
+    </div>
+
 
     <main>
         <div class="page-header">

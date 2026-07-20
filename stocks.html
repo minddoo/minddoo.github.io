@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주식 백과사전 | Finance Note</title>
+    <meta name="description" content="100% 팩트 기반 주식 필수 용어 사전 및 스마트 검색 엔진">
+    <link rel="stylesheet" href="style.css">
+    <meta name="google-adsense-account" content="ca-pub-6117526240662405">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6117526240662405" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Finance Note <span>주식 백과사전</span></a>
+            <button id="hamburgerBtn" class="hamburger-btn">☰</button>
+        </div>
+    </header>
+
+    <div id="drawerOverlay" class="drawer-overlay"></div>
+    <div id="drawerMenu" class="drawer-menu">
+        <button id="drawerClose" class="drawer-close">✕</button>
+        <div class="drawer-nav">
+            <h3>자본주의 생존 가이드</h3>
+            <a href="beginner.html">초급 (자본주의 기초)</a>
+            <a href="intermediate.html">중급 (절세/투자의 정석)</a>
+            <a href="advanced.html">고급 (거시경제/자산배분)</a>
+            
+            <h3>스마트 용어 사전 (백과)</h3>
+            <a href="stocks.html" class="active">🏠 주식 백과사전</a>
+            <a href="stocks.html">📈 주식 백과사전</a>
+            <a href="finance.html">💰 재테크/세무 백과사전</a>
+        </div>
+    </div>
+
+    <main>
+        <div class="page-header">
+            <h1>스마트 주식 백과</h1>
+            <p class="subtitle">AI의 환각이 없는 100% 팩트 기반 주식 용어 검색 엔진입니다.</p>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="dictSearch" class="search-input" placeholder="궁금한 주식 용어를 검색하세요 (예: ETF, 공매도)">
+        </div>
+
+        <div id="dictResults" class="search-results">
+            <!-- Results will be injected here -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Finance Note. All facts based on verified financial economics.</p>
+    </footer>
+
+    <script src="dictionary.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            initDictionary("stocks");
+        });
+    </script>
+</body>
+</html>
