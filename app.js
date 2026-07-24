@@ -37,7 +37,7 @@ if (!firebase.apps.length) {
 }
 
 const db = firebase.firestore();
-const boardRef = db.collection('finance_blind_board');
+const boardRef = db.collection('health_blind_board');
 
 const commentInput = document.getElementById('commentInput');
 const submitBtn = document.getElementById('submitBtn');
@@ -51,10 +51,10 @@ function getRandomName() {
     return `${adj} ${noun}`;
 }
 
-let myAnonName = localStorage.getItem('blind_name');
+let myAnonName = localStorage.getItem('health_blind_name');
 if (!myAnonName) {
     myAnonName = getRandomName();
-    localStorage.setItem('blind_name', myAnonName);
+    localStorage.setItem('health_blind_name', myAnonName);
 }
 
 function escapeHTML(str) {
