@@ -1,7 +1,4 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
-Disallow: /archive/
 
-User-agent: Mediapartners-Google
-Allow: /
-Disallow: /archive/
+Sitemap: https://minddoo.github.io/sitemap.xml
