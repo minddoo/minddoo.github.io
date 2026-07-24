@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+﻿const fs = require('fs');
+
+const workoutHtml = `<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -275,7 +277,7 @@
             const daysInMonth = new Date(year, month, 0).getDate();
             const firstDayOfWeek = new Date(year, month - 1, 1).getDay(); // 0(Sun) to 6(Sat)
             
-            monthTitle.innerText = `📅 ${year}년 ${month}월의 챌린지`;
+            monthTitle.innerText = \`📅 \${year}년 \${month}월의 챌린지\`;
 
             // Load saved data
             let savedData = JSON.parse(localStorage.getItem('checkit_workout_v2'));
@@ -376,4 +378,16 @@
         });
     </script>
 </body>
-</html>
+</html>`;
+
+fs.writeFileSync('C:/Users/pc/Documents/minddoo.github.io/workout.html', workoutHtml, 'utf8');
+
+// Also update the navigation link text slightly across all files to match the new vibe
+const files = ['index.html', 'simulator.html', 'nhis-guide.html', 'sanjae-guide.html', 'diet-recipe.html', 'checkup-tips.html', 'magazine.html', 'about.html'];
+files.forEach(file => {
+    let html = fs.readFileSync(`C:/Users/pc/Documents/minddoo.github.io/${file}`, 'utf8');
+    html = html.replace('🏃‍♂️ 30일 목표 달성 스티커보드', '🏃‍♂️ 이달의 목표 스티커보드');
+    fs.writeFileSync(`C:/Users/pc/Documents/minddoo.github.io/${file}`, html, 'utf8');
+});
+
+console.log('Successfully updated workout.html with calendar logic and reward modal.');
