@@ -1,0 +1,245 @@
+﻿const fs = require('fs');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>체킷의 항목 체크 | 국가건강검진 가이드</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .guide-section {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid var(--border);
+        }
+        .guide-section h2 {
+            color: var(--accent);
+            border-bottom: 2px solid var(--line);
+            padding-bottom: 10px;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .info-card {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 15px;
+        }
+        .info-card h4 { margin-top: 0; color: #1e293b; }
+        .danger-card {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+        }
+        .danger-card h4 { color: #b91c1c; }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .input-group input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .input-group button {
+            padding: 15px 25px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .input-group button:hover { background: var(--accent); }
+        .call-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 15px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 12px;
+            margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+            transition: 0.2s;
+        }
+        .call-btn:hover { background: #1d4ed8; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">체킷의 항목 체크</a>
+            <button id="hamburgerBtn" class="hamburger-btn">☰</button>
+        </div>
+    </header>
+    
+    <div id="drawerOverlay" class="drawer-overlay"></div>
+    <div id="drawerMenu" class="drawer-menu">
+        <button id="drawerClose" class="drawer-close">✕</button>
+        <div class="drawer-nav">
+            <h3>체킷의 항목 체크</h3>
+            <a href="index.html">🔍 전체 검사 항목 백과</a>
+            <a href="simulator.html">📊 결과지 수치 시뮬레이터</a>
+            <a href="nhis-guide.html" class="active">🇰🇷 국가건강검진(공단) 가이드</a>
+            <a href="about.html">ℹ️ 사이트 소개 및 약관</a>
+        </div>
+    </div>
+
+    <main>
+        <div class="page-header" style="text-align:center; padding: 40px 20px; background: linear-gradient(135deg, #e0f2f1 0%, #ffffff 100%); border-radius:16px;">
+            <h1 style="color:var(--accent); font-size:32px;">🇰🇷 국가건강검진 스마트 가이드</h1>
+            <p class="subtitle">나의 올해 대상 여부 조회부터 미수검 시 과태료 팩트 체크까지 완벽 정리!</p>
+        </div>
+
+        <section class="guide-section">
+            <h2>🎯 올해 나는 검진 대상자일까?</h2>
+            <p>홀수해/짝수해가 헷갈리시나요? 출생 연도(4자리)를 입력하시면 즉시 계산해 드립니다.</p>
+            <div class="input-group">
+                <input type="number" id="birthYear" placeholder="예: 1985" max="2026" min="1900">
+                <button onclick="checkNHIS()">조회하기</button>
+            </div>
+            <div id="resultArea" style="margin-top: 20px;"></div>
+        </section>
+
+        <section class="guide-section">
+            <h2>⏰ 올해 못 받은 검진, 내년에 이월(연기)하는 법</h2>
+            <div class="info-card">
+                <h4>🏢 직장가입자 (사무직)</h4>
+                <p>사무직 직장인은 2년에 한 번 대상입니다. 작년에 바빠서 못 받으셨다면, <b>회사(사업장)의 건강검진 담당자나 인사팀</b>에게 "전년도 미수검자 추가 등록"을 요청하시면 올해 바로 받으실 수 있습니다.</p>
+            </div>
+            <div class="info-card">
+                <h4>🏠 지역가입자 / 직장피부양자</h4>
+                <p>1월 1일 이후에 <b>국민건강보험공단 지사에 신분증을 지참하여 방문</b>하시거나, <b>고객센터(1577-1000)</b>로 전화하셔서 간편하게 이월 신청을 하실 수 있습니다.</p>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2>⚠️ 필수검진 미수검 시 불이익 (팩트 체크)</h2>
+            <div class="info-card danger-card">
+                <h4>💸 직장인 과태료 부과 (산업안전보건법)</h4>
+                <p>직장가입자가 국가건강검진을 정당한 사유 없이 고의로 거부할 경우, 사업주에게는 <b>최대 1,000만 원 이하의 과태료</b>가 부과되며, 근로자 본인에게도 <b>최대 300만 원의 과태료</b>가 부과될 수 있습니다. (사업주가 검진을 권고한 증빙이 있을 경우 근로자에게 부과)</p>
+            </div>
+            <div class="info-card danger-card">
+                <h4>🏥 암 환자 의료비 지원 사업 제한 (과거 규정)</h4>
+                <p>과거에는 국가 암 검진을 1회 이상 수검하지 않으면 '암 환자 의료비 지원 사업' 대상에서 제외되는 강력한 페널티가 있었습니다. 현재는 제도 개편으로 이 조항이 상당 부분 폐지되었으나, 암을 조기에 발견하지 못해 <b>실손보험 등 사보험 청구 시 고지 의무 위반이나 건강 관리 소홀로 불이익</b>을 당할 우려가 있습니다.</p>
+            </div>
+        </section>
+
+        <section class="guide-section" style="text-align: center;">
+            <h2>📞 국민건강보험공단 다이렉트 문의</h2>
+            <p>개인별 상세한 암 검진 대상 여부나 이월 신청은 공단에 직접 확인하는 것이 가장 빠릅니다.</p>
+            <a href="tel:1577-1000" class="call-btn">📞 공단 고객센터 (1577-1000) 통화하기</a>
+            <p style="margin-top: 15px;"><a href="https://www.nhis.or.kr/" target="_blank" style="color:var(--primary); font-weight:bold;">👉 건강보험공단 홈페이지 바로가기 (건강IN)</a></p>
+        </section>
+
+    </main>
+
+    <footer style="text-align:center; padding:30px; background:#f4f7f6; color:#888; font-size:13px; line-height: 1.6;">
+        <div style="margin-bottom: 15px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+            <a href="about.html#about" style="color:#00b4a2; text-decoration:none; font-weight:bold;">블로그 소개</a>
+            <a href="about.html#contact" style="color:#00b4a2; text-decoration:none; font-weight:bold;">문의하기</a>
+            <a href="about.html#privacy" style="color:#00b4a2; text-decoration:none; font-weight:bold;">개인정보처리방침</a>
+            <a href="about.html#disclaimer" style="color:#00b4a2; text-decoration:none; font-weight:bold;">면책 조항</a>
+        </div>
+        <p>&copy; 2026 체킷의 항목 체크. All rights reserved.</p>
+        <p style="color:#e63946; font-weight:bold; margin-top:10px;">[의학적 면책 조항] 본 사이트에서 제공하는 정보는 의학적 참고용일 뿐이며, 전문의의 진료와 처방을 대신할 수 없습니다.</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        function checkNHIS() {
+            const yearStr = document.getElementById("birthYear").value;
+            const year = parseInt(yearStr);
+            const currentYear = new Date().getFullYear();
+            
+            if (!year || year < 1900 || year > currentYear) return alert("정확한 출생 연도를 4자리로 입력해주세요. (예: 1985)");
+            
+            const age = currentYear - year;
+            
+            // 홀짝 로직 (태어난 해가 짝수면 짝수년도에, 홀수면 홀수년도에)
+            const isEvenYear = (currentYear % 2 === 0);
+            const isEvenBirth = (year % 2 === 0);
+            const isTargetThisYear = (isEvenYear === isEvenBirth);
+            
+            let targetMsg = "";
+            if (isTargetThisYear) {
+                targetMsg = \`<div class="sim-card" style="background:#e8f5e9; border-left: 5px solid #4caf50; padding:20px; margin-bottom:15px; border-radius:8px;">
+                    <h3 style="color:#2e7d32; margin-top:0;">🎉 올해(\${currentYear}년) 일반건강검진 대상자입니다!</h3>
+                    <p style="margin-bottom:0;">회원님은 <b>\${isEvenBirth ? '짝수' : '홀수'}년생</b>이므로 대상자입니다. (※ 비사무직 직장가입자는 출생 연도와 무관하게 매년 대상자입니다.)</p>
+                </div>\`;
+            } else {
+                targetMsg = \`<div class="sim-card" style="background:#fff3e0; border-left: 5px solid #ff9800; padding:20px; margin-bottom:15px; border-radius:8px;">
+                    <h3 style="color:#e65100; margin-top:0;">⚠️ 올해 원칙상 대상자가 아닙니다.</h3>
+                    <p style="margin-bottom:0;">회원님은 <b>\${isEvenBirth ? '짝수' : '홀수'}년생</b>이므로 내년 대상자입니다. <br>단, <b>비사무직 근로자</b>이거나 <b>작년에 미수검하여 이월 신청</b>을 하신 분은 올해도 받으실 수 있습니다.</p>
+                </div>\`;
+            }
+            
+            let cancerMsg = \`<div class="info-card" style="background:#f0f9ff; border-left: 4px solid #0284c7;">
+                <h4 style="color:#0369a1;">🔍 나의 연령별 무료 국가 암 검진 항목 (\${age}세)</h4>
+                <ul style="line-height:1.8; color:#333;">\`;
+            let hasCancerScreening = false;
+            
+            if (age >= 20) {
+                cancerMsg += "<li><b>자궁경부암 (여성):</b> 20세 이상 여성 (2년 주기)</li>";
+                hasCancerScreening = true;
+            }
+            if (age >= 40) {
+                cancerMsg += "<li><b>위암:</b> 40세 이상 남녀 (2년 주기, 위내시경)</li>";
+                cancerMsg += "<li><b>유방암 (여성):</b> 40세 이상 여성 (2년 주기, 유방촬영술)</li>";
+                cancerMsg += "<li><b>간암 (고위험군):</b> 간경변증, B/C형 간염 보균자 등 (6개월 주기)</li>";
+            }
+            if (age >= 50) {
+                cancerMsg += "<li><b>대장암:</b> 50세 이상 남녀 (1년 주기, 분변잠혈검사 후 이상 시 대장내시경)</li>";
+            }
+            if (age >= 54 && age <= 74) {
+                cancerMsg += "<li><b>폐암 (고위험군):</b> 30갑년 이상의 장기 흡연자 (2년 주기)</li>";
+            }
+            if (age >= 66) {
+                cancerMsg += "<li><b>기타:</b> 골밀도 검사(여성), 인지기능장애 검사 등 연령별 추가</li>";
+            }
+            
+            if (!hasCancerScreening) {
+                cancerMsg += "<li>해당 연령에 무료로 추가되는 암 검진 항목이 아직 없습니다. 일반건강검진만 대상입니다.</li>";
+            }
+            cancerMsg += "</ul></div>";
+            
+            document.getElementById("resultArea").innerHTML = targetMsg + cancerMsg;
+        }
+    </script>
+</body>
+</html>
+`;
+fs.writeFileSync('C:/Users/pc/Documents/minddoo.github.io/nhis-guide.html', htmlContent, 'utf8');
+
+// Update navigation in other files
+const files = ['index.html', 'simulator.html', 'about.html'];
+const newNavStr = `            <a href="index.html">🔍 전체 검사 항목 백과</a>
+            <a href="simulator.html">📊 결과지 수치 시뮬레이터</a>
+            <a href="nhis-guide.html">🇰🇷 국가건강검진(공단) 가이드</a>
+            <a href="about.html">ℹ️ 사이트 소개 및 약관</a>`;
+
+files.forEach(file => {
+    let html = fs.readFileSync(`C:/Users/pc/Documents/minddoo.github.io/${file}`, 'utf8');
+    
+    // Replace drawer nav
+    html = html.replace(/<a href="index\.html".*?<\/a>\s*<a href="simulator\.html".*?<\/a>\s*(<a href="nhis-guide\.html".*?<\/a>\s*)?<a href="about\.html".*?<\/a>/, newNavStr);
+    
+    fs.writeFileSync(`C:/Users/pc/Documents/minddoo.github.io/${file}`, html, 'utf8');
+});
+console.log('Created nhis-guide.html and updated navigation.');
