@@ -493,7 +493,7 @@ footer {
 /* Grid for Checkup Items */
 .checkup-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; margin-top: 20px; }
 .checkup-card { background: #fff; padding: 20px; border-radius: 8px; border: 1px solid var(--border); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
-.checkup-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,180,162,0.15); border-color: var(--accent); }
+.checkup-card:hover {  box-shadow: 0 5px 15px rgba(0,180,162,0.15); border-color: var(--accent); }
 .checkup-card h3 { margin: 0 0 10px 0; color: var(--accent); font-size: 18px; }
 .checkup-card .part { font-size: 12px; background: #e0f2f1; color: #00796b; padding: 3px 8px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
 
@@ -512,7 +512,7 @@ body {
 }
 
 .page-header {
-    background: linear-gradient(135deg, #e0f2f1 0%, #ffffff 100%);
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
     border-radius: 16px;
     padding: 60px 20px !important;
     margin-bottom: 40px;
@@ -554,4 +554,22 @@ body {
 .sim-container {
     background: linear-gradient(to bottom right, #ffffff, #f8fafc);
     border-left: 5px solid var(--accent);
+}
+
+
+.card-img {
+    width: 100%;
+    height: 120px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+}
+.mascot-img {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px auto;
 }

@@ -342,7 +342,22 @@ function initHealthDictionary() {
             const card = document.createElement("div");
             card.className = "checkup-card";
             card.onclick = () => showHealthModal(item.item, item.method, item.result, item.part);
-            card.innerHTML = `<span class="part">${item.part}</span><h3>${item.item}</h3><p style="font-size:14px; color:var(--text-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.result}</p>`;
+            card.innerHTML = "";
+            // Generate a deterministic gradient color based on the part name
+            const charCode = item.part.charCodeAt(0) + item.part.charCodeAt(item.part.length - 1);
+            const hue1 = (charCode * 37) % 360;
+            const hue2 = (charCode * 59) % 360;
+            const emojiMatch = item.part.match(/^[\uD800-\uDBFF\uDC00-\uDFFF\u200D\uFE0F]+/);
+            const emoji = emojiMatch ? emojiMatch[0] : "🩺";
+            
+            card.innerHTML = `
+                <div class="card-img" style="background: linear-gradient(45deg, hsl(${hue1}, 80%, 80%), hsl(${hue2}, 80%, 80%));">
+                    ${emoji}
+                </div>
+                <span class="part">${item.part}</span>
+                <h3>${item.item}</h3>
+                <p style="font-size:14px; color:var(--text-light); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.5;">${item.result}</p>
+            `;
             resultsContainer.appendChild(card);
         });
     };
