@@ -50,7 +50,7 @@
         }
         .input-group button {
             padding: 15px 25px;
-            background: var(--primary);
+            background: #00b4a2;
             color: white;
             border: none;
             border-radius: 8px;
@@ -59,7 +59,7 @@
             cursor: pointer;
             transition: 0.2s;
         }
-        .input-group button:hover { background: var(--accent); }
+        .input-group button:hover { background: #008f81; }
         .call-btn {
             display: inline-flex;
             align-items: center;
@@ -143,7 +143,12 @@
         <section class="guide-section" style="text-align: center;">
             <h2>📞 국민건강보험공단 다이렉트 문의</h2>
             <p>개인별 상세한 암 검진 대상 여부나 이월 신청은 공단에 직접 확인하는 것이 가장 빠릅니다.</p>
-            <a href="tel:1577-1000" class="call-btn">📞 공단 고객센터 (1577-1000) 통화하기</a>
+            
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <a href="tel:1577-1000" class="call-btn" style="flex:1; min-width:200px;">📞 공단 통화하기</a>
+                <button onclick="copyNHISNumber()" class="call-btn" style="flex:1; min-width:200px; background:#475569; border:none; cursor:pointer;">📋 번호 복사하기</button>
+            </div>
+
             <p style="margin-top: 15px;"><a href="https://www.nhis.or.kr/" target="_blank" style="color:var(--primary); font-weight:bold;">👉 건강보험공단 홈페이지 바로가기 (건강IN)</a></p>
         </section>
 
@@ -160,7 +165,16 @@
         <p style="color:#e63946; font-weight:bold; margin-top:10px;">[의학적 면책 조항] 본 사이트에서 제공하는 정보는 의학적 참고용일 뿐이며, 전문의의 진료와 처방을 대신할 수 없습니다.</p>
     </footer>
 
-    <script src="app.js"></script>
+    <script src="app.js">
+        function copyNHISNumber() {
+            navigator.clipboard.writeText("1577-1000").then(() => {
+                alert("국민건강보험공단 번호(1577-1000)가 클립보드에 복사되었습니다!\n다이얼 패드에 붙여넣기 하세요.");
+            }).catch(err => {
+                alert("복사에 실패했습니다. 직접 1577-1000 을 입력해주세요.");
+            });
+        }
+
+    </script>
     <script>
         function checkNHIS() {
             const yearStr = document.getElementById("birthYear").value;
