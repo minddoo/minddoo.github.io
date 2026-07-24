@@ -1,0 +1,236 @@
+﻿const fs = require('fs');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>체킷의 항목 체크 | 건강검진 필수 팁 18선</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .guide-section {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid var(--border);
+        }
+        .guide-section h2 {
+            color: var(--accent);
+            border-bottom: 2px solid var(--line);
+            padding-bottom: 10px;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+        }
+        .tip-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .tip-item {
+            background: #f8fafc;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        .tip-item:hover {
+            transform: translateX(5px);
+            background: #f0fdfa;
+            border-color: #0f766e;
+        }
+        .tip-item h4 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            color: #0f766e;
+            font-size: 17px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tip-item p {
+            margin: 0;
+            color: #475569;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        .danger-tip {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+        }
+        .danger-tip h4 { color: #b91c1c; }
+        .danger-tip:hover {
+            background: #fee2e2;
+            border-color: #b91c1c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">체킷의 항목 체크</a>
+            <button id="hamburgerBtn" class="hamburger-btn">☰</button>
+        </div>
+    </header>
+    
+    <div id="drawerOverlay" class="drawer-overlay"></div>
+    <div id="drawerMenu" class="drawer-menu">
+        <button id="drawerClose" class="drawer-close">✕</button>
+        <div class="drawer-nav">
+            <h3>체킷의 항목 체크</h3>
+            <a href="index.html">🔍 전체 검사 항목 백과</a>
+            <a href="simulator.html">📊 결과지 수치 시뮬레이터</a>
+            <a href="nhis-guide.html">🇰🇷 국가건강검진(공단) 가이드</a>
+            <a href="sanjae-guide.html">👷 특수검진 및 산재 가이드</a>
+            <a href="diet-recipe.html">🍽️ 건강검진 식단 & 자취생 레시피</a>
+            <a href="checkup-tips.html" class="active">💡 건강검진 받기 전 필수 팁</a>
+            <a href="about.html">ℹ️ 사이트 소개 및 약관</a>
+        </div>
+    </div>
+
+    <main>
+        <div class="page-header" style="text-align:center; padding: 40px 20px; background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 100%); border-radius:16px;">
+            <h1 style="color:#0369a1; font-size:32px;">💡 건강검진 실무자 강력 추천 18가지 꿀팁</h1>
+            <p class="subtitle" style="color:#0f172a;">모르면 헛걸음하고 돈 낭비하는 건강검진 핵심 실전 가이드</p>
+        </div>
+
+        <section class="guide-section">
+            <h2>🎀 여성 맞춤 검진 팁</h2>
+            <div class="tip-grid">
+                <div class="tip-item">
+                    <h4>🩸 생리 중 대장내시경 대처법</h4>
+                    <p>생리 기간을 피하지 못했더라도 힘들게 식단 조절한 것을 포기하지 마세요! 병원에 미리 문의하시면 <b>탐폰 착용 후 대장내시경 검사가 가능</b>한 경우가 많습니다. 당일 최대한 많은 검사를 받을 수 있도록 조율하세요.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>📅 최적의 예약 시기</h4>
+                    <p>여성의 경우 호르몬 변화와 자궁/유방 검사 정확도를 위해 <b>생리 기간 앞뒤로 7일 정도 여유를 두고</b> 검진을 예약하는 것이 가장 좋습니다.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>🔄 당일 미검 항목 이월</h4>
+                    <p>생리나 기타 개인적 이유로 당일에 자궁경부암, 소변검사 등을 못 받았다면, 기간 내 재방문 시 <b>추가 비용 없이(내시경의 경우 수면비만 지불)</b> 검사가 가능한지 병원에 꼭 문의하세요.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2>💤 수면내시경 및 각종 시술 팁</h2>
+            <div class="tip-grid">
+                <div class="tip-item danger-tip">
+                    <h4>🪪 실물 신분증 잊지 마세요!</h4>
+                    <p>수면내시경 시 <b>실물 신분증이나 여권이 없으면 현장에서 수면 진행이 거부</b>되고 비수면으로 검사를 받아야 할 수 있습니다. 모바일 신분증 허용 여부는 병원마다 다르니 반드시 실물 신분증을 챙겨가세요.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>🧓 70세 이상 어르신 수면내시경</h4>
+                    <p>고령자(70세 이상)의 경우 안전상 수면내시경이 안 된다고 하는 곳이 많습니다. 하지만 <b>당일 혈압과 컨디션 확인 후 수면으로 진행해 주는 병원</b>도 있으니, 어르신이 괴롭지 않게 검사받으실 수 있도록 미리 발품을 팔아 알아보세요.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>🩻 MRI 조영제/비조영제 확인</h4>
+                    <p>MRI 검사 시 <b>조영제를 투여하는지, 비조영제로 진행하는지 병원마다 프로토콜이 다릅니다.</b> 부작용이 우려된다면 본인이 원하는 방식으로 진행하는 병원을 사전에 꼭 알아보고 방문하세요.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2>📄 행정 서류 및 보험 청구 팁</h2>
+            <div class="tip-grid">
+                <div class="tip-item danger-tip">
+                    <h4>⚠️ 진단서 대리 발급 주의</h4>
+                    <p>진단서는 원칙적으로 본인 방문이 아니면 발급이 불가능한 경우가 많습니다. 무작정 대리인이 방문해서 헛걸음하지 마시고, <b>미리 병원에 가족관계증명서나 위임장 등 필요한 절차를 확인</b> 후 안내받으세요.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>📑 진단서 vs 진료확인서 차이점</h4>
+                    <p>보험 처리를 위해 서류를 뗄 때 주의하세요. <b>진료확인서에는 '질병 코드'는 있지만 '질병명'이 안 적힌 경우가 많습니다.</b> 보험사에서 요구하는 서류가 진단서인지 진료확인서인지 정확히 파악해야 이중 발급 비용을 막을 수 있습니다.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>📱 비대면 서류 발급 활용</h4>
+                    <p>진료확인서 등 일부 서류는 병원에 꼭 안 가도, <b>계좌이체나 카드 결제 후 이메일/팩스</b>로 받을 수 있는 의료기관이 있습니다. 방문이 어렵다면 꼭 비대면 발급 가능 여부를 문의해 보세요.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>💊 검진센터 처방전 팩스 신공</h4>
+                    <p>검진센터 특성상 개인에게 직접 약 처방전 발급이 어려운 곳이 있습니다. 이럴 땐 당황하지 말고 <b>"근처 약국으로 팩스를 보내주시면 약국에서 처방받을 수 있나요?"</b>라고 문의해 보세요.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>💿 결과 CD 영상 직접 굽기?</h4>
+                    <p>검진 후 영상 CD를 받을 때, 직원이 <b>영상을 다 구워서 주는 곳</b>이 있고, <b>빈 CD만 주고 본인이 무인 키오스크에서 직접 구워야 하는 곳</b>이 있습니다. 설명을 잘 안 듣고 빈 CD만 들고 집에 가는 불상사를 조심하세요!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2>✈️ 해외 거주자 및 외국인 팁</h2>
+            <div class="tip-grid">
+                <div class="tip-item">
+                    <h4>📝 당일 발급 서류 사전 요청</h4>
+                    <p>해외 거주자나 외국인은 일정이 빠듯합니다. 검진확인서, 영수증, 결과 CD 등 <b>검진 당일 바로 받을 수 있는 서류들은 검진 예약 시 메모(기재)</b>하거나 내원하자마자 잊지 말고 미리 말해두어야 딜레이를 막을 수 있습니다.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>📧 출국 대비 이메일 수령 신청</h4>
+                    <p>보통 결과지는 2~3주가 걸립니다. <b>출국 기간 내에 결과가 나오지 않을 경우를 대비하여 반드시 '이메일'로 결과를 받겠다고 신청</b>하세요.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>📞 병원 소통용 이메일 확보</h4>
+                    <p>출국하고 나면 시차와 요금 문제로 해외 전화 통화가 매우 어렵습니다. 결과 관련해서 병원과 원활하게 소통할 수 있도록 <b>담당 부서의 이메일 주소를 미리 숙지하고 메모</b>해 두세요.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2>💰 비용 절약 & 공단검진 연계 팁</h2>
+            <div class="tip-grid">
+                <div class="tip-item danger-tip">
+                    <h4>🔍 대장암 공단검진 양성 혜택</h4>
+                    <p>공단검진 '대장암(분변잠혈검사)'에서 양성(피 섞임) 판정이 나왔다면, <b>1차/2차 의료기관에서 대장내시경을 '수면비+대장약 비용'만 내고 거의 무료로 진행</b>할 수 있습니다. (다음 해 1월까지 유효할 수 있으니 결과지 들고 병원 문의 필수!)</p>
+                </div>
+                <div class="tip-item">
+                    <h4>🔄 종합검진 중복 항목 털어내기</h4>
+                    <p>회사 종합검진과 공단검진을 동시에 진행할 때, <b>공단 필수 대상 항목(혈액, X-ray 등)을 제외하고 그 비용만큼 종합검진의 다른 프리미엄 초음파 항목 등으로 교체/선택</b>할 수 있는지 사전에 꼭 조율하세요.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>📅 미수검 공단검진 이월하기</h4>
+                    <p>올해가 내 공단검진 대상인데 너무 바빠서 못 받았다면? <b>포기하지 마시고 국민건강보험공단(1577-1000)에 전화해서 내년으로 이월 신청</b>을 하시면 권리를 챙기실 수 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer style="text-align:center; padding:30px; background:#f4f7f6; color:#888; font-size:13px; line-height: 1.6;">
+        <div style="margin-bottom: 15px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+            <a href="about.html#about" style="color:#00b4a2; text-decoration:none; font-weight:bold;">블로그 소개</a>
+            <a href="about.html#contact" style="color:#00b4a2; text-decoration:none; font-weight:bold;">문의하기</a>
+            <a href="about.html#privacy" style="color:#00b4a2; text-decoration:none; font-weight:bold;">개인정보처리방침</a>
+            <a href="about.html#disclaimer" style="color:#00b4a2; text-decoration:none; font-weight:bold;">면책 조항</a>
+        </div>
+        <p>&copy; 2026 체킷의 항목 체크. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
+`;
+fs.writeFileSync('C:/Users/pc/Documents/minddoo.github.io/checkup-tips.html', htmlContent, 'utf8');
+
+const files = ['index.html', 'simulator.html', 'about.html', 'nhis-guide.html', 'sanjae-guide.html', 'diet-recipe.html'];
+const newNavStr = `            <a href="index.html">🔍 전체 검사 항목 백과</a>
+            <a href="simulator.html">📊 결과지 수치 시뮬레이터</a>
+            <a href="nhis-guide.html">🇰🇷 국가건강검진(공단) 가이드</a>
+            <a href="sanjae-guide.html">👷 특수검진 및 산재 가이드</a>
+            <a href="diet-recipe.html">🍽️ 건강검진 식단 & 자취생 레시피</a>
+            <a href="checkup-tips.html">💡 건강검진 받기 전 필수 팁</a>
+            <a href="about.html">ℹ️ 사이트 소개 및 약관</a>`;
+
+files.forEach(file => {
+    let html = fs.readFileSync(`C:/Users/pc/Documents/minddoo.github.io/${file}`, 'utf8');
+    
+    // Replace drawer nav
+    const navRegex = /<a href="index\.html".*?<\/a>\s*<a href="simulator\.html".*?<\/a>\s*<a href="nhis-guide\.html".*?<\/a>\s*<a href="sanjae-guide\.html".*?<\/a>\s*<a href="diet-recipe\.html".*?<\/a>\s*(<a href="checkup-tips\.html".*?<\/a>\s*)?<a href="about\.html".*?<\/a>/;
+    html = html.replace(navRegex, newNavStr);
+    
+    fs.writeFileSync(`C:/Users/pc/Documents/minddoo.github.io/${file}`, html, 'utf8');
+});
+console.log('Created checkup-tips.html and updated navigation.');
