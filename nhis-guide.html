@@ -144,10 +144,9 @@
             <h2>📞 국민건강보험공단 다이렉트 문의</h2>
             <p>개인별 상세한 암 검진 대상 여부나 이월 신청은 공단에 직접 확인하는 것이 가장 빠릅니다.</p>
             
-            <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                <a href="tel:1577-1000" class="call-btn" style="flex:1; min-width:200px;">📞 공단 통화하기</a>
-                <button onclick="copyNHISNumber()" class="call-btn" style="flex:1; min-width:200px; background:#475569; border:none; cursor:pointer;">📋 번호 복사하기</button>
-            </div>
+            
+            <button onclick="copyNHISNumber()" class="call-btn" style="width:100%; background:#00b4a2; border:none; cursor:pointer;">📋 공단 고객센터 (1577-1000) 번호 복사하기</button>
+
 
             <p style="margin-top: 15px;"><a href="https://www.nhis.or.kr/" target="_blank" style="color:var(--primary); font-weight:bold;">👉 건강보험공단 홈페이지 바로가기 (건강IN)</a></p>
         </section>
@@ -166,11 +165,44 @@
     </footer>
 
     <script src="app.js">
+        
         function copyNHISNumber() {
-            navigator.clipboard.writeText("1577-1000").then(() => {
-                alert("국민건강보험공단 번호(1577-1000)가 클립보드에 복사되었습니다!\n다이얼 패드에 붙여넣기 하세요.");
-            }).catch(err => {
-                alert("복사에 실패했습니다. 직접 1577-1000 을 입력해주세요.");
+            var textToCopy = "1577-1000";
+            
+            function fallbackCopyTextToClipboard(text) {
+                var textArea = document.createElement("textarea");
+                textArea.value = text;
+                textArea.style.top = "0";
+                textArea.style.left = "0";
+                textArea.style.position = "fixed";
+
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                try {
+                    var successful = document.execCommand('copy');
+                    if (successful) {
+                        alert("국민건강보험공단 번호(1577-1000)가 복사되었습니다!\n다이얼 패드에 붙여넣기 하세요.");
+                    } else {
+                        alert("복사 권한이 없습니다. 직접 1577-1000 을 입력해주세요.");
+                    }
+                } catch (err) {
+                    alert("이 브라우저에서는 복사를 지원하지 않습니다.");
+                }
+
+                document.body.removeChild(textArea);
+            }
+
+            if (!navigator.clipboard) {
+                fallbackCopyTextToClipboard(textToCopy);
+                return;
+            }
+            
+            navigator.clipboard.writeText(textToCopy).then(function() {
+                alert("국민건강보험공단 번호(1577-1000)가 복사되었습니다!\n다이얼 패드에 붙여넣기 하세요.");
+            }).catch(function(err) {
+                fallbackCopyTextToClipboard(textToCopy);
             });
         }
 
