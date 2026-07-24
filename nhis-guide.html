@@ -221,74 +221,37 @@
         function copyNHISNumber() {
             var textToCopy = "1577-1000";
             
-            function fallbackCopyTextToClipboard(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(textToCopy).then(function() {
+                    alert("국민건강보험공단 번호(1577-1000)가 복사되었습니다!\n다이얼 패드에 붙여넣기 하세요.");
+                }).catch(function(err) {
+                    fallbackCopy(textToCopy);
+                });
+            } else {
+                fallbackCopy(textToCopy);
+            }
+            
+            function fallbackCopy(text) {
                 var textArea = document.createElement("textarea");
                 textArea.value = text;
-                textArea.style.top = "0";
-                textArea.style.left = "0";
                 textArea.style.position = "fixed";
-                
-                // iOS requires these for selection to work
-                textArea.contentEditable = true;
-                textArea.readOnly = false;
-
+                textArea.style.left = "-999999px";
                 document.body.appendChild(textArea);
-                
-                if (navigator.userAgent.match(/ipad|iphone/i)) {
-                    var range = document.createRange();
-                    range.selectNodeContents(textArea);
-                    var selection = window.getSelection();
-                    selection.removeAllRanges();
-                    selection.addRange(range);
-                    textArea.setSelectionRange(0, 999999);
-                } else {
-                    textArea.select();
-                }
-
+                textArea.focus();
+                textArea.select();
                 try {
                     var successful = document.execCommand('copy');
                     if (successful) {
                         alert("국민건강보험공단 번호(1577-1000)가 복사되었습니다!\n다이얼 패드에 붙여넣기 하세요.");
                     } else {
-                        prompt("자동 복사 권한이 없습니다. 아래 번호를 길게 눌러 직접 복사해주세요.", textToCopy);
+                        prompt("자동 복사를 지원하지 않는 브라우저입니다. 아래 번호를 길게 눌러 복사해주세요.", text);
                     }
                 } catch (err) {
-                    prompt("자동 복사 권한이 없습니다. 아래 번호를 길게 눌러 직접 복사해주세요.", textToCopy);
+                    prompt("자동 복사를 지원하지 않는 브라우저입니다. 아래 번호를 길게 눌러 복사해주세요.", text);
                 }
-
                 document.body.removeChild(textArea);
             }
-
-            if (!navigator.clipboard) {
-                fallbackCopyTextToClipboard(textToCopy);
-                return;
-            }
-            
-            navigator.clipboard.writeText(textToCopy).then(function() {
-                alert("국민건강보험공단 번호(1577-1000)가 복사되었습니다!\n다이얼 패드에 붙여넣기 하세요.");
-            }).catch(function(err) {
-                fallbackCopyTextToClipboard(textToCopy);
-            });
         }
-                } catch (err) {
-                    alert("이 브라우저에서는 복사를 지원하지 않습니다.");
-                }
-
-                document.body.removeChild(textArea);
-            }
-
-            if (!navigator.clipboard) {
-                fallbackCopyTextToClipboard(textToCopy);
-                return;
-            }
-            
-            navigator.clipboard.writeText(textToCopy).then(function() {
-                alert("국민건강보험공단 번호(1577-1000)가 복사되었습니다!\n다이얼 패드에 붙여넣기 하세요.");
-            }).catch(function(err) {
-                fallbackCopyTextToClipboard(textToCopy);
-            });
-        }
-
     </script>
     <script>
         function checkNHIS() {
