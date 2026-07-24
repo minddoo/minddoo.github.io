@@ -3,91 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finance Note | 자본주의 생존 가이드</title>
-    <meta name="description" content="초보부터 고급까지 완벽한 팩트 기반 재테크 교육 플랫폼. 전 세계 익명 금융 커뮤니티 제공.">
+    <title>건강검진 결과 해석 포털 | 메디컬 가이드</title>
+    <meta name="description" content="건강검진 항목별 수치 및 결과지 해석 가이드. 100% 팩트 기반 메디컬 정보 제공.">
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-6117526240662405">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6117526240662405" crossorigin="anonymous"></script>
-
-    <!-- Firebase SDK (Compat) -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 </head>
 <body>
-
     <header>
         <div class="nav-container">
-            <a href="index.html" class="logo">Finance Note <span>자본주의 생존 가이드</span></a>
-            
+            <a href="index.html" class="logo">Medical Guide <span>건강검진 100% 해석</span></a>
             <button id="hamburgerBtn" class="hamburger-btn">☰</button>
         </div>
     </header>
 
-    <!-- Drawer Menu Overlay -->
     <div id="drawerOverlay" class="drawer-overlay"></div>
     <div id="drawerMenu" class="drawer-menu">
         <button id="drawerClose" class="drawer-close">✕</button>
         <div class="drawer-nav">
-            <h3>자본주의 생존 가이드</h3>
-            <a href="beginner.html">초급 (자본주의 기초)</a>
-            <a href="intermediate.html">중급 (절세/투자의 정석)</a>
-            <a href="advanced.html">고급 (거시경제/자산배분)</a>
-            
-            <h3>스마트 용어 사전 (백과)</h3>
-            <a href="real-estate.html">🏠 부동산 백과사전</a>
-            <a href="stocks.html">📈 주식 백과사전</a>
-            <a href="finance.html">💰 재테크/세무 백과사전</a>
+            <h3>건강검진 해석 서비스</h3>
+            <a href="index.html" class="active">🔍 전체 검사 항목 백과</a>
+            <a href="simulator.html">📊 결과지 수치 시뮬레이터</a>
         </div>
     </div>
 
+    <!-- Modal -->
+    <div id="healthModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeHealthModal()">✕</button>
+            <h2 id="modalTitle" style="color:var(--accent); margin-top:0;"></h2>
+            <div class="part" id="modalPart" style="font-weight:bold; color:#00796b; margin-bottom:10px;"></div>
+            <div id="modalMethod" style="font-weight:bold; margin-bottom:15px; color:#555;"></div>
+            <p id="modalDesc" style="line-height:1.6; color:#333;"></p>
+        </div>
+    </div>
 
     <main>
-        <div class="page-header">
-            <h1>환영합니다, 예비 자본가님.</h1>
-            <p class="subtitle">이곳은 어떠한 허위 과장 광고나 종목 추천도 없는, 100% 팩트 기반의 재테크 지식 플랫폼입니다.</p>
+        <div class="page-header" style="text-align:center; padding: 40px 0;">
+            <h1 style="color:var(--accent); font-size:32px;">건강검진 결과지 완벽 해석</h1>
+            <p class="subtitle">어려운 의학 용어와 알쏭달쏭한 검사 결과, 클릭 한 번으로 확인하세요.</p>
         </div>
 
-        <article>
-            <h2>왜 재테크 공부를 시작해야 할까요?</h2>
-            <p>우리가 살고 있는 시대는 '인플레이션(Inflation)'이라는 보이지 않는 세금이 매일같이 우리의 화폐 가치를 갉아먹고 있는 시대입니다. 은행에 돈을 가만히 모아두는 것만으로는 결코 자산을 지킬 수 없습니다. 진정한 경제적 자유를 원한다면, 자본주의의 작동 원리를 이해하고 스스로 돈이 일하게 만드는 시스템을 구축해야 합니다.</p>
-            
-            <div class="highlight-box">
-                <p><strong>Finance Note의 철학</strong></p>
-                <p>본 사이트는 상업적인 종목 리딩이나 투기적 단타 기법을 배격합니다. 대신, 복리의 마법, ETF를 통한 인덱스 투자, ISA와 IRP 등 국가에서 합법적으로 제공하는 절세 혜택의 구조 등 '절대 변하지 않는 경제적 진리'만을 단계별로 교육합니다.</p>
-            </div>
+        <div class="search-container">
+            <input type="text" id="dictSearch" class="search-input" placeholder="궁금한 검사명이나 부위를 검색하세요 (예: AST, 초음파, 간)">
+        </div>
 
-            <h3>어떻게 공부해야 하나요?</h3>
-            <p>상단의 메뉴를 통해 자신의 수준에 맞는 단계부터 차근차근 학습하시기 바랍니다. 초급 단계에서는 예적금과 투자의 차이점 및 인플레이션의 무서움을, 중급 단계에서는 절세 계좌의 100% 활용법을, 고급 단계에서는 금리와 환율 등 거시경제 지표를 해석하는 방법을 다룹니다.</p>
+        <!-- Dictionary Grid -->
+        <div id="dictResults" class="checkup-grid">
+            <!-- Rendered by health-dict.js -->
+        </div>
 
-            <p>또한, 하단의 <strong>'글로벌 재테크 블라인드'</strong> 게시판을 통해 전 세계의 사용자들과 실시간으로 익명 토론을 나누어 보세요. 다양한 관점을 접하는 것은 투자 인사이트를 넓히는 최고의 방법입니다.</p>
-        </article>
-
-        <!-- Anonymous Global Board -->
-        <section class="blind-board">
+        <!-- Community Board -->
+        <section class="blind-board" style="margin-top:50px;">
             <div class="board-header">
-                <h2>글로벌 재테크 블라인드</h2>
+                <h2>건강검진 익명 라운지</h2>
                 <span class="board-info">🔒 전 세계 완전 익명 보장</span>
             </div>
-            
             <div class="comment-input-area">
-                <textarea id="commentInput" class="comment-input" placeholder="국가, 나이, 직업 상관없이 자유롭게 재테크 의견을 남겨주세요. (욕설 및 비방 금지)"></textarea>
-                <button id="submitBtn" class="submit-btn">의견 등록하기</button>
+                <textarea id="commentInput" class="comment-input" placeholder="건강검진 결과를 기다리며 떨리는 마음이나, 재검사 후기를 편하게 나눠주세요."></textarea>
+                <button id="submitBtn" class="submit-btn" style="background:var(--accent);">의견 등록하기</button>
             </div>
-
             <div id="commentList" class="comment-list">
-                <!-- Comments will be injected here by app.js -->
                 <p style="color:#888; font-size:14px;">실시간 데이터를 불러오는 중입니다...</p>
             </div>
         </section>
-
     </main>
 
-    <footer>
-        <p>&copy; 2026 Finance Note. All facts based on verified financial economics.</p>
+    <footer style="text-align:center; padding:30px; background:#f4f7f6; color:#888; font-size:13px;">
+        <p>&copy; 2026 Medical Guide. All rights reserved.</p>
+        <p style="color:#e63946; font-weight:bold;">[면책 조항] 본 사이트에서 제공하는 정보는 의학적 참고용일 뿐이며, 전문의의 진료와 처방을 대신할 수 없습니다. 이상 소견이 있을 시 반드시 의료 기관을 방문하시기 바랍니다.</p>
     </footer>
 
     <script src="app.js"></script>
+    <script src="health-dict.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            initHealthDictionary();
+        });
+    </script>
 </body>
 </html>

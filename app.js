@@ -43,8 +43,8 @@ const commentInput = document.getElementById('commentInput');
 const submitBtn = document.getElementById('submitBtn');
 const commentList = document.getElementById('commentList');
 
-const adjectives = ["냉철한", "현명한", "예리한", "신중한", "통찰력 있는", "단호한", "지혜로운", "결단력 있는"];
-const nouns = ["가치투자자", "배당족", "트레이더", "경제학자", "개미투자자", "건물주", "자산가", "분석가"];
+const adjectives = ["걱정많은", "불안한", "건강챙기는", "피곤한", "아픈", "건강한", "운동하는", "식단하는"];
+const nouns = ["직장인", "주부", "취준생", "대학생", "프리랜서", "아빠", "엄마", "환자"];
 function getRandomName() {
     const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
     const noun = nouns[Math.floor(Math.random() * nouns.length)];

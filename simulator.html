@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결과표 수치 시뮬레이터 | 메디컬 가이드</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="google-adsense-account" content="ca-pub-6117526240662405">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6117526240662405" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Medical Guide <span>결과지 시뮬레이터</span></a>
+            <button id="hamburgerBtn" class="hamburger-btn">☰</button>
+        </div>
+    </header>
+
+    <div id="drawerOverlay" class="drawer-overlay"></div>
+    <div id="drawerMenu" class="drawer-menu">
+        <button id="drawerClose" class="drawer-close">✕</button>
+        <div class="drawer-nav">
+            <h3>건강검진 해석 서비스</h3>
+            <a href="index.html">🔍 전체 검사 항목 백과</a>
+            <a href="simulator.html" class="active">📊 결과지 수치 시뮬레이터</a>
+        </div>
+    </div>
+
+    <main>
+        <div class="page-header" style="text-align:center; padding: 40px 0;">
+            <h1 style="color:var(--accent); font-size:32px;">스마트 수치 시뮬레이터</h1>
+            <p class="subtitle">건강검진 결과표의 수치를 입력하면 정상/주의/위험 상태를 즉시 알려줍니다.</p>
+        </div>
+
+        <div class="sim-container">
+            <h3>1. 간 수치 (AST / ALT)</h3>
+            <p style="font-size:14px; color:#666;">보통 정상 범위는 0~40 IU/L입니다. 본인의 수치를 입력하세요.</p>
+            <div class="sim-row">
+                <input type="number" id="astInput" class="sim-input" placeholder="AST 수치 입력">
+                <button class="sim-btn" onclick="checkLiver()">결과 확인</button>
+            </div>
+            <div id="liverResult" class="sim-result"></div>
+        </div>
+
+        <div class="sim-container">
+            <h3>2. 공복 혈당 (Glucose)</h3>
+            <p style="font-size:14px; color:#666;">8시간 금식 후 측정한 혈당 수치를 입력하세요.</p>
+            <div class="sim-row">
+                <input type="number" id="glucoseInput" class="sim-input" placeholder="혈당 수치 입력 (mg/dL)">
+                <button class="sim-btn" onclick="checkGlucose()">결과 확인</button>
+            </div>
+            <div id="glucoseResult" class="sim-result"></div>
+        </div>
+        
+        <div class="sim-container">
+            <h3>3. 혈압 (Blood Pressure)</h3>
+            <p style="font-size:14px; color:#666;">수축기(최고) 혈압과 이완기(최저) 혈압을 각각 입력하세요.</p>
+            <div class="sim-row">
+                <input type="number" id="bpHigh" class="sim-input" placeholder="수축기 (예: 120)">
+                <input type="number" id="bpLow" class="sim-input" placeholder="이완기 (예: 80)">
+                <button class="sim-btn" onclick="checkBP()">결과 확인</button>
+            </div>
+            <div id="bpResult" class="sim-result"></div>
+        </div>
+
+        <!-- Community Board -->
+        <section class="blind-board" style="margin-top:50px;">
+            <div class="board-header">
+                <h2>건강검진 익명 라운지</h2>
+                <span class="board-info">🔒 전 세계 완전 익명 보장</span>
+            </div>
+            <div class="comment-input-area">
+                <textarea id="commentInput" class="comment-input" placeholder="건강검진 결과를 기다리며 떨리는 마음이나, 재검사 후기를 편하게 나눠주세요."></textarea>
+                <button id="submitBtn" class="submit-btn" style="background:var(--accent);">의견 등록하기</button>
+            </div>
+            <div id="commentList" class="comment-list"></div>
+        </section>
+    </main>
+
+    <footer style="text-align:center; padding:30px; background:#f4f7f6; color:#888; font-size:13px;">
+        <p>&copy; 2026 Medical Guide. All rights reserved.</p>
+        <p style="color:#e63946; font-weight:bold;">[면책 조항] 본 시뮬레이터 결과는 통상적인 기준에 의한 참고용일 뿐이며, 절대적인 의학적 진단을 대신할 수 없습니다. 정확한 진단은 반드시 의사와 상담하십시오.</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        function checkLiver() {
+            const val = parseInt(document.getElementById('astInput').value);
+            const res = document.getElementById('liverResult');
+            if (isNaN(val)) return;
+            res.className = 'sim-result'; // reset
+            if (val <= 40) {
+                res.innerHTML = '🟢 [정상] 간 수치가 안정적인 정상 범위 내에 있습니다.';
+                res.classList.add('green');
+            } else if (val <= 100) {
+                res.innerHTML = '🟡 [주의] 정상(40)을 초과했습니다. 지방간이나 가벼운 간염을 의심할 수 있으니 생활 습관 관리가 필요합니다.';
+                res.classList.add('yellow');
+            } else {
+                res.innerHTML = '🔴 [위험] 수치가 매우 높습니다! 급성 간염이나 약물 독성 등이 의심되므로 즉시 내과 진료를 권장합니다.';
+                res.classList.add('red');
+            }
+        }
+
+        function checkGlucose() {
+            const val = parseInt(document.getElementById('glucoseInput').value);
+            const res = document.getElementById('glucoseResult');
+            if (isNaN(val)) return;
+            res.className = 'sim-result';
+            if (val < 100) {
+                res.innerHTML = '🟢 [정상] 공복 혈당이 100 미만으로 매우 건강합니다.';
+                res.classList.add('green');
+            } else if (val <= 125) {
+                res.innerHTML = '🟡 [주의] 공복혈당장애(당뇨 전단계)에 해당합니다. 식단 조절과 운동이 필수적입니다.';
+                res.classList.add('yellow');
+            } else {
+                res.innerHTML = '🔴 [위험] 126 이상은 당뇨병 진단 기준에 해당합니다. 빠른 시일 내에 병원에서 확진 검사를 받아보세요.';
+                res.classList.add('red');
+            }
+        }
+
+        function checkBP() {
+            const high = parseInt(document.getElementById('bpHigh').value);
+            const low = parseInt(document.getElementById('bpLow').value);
+            const res = document.getElementById('bpResult');
+            if (isNaN(high) || isNaN(low)) return;
+            res.className = 'sim-result';
+            if (high < 120 && low < 80) {
+                res.innerHTML = '🟢 [정상] 혈압이 정상입니다.';
+                res.classList.add('green');
+            } else if (high < 140 && low < 90) {
+                res.innerHTML = '🟡 [주의] 고혈압 전단계입니다. 짠 음식 섭취를 줄이고 체중 관리에 신경 쓰세요.';
+                res.classList.add('yellow');
+            } else {
+                res.innerHTML = '🔴 [위험] 수축기 140 또는 이완기 90 이상으로, 고혈압 진단 기준에 해당합니다. 순환기내과 전문의 진료가 필요합니다.';
+                res.classList.add('red');
+            }
+        }
+    </script>
+</body>
+</html>
