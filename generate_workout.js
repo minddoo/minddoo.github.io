@@ -1,0 +1,256 @@
+﻿const fs = require('fs');
+
+const workoutHtml = `<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>체킷의 항목 체크 | 30일 목표 달성 스티커보드</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .workout-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .goal-input-area {
+            margin-bottom: 30px;
+        }
+        
+        .goal-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border: 2px dashed #00b4a2;
+            border-radius: 12px;
+            text-align: center;
+            outline: none;
+            color: #1e293b;
+            font-weight: bold;
+            background: #f0fdfa;
+            transition: 0.3s;
+        }
+        .goal-input:focus {
+            background: #fff;
+            border-style: solid;
+        }
+        .goal-input::placeholder {
+            color: #94a3b8;
+            font-weight: normal;
+        }
+
+        .sticker-board {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .sticker-cell {
+            aspect-ratio: 1;
+            background: #f1f5f9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #94a3b8;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .sticker-cell:hover {
+            transform: scale(1.05);
+            background: #e2e8f0;
+        }
+
+        .sticker-cell.stamped {
+            background: #ccfbf1;
+            border-color: #00b4a2;
+            font-size: 28px;
+            animation: stampAnim 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            box-shadow: 0 4px 10px rgba(0, 180, 162, 0.2);
+        }
+
+        @keyframes stampAnim {
+            0% { transform: scale(1.5) rotate(-15deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .reset-btn {
+            background: #f1f5f9;
+            color: #64748b;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .reset-btn:hover {
+            background: #e2e8f0;
+            color: #334155;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">체킷의 항목 체크</a>
+            <button id="hamburgerBtn" class="hamburger-btn">☰</button>
+        </div>
+    </header>
+    
+    <div id="drawerOverlay" class="drawer-overlay"></div>
+    <div id="drawerMenu" class="drawer-menu">
+        <button id="drawerClose" class="drawer-close">✕</button>
+        <div class="drawer-nav">
+            <h3>체킷의 항목 체크</h3>
+            <a href="index.html">🔍 전체 검사 항목 백과</a>
+            <a href="simulator.html">📊 결과지 수치 시뮬레이터</a>
+            <a href="nhis-guide.html">🇰🇷 국가건강검진(공단) 가이드</a>
+            <a href="sanjae-guide.html">👷 특수검진 및 산재 가이드</a>
+            <a href="diet-recipe.html">🍽️ 건강검진 식단 & 자취생 레시피</a>
+            <a href="checkup-tips.html">💡 건강검진 받기 전 필수 팁</a>
+            <a href="workout.html" class="active">🏃‍♂️ 30일 목표 달성 스티커보드</a>
+            <a href="magazine.html">📰 건강검진 매거진 (칼럼)</a>
+            <a href="about.html">ℹ️ 사이트 소개 및 약관</a>
+        </div>
+    </div>
+
+    <main>
+        <div class="page-header" style="text-align:center; padding: 40px 20px;">
+            <h1 style="color:var(--accent); font-size:32px;">🏃‍♂️ 30일 목표 달성 스티커보드</h1>
+            <p class="subtitle" style="color:#64748b;">러닝, 헬스, 금주 등 나만의 건강 목표를 세우고 매일 칭찬 스티커(👟)를 모아보세요!</p>
+        </div>
+
+        <section class="workout-container">
+            <div class="goal-input-area">
+                <input type="text" id="goalInput" class="goal-input" placeholder="나만의 목표를 적어보세요! (예: 매일 러닝 3km)">
+            </div>
+            
+            <div class="sticker-board" id="board">
+                <!-- JS will inject 30 cells here -->
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px;">
+                <div style="text-align:left;">
+                    <span style="font-size:14px; color:#64748b;">현재 달성률: </span>
+                    <strong id="progressText" style="color:#00b4a2; font-size:18px;">0/30</strong>
+                </div>
+                <button class="reset-btn" onclick="resetBoard()">초기화 (새로운 달력 시작)</button>
+            </div>
+        </section>
+    </main>
+
+    <footer style="text-align:center; padding:30px; background:#f4f7f6; color:#888; font-size:13px; line-height: 1.6; margin-top:50px;">
+        <p>&copy; 2026 체킷의 항목 체크. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const board = document.getElementById('board');
+            const goalInput = document.getElementById('goalInput');
+            const progressText = document.getElementById('progressText');
+            
+            // Load saved data
+            let savedData = JSON.parse(localStorage.getItem('checkit_workout')) || {
+                goal: "",
+                stamps: Array(30).fill(false)
+            };
+
+            // Set Goal text
+            goalInput.value = savedData.goal;
+            goalInput.addEventListener('input', (e) => {
+                savedData.goal = e.target.value;
+                saveData();
+            });
+
+            // Generate Board
+            for (let i = 0; i < 30; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'sticker-cell';
+                cell.innerHTML = savedData.stamps[i] ? '👟' : (i + 1);
+                if (savedData.stamps[i]) cell.classList.add('stamped');
+                
+                cell.addEventListener('click', () => {
+                    // Toggle stamp
+                    savedData.stamps[i] = !savedData.stamps[i];
+                    if (savedData.stamps[i]) {
+                        cell.classList.add('stamped');
+                        cell.innerHTML = '👟';
+                    } else {
+                        cell.classList.remove('stamped');
+                        cell.innerHTML = (i + 1);
+                    }
+                    saveData();
+                    updateProgress();
+                });
+                
+                board.appendChild(cell);
+            }
+            updateProgress();
+
+            function saveData() {
+                localStorage.setItem('checkit_workout', JSON.stringify(savedData));
+            }
+
+            function updateProgress() {
+                const count = savedData.stamps.filter(s => s).length;
+                progressText.innerText = count + '/30';
+            }
+
+            window.resetBoard = function() {
+                if(confirm("모든 스티커를 지우고 새로운 도전을 시작하시겠습니까?")) {
+                    savedData.stamps = Array(30).fill(false);
+                    saveData();
+                    location.reload();
+                }
+            }
+        });
+    </script>
+</body>
+</html>`;
+
+fs.writeFileSync('C:/Users/pc/Documents/minddoo.github.io/workout.html', workoutHtml, 'utf8');
+
+// Update navigation in all files
+const files = ['index.html', 'simulator.html', 'nhis-guide.html', 'sanjae-guide.html', 'diet-recipe.html', 'checkup-tips.html', 'magazine.html', 'about.html'];
+const newNavStr = `            <a href="index.html">🔍 전체 검사 항목 백과</a>
+            <a href="simulator.html">📊 결과지 수치 시뮬레이터</a>
+            <a href="nhis-guide.html">🇰🇷 국가건강검진(공단) 가이드</a>
+            <a href="sanjae-guide.html">👷 특수검진 및 산재 가이드</a>
+            <a href="diet-recipe.html">🍽️ 건강검진 식단 & 자취생 레시피</a>
+            <a href="checkup-tips.html">💡 건강검진 받기 전 필수 팁</a>
+            <a href="workout.html">🏃‍♂️ 30일 목표 달성 스티커보드</a>
+            <a href="magazine.html">📰 건강검진 매거진 (칼럼)</a>
+            <a href="about.html">ℹ️ 사이트 소개 및 약관</a>`;
+
+files.forEach(file => {
+    let html = fs.readFileSync(`C:/Users/pc/Documents/minddoo.github.io/${file}`, 'utf8');
+    
+    // Regex to find the nav block and replace it
+    const navRegex = /<a href="index\.html".*?<\/a>\s*<a href="simulator\.html".*?<\/a>\s*<a href="nhis-guide\.html".*?<\/a>\s*<a href="sanjae-guide\.html".*?<\/a>\s*<a href="diet-recipe\.html".*?<\/a>\s*<a href="checkup-tips\.html".*?<\/a>\s*(<a href="workout\.html".*?<\/a>\s*)?<a href="magazine\.html".*?<\/a>\s*<a href="about\.html".*?<\/a>/;
+    html = html.replace(navRegex, newNavStr);
+    
+    fs.writeFileSync(`C:/Users/pc/Documents/minddoo.github.io/${file}`, html, 'utf8');
+});
+
+// Update sitemap.xml
+let sitemap = fs.readFileSync('C:/Users/pc/Documents/minddoo.github.io/sitemap.xml', 'utf8');
+if (!sitemap.includes('workout.html')) {
+    sitemap = sitemap.replace('<url><loc>https://minddoo.github.io/magazine.html</loc>', '<url><loc>https://minddoo.github.io/workout.html</loc><changefreq>daily</changefreq><priority>0.9</priority></url>\n  <url><loc>https://minddoo.github.io/magazine.html</loc>');
+    fs.writeFileSync('C:/Users/pc/Documents/minddoo.github.io/sitemap.xml', sitemap, 'utf8');
+}
+
+console.log('Successfully created workout.html, updated nav, and sitemap.');
