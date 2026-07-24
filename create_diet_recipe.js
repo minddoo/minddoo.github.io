@@ -1,0 +1,346 @@
+﻿const fs = require('fs');
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>체킷의 항목 체크 | 건강검진 식단 & 초간단 레시피</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .guide-section {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid var(--border);
+        }
+        .guide-section h2 {
+            color: var(--accent);
+            border-bottom: 2px solid var(--line);
+            padding-bottom: 10px;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .timeline {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: auto;
+            background-color: white;
+            border: 4px solid var(--accent);
+            top: 15px;
+            left: 20px;
+            margin-left: -10px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-content {
+            padding: 15px 20px;
+            background-color: #f8fafc;
+            position: relative;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+        .timeline-content h3 { margin-top: 0; color: var(--accent); font-size:18px; }
+        
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .recipe-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s;
+        }
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 180, 162, 0.1);
+            border-color: var(--primary);
+        }
+        .recipe-header {
+            background: #f0fdfa;
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .recipe-header h3 { margin:0; color:#0f766e; font-size:20px; }
+        .recipe-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .recipe-body { padding: 20px; }
+        .recipe-body h4 { color: #334155; margin-top:0; font-size:15px; }
+        .recipe-body ul, .recipe-body ol {
+            padding-left: 20px;
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .danger-card {
+            background: #fff1f2;
+            border-left: 4px solid #e11d48;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .danger-card h4 { color: #be123c; margin-top:0; }
+        .safe-card {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .safe-card h4 { color: #166534; margin-top:0; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">체킷의 항목 체크</a>
+            <button id="hamburgerBtn" class="hamburger-btn">☰</button>
+        </div>
+    </header>
+    
+    <div id="drawerOverlay" class="drawer-overlay"></div>
+    <div id="drawerMenu" class="drawer-menu">
+        <button id="drawerClose" class="drawer-close">✕</button>
+        <div class="drawer-nav">
+            <h3>체킷의 항목 체크</h3>
+            <a href="index.html">🔍 전체 검사 항목 백과</a>
+            <a href="simulator.html">📊 결과지 수치 시뮬레이터</a>
+            <a href="nhis-guide.html">🇰🇷 국가건강검진(공단) 가이드</a>
+            <a href="sanjae-guide.html">👷 특수검진 및 산재 가이드</a>
+            <a href="diet-recipe.html" class="active">🍽️ 건강검진 식단 & 자취생 레시피</a>
+            <a href="about.html">ℹ️ 사이트 소개 및 약관</a>
+        </div>
+    </div>
+
+    <main>
+        <div class="page-header" style="text-align:center; padding: 40px 20px; background: linear-gradient(135deg, #dcfce7 0%, #ffffff 100%); border-radius:16px;">
+            <h1 style="color:#0f766e; font-size:32px;">🍽️ 금식 가이드 & 초간단 레시피</h1>
+            <p class="subtitle">건강검진 전 완벽한 식단 관리부터 자취생을 위한 혈당·콜레스테롤 개선 요리까지</p>
+        </div>
+
+        <section class="guide-section">
+            <h2>⏳ 건강검진 전 필수 'D-Day 금식 타임라인'</h2>
+            <p style="text-align:center; color:#64748b;">위/대장내시경을 앞두고 계신다면 이 타임라인을 꼭 지켜주세요!</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>D-3 ~ D-2 (식단 조절기)</h3>
+                        <p>자극적이고 기름진 음식, 과음, 과식을 피하고 소화가 잘 되는 음식 위주로 섭취합니다.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>D-1 (전날 저녁)</h3>
+                        <p>저녁 식사는 <b>오후 8시 이전</b>에 가볍게(죽, 흰쌀밥과 맑은 국 등) 마치고, 이후부터는 물을 제외하고 <b>최소 8~12시간 이상 철저한 금식</b>에 들어갑니다.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 style="color:#e11d48;">D-Day (검진 당일 아침)</h3>
+                        <p>물, 커피, 우유, 껌, 담배 등 <b>모든 음식물 섭취를 절대 금합니다.</b><br><br><span style="font-size:13px; color:#ef4444;">※ 단, 혈압약을 드시는 경우 검진 당일 이른 아침(6시경)에 최소량의 물과 함께 복용하세요. 당뇨약/인슐린은 저혈당 쇼크 위험이 있으므로 당일 아침 절대 투여 금지입니다.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2>🚽 대장내시경 3일 전 피할 음식 vs 먹어도 되는 음식</h2>
+            <div class="danger-card">
+                <h4>🚫 절대 금지 음식 (장벽에 붙어 시야를 가리는 주범!)</h4>
+                <ul>
+                    <li><b>씨 있는 과일:</b> 수박, 참외, 키위, 딸기, 포도 등</li>
+                    <li><b>잡곡/견과류:</b> 현미밥, 흑미밥, 깨, 호두, 잣 등</li>
+                    <li><b>해조류/나물:</b> 미역, 김, 다시마, 고춧가루, 김치, 콩나물 등</li>
+                </ul>
+            </div>
+            
+            <div class="safe-card">
+                <h4>✅ 추천하는 안전 식단 & 초간단 조리법</h4>
+                <p>흰쌀밥, 흰죽, 식빵(견과류 없는 것), <b>두부, 계란</b>, 맑은 국물, 생선, 감자 등은 장에 찌꺼기를 남기지 않습니다.</p>
+                <ul>
+                    <li><b>카스테라 & 우유:</b> 불 없이 해결하는 가장 간편한 식사</li>
+                    <li><b>부드러운 계란찜:</b> 계란에 소금만 살짝 쳐서 전자레인지에 돌려 조리 (파, 깨 절대 금지!)</li>
+                    <li><b>간장 두부 부침:</b> 딱딱한 두부나 순두부를 참기름과 간장만 곁들여 섭취</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2>👨‍🍳 자취생 맞춤 '혈당/콜레스테롤 낮추기' 초간단 레시피 4선</h2>
+            <p style="color:#64748b; margin-bottom:20px;">건강검진 결과에서 고혈당, 고지혈증 주의를 받으셨나요? 불을 쓰지 않고 전자레인지만으로 뚝딱 만드는 기적의 레시피입니다.</p>
+            
+            <div class="recipe-grid">
+                <!-- Recipe 1 -->
+                <div class="recipe-card">
+                    <div class="recipe-header">
+                        <h3>① 두부계란볶음밥</h3>
+                        <span class="recipe-badge">혈당 스파이크 방지</span>
+                    </div>
+                    <div class="recipe-body">
+                        <p style="font-size:14px; color:#0f766e; margin-top:0;">탄수화물을 대폭 줄이고 단백질로 포만감을 채웁니다.</p>
+                        <h4>🛒 재료</h4>
+                        <ul>
+                            <li>순두부 또는 딱딱한 두부 1/2모</li>
+                            <li>계란 1개</li>
+                            <li>간장 0.5 스푼, 참기름(또는 올리브유)</li>
+                        </ul>
+                        <h4>🍳 조리법</h4>
+                        <ol>
+                            <li>전자레인지용 용기에 두부를 으깨어 넣습니다.</li>
+                            <li>계란을 깨서 넣고 간장과 참기름을 섞은 뒤 비벼줍니다.</li>
+                            <li>전자레인지에 3~4분간 돌려 익히면 밥 대신 먹는 주식 완성!</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Recipe 2 -->
+                <div class="recipe-card">
+                    <div class="recipe-header">
+                        <h3>② 오트밀 닭가슴살 리조또</h3>
+                        <span class="recipe-badge">콜레스테롤(LDL) 개선</span>
+                    </div>
+                    <div class="recipe-body">
+                        <p style="font-size:14px; color:#0f766e; margin-top:0;">베타글루칸 식이섬유가 나쁜 콜레스테롤 배출을 돕습니다.</p>
+                        <h4>🛒 재료</h4>
+                        <ul>
+                            <li>오트밀 3스푼 (퀵오트)</li>
+                            <li>시판 닭가슴살 1팩</li>
+                            <li>우유(또는 아몬드브리즈) 1컵, 소금/후추</li>
+                        </ul>
+                        <h4>🍳 조리법</h4>
+                        <ol>
+                            <li>깊은 그릇에 오트밀, 우유, 결대로 찢은 닭가슴살을 넣습니다.</li>
+                            <li>전자레인지에 2분~2분 30초간 돌려줍니다.</li>
+                            <li>후추를 살짝 뿌려 부드럽게 섭취합니다.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Recipe 3 -->
+                <div class="recipe-card">
+                    <div class="recipe-header">
+                        <h3>③ 캔참치 & 양배추 덮밥</h3>
+                        <span class="recipe-badge">식이섬유 & 불포화지방</span>
+                    </div>
+                    <div class="recipe-body">
+                        <p style="font-size:14px; color:#0f766e; margin-top:0;">생채소 섭취가 어려운 자취생을 위한 완벽한 덮밥입니다.</p>
+                        <h4>🛒 재료</h4>
+                        <ul>
+                            <li>채썬 양배추(샐러드팩) 한 줌</li>
+                            <li>기름 뺀 참치캔 1개</li>
+                            <li>현미밥 반 공기(또는 두부), 소스 약간</li>
+                        </ul>
+                        <h4>🍳 조리법</h4>
+                        <ol>
+                            <li>그릇 바닥에 채썬 양배추를 깔고, 전자레인지에 1분간 돌려 숨을 죽입니다.</li>
+                            <li>그 위에 밥과 기름 뺀 참치를 올립니다.</li>
+                            <li>약간의 소스를 곁들여 비벼 먹습니다.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Recipe 4 -->
+                <div class="recipe-card">
+                    <div class="recipe-header">
+                        <h3>④ 토마토 올리브유 절임</h3>
+                        <span class="recipe-badge">혈관 건강 / 간식</span>
+                    </div>
+                    <div class="recipe-body">
+                        <p style="font-size:14px; color:#0f766e; margin-top:0;">라이코펜과 건강한 지방으로 혈관 벽을 보호합니다.</p>
+                        <h4>🛒 재료</h4>
+                        <ul>
+                            <li>방울토마토 한 팩</li>
+                            <li>엑스트라 버진 올리브유</li>
+                            <li>소금 한 꼬집, 후추</li>
+                        </ul>
+                        <h4>🍳 조리법</h4>
+                        <ol>
+                            <li>씻은 방울토마토의 꼭지를 떼고 반으로 썹니다.</li>
+                            <li>밀폐용기에 담고 올리브유를 반쯤 잠길 정도로 붓습니다.</li>
+                            <li>소금/후추 간을 하고 냉장고에 반나절 숙성 후 반찬으로 먹습니다.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer style="text-align:center; padding:30px; background:#f4f7f6; color:#888; font-size:13px; line-height: 1.6;">
+        <div style="margin-bottom: 15px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+            <a href="about.html#about" style="color:#00b4a2; text-decoration:none; font-weight:bold;">블로그 소개</a>
+            <a href="about.html#contact" style="color:#00b4a2; text-decoration:none; font-weight:bold;">문의하기</a>
+            <a href="about.html#privacy" style="color:#00b4a2; text-decoration:none; font-weight:bold;">개인정보처리방침</a>
+            <a href="about.html#disclaimer" style="color:#00b4a2; text-decoration:none; font-weight:bold;">면책 조항</a>
+        </div>
+        <p>&copy; 2026 체킷의 항목 체크. All rights reserved.</p>
+        <p style="color:#e63946; font-weight:bold; margin-top:10px;">[의학적 면책 조항] 본 사이트에서 제공하는 레시피 및 가이드는 참고용일 뿐이며, 주치의의 진료 및 처방을 대신할 수 없습니다.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
+`;
+fs.writeFileSync('C:/Users/pc/Documents/minddoo.github.io/diet-recipe.html', htmlContent, 'utf8');
+
+const files = ['index.html', 'simulator.html', 'about.html', 'nhis-guide.html', 'sanjae-guide.html'];
+const newNavStr = `            <a href="index.html">🔍 전체 검사 항목 백과</a>
+            <a href="simulator.html">📊 결과지 수치 시뮬레이터</a>
+            <a href="nhis-guide.html">🇰🇷 국가건강검진(공단) 가이드</a>
+            <a href="sanjae-guide.html">👷 특수검진 및 산재 가이드</a>
+            <a href="diet-recipe.html">🍽️ 건강검진 식단 & 자취생 레시피</a>
+            <a href="about.html">ℹ️ 사이트 소개 및 약관</a>`;
+
+files.forEach(file => {
+    let html = fs.readFileSync(`C:/Users/pc/Documents/minddoo.github.io/${file}`, 'utf8');
+    
+    // Replace drawer nav
+    const navRegex = /<a href="index\.html".*?<\/a>\s*<a href="simulator\.html".*?<\/a>\s*<a href="nhis-guide\.html".*?<\/a>\s*<a href="sanjae-guide\.html".*?<\/a>\s*(<a href="diet-recipe\.html".*?<\/a>\s*)?<a href="about\.html".*?<\/a>/;
+    html = html.replace(navRegex, newNavStr);
+    
+    fs.writeFileSync(`C:/Users/pc/Documents/minddoo.github.io/${file}`, html, 'utf8');
+});
+console.log('Created diet-recipe.html and updated navigation.');
