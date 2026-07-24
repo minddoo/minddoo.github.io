@@ -94,7 +94,16 @@
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo">체킷의 항목 체크</a>
+                    <div class="header-right" style="display: flex; align-items: center;">
+            <div class="lang-selector">
+                <button onclick="changeLanguage('ko')" title="Korean">🇰🇷</button>
+                <button onclick="changeLanguage('en')" title="English">🇺🇸</button>
+                <button onclick="changeLanguage('ja')" title="Japanese">🇯🇵</button>
+                <button onclick="changeLanguage('zh-CN')" title="Chinese">🇨🇳</button>
+                <button onclick="changeLanguage('vi')" title="Vietnamese">🇻🇳</button>
+            </div>
             <button id="hamburgerBtn" class="hamburger-btn">☰</button>
+        </div>
         </div>
     </header>
     
@@ -341,5 +350,23 @@
             document.getElementById("resultArea").innerHTML = targetMsg + cancerMsg;
         }
     </script>
+
+    <!-- Google Translate -->
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'ko', autoDisplay: false}, 'google_translate_element');
+        }
+        function changeLanguage(lang) {
+            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
+            if (lang !== 'ko') {
+                document.cookie = "googtrans=/ko/" + lang + "; path=/;";
+                document.cookie = "googtrans=/ko/" + lang + "; path=/; domain=" + window.location.hostname;
+            }
+            window.location.reload();
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
