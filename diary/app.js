@@ -428,12 +428,13 @@
 
                 let badgesHTML = '';
 
-                // Schedules Badge
+                // Schedules Badges (Render ALL schedules registered on this day)
                 if (data.schedules && data.schedules.length > 0) {
-                    const firstSch = data.schedules[0];
-                    const icon = firstSch.icon || '📌';
-                    const text = isMobile ? `${icon}${escapeHtml(firstSch.text)}` : `${icon} ${escapeHtml(firstSch.text)}`;
-                    badgesHTML += `<div class="badge-row badge-schedule"><span>${text}</span></div>`;
+                    data.schedules.forEach(sch => {
+                        const icon = sch.icon || '📌';
+                        const text = isMobile ? `${icon}${escapeHtml(sch.text)}` : `${icon} ${escapeHtml(sch.text)}`;
+                        badgesHTML += `<div class="badge-row badge-schedule" title="${escapeHtml(sch.text)}"><span>${text}</span></div>`;
+                    });
                 }
 
                 // Income Badge
