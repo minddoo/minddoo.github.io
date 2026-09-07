@@ -179,11 +179,6 @@
         };
 
         // DOM Elements
-        const viewTabCalendar = document.getElementById('view-tab-calendar');
-        const viewTabGuide = document.getElementById('view-tab-guide');
-        const pageCalendarView = document.getElementById('page-calendar-view');
-        const pageGuideView = document.getElementById('page-guide-view');
-
         const prevMonthBtn = document.getElementById('prev-month-btn');
         const nextMonthBtn = document.getElementById('next-month-btn');
         const todayBtn = document.getElementById('today-btn');
@@ -196,23 +191,6 @@
         const monthlyExpenseValEl = document.getElementById('monthly-expense-val');
         const currentTotalAssetValEl = document.getElementById('current-total-asset-val');
         const monthlyNetValEl = document.getElementById('monthly-net-val');
-
-        // Page View Tab Switcher Handlers
-        if (viewTabCalendar && viewTabGuide && pageCalendarView && pageGuideView) {
-            viewTabCalendar.addEventListener('click', () => {
-                viewTabCalendar.classList.add('active');
-                viewTabGuide.classList.remove('active');
-                pageCalendarView.classList.remove('hidden');
-                pageGuideView.classList.add('hidden');
-            });
-
-            viewTabGuide.addEventListener('click', () => {
-                viewTabGuide.classList.add('active');
-                viewTabCalendar.classList.remove('active');
-                pageGuideView.classList.remove('hidden');
-                pageCalendarView.classList.add('hidden');
-            });
-        }
 
         // Goal Elements
         const goalBannerBtn = document.getElementById('goal-banner-btn');
