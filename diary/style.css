@@ -499,6 +499,46 @@ body {
     margin-top: 0.2rem;
 }
 
+/* Page View Tabs Navigation */
+.page-view-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.page-tab {
+    padding: 0.6rem 1.1rem;
+    border-radius: 14px;
+    border: 1px solid var(--border-diary);
+    background: #FFFFFF;
+    color: var(--text-muted);
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 2px 6px rgba(160, 140, 130, 0.05);
+}
+
+.page-tab:hover {
+    color: var(--text-main);
+    border-color: var(--border-hover);
+}
+
+.page-tab.active {
+    background: var(--bg-subtle);
+    color: var(--coral-dark);
+    border-color: var(--coral);
+    box-shadow: 0 3px 10px rgba(224, 109, 83, 0.15);
+}
+
+.page-view-content.hidden {
+    display: none !important;
+}
+
 .badge-row {
     font-size: 0.72rem;
     font-weight: 700;
@@ -507,27 +547,32 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    white-space: nowrap;
+    word-break: break-word;
     overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .badge-inc {
     background: var(--sage-light);
     color: var(--sage-dark);
     border: 1px solid rgba(77, 139, 104, 0.25);
+    white-space: nowrap;
 }
 
 .badge-exp {
     background: var(--coral-light);
     color: var(--coral-dark);
     border: 1px solid rgba(224, 109, 83, 0.25);
+    white-space: nowrap;
 }
 
 .badge-schedule {
     background: var(--purple-light);
     color: var(--purple-dark);
     border: 1px solid rgba(139, 92, 246, 0.3);
+    white-space: normal;
+    line-height: 1.3;
+    display: block;
+    padding: 0.15rem 0.3rem;
 }
 
 /* 6. Diary Modals & Mode Switcher */

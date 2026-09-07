@@ -49,63 +49,74 @@
     <!-- App Main Container -->
     <div class="app-container">
         
-        <!-- Header & Top Bar -->
-        <header class="app-header diary-panel">
-            <div class="header-top">
-                <!-- Brand Title -->
-                <div class="logo">
-                    <div class="diary-icon-box">
-                        <i class="fa-solid fa-book-journal-whills logo-icon"></i>
+        <!-- Top Page View Navigation Bar (페이지 구분 탭) -->
+        <nav class="page-view-tabs">
+            <button id="view-tab-calendar" class="page-tab active"><i class="fa-solid fa-calendar-days"></i> MY 가계부/달력 📖</button>
+            <button id="view-tab-guide" class="page-tab"><i class="fa-solid fa-lightbulb"></i> 자산관리 백서 & 이용 가이드 💡</button>
+        </nav>
+
+        <div id="page-calendar-view" class="page-view-content">
+            <!-- Header & Top Bar -->
+            <header class="app-header diary-panel">
+                <div class="header-top">
+                    <!-- Brand Title -->
+                    <div class="logo">
+                        <div class="diary-icon-box">
+                            <i class="fa-solid fa-book-journal-whills logo-icon"></i>
+                        </div>
+                        <h1 class="logo-title">MY 가계부/달력 <span class="diary-tag">Journal 🌸</span></h1>
                     </div>
-                    <h1 class="logo-title">MY 가계부/달력 <span class="diary-tag">Journal 🌸</span></h1>
+
+                    <!-- Month Navigator -->
+                    <div class="month-navigator">
+                        <button id="prev-month-btn" class="diary-btn icon-btn" title="이전 달"><i class="fa-solid fa-chevron-left"></i></button>
+                        <span id="current-month-display" class="month-label">2026년 9월</span>
+                        <button id="next-month-btn" class="diary-btn icon-btn" title="다음 달"><i class="fa-solid fa-chevron-right"></i></button>
+                        <button id="today-btn" class="diary-btn btn-sm">오늘</button>
+                        <button id="clear-all-data-btn" class="diary-btn btn-sm btn-reset" title="전체 데이터 0원으로 초기화">
+                            <i class="fa-solid fa-rotate-left"></i> 초기화
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Month Navigator -->
-                <div class="month-navigator">
-                    <button id="prev-month-btn" class="diary-btn icon-btn" title="이전 달"><i class="fa-solid fa-chevron-left"></i></button>
-                    <span id="current-month-display" class="month-label">2026년 9월</span>
-                    <button id="next-month-btn" class="diary-btn icon-btn" title="다음 달"><i class="fa-solid fa-chevron-right"></i></button>
-                    <button id="today-btn" class="diary-btn btn-sm">오늘</button>
-                    <button id="clear-all-data-btn" class="diary-btn btn-sm btn-reset" title="전체 데이터 0원으로 초기화">
-                        <i class="fa-solid fa-rotate-left"></i> 초기화
-                    </button>
-                </div>
-            </div>
-
-            <!-- Monthly Goal Tape Card (이번 달 목표 적기) -->
-            <div class="goal-banner diary-card" id="goal-banner-btn" title="클릭하여 이번 달 목표 작성">
-                <div class="goal-left">
-                    <span class="goal-badge"><i class="fa-solid fa-bullseye"></i> 이달의 목표 🌸</span>
-                    <span id="monthly-goal-text" class="goal-text">목표를 작성해 보세요! (예: 이번 달 식비 30만원 이하로 아끼기)</span>
-                </div>
-                <button class="goal-edit-btn"><i class="fa-solid fa-pen"></i> 수정</button>
-            </div>
-
-            <!-- Top Financial Summary Cards Grid -->
-            <div class="header-summary">
-                <!-- Starting Assets Card -->
-                <div class="summary-chip asset-chip diary-card" id="asset-chip-btn" title="클릭하여 시작 총 자산 변경하기">
-                    <span class="chip-label"><i class="fa-solid fa-vault"></i> 시작 총 자산 🌼</span>
-                    <span id="total-asset-val" class="chip-val">0원</span>
-                    <span class="chip-sub-hint">✏️ 클릭 시 설정</span>
+                <!-- Monthly Goal Tape Card (이번 달 목표 적기) -->
+                <div class="goal-banner diary-card" id="goal-banner-btn" title="클릭하여 이번 달 목표 작성">
+                    <div class="goal-left">
+                        <span class="goal-badge"><i class="fa-solid fa-bullseye"></i> 이달의 목표 🌸</span>
+                        <span id="monthly-goal-text" class="goal-text">목표를 작성해 보세요! (예: 이번 달 식비 30만원 이하로 아끼기)</span>
+                    </div>
+                    <button class="goal-edit-btn"><i class="fa-solid fa-pen"></i> 수정</button>
                 </div>
 
-                <div class="summary-chip income-chip diary-card">
-                    <span class="chip-label"><i class="fa-solid fa-arrow-trend-up text-sage"></i> 이달 수입 🍃</span>
-                    <span id="monthly-income-val" class="chip-val text-sage">+0원</span>
-                </div>
+                <!-- Top Financial Summary Cards Grid -->
+                <div class="header-summary">
+                    <!-- Starting Assets Card (FIXED: Never changes on income/expense) -->
+                    <div class="summary-chip asset-chip diary-card" id="asset-chip-btn" title="클릭하여 시작 총 자산 변경하기">
+                        <span class="chip-label"><i class="fa-solid fa-vault"></i> 시작 총 자산 🌼</span>
+                        <span id="initial-asset-val" class="chip-val">0원</span>
+                        <span class="chip-sub-hint">✏️ 클릭 시 설정</span>
+                    </div>
 
-                <div class="summary-chip expense-chip diary-card">
-                    <span class="chip-label"><i class="fa-solid fa-arrow-trend-down text-coral"></i> 이달 지출 🌸</span>
-                    <span id="monthly-expense-val" class="chip-val text-coral">-0원</span>
-                </div>
+                    <!-- Monthly Income Card -->
+                    <div class="summary-chip income-chip diary-card">
+                        <span class="chip-label"><i class="fa-solid fa-arrow-trend-up text-sage"></i> 이달 수입 🍃</span>
+                        <span id="monthly-income-val" class="chip-val text-sage">+0원</span>
+                    </div>
 
-                <div class="summary-chip net-chip diary-card">
-                    <span class="chip-label"><i class="fa-solid fa-scale-balanced"></i> 현재 총 자산</span>
-                    <span id="monthly-net-val" class="chip-val">0원</span>
+                    <!-- Monthly Expense Card -->
+                    <div class="summary-chip expense-chip diary-card">
+                        <span class="chip-label"><i class="fa-solid fa-arrow-trend-down text-coral"></i> 이달 지출 🌸</span>
+                        <span id="monthly-expense-val" class="chip-val text-coral">-0원</span>
+                    </div>
+
+                    <!-- Current Total Assets Card (Calculated: Starting Asset + Income - Expense) -->
+                    <div class="summary-chip net-chip diary-card">
+                        <span class="chip-label"><i class="fa-solid fa-scale-balanced"></i> 현재 총 자산 💰</span>
+                        <span id="current-total-asset-val" class="chip-val">0원</span>
+                        <span id="monthly-net-val" class="chip-sub-hint">(순수지: +0원)</span>
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
 
         <!-- Main Calendar Section (다이어리 감성 달력) -->
         <main class="calendar-wrapper diary-panel">
@@ -120,13 +131,13 @@
                 <div class="weekday sat">토 🍃</div>
             </div>
 
-            <!-- 7 Columns x 5~6 Rows Calendar Grid -->
-            <div id="calendar-grid" class="calendar-grid">
-                <!-- Dynamically generated diary calendar days -->
+            </div>
         </main>
+        </div> <!-- End of #page-calendar-view -->
 
-        <!-- Informational Content & Financial Guide Section (Google AdSense High Value Content) -->
-        <section class="info-guide-section diary-panel">
+        <!-- Informational Content & Financial Guide Section (Separate Tab View) -->
+        <div id="page-guide-view" class="page-view-content hidden">
+            <section class="info-guide-section diary-panel">
             <article class="guide-article">
                 <h2 class="guide-main-title">📖 MY 가계부/달력 스마트 자산관리 백서 & 이용 가이드</h2>
                 <p class="guide-intro">
@@ -215,9 +226,9 @@
                         <strong>쿠키 및 제3자 광고 서비스 (Google AdSense):</strong> 본 웹사이트는 맞춤형 광고 제공 및 웹 트래픽 분석을 위해 Google AdSense 및 쿠키를 사용할 수 있습니다. 
                         Google은 쿠키를 사용하여 이용자의 이전 방문 기록을 바탕으로 광고를 게재합니다. 이용자는 브라우저 설정에서 쿠키 수집을 거부할 수 있습니다.
                     </p>
-                </div>
             </article>
         </section>
+        </div> <!-- End of #page-guide-view -->
 
         <!-- Footer -->
         <footer class="app-footer">

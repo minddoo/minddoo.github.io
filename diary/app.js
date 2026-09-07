@@ -179,6 +179,11 @@
         };
 
         // DOM Elements
+        const viewTabCalendar = document.getElementById('view-tab-calendar');
+        const viewTabGuide = document.getElementById('view-tab-guide');
+        const pageCalendarView = document.getElementById('page-calendar-view');
+        const pageGuideView = document.getElementById('page-guide-view');
+
         const prevMonthBtn = document.getElementById('prev-month-btn');
         const nextMonthBtn = document.getElementById('next-month-btn');
         const todayBtn = document.getElementById('today-btn');
@@ -186,10 +191,28 @@
         const calendarGridEl = document.getElementById('calendar-grid');
 
         const assetChipBtn = document.getElementById('asset-chip-btn');
-        const totalAssetValEl = document.getElementById('total-asset-val');
+        const initialAssetValEl = document.getElementById('initial-asset-val');
         const monthlyIncomeValEl = document.getElementById('monthly-income-val');
         const monthlyExpenseValEl = document.getElementById('monthly-expense-val');
+        const currentTotalAssetValEl = document.getElementById('current-total-asset-val');
         const monthlyNetValEl = document.getElementById('monthly-net-val');
+
+        // Page View Tab Switcher Handlers
+        if (viewTabCalendar && viewTabGuide && pageCalendarView && pageGuideView) {
+            viewTabCalendar.addEventListener('click', () => {
+                viewTabCalendar.classList.add('active');
+                viewTabGuide.classList.remove('active');
+                pageCalendarView.classList.remove('hidden');
+                pageGuideView.classList.add('hidden');
+            });
+
+            viewTabGuide.addEventListener('click', () => {
+                viewTabGuide.classList.add('active');
+                viewTabCalendar.classList.remove('active');
+                pageGuideView.classList.remove('hidden');
+                pageCalendarView.classList.add('hidden');
+            });
+        }
 
         // Goal Elements
         const goalBannerBtn = document.getElementById('goal-banner-btn');
@@ -337,15 +360,21 @@
             });
 
             const monthlyNet = monthlyIncome - monthlyExpense;
-            const totalAsset = state.initialAsset + totalIncomeAllTime - totalExpenseAllTime;
+            const currentTotalAsset = state.initialAsset + totalIncomeAllTime - totalExpenseAllTime;
 
-            if (totalAssetValEl) totalAssetValEl.textContent = formatKoreanText(totalAsset);
+            // 1. Starting Asset: FIXED to initial asset setting
+            if (initialAssetValEl) initialAssetValEl.textContent = formatKoreanText(state.initialAsset);
+
+            // 2. Monthly Income & Expense
             if (monthlyIncomeValEl) monthlyIncomeValEl.textContent = `+${formatKoreanText(monthlyIncome)}`;
             if (monthlyExpenseValEl) monthlyExpenseValEl.textContent = `-${formatKoreanText(monthlyExpense)}`;
 
+            // 3. Current Total Assets (Calculated: Starting Asset + Incomes - Expenses)
+            if (currentTotalAssetValEl) currentTotalAssetValEl.textContent = formatKoreanText(currentTotalAsset);
+
+            // 4. Monthly Net Income Sub-hint
             if (monthlyNetValEl) {
-                monthlyNetValEl.textContent = `${monthlyNet >= 0 ? '+' : ''}${formatKoreanText(monthlyNet)}`;
-                monthlyNetValEl.className = monthlyNet >= 0 ? 'chip-val text-sage' : 'chip-val text-coral';
+                monthlyNetValEl.textContent = `(순수지: ${monthlyNet >= 0 ? '+' : ''}${formatKoreanText(monthlyNet)})`;
             }
         };
 
