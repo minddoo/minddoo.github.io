@@ -604,14 +604,12 @@
                 const isInc = item.type === 'income';
                 const badgeClass = isInc ? 'badge-inc' : 'badge-exp';
                 const sign = isInc ? '+' : '-';
-                const catName = getCategoryName(item.type, item.category);
 
                 html += `
                     <div class="history-item">
                         <div>
                             <span class="badge-row ${badgeClass}" style="display:inline-block; margin-right: 0.4rem;">${sign}${isInc ? '수입' : '지출'}</span>
                             <strong>${escapeHtml(item.memo)}</strong>
-                            <span style="font-size:0.75rem; color:#82756E;">(${catName})</span>
                         </div>
                         <div>
                             <strong>${sign}₩${formatNumber(item.amount)}</strong>
@@ -652,7 +650,6 @@
                 const checkedTypeRadio = document.querySelector('input[name="type"]:checked');
                 const type = checkedTypeRadio ? checkedTypeRadio.value : 'expense';
                 const amount = parseKoreanCurrency(amountInput ? amountInput.value : '');
-                const category = categorySelect ? categorySelect.value : 'other_exp';
                 const memo = memoInput ? memoInput.value.trim() : '';
                 const dateStr = entryDateHiddenEl ? entryDateHiddenEl.value : selectedDateStr;
 
@@ -670,7 +667,6 @@
                     id: Date.now().toString(),
                     type,
                     amount,
-                    category,
                     date: dateStr,
                     memo
                 };
