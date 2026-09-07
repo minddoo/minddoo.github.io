@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MY 가계부/달력 📖🌸 | 수입·지출 & 일정 수첩</title>
+    <meta name="description" content="깨끗하고 감성적인 다이어리 스타일의 MY 가계부/달력! 시작 자산 설정, 날짜별 일정/할일 메모, 수입 지출 잔액 자동 계산기입니다.">
+    
+    <!-- Google Fonts: Gowun Dodum & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Outfit:wght@600;700;800&family=Jua&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="diary-theme">
+
+    <!-- Delicate Small Petals Floating Background Elements -->
+    <div class="small-petal petal-1">🌸</div>
+    <div class="small-petal petal-2">🌼</div>
+    <div class="small-petal petal-3">🌸</div>
+    <div class="small-petal petal-4">🍃</div>
+
+    <!-- App Main Container -->
+    <div class="app-container">
+        
+        <!-- Header & Top Bar -->
+        <header class="app-header diary-panel">
+            <div class="header-top">
+                <!-- Brand Title -->
+                <div class="logo">
+                    <div class="diary-icon-box">
+                        <i class="fa-solid fa-book-journal-whills logo-icon"></i>
+                    </div>
+                    <h1 class="logo-title">MY 가계부/달력 <span class="diary-tag">Journal 🌸</span></h1>
+                </div>
+
+                <!-- Month Navigator -->
+                <div class="month-navigator">
+                    <button id="prev-month-btn" class="diary-btn icon-btn" title="이전 달"><i class="fa-solid fa-chevron-left"></i></button>
+                    <span id="current-month-display" class="month-label">2026년 9월</span>
+                    <button id="next-month-btn" class="diary-btn icon-btn" title="다음 달"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button id="today-btn" class="diary-btn btn-sm">오늘</button>
+                    <button id="clear-all-data-btn" class="diary-btn btn-sm btn-reset" title="전체 데이터 0원으로 초기화">
+                        <i class="fa-solid fa-rotate-left"></i> 초기화
+                    </button>
+                </div>
+            </div>
+
+            <!-- Monthly Goal Tape Card (이번 달 목표 적기) -->
+            <div class="goal-banner diary-card" id="goal-banner-btn" title="클릭하여 이번 달 목표 작성">
+                <div class="goal-left">
+                    <span class="goal-badge"><i class="fa-solid fa-bullseye"></i> 이달의 목표 🌸</span>
+                    <span id="monthly-goal-text" class="goal-text">목표를 작성해 보세요! (예: 이번 달 식비 30만원 이하로 아끼기)</span>
+                </div>
+                <button class="goal-edit-btn"><i class="fa-solid fa-pen"></i> 수정</button>
+            </div>
+
+            <!-- Top Financial Summary Cards Grid -->
+            <div class="header-summary">
+                <!-- Starting Assets Card -->
+                <div class="summary-chip asset-chip diary-card" id="asset-chip-btn" title="클릭하여 시작 총 자산 변경하기">
+                    <span class="chip-label"><i class="fa-solid fa-vault"></i> 시작 총 자산 🌼</span>
+                    <span id="total-asset-val" class="chip-val">0원</span>
+                    <span class="chip-sub-hint">✏️ 클릭 시 설정</span>
+                </div>
+
+                <div class="summary-chip income-chip diary-card">
+                    <span class="chip-label"><i class="fa-solid fa-arrow-trend-up text-sage"></i> 이달 수입 🍃</span>
+                    <span id="monthly-income-val" class="chip-val text-sage">+0원</span>
+                </div>
+
+                <div class="summary-chip expense-chip diary-card">
+                    <span class="chip-label"><i class="fa-solid fa-arrow-trend-down text-coral"></i> 이달 지출 🌸</span>
+                    <span id="monthly-expense-val" class="chip-val text-coral">-0원</span>
+                </div>
+
+                <div class="summary-chip net-chip diary-card">
+                    <span class="chip-label"><i class="fa-solid fa-scale-balanced"></i> 현재 총 자산</span>
+                    <span id="monthly-net-val" class="chip-val">0원</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Calendar Section (다이어리 감성 달력) -->
+        <main class="calendar-wrapper diary-panel">
+            <!-- Calendar Days Header (일 월 화 수 목 금 토) -->
+            <div class="calendar-weekdays">
+                <div class="weekday sun">일 🌸</div>
+                <div class="weekday">월</div>
+                <div class="weekday">화</div>
+                <div class="weekday">수</div>
+                <div class="weekday">목</div>
+                <div class="weekday">금</div>
+                <div class="weekday sat">토 🍃</div>
+            </div>
+
+            <!-- 7 Columns x 5~6 Rows Calendar Grid -->
+            <div id="calendar-grid" class="calendar-grid">
+                <!-- Dynamically generated diary calendar days -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+
+    <!-- 1. Starting Asset Setup Modal -->
+    <div id="asset-modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-card diary-modal">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-wallet text-coral"></i> 현재 나의 시작 자산 총액 🌼</h3>
+                <button class="close-btn" id="asset-modal-close-x">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc">가계부를 시작하기 전, 현재 통장 잔액과 현금을 합친 <strong>나의 시작 총 자산</strong>을 입력해 주세요! 🌸</p>
+                <div class="form-group margin-top-md">
+                    <label for="asset-input"><i class="fa-solid fa-won-sign"></i> 현재 보유 자산 금액 (예: 1000만원, 500만원, 3500000)</label>
+                    <input type="text" id="asset-input" class="diary-input" placeholder="예: 1000만원 또는 10000000" autocomplete="off" required>
+                    
+                    <div class="amount-preview">
+                        🌸 변환 금액: <strong id="asset-preview-text">0원</strong>
+                    </div>
+
+                    <div class="unit-buttons margin-top-xs">
+                        <button type="button" class="unit-btn asset-unit-btn" data-val="1000000">+100만원</button>
+                        <button type="button" class="unit-btn asset-unit-btn" data-val="5000000">+500만원</button>
+                        <button type="button" class="unit-btn asset-unit-btn" data-val="10000000">+1000만원</button>
+                        <button type="button" class="unit-btn asset-unit-btn" data-val="100000">+10만원</button>
+                        <button type="button" class="unit-btn clear-btn asset-unit-btn" id="clear-asset-input-btn">초기화</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn diary-btn btn-outline" id="asset-cancel-btn">취소</button>
+                <button class="btn diary-btn btn-coral-submit" id="asset-save-btn">
+                    <i class="fa-solid fa-check"></i> 자산 입력하고 시작하기 🌸
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Goal Setting Modal -->
+    <div id="goal-modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-card diary-modal">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-bullseye text-coral"></i> 이달의 목표 다이어리 🌸</h3>
+                <button class="close-btn" id="goal-modal-close-x">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc">이번 달 실천하고 싶은 가계부 목표나 다짐을 적어보세요!</p>
+                <div class="form-group margin-top-md">
+                    <label for="goal-input">이달의 목표 문구</label>
+                    <input type="text" id="goal-input" class="diary-input" placeholder="예: 이번 달 식비 30만원 아끼고 비상금 모으기! 🌸">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn diary-btn btn-outline" id="goal-cancel-btn">취소</button>
+                <button class="btn diary-btn btn-coral-submit" id="goal-save-btn">목표 저장하기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Entry & Schedule Combo Modal (가계부 수입/지출 OR 일정/메모) -->
+    <div id="entry-modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-card diary-modal">
+            <div class="modal-header">
+                <h3 id="modal-date-title"><i class="fa-solid fa-calendar-day text-coral"></i> 2026년 9월 7일 기록 🌸</h3>
+                <button class="close-btn" id="modal-close-x">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Mode Switcher: Money Entry vs Schedule Entry -->
+                <div class="mode-switch-bar">
+                    <button type="button" id="mode-money-btn" class="mode-btn active">
+                        <i class="fa-solid fa-coins"></i> 수입 · 지출 기록
+                    </button>
+                    <button type="button" id="mode-schedule-btn" class="mode-btn">
+                        <i class="fa-solid fa-thumbtack"></i> 일정 · 메모 기록 📌
+                    </button>
+                </div>
+
+                <!-- 3A. Money Form -->
+                <form id="entry-form" class="entry-form">
+                    <input type="hidden" id="entry-date-hidden">
+
+                    <div class="type-tab-group">
+                        <input type="radio" id="type-expense" name="type" value="expense" checked>
+                        <label for="type-expense" class="type-tab tab-expense diary-tab">
+                            <i class="fa-solid fa-minus"></i> - 지출 (나간 돈) 🌸
+                        </label>
+
+                        <input type="radio" id="type-income" name="type" value="income">
+                        <label for="type-income" class="type-tab tab-income diary-tab">
+                            <i class="fa-solid fa-plus"></i> + 수입 (들어온 돈) 🍃
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount-input"><i class="fa-solid fa-won-sign"></i> 금액 (예: 3만원, 34만1천원, 5천원)</label>
+                        <input type="text" id="amount-input" class="diary-input" placeholder="예: 3만원 또는 35000" autocomplete="off">
+                        
+                        <div class="amount-preview">
+                            🌸 변환 금액: <strong id="parsed-amount-text">0원</strong>
+                        </div>
+
+                        <div class="unit-buttons">
+                            <button type="button" class="unit-btn diary-unit-btn" data-val="10000">+1만원</button>
+                            <button type="button" class="unit-btn diary-unit-btn" data-val="50000">+5만원</button>
+                            <button type="button" class="unit-btn diary-unit-btn" data-val="100000">+10만원</button>
+                            <button type="button" class="unit-btn diary-unit-btn" data-val="500000">+50만원</button>
+                            <button type="button" class="unit-btn diary-unit-btn" data-val="1000">+1천원</button>
+                            <button type="button" class="unit-btn diary-unit-btn" data-val="5000">+5천원</button>
+                            <button type="button" class="unit-btn clear-btn diary-unit-btn" id="clear-amount-btn">초기화</button>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group flex-1">
+                            <label for="category-select">카테고리</label>
+                            <select id="category-select" class="diary-input">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+                        <div class="form-group flex-2">
+                            <label for="memo-input">내역 / 메모</label>
+                            <input type="text" id="memo-input" class="diary-input" placeholder="예: 점심 식사, 커피, 장보기">
+                        </div>
+                    </div>
+
+                    <button type="submit" id="save-entry-btn" class="btn diary-btn btn-coral-submit btn-block btn-lg">
+                        <i class="fa-solid fa-heart"></i> 가계부 저장하기 🌸
+                    </button>
+                </form>
+
+                <!-- 3B. Schedule Form (Hidden by default) -->
+                <form id="schedule-form" class="schedule-form hidden">
+                    <div class="form-group">
+                        <label for="schedule-text-input"><i class="fa-solid fa-thumbtack text-purple"></i> 일정 / 할일 메모</label>
+                        <input type="text" id="schedule-text-input" class="diary-input" placeholder="예: 친구 생일 파티 🎂, 치과 14시 🏥, 연차 휴가 ✈️" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group flex-1">
+                            <label for="schedule-icon-select">일정 종류</label>
+                            <select id="schedule-icon-select" class="diary-input">
+                                <option value="📌">📌 일반 일정</option>
+                                <option value="🎂">🎂 생일 · 기념일</option>
+                                <option value="🏥">🏥 병원 · 약속</option>
+                                <option value="✈️">✈️ 여행 · 휴가</option>
+                                <option value="📝">📝 중요한 할일</option>
+                                <option value="💼">💼 업무 · 미팅</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="save-schedule-btn" class="btn diary-btn btn-purple-submit btn-block btn-lg">
+                        <i class="fa-solid fa-thumbtack"></i> 일정 추가하기 📌
+                    </button>
+                </form>
+
+                <hr class="modal-divider">
+
+                <!-- History List for Selected Day (가계부 & 일정 함께 표시) -->
+                <div class="day-history">
+                    <h4 class="history-title"><i class="fa-solid fa-list-check"></i> 해당 날짜 내역 & 일정 목록</h4>
+                    <div id="day-history-list" class="history-list">
+                        <!-- Dynamic item rows -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
