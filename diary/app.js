@@ -82,6 +82,31 @@
         return str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
     }
 
+    // Robust Safe Storage Wrapper (Supports LocalStorage with SessionStorage Fallback)
+    const Storage = {
+        get(key) {
+            try {
+                return localStorage.getItem(key);
+            } catch (e) {
+                try { return sessionStorage.getItem(key); } catch (err) { return null; }
+            }
+        },
+        set(key, val) {
+            try {
+                localStorage.setItem(key, val);
+            } catch (e) {
+                try { sessionStorage.setItem(key, val); } catch (err) {}
+            }
+        },
+        remove(key) {
+            try {
+                localStorage.removeItem(key);
+            } catch (e) {
+                try { sessionStorage.removeItem(key); } catch (err) {}
+            }
+        }
+    };
+
     // Main Init
     function initApp() {
         const CATEGORIES = {
@@ -112,7 +137,7 @@
         let monthlyGoal = "이번 달 꼭 식비 30만원 이하로 아끼기! 🌸";
 
         try {
-            const rawAsset = localStorage.getItem('finflow_user_asset');
+            const rawAsset = Storage.get('finflow_user_asset');
             if (rawAsset !== null) {
                 const parsedVal = parseInt(rawAsset, 10);
                 if (!isNaN(parsedVal)) initialAsset = parsedVal;
@@ -122,7 +147,7 @@
         }
 
         try {
-            const rawTx = localStorage.getItem('finflow_user_transactions');
+            const rawTx = Storage.get('finflow_user_transactions');
             if (rawTx !== null) {
                 const parsedTx = JSON.parse(rawTx);
                 if (Array.isArray(parsedTx)) transactions = parsedTx;
@@ -132,7 +157,7 @@
         }
 
         try {
-            const rawSch = localStorage.getItem('finflow_user_schedules');
+            const rawSch = Storage.get('finflow_user_schedules');
             if (rawSch !== null) {
                 const parsedSch = JSON.parse(rawSch);
                 if (Array.isArray(parsedSch)) schedules = parsedSch;
@@ -142,7 +167,7 @@
         }
 
         try {
-            const rawGoal = localStorage.getItem('finflow_user_goal');
+            const rawGoal = Storage.get('finflow_user_goal');
             if (rawGoal !== null) monthlyGoal = rawGoal;
         } catch (e) {}
 
@@ -263,14 +288,12 @@
             });
         }
 
-        // PERMANENT SAVE TO LOCALSTORAGE
+        // PERMANENT SAVE TO LOCALSTORAGE & FALLBACK
         const saveState = () => {
-            try {
-                localStorage.setItem('finflow_user_transactions', JSON.stringify(state.transactions));
-                localStorage.setItem('finflow_user_schedules', JSON.stringify(state.schedules));
-                localStorage.setItem('finflow_user_asset', state.initialAsset.toString());
-                localStorage.setItem('finflow_user_goal', state.monthlyGoal);
-            } catch (e) {}
+            Storage.set('finflow_user_transactions', JSON.stringify(state.transactions));
+            Storage.set('finflow_user_schedules', JSON.stringify(state.schedules));
+            Storage.set('finflow_user_asset', state.initialAsset.toString());
+            Storage.set('finflow_user_goal', state.monthlyGoal);
             renderApp();
         };
 
@@ -728,13 +751,12 @@
                     state.transactions = [];
                     state.schedules = [];
                     state.initialAsset = 0;
+                    state.monthlyGoal = "이번 달 목표를 입력해 보세요! 🌸";
                     saveState();
-                    try {
-                        localStorage.removeItem('finflow_user_transactions');
-                        localStorage.removeItem('finflow_user_schedules');
-                        localStorage.removeItem('finflow_user_asset');
-                        localStorage.removeItem('finflow_user_goal');
-                    } catch(e){}
+                    Storage.remove('finflow_user_transactions');
+                    Storage.remove('finflow_user_schedules');
+                    Storage.remove('finflow_user_asset');
+                    Storage.remove('finflow_user_goal');
                     renderDayHistoryList(selectedDateStr);
                 }
             });
